@@ -1,0 +1,4 @@
+<launch>
+  <node name="stereo_vision" pkg="map_generation" type="gz_delayed_launch.bash" args="stereo_vision_dem" output="screen"/>
+</launch>
+

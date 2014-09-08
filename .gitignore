@@ -1,0 +1,16 @@
+# Temporary files
+*.save
+*~
+
+# Compressed files
+*.tar
+*.tar.gz
+*.zip
+*.tar.bz2
+
+# Compiled files
+On-Board/ros_ws/build/*
+On-Board/ros_ws/devel/*
+*.so
+*.o
+*.out
