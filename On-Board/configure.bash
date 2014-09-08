@@ -16,7 +16,7 @@ sudo chmod 666 /usr/share/gazebo/setup.sh
 source /usr/share/gazebo/setup.sh
 
 cd $DIR
-#catkin_make
+catkin_make
 
 echo "alias @urc='cd $DIR;source $DIR/devel/setup.sh'" >> ~/.bash_aliases
 
