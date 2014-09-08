@@ -18,11 +18,11 @@ source /usr/share/gazebo/setup.sh
 cd $DIR
 #catkin_make
 
-echo "alias @msi='cd $DIR;source $DIR/devel/setup.sh'" >> ~/.bash_aliases
+echo "alias @urc='cd $DIR;source $DIR/devel/setup.sh'" >> ~/.bash_aliases
 
 echo -e "\e[01;36m"
 printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' '#'
 echo -e "\nEnvironment setup complete :)."
-echo -e "Alias @msi created to change ROS workspace to MSI. Restart the terminal or source ~/.bashrc to enable it.\n"
+echo -e "Alias @urc created to change ROS workspace to MSI. Restart the terminal or source ~/.bashrc to enable it.\n"
 printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' '#'
 echo -e "\e[0m"
