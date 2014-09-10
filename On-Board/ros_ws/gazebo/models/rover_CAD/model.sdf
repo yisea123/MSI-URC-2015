@@ -1,0 +1,80 @@
+<?xml version='1.0'?>
+<sdf version='1.4'>
+<model name="Rover_CAD">
+  <static>0</static>
+
+  <link name='chassis'>						<!--> Chassis Begins <-->
+    <pose>0 0 0.5 1.5708 0 0</pose>
+    <collision name='chassis_collision'>			<!--> Chassis Collision <-->
+      <geometry>
+        <mesh>
+          <scale>0.008 0.008 0.008</scale>
+          <uri>model://rover_CAD/Chassis.STL</uri>
+        </mesh>
+      </geometry>
+    </collision>
+
+    <visual name='chassis_visual'>				<!--> Chassis Visual <-->
+      <geometry>
+        <mesh>
+          <scale>0.008 0.008 0.008</scale>
+          <uri>model://rover_CAD/Chassis.STL</uri>
+        </mesh>
+      </geometry>
+    </visual>
+  </link>							<!--> Chassis Ends <-->
+
+  <link name='r_Rocker'>					<!--> Right Rocker Begins <-->
+    <pose>2.5 -0.6 -1.275 1.5708 0 1.5708</pose>
+    <collision name='r_Rocker_collision'>			<!--> Right Rocker Collision <-->
+      <geometry>
+        <mesh>
+          <scale>0.008 0.008 0.008</scale>
+          <uri>model://rover_CAD/r_Rocker.STL</uri>
+        </mesh>
+      </geometry>
+    </collision>
+
+    <visual name='r_Rocker_visual'>				<!--> Right Rocker Visual <-->
+      <geometry>
+        <mesh>
+          <scale>0.008 0.008 0.008</scale>
+          <uri>model://rover_CAD/r_Rocker.STL</uri>
+        </mesh>
+      </geometry>
+    </visual>
+  </link>							<!--> Right Rocker Ends <-->
+
+  <link name='l_Rocker'>					<!--> Left Rocker Begins <-->
+    <pose>-2.5 -0.6 -1.275 1.5708 0 1.5708</pose>
+    <collision name='l_Rocker_collision'>			<!--> Left Rocker Collision <-->
+      <geometry>
+        <mesh>
+          <scale>0.008 0.008 0.008</scale>
+          <uri>model://rover_CAD/l_Rocker.STL</uri>
+        </mesh>
+      </geometry>
+    </collision>
+
+    <visual name='l_Rocker_visual'>				<!--> Left Rocker Visual <-->
+      <geometry>
+        <mesh>
+          <scale>0.008 0.008 0.008</scale>
+          <uri>model://rover_CAD/l_Rocker.STL</uri>
+        </mesh>
+      </geometry>
+    </visual>
+  </link>							<!--> Left Rocker Ends <-->
+
+
+  <joint type="revolute" name="left_rocker_hinge">
+    <pose>-5 0 20 0 0 0</pose>
+    <child>l_Rocker</child>
+    <parent>chassis</parent>
+    <axis>
+      <xyz>1 0 0</xyz>
+    </axis>
+  </joint>
+
+</model>
+</sdf>
