@@ -1,0 +1,17 @@
+Inner end of Chassis Bearings : 530mm
+Chassis center to Rocker center : {327mm, 0mm, 0mm}
+Rocker center to Bogie center : {33mm, 175mm, 40mm}
+Chassis center to Triangle center : {75mm, 476.3mm, 107.65mm} # {75mm, 480mm, 110mm}
+Bogie center to Tyre center{154mm, 225mm, 282mm}
+
+
+
+Chassis center to Triangle center : {75mm, 476.3mm, 107.65mm}
+Chassis center to Rocker center : {327mm, 0mm, 0mm}
+Rocker center to Bogie center : {33mm, 175mm, 40mm}
+Rocker center to C-Assembly center : {54,490,103.7}
+Bogie center to Tyre center{154mm, 225mm, 282mm}
+Bogie center to C-Assembly center : {54,225,63.7}
+C-Assembly center to Tyre center : {10,0,218}
+Triangle origin to Triangle rod hinge : {3.28,12,149.96}
+Triangle rod hinge to Triangle rod center : {0, 0, 75}
