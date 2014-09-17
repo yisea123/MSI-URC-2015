@@ -6,7 +6,7 @@
 #include <miscellaneous.h>
 
 //--Message include files. Include correct message headers for messages to work
-#include <navigation/navigation_srv.h>
+#include <msi_rover/navigation_srv.h>
 
 //--Global Variable Declarations--//
 boost::property_tree::ptree Configuration;
