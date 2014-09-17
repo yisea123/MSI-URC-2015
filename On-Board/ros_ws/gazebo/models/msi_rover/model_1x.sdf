@@ -1,0 +1,38 @@
+<?xml version='1.0'?>
+<sdf version='1.4'>
+<model name="MSI Rover">
+  <static>0</static>
+  <link name='Chassis'>
+    <self_collide>1</self_collide>
+    <pose>0.0000 0.0000 0.4720 0.0000 0.0000 0.0000</pose>
+    <collision name='Chassis_Collision'>
+      <pose>0.0000 -0.0120 0.0380 0.0000 0.0000 0.0000</pose>
+      <geometry>
+        <box>
+          <size>0.6100 0.9300 0.1527</size>
+        </box>
+      </geometry>
+    </collision>
+    <visual name='Chassis_Visual'>
+      <geometry>
+        <mesh>
+          <scale>0.0010 0.0010 0.0010</scale>
+          <uri>model://msi_rover/meshes/Chassis.STL</uri>
+        </mesh>
+      </geometry>
+    </visual>
+    <inertial>
+      <mass>7.259</mass>                                       <!-- Volume = 0.000902 m^3 -->
+      <pose>0.0000 -0.0560 0.0013 0 0 0</pose>
+      <inertia>
+        <ixx> 0.54570278912</ixx>
+        <ixy>-0.00003168874</ixy>
+        <ixz>-0.00000141851</ixz>
+        <iyy> 0.55866375000</iyy>
+        <iyz> 0.02659627264</iyz>
+        <izz> 1.07370025000</izz>
+      </inertia>
+    </inertial>
+  </link>
+</model>
+</sdf>

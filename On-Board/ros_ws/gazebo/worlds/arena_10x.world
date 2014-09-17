@@ -1,0 +1,1444 @@
+<sdf version='1.5'>
+  <world name='default'>
+    <light name='sun' type='directional'>
+      <cast_shadows>1</cast_shadows>
+      <pose>0 0 10 0 -0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>-0.5 0.1 -0.9</direction>
+    </light>
+    <model name='heightmap'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <heightmap>
+              <uri>file://heightmaps/Akaroola/ViewFinder/G53/S25E134.dem</uri>
+              <size>258 258 129</size>
+              <pos>0 0 0</pos>
+              <texture>
+                <size>10</size>
+                <diffuse>__default__</diffuse>
+                <normal>__default__</normal>
+              </texture>
+              <blend>
+                <min_height>0</min_height>
+                <fade_dist>0</fade_dist>
+              </blend>
+            </heightmap>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual_abcedf'>
+          <geometry>
+            <heightmap>
+              <texture>
+                <diffuse>file://media/materials/textures/dirt_diffusespecular.png</diffuse>
+                <normal>file://media/materials/textures/flat_normal.png</normal>
+                <size>1</size>
+              </texture>
+              <texture>
+                <diffuse>file://media/materials/textures/grass_diffusespecular.png</diffuse>
+                <normal>file://media/materials/textures/flat_normal.png</normal>
+                <size>1</size>
+              </texture>
+              <texture>
+                <diffuse>file://media/materials/textures/fungus_diffusespecular.png</diffuse>
+                <normal>file://media/materials/textures/flat_normal.png</normal>
+                <size>1</size>
+              </texture>
+              <blend>
+                <min_height>2</min_height>
+                <fade_dist>5</fade_dist>
+              </blend>
+              <blend>
+                <min_height>4</min_height>
+                <fade_dist>5</fade_dist>
+              </blend>
+              <uri>file://heightmaps/Akaroola/ViewFinder/G53/S25E134.dem</uri>
+              <size>258 258 129</size>
+              <pos>0 0 0</pos>
+            </heightmap>
+          </geometry>
+        </visual>
+        <velocity_decay>
+          <linear>0</linear>
+          <angular>0</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+    </model>
+    <physics type='ode'>
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+      <gravity>0 0 -9.8</gravity>
+    </physics>
+    <scene>
+      <ambient>0.4 0.4 0.4 1</ambient>
+      <background>0.7 0.7 0.7 1</background>
+      <shadows>1</shadows>
+    </scene>
+    <audio>
+      <device>default</device>
+    </audio>
+    <spherical_coordinates>
+      <surface_model>EARTH_WGS84</surface_model>
+      <latitude_deg>0</latitude_deg>
+      <longitude_deg>0</longitude_deg>
+      <elevation>0</elevation>
+      <heading_deg>0</heading_deg>
+    </spherical_coordinates>
+    <gui fullscreen='0'>
+      <camera name='user_camera'>
+        <pose>54.9185 -127.691 39.8099 1.42598e-17 0.232 2.204</pose>
+        <view_controller>orbit</view_controller>
+      </camera>
+    </gui>
+    <model name='MSI Rover'>
+      <static>0</static>
+      <link name='Chassis'>
+        <self_collide>1</self_collide>
+        <pose>0 0 4.72 0 -0 0</pose>
+        <collision name='Chassis_Collision'>
+          <geometry>
+            <mesh>
+              <scale>0.01 0.01 0.01</scale>
+              <uri>model://msi_rover/meshes/Chassis.STL</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='Chassis_Visual'>
+          <geometry>
+            <mesh>
+              <scale>0.01 0.01 0.01</scale>
+              <uri>model://msi_rover/meshes/Chassis.STL</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <velocity_decay>
+          <linear>0</linear>
+          <angular>0</angular>
+        </velocity_decay>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <link name='Left_Rocker'>
+        <self_collide>1</self_collide>
+        <pose>-3.27 0 4.72 0 -0 0</pose>
+        <collision name='Left_Rocker_Collision'>
+          <geometry>
+            <mesh>
+              <scale>0.01 0.01 0.01</scale>
+              <uri>model://msi_rover/meshes/Rocker_L.STL</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='Left_Rocker_Visual'>
+          <geometry>
+            <mesh>
+              <scale>0.01 0.01 0.01</scale>
+              <uri>model://msi_rover/meshes/Rocker_L.STL</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <velocity_decay>
+          <linear>0</linear>
+          <angular>0</angular>
+        </velocity_decay>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <link name='Left_Bogie'>
+        <self_collide>1</self_collide>
+        <pose>-2.94 1.75 4.32 0 -0 0</pose>
+        <collision name='Left_Bogie_Collision'>
+          <geometry>
+            <mesh>
+              <scale>0.01 0.01 0.01</scale>
+              <uri>model://msi_rover/meshes/Bogie_L.STL</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='Left_Bogie_Visual'>
+          <geometry>
+            <mesh>
+              <scale>0.01 0.01 0.01</scale>
+              <uri>model://msi_rover/meshes/Bogie_L.STL</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <velocity_decay>
+          <linear>0</linear>
+          <angular>0</angular>
+        </velocity_decay>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <link name='Left_Rear_Steering'>
+        <self_collide>1</self_collide>
+        <pose>-3.81 -4.9 3.68 0 -0 0</pose>
+        <collision name='Left_Rear_Steering_Collision'>
+          <geometry>
+            <mesh>
+              <scale>0.01 0.01 0.01</scale>
+              <uri>model://msi_rover/meshes/C_Assembly_L.STL</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='Left_Rear_Steering_Visual'>
+          <geometry>
+            <mesh>
+              <scale>0.01 0.01 0.01</scale>
+              <uri>model://msi_rover/meshes/C_Assembly_L.STL</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <velocity_decay>
+          <linear>0</linear>
+          <angular>0</angular>
+        </velocity_decay>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <link name='Left_Front_Steering'>
+        <self_collide>1</self_collide>
+        <pose>-3.48 4 3.68 0 -0 0</pose>
+        <collision name='Left_Front_Steering_Collision'>
+          <geometry>
+            <mesh>
+              <scale>0.01 0.01 0.01</scale>
+              <uri>model://msi_rover/meshes/C_Assembly_L.STL</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='Left_Front_Steering_Visual'>
+          <geometry>
+            <mesh>
+              <scale>0.01 0.01 0.01</scale>
+              <uri>model://msi_rover/meshes/C_Assembly_L.STL</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <velocity_decay>
+          <linear>0</linear>
+          <angular>0</angular>
+        </velocity_decay>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <link name='Left_Rear_Tyre'>
+        <self_collide>1</self_collide>
+        <pose>-3.91 -4.9 1.5 0 -0 0</pose>
+        <collision name='Left_Rear_Tyre_Collision'>
+          <geometry>
+            <mesh>
+              <scale>0.01 0.01 0.01</scale>
+              <uri>model://msi_rover/meshes/Tyre.STL</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='Left_Rear_Tyre_Visual'>
+          <geometry>
+            <mesh>
+              <scale>0.01 0.01 0.01</scale>
+              <uri>model://msi_rover/meshes/Tyre.STL</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <velocity_decay>
+          <linear>0</linear>
+          <angular>0</angular>
+        </velocity_decay>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <link name='Left_Middle_Tyre'>
+        <self_collide>1</self_collide>
+        <pose>-4.48 -0.5 1.5 0 -0 0</pose>
+        <collision name='Left_Middle_Tyre_Collision'>
+          <geometry>
+            <mesh>
+              <scale>0.01 0.01 0.01</scale>
+              <uri>model://msi_rover/meshes/Tyre.STL</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='Left_Middle_Tyre_Visual'>
+          <geometry>
+            <mesh>
+              <scale>0.01 0.01 0.01</scale>
+              <uri>model://msi_rover/meshes/Tyre.STL</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <velocity_decay>
+          <linear>0</linear>
+          <angular>0</angular>
+        </velocity_decay>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <link name='Left_Front_Tyre'>
+        <self_collide>1</self_collide>
+        <pose>-3.58 4 1.5 0 -0 0</pose>
+        <collision name='Left_Front_Tyre_Collision'>
+          <geometry>
+            <mesh>
+              <scale>0.01 0.01 0.01</scale>
+              <uri>model://msi_rover/meshes/Tyre.STL</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='Left_Front_Tyre_Visual'>
+          <geometry>
+            <mesh>
+              <scale>0.01 0.01 0.01</scale>
+              <uri>model://msi_rover/meshes/Tyre.STL</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <velocity_decay>
+          <linear>0</linear>
+          <angular>0</angular>
+        </velocity_decay>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <joint name='Left_Rocker_Joint' type='revolute'>
+        <pose>0 0 0 0 -0 0</pose>
+        <child>Left_Rocker</child>
+        <parent>Chassis</parent>
+        <axis>
+          <xyz>1 0 0</xyz>
+          <use_parent_model_frame>1</use_parent_model_frame>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <joint name='Left_Bogie_Joint' type='revolute'>
+        <pose>0 0 0 0 -0 0</pose>
+        <child>Left_Bogie</child>
+        <parent>Left_Rocker</parent>
+        <axis>
+          <xyz>1 0 0</xyz>
+          <use_parent_model_frame>1</use_parent_model_frame>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <joint name='Left_Rear_Steering_Joint' type='revolute'>
+        <pose>0 0 0 0 -0 0</pose>
+        <child>Left_Rear_Steering</child>
+        <parent>Left_Rocker</parent>
+        <axis>
+          <xyz>0 0 -1</xyz>
+          <use_parent_model_frame>1</use_parent_model_frame>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <joint name='Left_Front_Steering_Joint' type='revolute'>
+        <pose>0 0 0 0 -0 0</pose>
+        <child>Left_Front_Steering</child>
+        <parent>Left_Bogie</parent>
+        <axis>
+          <xyz>0 0 -1</xyz>
+          <use_parent_model_frame>1</use_parent_model_frame>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <joint name='Left_Rear_Tyre_Joint' type='revolute'>
+        <pose>0 0 0 0 -0 0</pose>
+        <child>Left_Rear_Tyre</child>
+        <parent>Left_Rear_Steering</parent>
+        <axis>
+          <xyz>1 0 0</xyz>
+          <use_parent_model_frame>1</use_parent_model_frame>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <joint name='Left_Middle_Tyre_Joint' type='revolute'>
+        <pose>0 0 0 0 -0 0</pose>
+        <child>Left_Middle_Tyre</child>
+        <parent>Left_Bogie</parent>
+        <axis>
+          <xyz>1 0 0</xyz>
+          <use_parent_model_frame>1</use_parent_model_frame>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <joint name='Left_Front_Tyre_Joint' type='revolute'>
+        <pose>0 0 0 0 -0 0</pose>
+        <child>Left_Front_Tyre</child>
+        <parent>Left_Front_Steering</parent>
+        <axis>
+          <xyz>1 0 0</xyz>
+          <use_parent_model_frame>1</use_parent_model_frame>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='Right_Rocker'>
+        <self_collide>1</self_collide>
+        <pose>3.27 0 4.72 0 -0 0</pose>
+        <collision name='Right_Rocker_Collision'>
+          <geometry>
+            <mesh>
+              <scale>0.01 0.01 0.01</scale>
+              <uri>model://msi_rover/meshes/Rocker_R.STL</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='Right_Rocker_Visual'>
+          <geometry>
+            <mesh>
+              <scale>0.01 0.01 0.01</scale>
+              <uri>model://msi_rover/meshes/Rocker_R.STL</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <velocity_decay>
+          <linear>0</linear>
+          <angular>0</angular>
+        </velocity_decay>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <link name='Right_Bogie'>
+        <self_collide>1</self_collide>
+        <pose>2.94 1.75 4.32 0 -0 0</pose>
+        <collision name='Right_Bogie_Collision'>
+          <geometry>
+            <mesh>
+              <scale>0.01 0.01 0.01</scale>
+              <uri>model://msi_rover/meshes/Bogie_R.STL</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='Right_Bogie_Visual'>
+          <geometry>
+            <mesh>
+              <scale>0.01 0.01 0.01</scale>
+              <uri>model://msi_rover/meshes/Bogie_R.STL</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <velocity_decay>
+          <linear>0</linear>
+          <angular>0</angular>
+        </velocity_decay>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <link name='Right_Rear_Steering'>
+        <self_collide>1</self_collide>
+        <pose>3.81 -4.9 3.68 0 -0 0</pose>
+        <collision name='Right_Rear_Steering_Collision'>
+          <geometry>
+            <mesh>
+              <scale>0.01 0.01 0.01</scale>
+              <uri>model://msi_rover/meshes/C_Assembly_R.STL</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='Right_Rear_Steering_Visual'>
+          <geometry>
+            <mesh>
+              <scale>0.01 0.01 0.01</scale>
+              <uri>model://msi_rover/meshes/C_Assembly_R.STL</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <velocity_decay>
+          <linear>0</linear>
+          <angular>0</angular>
+        </velocity_decay>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <link name='Right_Front_Steering'>
+        <self_collide>1</self_collide>
+        <pose>3.48 4 3.68 0 -0 0</pose>
+        <collision name='Right_Front_Steering_Collision'>
+          <geometry>
+            <mesh>
+              <scale>0.01 0.01 0.01</scale>
+              <uri>model://msi_rover/meshes/C_Assembly_R.STL</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='Right_Front_Steering_Visual'>
+          <geometry>
+            <mesh>
+              <scale>0.01 0.01 0.01</scale>
+              <uri>model://msi_rover/meshes/C_Assembly_R.STL</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <velocity_decay>
+          <linear>0</linear>
+          <angular>0</angular>
+        </velocity_decay>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <link name='Right_Rear_Tyre'>
+        <self_collide>1</self_collide>
+        <pose>3.91 -4.9 1.5 0 -0 0</pose>
+        <collision name='Right_Rear_Tyre_Collision'>
+          <geometry>
+            <mesh>
+              <scale>0.01 0.01 0.01</scale>
+              <uri>model://msi_rover/meshes/Tyre.STL</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='Right_Rear_Tyre_Visual'>
+          <geometry>
+            <mesh>
+              <scale>0.01 0.01 0.01</scale>
+              <uri>model://msi_rover/meshes/Tyre.STL</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <velocity_decay>
+          <linear>0</linear>
+          <angular>0</angular>
+        </velocity_decay>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <link name='Right_Middle_Tyre'>
+        <self_collide>1</self_collide>
+        <pose>4.48 -0.5 1.5 0 -0 0</pose>
+        <collision name='Right_Middle_Tyre_Collision'>
+          <geometry>
+            <mesh>
+              <scale>0.01 0.01 0.01</scale>
+              <uri>model://msi_rover/meshes/Tyre.STL</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='Right_Middle_Tyre_Visual'>
+          <geometry>
+            <mesh>
+              <scale>0.01 0.01 0.01</scale>
+              <uri>model://msi_rover/meshes/Tyre.STL</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <velocity_decay>
+          <linear>0</linear>
+          <angular>0</angular>
+        </velocity_decay>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <link name='Right_Front_Tyre'>
+        <self_collide>1</self_collide>
+        <pose>3.58 4 1.5 0 -0 0</pose>
+        <collision name='Right_Front_Tyre_Collision'>
+          <geometry>
+            <mesh>
+              <scale>0.01 0.01 0.01</scale>
+              <uri>model://msi_rover/meshes/Tyre.STL</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='Right_Front_Tyre_Visual'>
+          <geometry>
+            <mesh>
+              <scale>0.01 0.01 0.01</scale>
+              <uri>model://msi_rover/meshes/Tyre.STL</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <velocity_decay>
+          <linear>0</linear>
+          <angular>0</angular>
+        </velocity_decay>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <joint name='Right_Rocker_Joint' type='revolute'>
+        <pose>0 0 0 0 -0 0</pose>
+        <child>Right_Rocker</child>
+        <parent>Chassis</parent>
+        <axis>
+          <xyz>1 0 0</xyz>
+          <use_parent_model_frame>1</use_parent_model_frame>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <joint name='Right_Bogie_Joint' type='revolute'>
+        <pose>0 0 0 0 -0 0</pose>
+        <child>Right_Bogie</child>
+        <parent>Right_Rocker</parent>
+        <axis>
+          <xyz>1 0 0</xyz>
+          <use_parent_model_frame>1</use_parent_model_frame>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <joint name='Right_Rear_Steering_Joint' type='revolute'>
+        <pose>0 0 0 0 -0 0</pose>
+        <child>Right_Rear_Steering</child>
+        <parent>Right_Rocker</parent>
+        <axis>
+          <xyz>0 0 -1</xyz>
+          <use_parent_model_frame>1</use_parent_model_frame>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <joint name='Right_Front_Steering_Joint' type='revolute'>
+        <pose>0 0 0 0 -0 0</pose>
+        <child>Right_Front_Steering</child>
+        <parent>Right_Bogie</parent>
+        <axis>
+          <xyz>0 0 -1</xyz>
+          <use_parent_model_frame>1</use_parent_model_frame>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <joint name='Right_Rear_Tyre_Joint' type='revolute'>
+        <pose>0 0 0 0 -0 0</pose>
+        <child>Right_Rear_Tyre</child>
+        <parent>Right_Rear_Steering</parent>
+        <axis>
+          <xyz>1 0 0</xyz>
+          <use_parent_model_frame>1</use_parent_model_frame>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <joint name='Right_Middle_Tyre_Joint' type='revolute'>
+        <pose>0 0 0 0 -0 0</pose>
+        <child>Right_Middle_Tyre</child>
+        <parent>Right_Bogie</parent>
+        <axis>
+          <xyz>1 0 0</xyz>
+          <use_parent_model_frame>1</use_parent_model_frame>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <joint name='Right_Front_Tyre_Joint' type='revolute'>
+        <pose>0 0 0 0 -0 0</pose>
+        <child>Right_Front_Tyre</child>
+        <parent>Right_Front_Steering</parent>
+        <axis>
+          <xyz>1 0 0</xyz>
+          <use_parent_model_frame>1</use_parent_model_frame>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='Left_Diff_Support'>
+        <self_collide>1</self_collide>
+        <pose>-3.085 -5.34 5.08 -0.45 0.15 0</pose>
+        <collision name='Left_Diff_Support_Collision'>
+          <geometry>
+            <cylinder>
+              <radius>0.05</radius>
+              <length>1.7</length>
+            </cylinder>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='Left_Diff_Support_Visual'>
+          <geometry>
+            <cylinder>
+              <radius>0.05</radius>
+              <length>1.7</length>
+            </cylinder>
+          </geometry>
+        </visual>
+        <velocity_decay>
+          <linear>0</linear>
+          <angular>0</angular>
+        </velocity_decay>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <link name='Right_Diff_Support'>
+        <self_collide>1</self_collide>
+        <pose>3.085 -5.34 5.08 -0.45 -0.15 0</pose>
+        <collision name='Right_Diff_Support_Collision'>
+          <geometry>
+            <cylinder>
+              <radius>0.05</radius>
+              <length>1.7</length>
+            </cylinder>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='Right_Diff_Support_Visual'>
+          <geometry>
+            <cylinder>
+              <radius>0.05</radius>
+              <length>1.7</length>
+            </cylinder>
+          </geometry>
+        </visual>
+        <velocity_decay>
+          <linear>0</linear>
+          <angular>0</angular>
+        </velocity_decay>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <joint name='Right_Lower_Triangle_Rod_Joint' type='revolute'>
+        <pose>0.75 0 0 0 -0 0</pose>
+        <child>Lower_Triangle_Rod</child>
+        <parent>Right_Triangle</parent>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <use_parent_model_frame>1</use_parent_model_frame>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <joint name='Left_Lower_Triangle_Rod_Joint' type='revolute'>
+        <pose>-0.75 0 0 0 -0 0</pose>
+        <child>Lower_Triangle_Rod</child>
+        <parent>Left_Triangle</parent>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <use_parent_model_frame>1</use_parent_model_frame>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <joint name='Right_Upper_Triangle_Rod_Joint' type='revolute'>
+        <pose>0.75 0 0 0 -0 0</pose>
+        <child>Upper_Triangle_Rod</child>
+        <parent>Right_Triangle</parent>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <use_parent_model_frame>1</use_parent_model_frame>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <joint name='Left_Upper_Triangle_Rod_Joint' type='revolute'>
+        <pose>-0.75 0 0 0 -0 0</pose>
+        <child>Upper_Triangle_Rod</child>
+        <parent>Left_Triangle</parent>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <use_parent_model_frame>1</use_parent_model_frame>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <joint name='Left_Diff_Support_Triangle_Joint' type='revolute2'>
+        <pose>0 0 0.88 0 -0 0</pose>
+        <child>Left_Diff_Support</child>
+        <parent>Chassis</parent>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <use_parent_model_frame>1</use_parent_model_frame>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+        <axis2>
+          <xyz>0 0 1</xyz>
+          <use_parent_model_frame>1</use_parent_model_frame>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis2>
+      </joint>
+      <joint name='Left_Diff_Support_Rocker_Joint' type='revolute2'>
+        <pose>0 0 -0.86 0 -0 0</pose>
+        <child>Left_Diff_Support</child>
+        <parent>Left_Rocker</parent>
+        <axis>
+          <xyz>1 0 0</xyz>
+          <use_parent_model_frame>1</use_parent_model_frame>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+        <axis2>
+          <xyz>0 0 1</xyz>
+          <use_parent_model_frame>1</use_parent_model_frame>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis2>
+      </joint>
+      <joint name='Right_Diff_Support_Triangle_Joint' type='revolute2'>
+        <pose>0 0 0.88 0 -0 0</pose>
+        <child>Right_Diff_Support</child>
+        <parent>Chassis</parent>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <use_parent_model_frame>1</use_parent_model_frame>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+        <axis2>
+          <xyz>0 0 1</xyz>
+          <use_parent_model_frame>1</use_parent_model_frame>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis2>
+      </joint>
+      <joint name='Right_Diff_Support_Rocker_Joint' type='revolute2'>
+        <pose>0 0 -0.86 0 -0 0</pose>
+        <child>Right_Diff_Support</child>
+        <parent>Right_Rocker</parent>
+        <axis>
+          <xyz>1 0 0</xyz>
+          <use_parent_model_frame>1</use_parent_model_frame>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+        <axis2>
+          <xyz>0 0 1</xyz>
+          <use_parent_model_frame>1</use_parent_model_frame>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis2>
+      </joint>
+      <pose>-29.4455 -19 0 0 -0 0</pose>
+    </model>
+    <state world_name='default'>
+      <sim_time>4 918000000</sim_time>
+      <real_time>107 615791953</real_time>
+      <wall_time>1410501599 516772621</wall_time>
+      <model name='MSI Rover'>
+        <pose>-9.88883 -41.412 19.2723 -0.162231 -0.239882 3.10682</pose>
+        <link name='Chassis'>
+          <pose>-8.80931 -42.2124 23.7969 -0.162231 -0.239882 3.10682</pose>
+          <velocity>0.385294 -1.59062 -0.947716 0.133758 0.017325 -0.047582</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='Left_Bogie'>
+          <pose>-6.17387 -43.9679 22.4406 -0.092261 -0.239852 3.10689</pose>
+          <velocity>0.294219 -1.3334 -1.21859 -0.287177 0.055461 0.020119</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='Left_Diff_Support'>
+          <pose>-5.34366 -37.1184 24.2465 -0.608304 -0.091707 3.08291</pose>
+          <velocity>0.329089 -1.56438 -0.1473 -0.01435 0.129839 -0.663746</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='Left_Front_Steering'>
+          <pose>-5.92588 -46.1593 21.492 -0.170558 -0.192693 -2.81547</pose>
+          <velocity>0.303487 -1.60441 -0.62951 0.071548 -0.08735 1.55421</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='Left_Front_Tyre'>
+          <pose>-6.3413 -45.9092 19.3643 -2.20715 -0.192574 -2.81546</pose>
+          <velocity>0.132664 -2.08072 -0.660074 1.17931 0.316333 1.32202</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='Left_Middle_Tyre'>
+          <pose>-5.20992 -41.4995 19.5483 -0.793824 -0.239975 3.1069</pose>
+          <velocity>0.191447 -2.16241 -1.93488 0.694314 -0.018162 -0.216718</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='Left_Rear_Steering'>
+          <pose>-4.99286 -37.339 22.6643 0.286945 -0.033499 1.04662</pose>
+          <velocity>0.740561 -1.42118 -0.500401 -0.227481 0.242801 -1.70414</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='Left_Rear_Tyre'>
+          <pose>-5.5419 -37.0561 20.5713 0.965284 -0.03321 1.0466</pose>
+          <velocity>0.690499 -0.952516 -0.437383 -2.51478 1.55882 1.49583</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='Left_Rocker'>
+          <pose>-5.635 -42.3232 23.0201 -0.162217 -0.239912 3.1069</pose>
+          <velocity>0.428972 -1.45036 -0.972095 0.143522 0.018976 -0.083238</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='Right_Bogie'>
+          <pose>-11.8824 -43.7684 23.8373 -0.320123 -0.240105 3.10665</pose>
+          <velocity>0.413247 -1.74606 -1.13214 0.137969 -0.07668 0.005691</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='Right_Diff_Support'>
+          <pose>-11.333 -36.9097 25.7137 -0.620081 -0.388247 3.13125</pose>
+          <velocity>0.287404 -1.85943 -0.399312 0.120768 -0.088064 0.139655</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='Right_Front_Steering'>
+          <pose>-12.7868 -45.6723 22.6879 -0.381691 -0.114445 -2.83143</pose>
+          <velocity>0.508757 -1.58894 -1.45553 0.236383 -0.227443 0.42386</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='Right_Front_Tyre'>
+          <pose>-13.3492 -44.9999 20.6894 -0.869907 -0.114441 -2.83144</pose>
+          <velocity>0.669666 -1.35832 -1.42439 0.807796 -0.04351 0.355213</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='Right_Middle_Tyre'>
+          <pose>-13.7394 -40.6786 22.2911 -0.510498 -0.240054 3.10666</pose>
+          <velocity>0.492445 -1.53398 -0.809686 0.245273 -0.067397 -0.022067</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='Right_Rear_Steering'>
+          <pose>-12.3886 -37.0807 24.475 -0.168737 -0.235648 3.13345</pose>
+          <velocity>0.212467 -1.80946 -0.541953 0.556732 -0.399962 2.01566</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='Right_Rear_Tyre'>
+          <pose>-12.9846 -36.7097 22.4087 -1.42017 -0.235633 3.13344</pose>
+          <velocity>0.283132 -1.85332 -0.570431 2.83484 -0.419999 1.46873</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='Right_Rocker'>
+          <pose>-11.9836 -42.1016 24.5741 -0.162467 -0.240078 3.10664</pose>
+          <velocity>0.32235 -1.81183 -1.019 0.065793 -0.066947 0.026355</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='heightmap'>
+        <pose>0 0 0 0 -0 0</pose>
+        <link name='link'>
+          <pose>0 0 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+    </state>
+  </world>
+</sdf>

@@ -10,14 +10,14 @@
 <!------------------------------------------------------------------------------------------>
 
   <link name='Chassis'>
-    <self_collide>0</self_collide>
+    <self_collide>1</self_collide>
     <pose>0.0000 0.0000 0.4720 0.0000 0.0000 0.0000</pose>
     <collision name='Chassis_Collision'>
-      <pose>0.0000 -0.0120 0.0380 0.0000 0.0000 0.0000</pose>
       <geometry>
-        <box>
-          <size>0.6100 0.9300 0.1527</size>
-        </box>
+        <mesh>
+          <scale>0.0010 0.0010 0.0010</scale>
+          <uri>model://msi_rover/meshes/Chassis.STL</uri>
+        </mesh>
       </geometry>
 <!------------------------------>
 <!------------ TODO ------------>
@@ -51,15 +51,15 @@
 -------------------------------->
     </visual>
     <inertial>
-      <mass>7.259</mass>                                       <!-- Volume = 0.000902 m^3 -->
-      <pose>0.0000 -0.0560 0.0013 0.0000 0.0000 0.0000</pose>
+      <mass>7.25940145</mass>                                  <!-- Volume = 0.000902 m^3 -->
+      <pose>0.000039 -0.055951 0.001287 0 0 0</pose>
       <inertia>
-        <ixx> 0.54570278912</ixx>
-        <ixy>-0.00003168874</ixy>
-        <ixz>-0.00000141851</ixz>
-        <iyy> 0.55866375000</iyy>
-        <iyz> 0.02659627264</iyz>
-        <izz> 1.07370025000</izz>
+        <ixx>54.5702500000</ixx>
+        <ixy>-0.0031848454</ixy>
+        <ixz>-0.001413798</ixz>
+        <iyy>55.8663750000</iyy>
+        <iyz>2.6596287109</iyz>
+        <izz>107.3700250000</izz>
       </inertia>
     </inertial>
   </link>
@@ -74,11 +74,8 @@
 <!------------------------------------------------------------------------------------------>
 
   <link name='Left_Rocker'>
-    <self_collide>0</self_collide>
+    <self_collide>1</self_collide>
     <pose>-0.3270 0.0000 0.4720 0.0000 0.0000 0.0000</pose>
-<!------------------------------>
-<!------------ TODO ------------>
-<!-------------------------------
     <collision name='Left_Rocker_Collision'>
       <geometry>
         <mesh>
@@ -86,11 +83,14 @@
           <uri>model://msi_rover/meshes/Rocker_L.STL</uri>
         </mesh>
       </geometry>
+<!------------------------------>
+<!------------ TODO ------------>
+<!-------------------------------
       <surface>
         <bounce>
           <restitution_coefficient>
-    </collision>
 -------------------------------->
+    </collision>
     <visual name='Left_Rocker_Visual'>
       <geometry>
         <mesh>
@@ -114,26 +114,25 @@
         <emissive>
 -------------------------------->
     </visual>
-    <inertial>
-      <mass>7.704</mass>                                       <!-- Volume = 0.000957 m^3 -->
-      <pose>-0.0315 -0.3536 -0.0096 0.0000 0.0000 0.0000</pose>
-      <inertia>
-        <ixx> 0.60764512256</ixx>
-        <ixy>-0.03926894848</ixy>
-        <ixz> 0.00231192640</ixz>
-        <iyy> 0.01925778048</iyy>
-        <iyz> 0.01388497024</iyz>
-        <izz> 0.60239790080</izz>
-      </inertia>
-    </inertial>
-  </link>
-
-  <link name='Left_Bogie'>
-    <self_collide>0</self_collide>
-    <pose>-0.2940 0.1750 0.4320 0.0000 0.0000 0.0000</pose>
 <!------------------------------>
 <!------------ TODO ------------>
 <!-------------------------------
+    <inertial>
+      <mass>
+      <pose>
+      <inertia>
+        <ixx>
+        <ixy>
+        <ixz>
+        <iyy>
+        <iyz>
+        <izz>
+-------------------------------->
+  </link>
+
+  <link name='Left_Bogie'>
+    <self_collide>1</self_collide>
+    <pose>-0.2940 0.1750 0.4320 0.0000 0.0000 0.0000</pose>
     <collision name='Left_Bogie_Collision'>
       <geometry>
         <mesh>
@@ -141,11 +140,14 @@
           <uri>model://msi_rover/meshes/Bogie_L.STL</uri>
         </mesh>
       </geometry>
+<!------------------------------>
+<!------------ TODO ------------>
+<!-------------------------------
       <surface>
         <bounce>
           <restitution_coefficient>
-    </collision>
 -------------------------------->
+    </collision>
     <visual name='Left_Bogie_Visual'>
       <geometry>
         <mesh>
@@ -169,24 +171,25 @@
         <emissive>
 -------------------------------->
     </visual>
+<!------------------------------>
+<!------------ TODO ------------>
+<!-------------------------------
     <inertial>
-      <mass>8.493</mass>                                       <!-- Volume = 0.001055 m^3 -->
-      <pose>-0.0418 0.0698 -0.0580 0.0000 0.0000 0.0000</pose>
+      <mass>
+      <pose>
       <inertia>
-        <ixx> 0.65631109120</ixx>
-        <ixy> 0.00444596320</ixy>
-        <ixz>-0.00654497920</ixz>
-        <iyy> 0.20716726272</iyy>
-        <iyz>-0.27300364288</iyz>
-        <izz> 0.48130539520</izz>
-      </inertia>
-    </inertial>
+        <ixx>
+        <ixy>
+        <ixz>
+        <iyy>
+        <iyz>
+        <izz>
+-------------------------------->
   </link>
 
   <link name='Left_Rear_Steering'>
-    <self_collide>0</self_collide>
+    <self_collide>1</self_collide>
     <pose>-0.3810 -0.4900 0.36800 0.0000 0.0000 0.0000</pose>
-<!--
     <collision name='Left_Rear_Steering_Collision'>
       <geometry>
         <mesh>
@@ -194,15 +197,14 @@
           <uri>model://msi_rover/meshes/C_Assembly_L.STL</uri>
         </mesh>
       </geometry>
-<!-------------------------------
-<!------------ TODO -------------
+<!------------------------------>
+<!------------ TODO ------------>
 <!-------------------------------
       <surface>
         <bounce>
           <restitution_coefficient>
----------------------------------
+-------------------------------->
     </collision>
--->
     <visual name='Left_Rear_Steering_Visual'>
       <geometry>
         <mesh>
@@ -226,24 +228,25 @@
         <emissive>
 -------------------------------->
     </visual>
+<!------------------------------>
+<!------------ TODO ------------>
+<!-------------------------------
     <inertial>
-      <mass>3.34075</mass>                                     <!-- Volume = 0.000415 m^3 -->
-      <pose>0.0780 0.0000 -0.1480 0.0000 0.0000 0.0000</pose>
+      <mass>
+      <pose>
       <inertia>
-        <ixx> 0.03486317824</ixx>
-        <ixy>-0.00000003196</ixy>
-        <ixz> 0.00472688032</ixz>
-        <iyy> 0.04927550976</iyy>
-        <iyz> 0.00000007500</iyz>
-        <izz> 0.02074642688</izz>
-      </inertia>
-    </inertial>
+        <ixx>
+        <ixy>
+        <ixz>
+        <iyy>
+        <iyz>
+        <izz>
+-------------------------------->
   </link>
 
   <link name='Left_Front_Steering'>
-    <self_collide>0</self_collide>
+    <self_collide>1</self_collide>
     <pose>-0.3480 0.4000 0.3680 0.0000 0.0000 0.0000</pose>
-<!--
     <collision name='Left_Front_Steering_Collision'>
       <geometry>
         <mesh>
@@ -251,15 +254,14 @@
           <uri>model://msi_rover/meshes/C_Assembly_L.STL</uri>
         </mesh>
       </geometry>
-<!-------------------------------
-<!------------ TODO -------------
+<!------------------------------>
+<!------------ TODO ------------>
 <!-------------------------------
       <surface>
         <bounce>
           <restitution_coefficient>
----------------------------------
+-------------------------------->
     </collision>
--->
     <visual name='Left_Front_Steering_Visual'>
       <geometry>
         <mesh>
@@ -283,30 +285,31 @@
         <emissive>
 -------------------------------->
     </visual>
+<!------------------------------>
+<!------------ TODO ------------>
+<!-------------------------------
     <inertial>
-      <mass>3.34075</mass>                                     <!-- Volume = 0.000415 m^3 -->
-      <pose>0.0780 0.0000 -0.1480 0.0000 0.0000 0.0000</pose>
+      <mass>
+      <pose>
       <inertia>
-        <ixx> 0.03486317824</ixx>
-        <ixy>-0.00000003196</ixy>
-        <ixz> 0.00472688032</ixz>
-        <iyy> 0.04927550976</iyy>
-        <iyz> 0.00000007500</iyz>
-        <izz> 0.02074642688</izz>
-      </inertia>
-    </inertial>
+        <ixx>
+        <ixy>
+        <ixz>
+        <iyy>
+        <iyz>
+        <izz>
+------------------------------->
   </link>
 
   <link name='Left_Rear_Tyre'>
-    <self_collide>0</self_collide>
+    <self_collide>1</self_collide>
     <pose>-0.3910 -0.4900 0.1500 0.0000 0.0000 0.0000</pose>
     <collision name='Left_Rear_Tyre_Collision'>
-      <pose>0.0000 0.0000 0.0000 0.0000 1.5708 0.0000</pose>
       <geometry>
-        <cylinder>
-          <radius>0.150</radius>
-          <length>0.180</length>
-        </cylinder>
+        <mesh>
+          <scale>0.0010 0.0010 0.0010</scale>
+          <uri>model://msi_rover/meshes/Tyre.STL</uri>
+        </mesh>
       </geometry>
 <!------------------------------>
 <!------------ TODO ------------>
@@ -339,30 +342,31 @@
         <emissive>
 -------------------------------->
     </visual>
+<!------------------------------>
+<!------------ TODO ------------>
+<!-------------------------------
     <inertial>
-      <mass>1.8000</mass>                                      <!-- Volume = 0.011174 m^3 -->
-      <pose>0.0000 0.0000 0.0000 0.0000 0.0000 0.0000</pose>
+      <mass>
+      <pose>
       <inertia>
-        <ixx> 1.36747859968</ixx>
-        <ixy> 0.00000017629</ixy>
-        <ixz> 0.00000074685</ixz>
-        <iyy> 0.95944794112</iyy>
-        <iyz> 0.00000067468</iyz>
-        <izz> 0.95944794112</izz>
-      </inertia>
-    </inertial>
+        <ixx>
+        <ixy>
+        <ixz>
+        <iyy>
+        <iyz>
+        <izz>
+------------------------------->
   </link>
 
   <link name='Left_Middle_Tyre'>
-    <self_collide>0</self_collide>
+    <self_collide>1</self_collide>
     <pose>-0.4480 -0.0500 0.1500 0.0000 0.0000 0.0000</pose>
     <collision name='Left_Middle_Tyre_Collision'>
-      <pose>0.0000 0.0000 0.0000 0.0000 1.5708 0.0000</pose>
       <geometry>
-        <cylinder>
-          <radius>0.150</radius>
-          <length>0.180</length>
-        </cylinder>
+        <mesh>
+          <scale>0.0010 0.0010 0.0010</scale>
+          <uri>model://msi_rover/meshes/Tyre.STL</uri>
+        </mesh>
       </geometry>
 <!------------------------------>
 <!------------ TODO ------------>
@@ -395,30 +399,31 @@
         <emissive>
 ------------------------------->
     </visual>
+<!------------------------------>
+<!------------ TODO ------------>
+<!-------------------------------
     <inertial>
-      <mass>1.8000</mass>                                      <!-- Volume = 0.011174 m^3 -->
-      <pose>0.0000 0.0000 0.0000 0.0000 0.0000 0.0000</pose>
+      <mass>
+      <pose>
       <inertia>
-        <ixx> 1.36747859968</ixx>
-        <ixy> 0.00000017629</ixy>
-        <ixz> 0.00000074685</ixz>
-        <iyy> 0.95944794112</iyy>
-        <iyz> 0.00000067468</iyz>
-        <izz> 0.95944794112</izz>
-      </inertia>
-    </inertial>
+        <ixx>
+        <ixy>
+        <ixz>
+        <iyy>
+        <iyz>
+        <izz>
+------------------------------->
   </link>
 
   <link name='Left_Front_Tyre'>
-    <self_collide>0</self_collide>
+    <self_collide>1</self_collide>
     <pose>-0.3580 0.4000 0.1500 0.0000 0.0000 0.0000</pose>
     <collision name='Left_Front_Tyre_Collision'>
-      <pose>0.0000 0.0000 0.0000 0.0000 1.5708 0.0000</pose>
       <geometry>
-        <cylinder>
-          <radius>0.150</radius>
-          <length>0.180</length>
-        </cylinder>
+        <mesh>
+          <scale>0.0010 0.0010 0.0010</scale>
+          <uri>model://msi_rover/meshes/Tyre.STL</uri>
+        </mesh>
       </geometry>
 <!------------------------------>
 <!------------ TODO ------------>
@@ -451,18 +456,20 @@
         <emissive>
 ------------------------------->
     </visual>
+<!------------------------------>
+<!------------ TODO ------------>
+<!-------------------------------
     <inertial>
-      <mass>1.8000</mass>                                      <!-- Volume = 0.011174 m^3 -->
-      <pose>0.0000 0.0000 0.0000 0.0000 0.0000 0.0000</pose>
+      <mass>
+      <pose>
       <inertia>
-        <ixx> 1.36747859968</ixx>
-        <ixy> 0.00000017629</ixy>
-        <ixz> 0.00000074685</ixz>
-        <iyy> 0.95944794112</iyy>
-        <iyz> 0.00000067468</iyz>
-        <izz> 0.95944794112</izz>
-      </inertia>
-    </inertial>
+        <ixx>
+        <ixy>
+        <ixz>
+        <iyy>
+        <iyz>
+        <izz>
+------------------------------->
   </link>
 
 <!------------------------------------------------------------------------------------------>
@@ -519,10 +526,6 @@
     <parent>Left_Rocker</parent>
     <axis>
       <xyz>1 0 0</xyz>
-      <limit>
-        <lower>-0.7</lower>
-        <upper>0.7</upper>
-      </limit>
 <!------------------------------>
 <!------------ TODO ------------>
 <!-------------------------------
@@ -530,6 +533,8 @@
         <damping>
         <friction>
       <limit>
+        <lower>
+        <upper>
         <effort>
         <velocity>
         <stiffness>
@@ -803,11 +808,8 @@
 <!------------------------------------------------------------------------------------------>
 
   <link name='Right_Rocker'>
-    <self_collide>0</self_collide>
+    <self_collide>1</self_collide>
     <pose>0.3270 0.0000 0.4720 0.0000 0.0000 0.0000</pose>
-<!------------------------------>
-<!------------ TODO ------------>
-<!-------------------------------
     <collision name='Right_Rocker_Collision'>
       <geometry>
         <mesh>
@@ -815,11 +817,14 @@
           <uri>model://msi_rover/meshes/Rocker_R.STL</uri>
         </mesh>
       </geometry>
+<!------------------------------>
+<!------------ TODO ------------>
+<!-------------------------------
       <surface>
         <bounce>
           <restitution_coefficient>
-    </collision>
 ------------------------------->
+    </collision>
     <visual name='Right_Rocker_Visual'>
       <geometry>
         <mesh>
@@ -843,26 +848,25 @@
         <emissive>
 ------------------------------->
     </visual>
-    <inertial>
-      <mass>7.704</mass>                                       <!-- Volume = 0.000957 m^3 -->
-      <pose>0.0315 -0.3536 -0.0096 0.0000 0.0000 0.0000</pose>
-      <inertia>
-        <ixx> 0.60764512256</ixx>
-        <ixy> 0.03926894848</ixy>
-        <ixz>-0.00231192640</ixz>
-        <iyy> 0.01925778048</iyy>
-        <iyz> 0.01388497024</iyz>
-        <izz> 0.60239790080</izz>
-      </inertia>
-    </inertial>
-  </link>
-
-  <link name='Right_Bogie'>
-    <self_collide>0</self_collide>
-    <pose>0.2940 0.1750 0.4320 0.0000 0.0000 0.0000</pose>
 <!------------------------------>
 <!------------ TODO ------------>
 <!-------------------------------
+    <inertial>
+      <mass>
+      <pose>
+      <inertia>
+        <ixx>
+        <ixy>
+        <ixz>
+        <iyy>
+        <iyz>
+        <izz>
+------------------------------->
+  </link>
+
+  <link name='Right_Bogie'>
+    <self_collide>1</self_collide>
+    <pose>0.2940 0.1750 0.4320 0.0000 0.0000 0.0000</pose>
     <collision name='Right_Bogie_Collision'>
       <geometry>
         <mesh>
@@ -870,11 +874,14 @@
           <uri>model://msi_rover/meshes/Bogie_R.STL</uri>
         </mesh>
       </geometry>
+<!------------------------------>
+<!------------ TODO ------------>
+<!-------------------------------
       <surface>
         <bounce>
           <restitution_coefficient>
-    </collision>
 ------------------------------->
+    </collision>
     <visual name='Right_Bogie_Visual'>
       <geometry>
         <mesh>
@@ -898,24 +905,25 @@
         <emissive>
 ------------------------------->
     </visual>
+<!------------------------------>
+<!------------ TODO ------------>
+<!-------------------------------
     <inertial>
-      <mass>8.493</mass>                                       <!-- Volume = 0.001055 m^3 -->
-      <pose>0.0418 0.0698 -0.0580 0.0000 0.0000 0.0000</pose>
+      <mass>
+      <pose>
       <inertia>
-        <ixx> 0.65631109120</ixx>
-        <ixy>-0.00444596320</ixy>
-        <ixz> 0.00654497920</ixz>
-        <iyy> 0.20716726272</iyy>
-        <iyz>-0.27300364288</iyz>
-        <izz> 0.48130539520</izz>
-      </inertia>
-    </inertial>
+        <ixx>
+        <ixy>
+        <ixz>
+        <iyy>
+        <iyz>
+        <izz>
+------------------------------->
   </link>
 
   <link name='Right_Rear_Steering'>
-    <self_collide>0</self_collide>
+    <self_collide>1</self_collide>
     <pose>0.3810 -0.4900 0.3680 0.0000 0.0000 0.0000</pose>
-<!--
     <collision name='Right_Rear_Steering_Collision'>
       <geometry>
         <mesh>
@@ -923,15 +931,14 @@
           <uri>model://msi_rover/meshes/C_Assembly_R.STL</uri>
         </mesh>
       </geometry>
-<!-------------------------------
-<!------------ TODO -------------
+<!------------------------------>
+<!------------ TODO ------------>
 <!-------------------------------
       <surface>
         <bounce>
           <restitution_coefficient>
---------------------------------
+------------------------------->
     </collision>
--->
     <visual name='Right_Rear_Steering_Visual'>
       <geometry>
         <mesh>
@@ -955,26 +962,25 @@
         <emissive>
 ------------------------------->
     </visual>
-    <inertial>
-      <mass>3.34075</mass>                                     <!-- Volume = 0.000415 m^3 -->
-      <pose>-0.0780 0.0000 -0.1480 0.0000 0.0000 0.0000</pose>
-      <inertia>
-        <ixx> 0.03486317824</ixx>
-        <ixy>-0.00000003196</ixy>
-        <ixz>-0.00472688032</ixz>
-        <iyy> 0.04927550976</iyy>
-        <iyz>-0.00000007500</iyz>
-        <izz> 0.02074642688</izz>
-      </inertia>
-    </inertial>
-  </link>
-
-  <link name='Right_Front_Steering'>
-    <self_collide>0</self_collide>
-    <pose>0.3480 0.4000 0.3680 0.0000 0.0000 0.0000</pose>
 <!------------------------------>
 <!------------ TODO ------------>
 <!-------------------------------
+    <inertial>
+      <mass>
+      <pose>
+      <inertia>
+        <ixx>
+        <ixy>
+        <ixz>
+        <iyy>
+        <iyz>
+        <izz>
+------------------------------->
+  </link>
+
+  <link name='Right_Front_Steering'>
+    <self_collide>1</self_collide>
+    <pose>0.3480 0.4000 0.3680 0.0000 0.0000 0.0000</pose>
     <collision name='Right_Front_Steering_Collision'>
       <geometry>
         <mesh>
@@ -982,11 +988,14 @@
           <uri>model://msi_rover/meshes/C_Assembly_R.STL</uri>
         </mesh>
       </geometry>
+<!------------------------------>
+<!------------ TODO ------------>
+<!-------------------------------
       <surface>
         <bounce>
           <restitution_coefficient>
-    </collision>
 ------------------------------->
+    </collision>
     <visual name='Right_Front_Steering_Visual'>
       <geometry>
         <mesh>
@@ -1010,30 +1019,31 @@
         <emissive>
 ------------------------------->
     </visual>
+<!------------------------------>
+<!------------ TODO ------------>
+<!-------------------------------
     <inertial>
-      <mass>3.34075</mass>                                     <!-- Volume = 0.000415 m^3 -->
-      <pose>-0.0780 0.0000 -0.1480 0.0000 0.0000 0.0000</pose>
+      <mass>
+      <pose>
       <inertia>
-        <ixx> 0.03486317824</ixx>
-        <ixy>-0.00000003196</ixy>
-        <ixz>-0.00472688032</ixz>
-        <iyy> 0.04927550976</iyy>
-        <iyz>-0.00000007500</iyz>
-        <izz> 0.02074642688</izz>
-      </inertia>
-    </inertial>
+        <ixx>
+        <ixy>
+        <ixz>
+        <iyy>
+        <iyz>
+        <izz>
+------------------------------->
   </link>
 
   <link name='Right_Rear_Tyre'>
-    <self_collide>0</self_collide>
+    <self_collide>1</self_collide>
     <pose>0.3910 -0.4900 0.1500 0.0000 0.0000 0.0000</pose>
     <collision name='Right_Rear_Tyre_Collision'>
-      <pose>0.0000 0.0000 0.0000 0.0000 1.5708 0.0000</pose>
       <geometry>
-        <cylinder>
-          <radius>0.150</radius>
-          <length>0.180</length>
-        </cylinder>
+        <mesh>
+          <scale>0.0010 0.0010 0.0010</scale>
+          <uri>model://msi_rover/meshes/Tyre.STL</uri>
+        </mesh>
       </geometry>
 <!------------------------------>
 <!------------ TODO ------------>
@@ -1066,30 +1076,31 @@
         <emissive>
 ------------------------------->
     </visual>
+<!------------------------------>
+<!------------ TODO ------------>
+<!-------------------------------
     <inertial>
-      <mass>1.8000</mass>                                      <!-- Volume = 0.011174 m^3 -->
-      <pose>0.0000 0.0000 0.0000 0.0000 0.0000 0.0000</pose>
+      <mass>
+      <pose>
       <inertia>
-        <ixx> 1.36747859968</ixx>
-        <ixy> 0.00000017629</ixy>
-        <ixz> 0.00000074685</ixz>
-        <iyy> 0.95944794112</iyy>
-        <iyz> 0.00000067468</iyz>
-        <izz> 0.95944794112</izz>
-      </inertia>
-    </inertial>
+        <ixx>
+        <ixy>
+        <ixz>
+        <iyy>
+        <iyz>
+        <izz>
+------------------------------->
   </link>
 
   <link name='Right_Middle_Tyre'>
-    <self_collide>0</self_collide>
+    <self_collide>1</self_collide>
     <pose>0.4480 -0.0500 0.1500 0.0000 0.0000 0.0000</pose>
     <collision name='Right_Middle_Tyre_Collision'>
-      <pose>0.0000 0.0000 0.0000 0.0000 1.5708 0.0000</pose>
       <geometry>
-        <cylinder>
-          <radius>0.150</radius>
-          <length>0.180</length>
-        </cylinder>
+        <mesh>
+          <scale>0.0010 0.0010 0.0010</scale>
+          <uri>model://msi_rover/meshes/Tyre.STL</uri>
+        </mesh>
       </geometry>
 <!------------------------------>
 <!------------ TODO ------------>
@@ -1122,30 +1133,31 @@
         <emissive>
 ------------------------------->
     </visual>
+<!------------------------------>
+<!------------ TODO ------------>
+<!-------------------------------
     <inertial>
-      <mass>1.8000</mass>                                      <!-- Volume = 0.011174 m^3 -->
-      <pose>0.0000 0.0000 0.0000 0.0000 0.0000 0.0000</pose>
+      <mass>
+      <pose>
       <inertia>
-        <ixx> 1.36747859968</ixx>
-        <ixy> 0.00000017629</ixy>
-        <ixz> 0.00000074685</ixz>
-        <iyy> 0.95944794112</iyy>
-        <iyz> 0.00000067468</iyz>
-        <izz> 0.95944794112</izz>
-      </inertia>
-    </inertial>
+        <ixx>
+        <ixy>
+        <ixz>
+        <iyy>
+        <iyz>
+        <izz>
+------------------------------->
   </link>
 
   <link name='Right_Front_Tyre'>
-    <self_collide>0</self_collide>
+    <self_collide>1</self_collide>
     <pose>0.3580 0.4000 0.1500 0.0000 0.0000 0.0000</pose>
     <collision name='Right_Front_Tyre_Collision'>
-      <pose>0.0000 0.0000 0.0000 0.0000 1.5708 0.0000</pose>
       <geometry>
-        <cylinder>
-          <radius>0.150</radius>
-          <length>0.180</length>
-        </cylinder>
+        <mesh>
+          <scale>0.0010 0.0010 0.0010</scale>
+          <uri>model://msi_rover/meshes/Tyre.STL</uri>
+        </mesh>
       </geometry>
 <!------------------------------>
 <!------------ TODO ------------>
@@ -1178,18 +1190,20 @@
         <emissive>
 ------------------------------->
     </visual>
+<!------------------------------>
+<!------------ TODO ------------>
+<!-------------------------------
     <inertial>
-      <mass>1.8000</mass>                                      <!-- Volume = 0.011174 m^3 -->
-      <pose>0.0000 0.0000 0.0000 0.0000 0.0000 0.0000</pose>
+      <mass>
+      <pose>
       <inertia>
-        <ixx> 1.36747859968</ixx>
-        <ixy> 0.00000017629</ixy>
-        <ixz> 0.00000074685</ixz>
-        <iyy> 0.95944794112</iyy>
-        <iyz> 0.00000067468</iyz>
-        <izz> 0.95944794112</izz>
-      </inertia>
-    </inertial>
+        <ixx>
+        <ixy>
+        <ixz>
+        <iyy>
+        <iyz>
+        <izz>
+------------------------------->
   </link>
 
 <!------------------------------------------------------------------------------------------>
@@ -1246,10 +1260,6 @@
     <parent>Right_Rocker</parent>
     <axis>
       <xyz>1 0 0</xyz>
-      <limit>
-        <lower>-0.7</lower>
-        <upper>0.7</upper>
-      </limit>
 <!------------------------------>
 <!------------ TODO ------------>
 <!-------------------------------
@@ -1257,6 +1267,8 @@
         <damping>
         <friction>
       <limit>
+        <lower>
+        <upper>
         <effort>
         <velocity>
         <stiffness>
@@ -1533,7 +1545,7 @@
 <!------------------------------------------------------------------------------------------>
 
   <link name='Left_Triangle'>
-    <self_collide>0</self_collide>
+    <self_collide>1</self_collide>
     <pose>-0.0720 -0.4800 0.5820 0.0000 0.0000 0.0000</pose>
     <collision name='Left_Triangle_Collision'>
       <geometry>
@@ -1573,22 +1585,24 @@
         <emissive>
 -------------------------------->
     </visual>
+<!------------------------------>
+<!------------ TODO ------------>
+<!-------------------------------
     <inertial>
-      <mass>1.183</mass>                                       <!-- Volume = 0.000147 m^3 -->
-      <pose>-0.0732 -0.0060 -0.0464 0.0000 0.0000 0.0000</pose>
+      <mass>
+      <pose>
       <inertia>
-        <ixx> 0.00518080064</ixx>
-        <ixy> 0.00000192063</ixy>
-        <ixz> 0.00239985552</ixz>
-        <iyy> 0.01473344640</iyy>
-        <iyz> 0.00000121663</iyz>
-        <izz> 0.00958800384</izz>
-      </inertia>
-    </inertial>
+        <ixx>
+        <ixy>
+        <ixz>
+        <iyy>
+        <iyz>
+        <izz>
+-------------------------------->
   </link>
 
   <link name='Right_Triangle'>
-    <self_collide>0</self_collide>
+    <self_collide>1</self_collide>
     <pose>0.0720 -0.4800 0.5820 0.0000 0.0000 0.0000</pose>
     <collision name='Right_Triangle_Collision'>
       <geometry>
@@ -1628,24 +1642,26 @@
         <emissive>
 -------------------------------->
     </visual>
+<!------------------------------>
+<!------------ TODO ------------>
+<!-------------------------------
     <inertial>
-      <mass>1.183</mass>                                       <!-- Volume = 0.000147 m^3 -->
-      <pose>0.0732 -0.0060 -0.0464 0.0000 0.0000 0.0000</pose>
+      <mass>
+      <pose>
       <inertia>
-        <ixx> 0.00518080064</ixx>
-        <ixy>-0.00000192063</ixy>
-        <ixz>-0.00239985552</ixz>
-        <iyy> 0.01473344640</iyy>
-        <iyz> 0.00000121663</iyz>
-        <izz> 0.00958800384</izz>
-      </inertia>
-    </inertial>
+        <ixx>
+        <ixy>
+        <ixz>
+        <iyy>
+        <iyz>
+        <izz>
+-------------------------------->
   </link>
 
-  <link name='Triangle_Rod'>
-    <self_collide>0</self_collide>
+  <link name='Lower_Triangle_Rod'>
+    <self_collide>1</self_collide>
     <pose>0.0000 -0.4930 0.4320 0.0000 0.0000 0.0000</pose>
-    <collision name='Triangle_Rod_Collision'>
+    <collision name='Lower_Triangle_Rod_Collision'>
       <geometry>
         <mesh>
           <scale>0.0010 0.0010 0.0010</scale>
@@ -1660,7 +1676,7 @@
           <restitution_coefficient>
 -------------------------------->
     </collision>
-    <visual name='Triangle_Rod_Visual'>
+    <visual name='Lower_Triangle_Rod_Visual'>
       <geometry>
         <mesh>
           <scale>0.0010 0.0010 0.0010</scale>
@@ -1683,22 +1699,24 @@
         <emissive>
 -------------------------------->
     </visual>
+<!------------------------------>
+<!------------ TODO ------------>
+<!-------------------------------
     <inertial>
-      <mass>1.183</mass>                                       <!-- Volume = 0.000147 m^3 -->
-      <pose>0.0000 -0.0062 0.0000 0.0000 0.0000 0.0000</pose>
+      <mass>
+      <pose>
       <inertia>
-        <ixx> 0.00002827173</ixx>
-        <ixy>-0.00000000000</ixy>
-        <ixz>-0.00000000000</ixz>
-        <iyy> 0.00118691072</iyy>
-        <iyz>-0.00000000000</iyz>
-        <izz> 0.00116901968</izz>
-      </inertia>
-    </inertial>
+        <ixx>
+        <ixy>
+        <ixz>
+        <iyy>
+        <iyz>
+        <izz>
+------------------------------->
   </link>
 
   <link name='Left_Diff_Support'>
-    <self_collide>0</self_collide>
+    <self_collide>1</self_collide>
     <pose>-0.3085 -0.5340 0.5080 -0.4500 0.1500 0.0000</pose>
     <collision name='Left_Diff_Support_Collision'>
       <geometry>
@@ -1738,22 +1756,24 @@
         <emissive>
 ------------------------------->
     </visual>
+<!------------------------------>
+<!------------ TODO ------------>
+<!-------------------------------
     <inertial>
-      <mass>0.107</mass>                                  <!-- Volume = 0.00001335176 m^3 -->
-      <pose>0.0000 0.0000 0.0000 0.0000 0.0000 0.0000</pose>
+      <mass>
+      <pose>
       <inertia>
-        <ixx>0.00025769166</ixx>
-        <ixy>0.00000000000</ixy>
-        <ixz>0.00000000000</ixz>
-        <iyy>0.00025769166</iyy>
-        <iyz>0.00000000000</iyz>
-        <izz>0.00000133750</izz>
-      </inertia>
-    </inertial>
+        <ixx>
+        <ixy>
+        <ixz>
+        <iyy>
+        <iyz>
+        <izz>
+------------------------------->
   </link>
 
   <link name='Right_Diff_Support'>
-    <self_collide>0</self_collide>
+    <self_collide>1</self_collide>
     <pose>0.3085 -0.5340 0.5080 -0.4500 -0.1500 0.0000</pose>
     <collision name='Right_Diff_Support_Collision'>
       <geometry>
@@ -1793,27 +1813,29 @@
         <emissive>
 ------------------------------->
     </visual>
+<!------------------------------>
+<!------------ TODO ------------>
+<!-------------------------------
     <inertial>
-      <mass>0.107</mass>                                  <!-- Volume = 0.00001335176 m^3 -->
-      <pose>0.0000 0.0000 0.0000 0.0000 0.0000 0.0000</pose>
+      <mass>
+      <pose>
       <inertia>
-        <ixx>0.00025769166</ixx>
-        <ixy>0.00000000000</ixy>
-        <ixz>0.00000000000</ixz>
-        <iyy>0.00025769166</iyy>
-        <iyz>0.00000000000</iyz>
-        <izz>0.00000133750</izz>
-      </inertia>
-    </inertial>
+        <ixx>
+        <ixy>
+        <ixz>
+        <iyy>
+        <iyz>
+        <izz>
+------------------------------->
   </link>
 
 <!------------------------------------------------------------------------------------------>
 <!---------------------------         Joints Subsection          --------------------------->
 <!------------------------------------------------------------------------------------------>
 
-  <joint type="revolute" name="Right_Triangle_Rod_Joint">
+  <joint type="revolute" name="Right_Lower_Triangle_Rod_Joint">
     <pose>0.0750 0.0000 0.0000 0.0000 0.0000 0.0000</pose>
-    <child>Triangle_Rod</child>
+    <child>Lower_Triangle_Rod</child>
     <parent>Right_Triangle</parent>
     <axis>
       <xyz>0 1 0</xyz>
@@ -1855,9 +1877,9 @@
 ------------------------------->
   </joint>
 
-  <joint type="revolute" name="Left_Triangle_Rod_Joint">
+  <joint type="revolute" name="Left_Lower_Triangle_Rod_Joint">
     <pose>-0.0750 0.0000 0.0000 0.0000 0.0000 0.0000</pose>
-    <child>Triangle_Rod</child>
+    <child>Lower_Triangle_Rod</child>
     <parent>Left_Triangle</parent>
     <axis>
       <xyz>0 1 0</xyz>

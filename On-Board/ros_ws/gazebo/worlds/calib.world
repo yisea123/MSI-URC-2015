@@ -19,7 +19,7 @@
         <collision name='collision'>
           <geometry>
             <heightmap>
-              <uri>file://heightmaps/Akaroola/ViewFinder/G53/S25E134.dem</uri>
+              <uri>file://heightmaps/calib.dem</uri>
               <size>129 129 33</size>
               <pos>0 0 0</pos>
               <texture>
@@ -70,7 +70,7 @@
                 <min_height>4</min_height>
                 <fade_dist>5</fade_dist>
               </blend>
-              <uri>file://heightmaps/Akaroola/ViewFinder/G53/S25E134.dem</uri>
+              <uri>file://heightmaps/calib.dem</uri>
               <size>129 129 33</size>
               <pos>0 0 0</pos>
             </heightmap>
