@@ -67,7 +67,7 @@
       <ray>
         <scan>
           <horizontal>
-            <samples>360</samples>
+            <samples>72</samples>
             <resolution>1</resolution>
             <min_angle>-3.14159265359</min_angle>
             <max_angle>3.14159265359</max_angle>
@@ -208,7 +208,9 @@
   <link name='Left_Rear_Steering'>
     <self_collide>0</self_collide>
     <pose>-0.3810 -0.4900 0.36800 0.0000 0.0000 0.0000</pose>
-<!--
+<!-------------------------------
+<!------------ TODO -------------
+<!-------------------------------
     <collision name='Left_Rear_Steering_Collision'>
       <geometry>
         <mesh>
@@ -216,15 +218,14 @@
           <uri>model://msi_rover/meshes/C_Assembly_L.STL</uri>
         </mesh>
       </geometry>
-<!-------------------------------
-<!------------ TODO -------------
-<!-------------------------------
       <surface>
         <bounce>
           <restitution_coefficient>
----------------------------------
     </collision>
--->
+-------------------------------->
+<!------------------------------>
+<!------------ TODO ------------>
+<!-------------------------------
     <visual name='Left_Rear_Steering_Visual'>
       <geometry>
         <mesh>
@@ -232,9 +233,6 @@
           <uri>model://msi_rover/meshes/C_Assembly_L.STL</uri>
         </mesh>
       </geometry>
-<!------------------------------>
-<!------------ TODO ------------>
-<!-------------------------------
       <material>
         <script>
           <uri>
@@ -246,8 +244,8 @@
         <diffuse>
         <specular>
         <emissive>
--------------------------------->
     </visual>
+-------------------------------->
     <inertial>
       <mass>3.34075</mass>                                     <!-- Volume = 0.000415 m^3 -->
       <pose>0.0780 0.0000 -0.1480 0.0000 0.0000 0.0000</pose>
@@ -265,7 +263,9 @@
   <link name='Left_Front_Steering'>
     <self_collide>0</self_collide>
     <pose>-0.3480 0.4000 0.3680 0.0000 0.0000 0.0000</pose>
-<!--
+<!-------------------------------
+<!------------ TODO -------------
+<!-------------------------------
     <collision name='Left_Front_Steering_Collision'>
       <geometry>
         <mesh>
@@ -273,15 +273,14 @@
           <uri>model://msi_rover/meshes/C_Assembly_L.STL</uri>
         </mesh>
       </geometry>
-<!-------------------------------
-<!------------ TODO -------------
-<!-------------------------------
       <surface>
         <bounce>
           <restitution_coefficient>
----------------------------------
     </collision>
--->
+-------------------------------->
+<!-------------------------------
+<!------------ TODO -------------
+<!-------------------------------
     <visual name='Left_Front_Steering_Visual'>
       <geometry>
         <mesh>
@@ -289,9 +288,6 @@
           <uri>model://msi_rover/meshes/C_Assembly_L.STL</uri>
         </mesh>
       </geometry>
-<!------------------------------>
-<!------------ TODO ------------>
-<!-------------------------------
       <material>
         <script>
           <uri>
@@ -303,8 +299,8 @@
         <diffuse>
         <specular>
         <emissive>
--------------------------------->
     </visual>
+--------------------------------->
     <inertial>
       <mass>3.34075</mass>                                     <!-- Volume = 0.000415 m^3 -->
       <pose>0.0780 0.0000 -0.1480 0.0000 0.0000 0.0000</pose>
@@ -937,7 +933,9 @@
   <link name='Right_Rear_Steering'>
     <self_collide>0</self_collide>
     <pose>0.3810 -0.4900 0.3680 0.0000 0.0000 0.0000</pose>
-<!--
+<!-------------------------------
+<!------------ TODO -------------
+<!-------------------------------
     <collision name='Right_Rear_Steering_Collision'>
       <geometry>
         <mesh>
@@ -945,15 +943,14 @@
           <uri>model://msi_rover/meshes/C_Assembly_R.STL</uri>
         </mesh>
       </geometry>
-<!-------------------------------
-<!------------ TODO -------------
-<!-------------------------------
       <surface>
         <bounce>
           <restitution_coefficient>
---------------------------------
     </collision>
--->
+-------------------------------->
+<!-------------------------------
+<!------------ TODO -------------
+<!-------------------------------
     <visual name='Right_Rear_Steering_Visual'>
       <geometry>
         <mesh>
@@ -961,9 +958,6 @@
           <uri>model://msi_rover/meshes/C_Assembly_R.STL</uri>
         </mesh>
       </geometry>
-<!------------------------------>
-<!------------ TODO ------------>
-<!-------------------------------
       <material>
         <script>
           <uri>
@@ -975,8 +969,8 @@
         <diffuse>
         <specular>
         <emissive>
-------------------------------->
     </visual>
+-------------------------------->
     <inertial>
       <mass>3.34075</mass>                                     <!-- Volume = 0.000415 m^3 -->
       <pose>-0.0780 0.0000 -0.1480 0.0000 0.0000 0.0000</pose>
@@ -1008,7 +1002,10 @@
         <bounce>
           <restitution_coefficient>
     </collision>
-------------------------------->
+-------------------------------->
+<!------------------------------>
+<!------------ TODO ------------>
+<!-------------------------------
     <visual name='Right_Front_Steering_Visual'>
       <geometry>
         <mesh>
@@ -1016,9 +1013,6 @@
           <uri>model://msi_rover/meshes/C_Assembly_R.STL</uri>
         </mesh>
       </geometry>
-<!------------------------------>
-<!------------ TODO ------------>
-<!-------------------------------
       <material>
         <script>
           <uri>
@@ -1030,8 +1024,8 @@
         <diffuse>
         <specular>
         <emissive>
-------------------------------->
     </visual>
+------------------------------->
     <inertial>
       <mass>3.34075</mass>                                     <!-- Volume = 0.000415 m^3 -->
       <pose>-0.0780 0.0000 -0.1480 0.0000 0.0000 0.0000</pose>

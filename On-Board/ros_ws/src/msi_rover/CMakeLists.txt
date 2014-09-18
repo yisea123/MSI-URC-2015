@@ -6,14 +6,15 @@ project(msi_rover)
 ## is used, also find other catkin packages
 find_package(
   catkin REQUIRED
-  gazebo_msgs
-  gazebo_ros
-  geometry_msgs
   roscpp
   rospy
-  std_msgs
+  gazebo_ros
   cv_bridge
   image_transport
+  std_msgs
+  geometry_msgs
+  gazebo_msgs
+  sensor_msgs
 )
 
 ## System dependencies are found with CMake's conventions
@@ -55,13 +56,16 @@ find_package(OpenCV REQUIRED)
 add_message_files(
   FILES
   attitude.msg
+  NavigationDirectives.msg
+  ObstacleScan.msg
+  RoverState.msg
 )
 
 ## Generate services in the 'srv' folder
-add_service_files(
-  FILES
-  navigation_srv.srv
-)
+# add_service_files(
+#  FILES
+#  Service1.srv
+# )
 
 ## Generate actions in the 'action' folder
 # add_action_files(
@@ -76,6 +80,7 @@ add_service_files(
    gazebo_msgs
    geometry_msgs
    std_msgs
+   sensor_msgs
  )
 
 ###################################
@@ -87,12 +92,12 @@ add_service_files(
 ## LIBRARIES: libraries you create in this project that dependent projects also need
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
-catkin_package(
-  INCLUDE_DIRS include
-  LIBRARIES msi_rover
-  CATKIN_DEPENDS gazebo_msgs gazebo_ros geometry_msgs roscpp rospy std_msgs
-  DEPENDS system_lib
-)
+# catkin_package(
+#   INCLUDE_DIRS include
+#   LIBRARIES msi_rover
+#   CATKIN_DEPENDS msi_rover
+#   DEPENDS system_lib
+# )
 
 ###########
 ## Build ##
@@ -100,11 +105,13 @@ catkin_package(
 
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
+ message("================================================" ${catkin_INCLUDE_DIRS} "================================================")
 include_directories(
   ${catkin_INCLUDE_DIRS}
   ${Boost_INCLUDE_DIRS}
   ${GAZEBO_INCLUDE_DIRS}
   ${OpenCV_INCLUDE_DIRS}
+  include
 )
 link_directories(
   ${Boost_LIBRARY_DIR}
@@ -117,11 +124,11 @@ add_library ( stereo_helper_plugin
 )
 
 ## Declare a cpp executable
-add_executable( opencv_node
+add_executable( opencv
   src/opencv_node.cpp
 )
-add_executable ( navigation_node
-  src/navigation_node.cpp
+add_executable ( navigation_proc
+  src/navigation_proc.cpp
 )
 
 ## Add cmake target dependencies of the executable/library
@@ -129,7 +136,7 @@ add_executable ( navigation_node
 # add_dependencies(msi_rover_node msi_rover_generate_messages_cpp)
 
 ## Specify libraries to link a library or executable target against
-target_link_libraries( opencv_node
+target_link_libraries( opencv
   ${catkin_LIBRARIES}
   ${OpenCV_LIBS}
 )
@@ -138,7 +145,7 @@ target_link_libraries( stereo_helper_plugin
   ${catkin_LIBRARIES}
   ${GAZEBO_LIBRARIES}
 )
-target_link_libraries( navigation_node
+target_link_libraries( navigation_proc
   ${Boost_LIBRARIES}
   ${catkin_LIBRARIES}
 )

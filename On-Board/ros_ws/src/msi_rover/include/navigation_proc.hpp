@@ -47,25 +47,25 @@ struct DestStruct
   time_t                timestamp;
   math::Vector2d        position;
   float                 yaw;
-  bool                  master;
+  bool                  overrideable;
 } dest;
 
 struct ScanStruct
 {
   time_t                timestamp;
-  float                 angle_min;
-  float                 angle_max;
-  float                 range_min;
-  float                 range_max;
-  float                 angle_increment;
-  float                 ranges[];
+  float                 min_yaw;
+  float                 max_yaw;
+  float                 min_range;
+  float                 max_range;
+  float                 delta_yaw;
+  std::vector<float>    ranges;
 } scan;
 
 //////////////////////////////////////////////////////
 float getRange( float yaw ) {
-  if ( yaw > scan.angle_max || yaw < scan.angle_min ) return -1;
-  int index = ( yaw - scan.angle_min ) / scan.angle_increment;
-  return ( scan.ranges[index] + ( scan.ranges[index+1] - scan.ranges[index] ) * ( ( yaw - scan.angle_min ) / scan.angle_increment - (float)index ));
+  if ( yaw > scan.max_yaw || yaw < scan.min_yaw ) return -1;
+  int index = ( yaw - scan.min_yaw ) / scan.delta_yaw;
+  return ( scan.ranges[index] + ( scan.ranges[index+1] - scan.ranges[index] ) * ( ( yaw - scan.min_yaw ) / scan.delta_yaw - (float)index ));
 }
 
 //////////////////////////////////////////////////////
@@ -88,41 +88,38 @@ void OdometryUpdateCallback(const msi_rover::RoverState::ConstPtr& _state) {
 //////////////////////////////////////////////////////
 void ObstacleUpdateCallback(const msi_rover::ObstacleScan::ConstPtr& _scan) {
   std::time(&scan.timestamp);
+  scan.min_yaw         = _scan->angle_min;
+  scan.max_yaw         = _scan->angle_max;
+  scan.delta_yaw       = _scan->angle_increment;
+  scan.min_range       = _scan->range_min;
+  scan.max_range       = _scan->range_max;
+  scan.ranges          = _scan->ranges;
 }
 
 //////////////////////////////////////////////////////
-void OpenCVCoordUpdateCallback(const geometry_msgs::Pose2D::ConstPtr& _dest) {
-//  if ( Configuration.OPENCV_COORDS == 1 ) {
-    std::time(&dest.timestamp);
-    dest.master     = 0;
-    dest.position.x = _dest->x;
-    dest.position.y = _dest->y;
-    dest.yaw        = _dest->theta;
-//  }
-}
-
-//////////////////////////////////////////////////////
-void MasterCommandCallback(const std_msgs::String::ConstPtr& command)
-{
-  //------------------------------//
-  //------------ TODO ------------//
-  //------------------------------//
-}
+void OpenCVCoordUpdateCallback(const geometry_msgs::Pose2D::ConstPtr& _dest);
+void MasterCommandCallback(const std_msgs::String::ConstPtr& command);
+void Loop();
+void Load();
 
 //////////////////////////////////////////////////////
 int main(int argc, char **argv)
 {
   ros::init(argc, argv, "navigation_node");
   ros::NodeHandle _nh("rover");
-  Misc::LoadXMLConfig("navigation_proc.xml", Configuration);
+  Misc::LoadXMLConfig("config/navigation_proc.xml", Configuration);
 
   rover    = _nh.advertise<msi_rover::NavigationDirectives>("/rover/navigation_proc", 1);
   odometry = _nh.subscribe("/rover/odometry",      1, OdometryUpdateCallback);
   obstacle = _nh.subscribe("/rover/obstacle_scan", 1, ObstacleUpdateCallback);
   opencv   = _nh.subscribe("/rover/opencv_coords", 5, OpenCVCoordUpdateCallback);
   master   = _nh.subscribe("/rover/base_station",  5, MasterCommandCallback);
+  Load();
+
+  ROS_INFO("Navigation processing node successfuly loaded :)");
 
   while( ros::ok() ) {
+    Loop();
     ros::spinOnce();
   }
   return 0;
