@@ -1,8 +1,7 @@
 #include <boost/property_tree/ptree.hpp>
 #include <boost/property_tree/xml_parser.hpp>
-#include <path.h>
+#include <msi_rover.h>
 #include <string>
-#include <vector>
 
 namespace Misc
 {
@@ -21,6 +20,6 @@ namespace Misc
 
   void LoadXMLConfig(const std::string &filename, boost::property_tree::ptree& _config_tree)
   {
-    boost::property_tree::read_xml( PATH + filename, _config_tree );
+    boost::property_tree::read_xml( PACKAGE_PATH + filename, _config_tree );
   }
 };
