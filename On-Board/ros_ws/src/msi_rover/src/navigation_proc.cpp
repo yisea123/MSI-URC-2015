@@ -32,6 +32,7 @@ DESTINATION
  *  FUNCTIONS
  *
  *  float getRange( float yaw );                //Linear interpolated range in meters for a given yaw in radians
+ *                                              // -1 if error / empty
  *  Configuration.get<bool>("rover.OpenCVNav"); //Read configuration from msi_rover/config/navigation_proc.xml
  */
 /*------------------------------------------------------------------------------------------------------------*/
@@ -47,7 +48,7 @@ void Loop() { ; }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void OpenCVCoordUpdateCallback(const geometry_msgs::Pose2D::ConstPtr& _dest) {
-  if ( Configuration.get<bool>("rover.OpenCVNav") ) {
+  if ( Configuration.get<bool>("control.OpenCVNav") ) {
     std::time(&dest.timestamp);
     dest.overrideable  = 1;
     dest.position.x    = _dest->x;
@@ -63,4 +64,3 @@ void MasterCommandCallback(const std_msgs::String::ConstPtr& command)
   //------------ TODO ------------//
   //------------------------------//
 }
-

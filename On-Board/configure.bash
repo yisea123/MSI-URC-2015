@@ -14,7 +14,7 @@ if [ $? -ne 0 ]; then
 fi
 source /usr/share/gazebo/setup.sh
 
-echo "#define PACKAGE_PATH \"$DIR/src/msi_rover/\"" > $DIR/src/msi_rover/include/msi_rover.h
+echo "#define PACKAGE_PATH \"$DIR/src/msi_rover/\"" > $DIR/src/msi_rover/include/msi_rover.hpp
 cd $DIR
 catkin_make
 
@@ -31,4 +31,3 @@ fi
 
 printf '\n%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' '#'
 echo -e "\e[0m"
-

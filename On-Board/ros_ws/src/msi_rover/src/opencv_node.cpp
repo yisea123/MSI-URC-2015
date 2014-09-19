@@ -3,7 +3,7 @@
 
 //--These files are present in catkin_ws/devel of the git repository. Have a look at them.
 #include <math/math.hh>
-#include <miscellaneous.h>
+#include <miscellaneous.hpp>
 
 //--Message include files. Include correct message headers for messages to work
 #include <sensor_msgs/image_encodings.h>
@@ -53,7 +53,7 @@ int main(int argc, char **argv)
   image_transport::ImageTransport _it(_nh);
   image_transport::Subscriber _it_subscriber_lt;
   image_transport::Subscriber _it_subscriber_rt;
-  Misc::LoadXMLConfig("/map_generation/src/stereo_config.xml", Configuration);
+  Misc::LoadXMLConfig("config/stereo_config.xml", Configuration);
 
   usleep(1000000);
 
@@ -70,4 +70,3 @@ int main(int argc, char **argv)
   cv::destroyWindow("LeftStereoImage");
   return 0;
 }
-

@@ -1,6 +1,6 @@
 #include <boost/property_tree/ptree.hpp>
 #include <boost/property_tree/xml_parser.hpp>
-#include <msi_rover.h>
+#include <msi_rover.hpp>
 #include <string>
 
 namespace Misc

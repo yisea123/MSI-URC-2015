@@ -4,7 +4,7 @@
 
 //-- These files are present in ros_ws/include of the git repository. Have a look at them. --//
 #include <math/math.hh>
-#include <miscellaneous.h>
+#include <miscellaneous.hpp>
 
 //-- Message include files. Include correct message headers for messages to work --//
 #include <msi_rover/NavigationDirectives.h>
@@ -64,8 +64,20 @@ struct ScanStruct
 //////////////////////////////////////////////////////
 float getRange( float yaw ) {
   if ( yaw > scan.max_yaw || yaw < scan.min_yaw ) return -1;
-  int index = ( yaw - scan.min_yaw ) / scan.delta_yaw;
-  return ( scan.ranges[index] + ( scan.ranges[index+1] - scan.ranges[index] ) * ( ( yaw - scan.min_yaw ) / scan.delta_yaw - (float)index ));
+  int l_index = ( yaw - scan.min_yaw ) / scan.delta_yaw;
+  int h_index = l_index + 1;
+  while (scan.ranges[l_index] == -1) {
+    if (l_index == 0) return -1;
+    else l_index = l_index - 1;
+  }
+  int max_index = ( yaw - scan.min_yaw ) / scan.delta_yaw;
+  while (scan.ranges[h_index] == -1) {
+    if (h_index == max_index) return -1;
+    else h_index = h_index + 1;
+  }
+  float l_yaw = (l_index * scan.delta_yaw + scan.min_yaw);
+  return ( scan.ranges[l_index] \
+           + ( yaw - l_yaw ) * ( scan.ranges[h_index] - scan.ranges[l_index] )  / ( ( h_index- l_index ) * scan.delta_yaw ));
 }
 
 //////////////////////////////////////////////////////
@@ -107,13 +119,42 @@ int main(int argc, char **argv)
 {
   ros::init(argc, argv, "navigation_node");
   ros::NodeHandle _nh("rover");
-  Misc::LoadXMLConfig("config/navigation_proc.xml", Configuration);
 
   rover    = _nh.advertise<msi_rover::NavigationDirectives>("/rover/navigation_proc", 1);
   odometry = _nh.subscribe("/rover/odometry",      1, OdometryUpdateCallback);
   obstacle = _nh.subscribe("/rover/obstacle_scan", 1, ObstacleUpdateCallback);
   opencv   = _nh.subscribe("/rover/opencv_coords", 5, OpenCVCoordUpdateCallback);
   master   = _nh.subscribe("/rover/base_station",  5, MasterCommandCallback);
+
+  std::time(&state.timestamp);
+  state.position.x     = 0;
+  state.position.y     = 0;
+  state.position.z     = 0;
+  state.attitude.yaw   = 0;
+  state.attitude.pitch = 0;
+  state.attitude.roll  = 0;
+  state.velocity.x     = 0;
+  state.velocity.y     = 0;
+  state.velocity.z     = 0;
+  state.ang_velocity.x = 0;
+  state.ang_velocity.y = 0;
+  state.ang_velocity.z = 0;
+
+  Misc::LoadXMLConfig("config/map_generation.xml", Configuration);
+
+  std::time(&scan.timestamp);
+  scan.min_yaw         = Configuration.get<float>("obstacle_map.min_yaw");
+  scan.max_yaw         = Configuration.get<float>("obstacle_map.max_yaw");
+  scan.delta_yaw       = Configuration.get<float>("obstacle_map.delta_yaw");
+  scan.min_range       = Configuration.get<float>("obstacle_map.min_range");
+  scan.max_range       = Configuration.get<float>("obstacle_map.max_range");
+  scan.ranges.clear();
+  int index = (scan.max_yaw - scan.min_yaw)/scan.delta_yaw;
+  while ( index > 0 ) { scan.ranges.push_back(-1); index--; }
+
+  Misc::LoadXMLConfig("config/navigation_proc.xml", Configuration);
+
+  ros::Rate loop_rate(Configuration.get<int>("publishers.navigation_directives.publish_rate"));
   Load();
 
   ROS_INFO("Navigation processing node successfuly loaded :)");
@@ -121,6 +162,7 @@ int main(int argc, char **argv)
   while( ros::ok() ) {
     Loop();
     ros::spinOnce();
+    loop_rate.sleep();
   }
   return 0;
 }
