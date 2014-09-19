@@ -23,6 +23,8 @@
 <control>
   <OpenCVNav>0</OpenCVNav>
 </control>
+<algorithm>
+</algorithm>
 <publishers>
   <navigation_directives>
     <publish_rate>10</publish_rate>

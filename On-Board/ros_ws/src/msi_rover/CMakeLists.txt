@@ -103,15 +103,14 @@ add_message_files(
 ###########
 ## Build ##
 ###########
-
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 include_directories(
+  include
   ${catkin_INCLUDE_DIRS}
   ${Boost_INCLUDE_DIRS}
   ${GAZEBO_INCLUDE_DIRS}
   ${OpenCV_INCLUDE_DIRS}
-  include
 )
 link_directories(
   ${Boost_LIBRARY_DIR}
@@ -124,6 +123,9 @@ add_library ( stereo_helper_plugin
 )
 add_library ( odometry_sim
   src/odometry_sim.cpp
+)
+add_library ( navigation_sim
+  src/navigation_sim.cpp
 )
 
 ## Declare a cpp executable
@@ -157,6 +159,11 @@ target_link_libraries( odometry_sim
   ${catkin_LIBRARIES}
   ${GAZEBO_LIBRARIES}
 )
+target_link_libraries( navigation_sim
+  ${Boost_LIBRARIES}
+  ${catkin_LIBRARIES}
+  ${GAZEBO_LIBRARIES}
+)
 target_link_libraries( navigation_proc
   ${Boost_LIBRARIES}
   ${catkin_LIBRARIES}
@@ -166,6 +173,7 @@ target_link_libraries( map_generation_sim
   ${catkin_LIBRARIES}
   ${OpenCV_LIBS}
 )
+
 
 #############
 ## Install ##

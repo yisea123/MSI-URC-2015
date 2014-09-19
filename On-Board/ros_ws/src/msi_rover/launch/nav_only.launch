@@ -7,7 +7,7 @@
   <arg name="headless" default="false"/>
   <arg name="debug" default="false"/>
   <arg name="verbose" default="true"/>
-  <arg name="world_name" default="worlds/arena.world"/> 
+  <arg name="world_name" default="worlds/model.world"/> 
 
   <!-- set use_sim_time flag -->
   <group if="$(arg use_sim_time)">
