@@ -1,4 +1,0 @@
-//////////////////////////////////////////////////////
-void DepthMapUpdateCallback(const msi_rover::DepthMap::ConstPtr& _map) {
-}
-

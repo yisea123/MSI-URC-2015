@@ -15,6 +15,7 @@ find_package(
   geometry_msgs
   gazebo_msgs
   sensor_msgs
+  message_generation
 )
 
 ## System dependencies are found with CMake's conventions
@@ -92,12 +93,12 @@ add_message_files(
 ## LIBRARIES: libraries you create in this project that dependent projects also need
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
-# catkin_package(
-#   INCLUDE_DIRS include
-#   LIBRARIES msi_rover
-#   CATKIN_DEPENDS msi_rover
-#   DEPENDS system_lib
-# )
+ catkin_package(
+   INCLUDE_DIRS include
+   LIBRARIES msi_rover
+   CATKIN_DEPENDS message_runtime
+   DEPENDS system_lib
+ )
 
 ###########
 ## Build ##
@@ -105,7 +106,6 @@ add_message_files(
 
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
- message("================================================" ${catkin_INCLUDE_DIRS} "================================================")
 include_directories(
   ${catkin_INCLUDE_DIRS}
   ${Boost_INCLUDE_DIRS}
@@ -122,6 +122,9 @@ link_directories(
 add_library ( stereo_helper_plugin
   src/stereo_helper.cpp
 )
+add_library ( odometry_sim
+  src/odometry_sim.cpp
+)
 
 ## Declare a cpp executable
 add_executable( opencv
@@ -130,6 +133,9 @@ add_executable( opencv
 add_executable ( navigation_proc
   src/navigation_proc.cpp
 )
+add_executable ( map_generation_sim
+  src/map_generation_sim.cpp
+)
 
 ## Add cmake target dependencies of the executable/library
 ## as an example, message headers may need to be generated before nodes
@@ -137,6 +143,7 @@ add_executable ( navigation_proc
 
 ## Specify libraries to link a library or executable target against
 target_link_libraries( opencv
+  ${Boost_LIBRARIES}
   ${catkin_LIBRARIES}
   ${OpenCV_LIBS}
 )
@@ -145,9 +152,19 @@ target_link_libraries( stereo_helper_plugin
   ${catkin_LIBRARIES}
   ${GAZEBO_LIBRARIES}
 )
+target_link_libraries( odometry_sim
+  ${Boost_LIBRARIES}
+  ${catkin_LIBRARIES}
+  ${GAZEBO_LIBRARIES}
+)
 target_link_libraries( navigation_proc
   ${Boost_LIBRARIES}
   ${catkin_LIBRARIES}
+)
+target_link_libraries( map_generation_sim
+  ${Boost_LIBRARIES}
+  ${catkin_LIBRARIES}
+  ${OpenCV_LIBS}
 )
 
 #############

@@ -63,27 +63,20 @@
       </inertia>
     </inertial>
   </link>
+
   <link name='Lidar'>
     <self_collide>0</self_collide>
-    <pose>0.0000 0.0000 0.3 0.0000 0.0000 0.0000</pose>
+    <pose>0 0 0.3 0 -0 1.57079632679</pose>
     <sensor name='laser' type='ray'>
-      <pose>0 0 0 0 0 0</pose>
+      <pose>0 0 0 0 -0 0</pose>
       <ray>
         <scan>
           <horizontal>
-            <samples>360</samples>
+            <samples>180</samples>
             <resolution>1</resolution>
             <min_angle>-3.12413936107</min_angle>
             <max_angle> 3.14159265359</max_angle>
           </horizontal>
-<!--
-          <horizontal>
-            <samples>91</samples>
-            <resolution>1</resolution>
-            <min_angle>-0.78539816339</min_angle>
-            <max_angle> 0.78539816339</max_angle>
-          </horizontal>
--->
         </scan>
         <range>
           <min>0.8</min>
@@ -91,12 +84,12 @@
           <resolution>0.01</resolution>
         </range>
         </ray>
-        <plugin name="laser" filename="libgazebo_ros_laser.so"> <topicName>/hokuyo_laser</topicName> <frameName>map</frameName> </plugin>
-<!--
-        <plugin name='laser' filename='libRayPlugin.so'/>
--->
+        <plugin name="laser" filename="libgazebo_ros_laser.so">
+          <topicName>/rover/environ_periph</topicName>
+          <frameName>scan</frameName>
+        </plugin>
         <always_on>1</always_on>
-        <update_rate>10</update_rate>
+        <update_rate>5</update_rate>
         <visualize>0</visualize>
       </sensor>
     </link>

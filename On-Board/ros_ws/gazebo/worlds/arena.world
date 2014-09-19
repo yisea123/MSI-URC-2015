@@ -113,133 +113,133 @@
       </camera>
     </gui>
     <state world_name='default'>
-      <sim_time>62 638000000</sim_time>
-      <real_time>5 958824265</real_time>
-      <wall_time>1411101585 594366777</wall_time>
+      <sim_time>18 680000000</sim_time>
+      <real_time>7 888651606</real_time>
+      <wall_time>1411108715 575719604</wall_time>
       <model name='MSI Rover'>
-        <pose>-10 -20 6 0 0 -3.13728</pose>
+        <pose>-6 -13 7 0 0 -3.13728</pose>
         <link name='Chassis'>
-          <pose>-10 -20 6.472 0 0 -3.13728</pose>
+          <pose>-6 -13 7.472 0 0 -3.13728</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
         <link name='Left_Bogie'>
-          <pose>-9.70525 -20.1737 6.432 0 0 -3.13728</pose>
+          <pose>-5.70525 -13.1737 7.432 0 0 -3.13728</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
         <link name='Left_Diff_Support'>
-          <pose>-9.6938 -19.4647 6.508 -0.45 0.15 -3.13728</pose>
+          <pose>-5.6938 -12.4647 7.508 -0.45 0.15 -3.13728</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
         <link name='Left_Front_Steering'>
-          <pose>-9.65028 -20.3985 6.368 0 0 -3.13728</pose>
+          <pose>-5.65028 -13.3985 7.368 0 0 -3.13728</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
         <link name='Left_Front_Tyre'>
-          <pose>-9.64028 -20.3985 6.15 0 0 -3.13728</pose>
+          <pose>-5.64028 -13.3985 7.15 0 0 -3.13728</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
         <link name='Left_Middle_Tyre'>
-          <pose>-9.55222 -19.9481 6.15 0 0 -3.13728</pose>
+          <pose>-5.55222 -12.9481 7.15 0 0 -3.13728</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
         <link name='Left_Rear_Steering'>
-          <pose>-9.62111 -19.5084 6.368 0 0 -3.13728</pose>
+          <pose>-5.62111 -12.5084 7.368 0 0 -3.13728</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
         <link name='Left_Rear_Tyre'>
-          <pose>-9.61111 -19.5083 6.15 0 0 -3.13728</pose>
+          <pose>-5.61111 -12.5083 7.15 0 0 -3.13728</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
         <link name='Left_Rocker'>
-          <pose>-9.673 -19.9986 6.472 0 0 -3.13728</pose>
+          <pose>-5.673 -12.9986 7.472 0 0 -3.13728</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
         <link name='Left_Triangle'>
-          <pose>-9.93007 -19.5197 6.582 0 0 -3.13728</pose>
+          <pose>-5.93007 -12.5197 7.582 0 0 -3.13728</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
         <link name='Lidar'>
-          <pose>-10 -20 6.3 0 0 -3.13728</pose>
+          <pose>-6 -13 7.3 0 0 -1.56648</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
         <link name='Right_Bogie'>
-          <pose>-10.2932 -20.1763 6.432 0 0 -3.13728</pose>
+          <pose>-6.29324 -13.1763 7.432 0 0 -3.13728</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
         <link name='Right_Diff_Support'>
-          <pose>-10.3108 -19.4673 6.508 -0.45 -0.15 -3.13728</pose>
+          <pose>-6.3108 -12.4673 7.508 -0.45 -0.15 -3.13728</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
         <link name='Right_Front_Steering'>
-          <pose>-10.3463 -20.4015 6.368 0 0 -3.13728</pose>
+          <pose>-6.34627 -13.4015 7.368 0 0 -3.13728</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
         <link name='Right_Front_Tyre'>
-          <pose>-10.3563 -20.4015 6.15 0 0 -3.13728</pose>
+          <pose>-6.35627 -13.4015 7.15 0 0 -3.13728</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
         <link name='Right_Middle_Tyre'>
-          <pose>-10.4482 -19.9519 6.15 0 0 -3.13728</pose>
+          <pose>-6.44821 -12.9519 7.15 0 0 -3.13728</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
         <link name='Right_Rear_Steering'>
-          <pose>-10.3831 -19.5116 6.368 0 0 -3.13728</pose>
+          <pose>-6.38311 -12.5116 7.368 0 0 -3.13728</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
         <link name='Right_Rear_Tyre'>
-          <pose>-10.3931 -19.5117 6.15 0 0 -3.13728</pose>
+          <pose>-6.39311 -12.5117 7.15 0 0 -3.13728</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
         <link name='Right_Rocker'>
-          <pose>-10.327 -20.0014 6.472 0 0 -3.13728</pose>
+          <pose>-6.327 -13.0014 7.472 0 0 -3.13728</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
         <link name='Right_Triangle'>
-          <pose>-10.0741 -19.5203 6.582 0 0 -3.13728</pose>
+          <pose>-6.07407 -12.5203 7.582 0 0 -3.13728</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
         <link name='Triangle_Rod'>
-          <pose>-10.0021 -19.507 6.432 0 0 -3.13728</pose>
+          <pose>-6.00212 -12.507 7.432 0 0 -3.13728</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
@@ -307,13 +307,13 @@
       </link>
       <link name='Lidar'>
         <self_collide>0</self_collide>
-        <pose>0 0 0.3 0 -0 0</pose>
+        <pose>0 0 0.3 0 -0 1.5708</pose>
         <sensor name='laser' type='ray'>
           <pose>0 0 0 0 -0 0</pose>
           <ray>
             <scan>
               <horizontal>
-                <samples>360</samples>
+                <samples>180</samples>
                 <resolution>1</resolution>
                 <min_angle>-3.12414</min_angle>
                 <max_angle>3.14159</max_angle>
@@ -326,11 +326,11 @@
             </range>
           </ray>
           <plugin name='laser' filename='libgazebo_ros_laser.so'>
-            <topicName>/hokuyo_laser</topicName>
-            <frameName>map</frameName>
+            <topicName>/rover/environ_periph</topicName>
+            <frameName>scan</frameName>
           </plugin>
           <always_on>1</always_on>
-          <update_rate>10</update_rate>
+          <update_rate>5</update_rate>
           <visualize>0</visualize>
         </sensor>
         <velocity_decay>
@@ -1548,7 +1548,8 @@
           </dynamics>
         </axis2>
       </joint>
-      <pose>-35 22 0 0 -0 0</pose>
+      <pose>-31 19 0 0 -0 0</pose>
+      <plugin name='odometry' filename='libodometry_sim.so'>
     </model>
   </world>
 </sdf>

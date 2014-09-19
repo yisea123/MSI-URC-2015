@@ -1,7 +1,7 @@
 <obstacle_map>
   <min_yaw>-3.14159265359</min_yaw>
   <max_yaw>3.14159265359</max_yaw>
-  <delta_yaw>0.01745329251</delta_yaw>
+  <delta_yaw>0.03490658503</delta_yaw>
   <min_range>0.8</min_range>
   <max_range>5.8</max_range>
 </obstacle_map>
