@@ -8,7 +8,8 @@
 #include <msi_rover/ObstacleScan.h>
 #include <msi_rover/NavigationDirectives.h>
 #include <msi_rover/attitude.h>
-
+using namespace ros;
+using namespace msi_rover;
 namespace gazebo {
 
 	class RoverSimulator : public ModelPlugin
@@ -23,9 +24,6 @@ namespace gazebo {
 				<< "Load the Gazebo system plugin 'libgazebo_ros_api_plugin.so' in the gazebo_ros package)");
 				return;
 			}
-			
-			ros::NodeHandle _nh("rover");
-			nav_subs = _nh.subscribe("/rover/navigation_proc", 1, &RoverSimulator::RoverStateCallback, this);
 			
 			// Save Global Pointers
 			this->rover = _model;
@@ -81,6 +79,9 @@ namespace gazebo {
 			this->_updateConnection = event::Events::ConnectWorldUpdateBegin(boost::bind(&RoverSimulator::OnUpdate, this, _1));
 			ROS_INFO("Rover plugin for ROS successfully loaded :)");
 
+			ros::NodeHandle _nh("rover");
+			nav_subs = _nh.subscribe("/rover/navigation_proc", 1, &RoverSimulator::RoverStateCallback, this);
+			
 			while(ros::ok()) {
 				ros::spinOnce();
 			}
@@ -115,7 +116,7 @@ namespace gazebo {
 			}
 		}
 		
-		void RoverStateCallback(msi_rover::NavigationDirectives& rx_msg) {
+		void RoverStateCallback(const msi_rover::NavigationDirectives& rx_msg) {
 			this->fl_wheel_rpm = rx_msg.fl_wheel_rpm;
 			this->ml_wheel_rpm = rx_msg.ml_wheel_rpm;
 			this->rl_wheel_rpm = rx_msg.rl_wheel_rpm;
