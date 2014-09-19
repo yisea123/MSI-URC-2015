@@ -1,3 +1,25 @@
+<initial>
+  <position>
+    <x>0</x>
+    <y>0</y>
+    <z>0</z>
+  </position>
+  <attitude>
+    <roll>0</roll>
+    <pitch>0</pitch>
+    <yaw>0</yaw>
+  </attitude>
+  <velocity>
+    <x>0</x>
+    <y>0</y>
+    <z>0</z>
+  </velocity>
+  <ang_velocity>
+    <x>0</x>
+    <y>0</y>
+    <z>0</z>
+  </ang_velocity>
+</initial>
 <control>
   <OpenCVNav>0</OpenCVNav>
 </control>
