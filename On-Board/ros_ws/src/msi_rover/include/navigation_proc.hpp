@@ -127,18 +127,6 @@ int main(int argc, char **argv)
   master   = _nh.subscribe("/rover/base_station",  5, MasterCommandCallback);
 
   std::time(&state.timestamp);
-  state.position.x     = 0;
-  state.position.y     = 0;
-  state.position.z     = 0;
-  state.attitude.yaw   = 0;
-  state.attitude.pitch = 0;
-  state.attitude.roll  = 0;
-  state.velocity.x     = 0;
-  state.velocity.y     = 0;
-  state.velocity.z     = 0;
-  state.ang_velocity.x = 0;
-  state.ang_velocity.y = 0;
-  state.ang_velocity.z = 0;
 
   Misc::LoadXMLConfig("config/map_generation.xml", Configuration);
 
@@ -153,6 +141,19 @@ int main(int argc, char **argv)
   while ( index > 0 ) { scan.ranges.push_back(-1); index--; }
 
   Misc::LoadXMLConfig("config/navigation_proc.xml", Configuration);
+
+  state.position.x     = Configuration.get<float>("initial.position.x");
+  state.position.y     = Configuration.get<float>("initial.position.y");
+  state.position.z     = Configuration.get<float>("initial.position.z");
+  state.attitude.yaw   = Configuration.get<float>("initial.attitude.yaw");
+  state.attitude.pitch = Configuration.get<float>("initial.attitude.pitch");
+  state.attitude.roll  = Configuration.get<float>("initial.attitude.roll");
+  state.velocity.x     = Configuration.get<float>("initial.velocity.x");
+  state.velocity.y     = Configuration.get<float>("initial.velocity.y");
+  state.velocity.z     = Configuration.get<float>("initial.velocity.z");
+  state.ang_velocity.x = Configuration.get<float>("initial.ang_velocity.x");
+  state.ang_velocity.y = Configuration.get<float>("initial.ang_velocity.y");
+  state.ang_velocity.z = Configuration.get<float>("initial.ang_velocity.z");
 
   ros::Rate loop_rate(Configuration.get<int>("publishers.navigation_directives.publish_rate"));
   Load();
