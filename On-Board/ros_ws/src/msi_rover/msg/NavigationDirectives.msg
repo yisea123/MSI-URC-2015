@@ -18,4 +18,3 @@ bool    short_rl_wheel
 bool    short_rr_wheel
 
 bool    hand_brake
-

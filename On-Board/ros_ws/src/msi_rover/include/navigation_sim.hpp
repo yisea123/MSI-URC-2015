@@ -8,8 +8,7 @@
 #include <msi_rover/ObstacleScan.h>
 #include <msi_rover/NavigationDirectives.h>
 #include <msi_rover/attitude.h>
-using namespace ros;
-using namespace msi_rover;
+
 namespace gazebo {
 
 	class RoverSimulator : public ModelPlugin
@@ -88,7 +87,7 @@ namespace gazebo {
 		}
 
 		void OnUpdate(const common::UpdateInfo &) {
-			if (nav_subs.getNumPublishers() != 0) {
+			/*if (nav_subs.getNumPublishers() != 0) {
 				this->fl_wheel_joint->SetVelocity(0,fl_wheel_rpm);
 				this->ml_wheel_joint->SetVelocity(0,ml_wheel_rpm);
 				this->rl_wheel_joint->SetVelocity(0,rl_wheel_rpm);
@@ -102,18 +101,22 @@ namespace gazebo {
 				this->fr_steer_joint->SetForce(0,fr_steer_force);
 			}
 			else {
-				this->fl_wheel_joint->SetForce(0,0);
-				this->ml_wheel_joint->SetForce(0,0);
-				this->rl_wheel_joint->SetForce(0,0);
-				this->rr_wheel_joint->SetForce(0,0);
-				this->mr_wheel_joint->SetForce(0,0);
-				this->fr_wheel_joint->SetForce(0,0);
+				this->fl_wheel_joint->SetVelocity(0,0);
+				this->ml_wheel_joint->SetVelocity(0,0);
+				this->rl_wheel_joint->SetVelocity(0,0);
+				this->rr_wheel_joint->SetVelocity(0,0);
+				this->mr_wheel_joint->SetVelocity(0,0);
+				this->fr_wheel_joint->SetVelocity(0,0);
 				
 				this->fl_steer_joint->SetForce(0,0);
 				this->rl_steer_joint->SetForce(0,0);
 				this->rr_steer_joint->SetForce(0,0);
 				this->fr_steer_joint->SetForce(0,0);
-			}
+			}*/
+			this->fl_steer_joint->SetForce(0,100);
+			this->rl_steer_joint->SetForce(0,100);
+			this->rr_steer_joint->SetForce(0,100);
+			this->fr_steer_joint->SetForce(0,100);
 		}
 		
 		void RoverStateCallback(const msi_rover::NavigationDirectives& rx_msg) {
