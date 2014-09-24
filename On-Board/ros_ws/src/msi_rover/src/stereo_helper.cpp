@@ -5,6 +5,8 @@
 #include <gazebo/common/common.hh>
 #include <gazebo/common/Plugin.hh>
 #include <ros/ros.h>
+#include <csignal>
+#include <stdlib.h>
 #include <geometry_msgs/Quaternion.h>
 
 //--Message include files. Include correct message headers for messages to work
@@ -15,6 +17,10 @@
 #include <cstdio>
 #include <sys/ioctl.h>
 using namespace std;
+void Shutdown(int signum) {
+  ros::shutdown();
+  gazebo::shutdown();
+}
 
 namespace gazebo
 {
@@ -38,15 +44,16 @@ namespace gazebo
       this->model = _model;
       this->_spinnerThread = boost::thread(boost::bind(&TeleOpClass::LoadThread, this));
     }
-    void LoadThread()
+   void LoadThread()
     {
+      signal(SIGINT, Shutdown);
       ros::NodeHandle _nh("rover");
       this->_updateConnection = event::Events::ConnectWorldUpdateBegin(boost::bind(&TeleOpClass::OnUpdate, this, _1));
       ros::Rate loop_rate(100);
       int byte;
       struct termios t;
       tcgetattr(STDIN_FILENO, &t);
-      t.c_lflag &= ~ICANON;
+      t.c_lflag &= ~(ECHO | ICANON);
       tcsetattr(STDIN_FILENO, TCSANOW, &t);
 
       while( ros::ok() )
@@ -62,23 +69,23 @@ namespace gazebo
               switch ( byte )
               {
               case 65 :
-                ROS_INFO("KEY PRESSED [UP]");
+//                ROS_INFO("KEY PRESSED [UP]");
                 what = 1;
                 break;
               case 66 :
-                ROS_INFO("KEY PRESSED [DN]");
+//                ROS_INFO("KEY PRESSED [DN]");
                 what = -1;
                 break;
               case 67 :
-                ROS_INFO("KEY PRESSED [RT]");
+//                ROS_INFO("KEY PRESSED [RT]");
                 what = -2;
                 break;
               case 68 :
-                ROS_INFO("KEY PRESSED [LT]");
+//                ROS_INFO("KEY PRESSED [LT]");
                 what = 2;
                 break;
               default :
-                ROS_WARN("INVALID KEY PRESSED");
+//                ROS_WARN("INVALID KEY PRESSED");
                 what = 0;
               }
             }
@@ -90,19 +97,19 @@ namespace gazebo
           switch ( byte )
           {
           case 119 :
-            ROS_INFO("KEY PRESSED [W]");
+//            ROS_INFO("KEY PRESSED [W]");
             what = 3;
             break;
           case 115 :
-            ROS_INFO("KEY PRESSED [S]");
+//            ROS_INFO("KEY PRESSED [S]");
             what = -3;
             break;
           case 113 :
-            ROS_INFO("KEY PRESSED [A]");
+//            ROS_INFO("KEY PRESSED [A]");
             what = -4;
             break;
           case 97 :
-            ROS_INFO("KEY PRESSED [Q]");
+//            ROS_INFO("KEY PRESSED [Q]");
             what = 4;
             break;
           default :

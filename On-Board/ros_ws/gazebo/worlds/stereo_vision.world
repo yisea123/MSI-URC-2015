@@ -187,7 +187,9 @@
               <far>100</far>
             </clip>
           </camera>
-          <plugin name='multicamera_plugin' filename='libgazebo_ros_multicamera.so'/>
+          <plugin name='multicamera_plugin' filename='libgazebo_ros_multicamera.so'>
+          <robotNamespace>/rover/bumblebee</robotNamespace>
+          </plugin>
         </sensor>
         <velocity_decay>
           <linear>0</linear>

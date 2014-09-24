@@ -130,7 +130,7 @@ add_library ( navigation_sim
 
 ## Declare a cpp executable
 add_executable( opencv
-  src/opencv_node.cpp
+  src/opencv.cpp
 )
 add_executable ( navigation_proc
   src/navigation_proc.cpp

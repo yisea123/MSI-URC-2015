@@ -2,11 +2,11 @@
   <arg name="gui" default="false"/>
 
   <group unless="$(arg gui)">
-    <node name="stereo_vision" pkg="map_generation" type="gz_delayed_launch.bash" args="stereo_vision 0" output="screen"/>
+    <node name="stereo_vision" pkg="msi_rover" type="gz_delayed_launch.bash" args="stereo_vision 0" output="screen" required="true"/>
   </group>
 
   <group if="$(arg gui)">
-    <node name="stereo_vision" pkg="map_generation" type="gz_delayed_launch.bash" args="stereo_vision 1" output="screen"/>
+    <node name="stereo_vision" pkg="msi_rover" type="gz_delayed_launch.bash" args="stereo_vision 1" output="screen" required="true"/>
   </group>
 
 </launch>
