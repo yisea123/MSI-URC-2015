@@ -383,6 +383,14 @@
           <length>0.180</length>
         </cylinder>
       </geometry>
+      <surface>
+      	<friction>
+      	    <mu>1.0</mu>
+      	    <mu2>1.0</mu2>
+      	    <slip1>1.0</slip1>
+      	    <slip2>1.0</slip2>
+      	  </friction>
+      </surface>
 <!------------------------------>
 <!------------ TODO ------------>
 <!-------------------------------
@@ -439,6 +447,14 @@
           <length>0.180</length>
         </cylinder>
       </geometry>
+      <surface>
+      	<friction>
+      	    <mu>1.0</mu>
+      	    <mu2>1.0</mu2>
+      	    <slip1>1.0</slip1>
+      	    <slip2>1.0</slip2>
+      	  </friction>
+      </surface>
 <!------------------------------>
 <!------------ TODO ------------>
 <!-------------------------------
@@ -495,6 +511,14 @@
           <length>0.180</length>
         </cylinder>
       </geometry>
+      <surface>
+      	<friction>
+      	    <mu>1.0</mu>
+      	    <mu2>1.0</mu2>
+      	    <slip1>1.0</slip1>
+      	    <slip2>1.0</slip2>
+      	  </friction>
+      </surface>
 <!------------------------------>
 <!------------ TODO ------------>
 <!-------------------------------
@@ -742,6 +766,9 @@
     <parent>Left_Rear_Steering</parent>
     <axis>
       <xyz>1 0 0</xyz>
+      <dynamics>
+      	<friction>1.0</friction>
+      </dynamics>
 <!------------------------------>
 <!------------ TODO ------------>
 <!-------------------------------
@@ -786,6 +813,9 @@
     <parent>Left_Bogie</parent>
     <axis>
       <xyz>1 0 0</xyz>
+      <dynamics>
+      	<friction>1.0</friction>
+      </dynamics>
 <!------------------------------>
 <!------------ TODO ------------>
 <!-------------------------------
@@ -830,6 +860,9 @@
     <parent>Left_Front_Steering</parent>
     <axis>
       <xyz>1 0 0</xyz>
+      <dynamics>
+      	<friction>1.0</friction>
+      </dynamics>
 <!------------------------------>
 <!------------ TODO ------------>
 <!-------------------------------
@@ -1110,6 +1143,14 @@
           <length>0.180</length>
         </cylinder>
       </geometry>
+      <surface>
+      	<friction>
+      	    <mu>1.0</mu>
+      	    <mu2>1.0</mu2>
+      	    <slip1>1.0</slip1>
+      	    <slip2>1.0</slip2>
+      	  </friction>
+      </surface>
 <!------------------------------>
 <!------------ TODO ------------>
 <!-------------------------------
@@ -1166,6 +1207,14 @@
           <length>0.180</length>
         </cylinder>
       </geometry>
+      <surface>
+      	<friction>
+      	    <mu>1.0</mu>
+      	    <mu2>1.0</mu2>
+      	    <slip1>1.0</slip1>
+      	    <slip2>1.0</slip2>
+      	  </friction>
+      </surface>
 <!------------------------------>
 <!------------ TODO ------------>
 <!-------------------------------
@@ -1222,6 +1271,14 @@
           <length>0.180</length>
         </cylinder>
       </geometry>
+      <surface>
+      	<friction>
+      	    <mu>1.0</mu>
+      	    <mu2>1.0</mu2>
+      	    <slip1>1.0</slip1>
+      	    <slip2>1.0</slip2>
+      	  </friction>
+      </surface>
 <!------------------------------>
 <!------------ TODO ------------>
 <!-------------------------------
@@ -1469,6 +1526,9 @@
     <parent>Right_Rear_Steering</parent>
     <axis>
       <xyz>1 0 0</xyz>
+      <dynamics>
+      	<friction>1.0</friction>
+      </dynamics>
 <!------------------------------>
 <!------------ TODO ------------>
 <!-------------------------------
@@ -1513,6 +1573,9 @@
     <parent>Right_Bogie</parent>
     <axis>
       <xyz>1 0 0</xyz>
+      <dynamics>
+      	<friction>1.0</friction>
+      </dynamics>
 <!------------------------------>
 <!------------ TODO ------------>
 <!-------------------------------
@@ -1557,6 +1620,9 @@
     <parent>Right_Front_Steering</parent>
     <axis>
       <xyz>1 0 0</xyz>
+      <dynamics>
+      	<friction>1.0</friction>
+      </dynamics>
 <!------------------------------>
 <!------------ TODO ------------>
 <!-------------------------------
