@@ -4,3 +4,15 @@ compiler:
   - clang
 # Change this to your needs
 script: cd On-Board/ros_ws/ && catkin_make
+before_install:
+  - sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu trusty main" > /etc/apt/sources.list.d/ros-latest.list'
+  - sudo sh -c 'echo "deb http://packages.osrfoundation.org/gazebo/ubuntu `lsb_release -cs` main" > /etc/apt/sources.list.d/gazebo-latest.list'
+  - wget http://packages.osrfoundation.org/gazebo.key -O - | sudo apt-key add -
+  - sudo apt-get update
+  - sudo apt-get install ros-indigo-desktop-full
+  - sudo apt-get install gazebo4
+  - sudo apt-get install ros-indigo-gazebo4-ros-pkgs ros-indigo-gazebo4-ros-control
+  - echo "source /opt/ros/indigo/setup.bash" >> ~/.bashrc
+  - echo "source /usr/share/gazebo/setup.sh" >> ~/.bashrc
+  - source ~/.bashrc
+  - cd On-Board && ./configure.bash
