@@ -13,12 +13,12 @@ class Serial {
     void send(char*, int);
     void send(char);
     void receive(char*, int);
-    void receive(char);
+    void receive(char*);
 };
 
 Serial::Serial(const char* port, speed_t speed) {
   _FILE_H = open(port, O_RDWR | O_NONBLOCK);
-
+if (_FILE_H == -1) printf("erroropen");
   struct termios tty;
   memset(&tty, 0, sizeof(tty));
   tty.c_iflag     = 0;
@@ -43,6 +43,7 @@ void Serial::send(char str) {
 void Serial::receive(char* str, int len) {
 	read(_FILE_H, str, len);
 }
-void Serial::receive(char str) {
-	read(_FILE_H, &str, 1);
+void Serial::receive(char* str) {
+	read(_FILE_H, str, 1);
+        printf("%s",str);
 }

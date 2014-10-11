@@ -22,6 +22,26 @@ namespace boost{
         return true;
       }
 //////////////////////////////////////////////////////
+      template<class T, class V>
+      bool fill(matrix<T>& input, const V value)
+      {
+        for (int i = 0; i < input.size1(); i++) {
+          for (int j = 0; j < input.size2(); j++) {
+            input(i,j) = value;
+          }
+        }
+        return true;
+      }
+//////////////////////////////////////////////////////
+      template<class T, class V>
+      bool fill(vector<T>& input, const V value)
+      {
+        for (int i = 0; i < input.size(); i++) {
+          input(i) = value;
+        }
+        return true;
+      }
+//////////////////////////////////////////////////////
 //////////////////////////////////////////////////////
 //////////////////////////////////////////////////////
     }

@@ -138,9 +138,9 @@ add_executable ( navigation_proc
 add_executable ( map_generation_sim
   src/map_generation_sim.cpp
 )
-#add_executable ( odometry
-#  src/odometry.cpp
-#)
+add_executable ( odometry
+  src/odometry.cpp
+)
 
 ## Add cmake target dependencies of the executable/library
 ## as an example, message headers may need to be generated before nodes
@@ -162,10 +162,14 @@ target_link_libraries( odometry_sim
   ${catkin_LIBRARIES}
   ${GAZEBO_LIBRARIES}
 )
-#target_link_libraries( odometry
-# ${Boost_LIBRARIES}
-#  ${catkin_LIBRARIES}
-#)
+target_link_libraries( odometry
+  ${Boost_LIBRARIES}
+  ${catkin_LIBRARIES}
+)
+set_target_properties( odometry PROPERTIES
+  COMPILE_FLAGS -DNDEBUG
+  COMPILE_FLAGS -DBOOST_UBLAS_NDEBUG
+)
 target_link_libraries( navigation_sim
   ${Boost_LIBRARIES}
   ${catkin_LIBRARIES}

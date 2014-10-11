@@ -12,7 +12,7 @@
 #include <ublas.hpp>
 using namespace boost::numeric::ublas;
 
-#define PI 3.14159265359
+#define PI 3.141592653589793
 #define GG 9.8
 //////////////////////////////////////////////////////
 
@@ -24,15 +24,13 @@ ros::Subscriber obstacle;
 ros::Subscriber opencv;
 ros::Subscriber master;
 
-matrix<float> P  (6,6);
-matrix<float> Q  (6,6);
-matrix<float> R  (3,3);
-vector<float> ahrs    (6);
-vector<float> vel     (3);
-vector<float> acc     (3);
-vector<float> gps_vel (3);
-float del_t = 0.02;
-float p, q, r, Mx, My, Mz;
+vector<double> ahrs    (6);
+vector<double> ins     (6);
+vector<double> vel     (3);
+vector<double> acc     (3);
+vector<double> gps_vel (3);
+double del_t = 0.02;
+double p, q, r, Mx, My, Mz;
 //////////////////////////////////////////////////////
 
 //-- Structure Definitions and Declarations --//
@@ -73,13 +71,14 @@ void OdometryUpdateCallback(const msi_rover::RoverState::ConstPtr& _state) {
 //////////////////////////////////////////////////////
 void Loop();
 void Load();
+void Shutdown();
 
 //////////////////////////////////////////////////////
 int main(int argc, char **argv)
 {
   ros::init(argc, argv, "odometry");
   ros::NodeHandle _nh("rover");
-//  Misc::LoadXMLConfig("config/navigation_proc.xml", Configuration);
+  Misc::LoadXMLConfig("config/odometry.xml", Configuration);
 
 //  rover    = _nh.advertise<msi_rover::NavigationDirectives>("/rover/navigation_proc", 1);
 //  odometry = _nh.subscribe("/rover/odometry",      1, OdometryUpdateCallback);
@@ -90,16 +89,24 @@ int main(int argc, char **argv)
 //  ros::Rate loop_rate(Configuration.get<int>("publishers.navigation_directives.publish_rate"));
   ros::Rate loop_rate(1000);
   Load();
-
+//  fill(cse,0);
   ROS_INFO("Navigation processing node successfuly loaded :)");
 
   while( ros::ok() ) {
     Loop();
     ros::spinOnce();
-    loop_rate.sleep();
+//    loop_rate.sleep();
   }
-  yaw.close();
-  pitch.close();
-  roll.close();
+  Shutdown();
   return 0;
 }
+
+int iter = 0;
+int size=450;
+vector<double> cse(3);
+matrix<double> fitness(30000,30000);
+//int size2=0;
+//vector<double> size_vec(30000);
+//vector<double> win0(3);
+//fill(size_vec,500);
+//fill(win0,0);
