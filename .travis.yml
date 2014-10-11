@@ -1,7 +1,5 @@
 language: cpp
-compiler:
-  - gcc
-  - clang
+compiler: gcc
 # Change this to your needs
 script: cd On-Board/ros_ws/ && catkin_make
 before_install:
