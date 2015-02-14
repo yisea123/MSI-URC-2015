@@ -1,0 +1,16 @@
+# Temporary files
+*.save
+*~
+
+# Compiled files
+colibri/rosws/build/*
+colibri/rosws/devel/*
+colibri/linux4tegra/*
+station/rosws/build/*
+station/rosws/devel/*
+*.so
+*.o
+*.out
+
+# Include pre-compiled header files
+!*.h

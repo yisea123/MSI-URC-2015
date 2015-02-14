@@ -1,0 +1,500 @@
+Analysis & Synthesis report for MobilityMSI
+Thu Feb  5 20:36:30 2015
+Quartus II 64-Bit Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. General Register Statistics
+  9. Parameter Settings for User Entity Instance: UART:UART0
+ 10. Parameter Settings for User Entity Instance: I2C_Slave:I2CSlave
+ 11. Parameter Settings for User Entity Instance: Ultrasonic_Controller:UltrasonicController
+ 12. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2014 Altera Corporation. All rights reserved.
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, the Altera Quartus II License Agreement,
+the Altera MegaCore Function License Agreement, or other 
+applicable license agreement, including, without limitation, 
+that your use is for the sole purpose of programming logic 
+devices manufactured by Altera and sold by Altera or its 
+authorized distributors.  Please refer to the applicable 
+agreement for further details.
+
+
+
++--------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                             ;
++-----------------------------+--------------------------------------------+
+; Analysis & Synthesis Status ; Successful - Thu Feb  5 20:36:30 2015      ;
+; Quartus II 64-Bit Version   ; 14.0.0 Build 200 06/17/2014 SJ Web Edition ;
+; Revision Name               ; MobilityMSI                                ;
+; Top-level Entity Name       ; MobilityMSI                                ;
+; Family                      ; MAX V                                      ;
+; Total logic elements        ; 0                                          ;
+; Total pins                  ; 102                                        ;
+; Total virtual pins          ; 0                                          ;
+; UFM blocks                  ; 0 / 1 ( 0 % )                              ;
++-----------------------------+--------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                        ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                     ; Setting            ; Default Value      ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                     ; 5M1270ZT144C5      ;                    ;
+; Top-level entity name                                                      ; MobilityMSI        ; MobilityMSI        ;
+; Family name                                                                ; MAX V              ; Cyclone IV GX      ;
+; Use smart compilation                                                      ; Off                ; Off                ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                                ; Off                ; Off                ;
+; Restructure Multiplexers                                                   ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                                        ; Off                ; Off                ;
+; Preserve fewer node names                                                  ; On                 ; On                 ;
+; Disable OpenCore Plus hardware evaluation                                  ; Off                ; Off                ;
+; Verilog Version                                                            ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                               ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                   ; Auto               ; Auto               ;
+; Safe State Machine                                                         ; Off                ; Off                ;
+; Extract Verilog State Machines                                             ; On                 ; On                 ;
+; Extract VHDL State Machines                                                ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                          ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                 ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                             ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                    ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                  ; On                 ; On                 ;
+; Parallel Synthesis                                                         ; On                 ; On                 ;
+; NOT Gate Push-Back                                                         ; On                 ; On                 ;
+; Power-Up Don't Care                                                        ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                               ; Off                ; Off                ;
+; Remove Duplicate Registers                                                 ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                       ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                     ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                      ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                  ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                       ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                        ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                             ; Off                ; Off                ;
+; Optimization Technique                                                     ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                         ; 70                 ; 70                 ;
+; Auto Carry Chains                                                          ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                       ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                      ; Off                ; Off                ;
+; Auto Shift Register Replacement                                            ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                            ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                              ; On                 ; On                 ;
+; Allow Synchronous Control Signals                                          ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                     ; Off                ; Off                ;
+; Auto Resource Sharing                                                      ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                        ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                          ; Off                ; Off                ;
+; Report Parameter Settings                                                  ; On                 ; On                 ;
+; Report Source Assignments                                                  ; On                 ; On                 ;
+; Report Connectivity Checks                                                 ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                         ; Off                ; Off                ;
+; Synchronization Register Chain Length                                      ; 2                  ; 2                  ;
+; PowerPlay Power Optimization                                               ; Normal compilation ; Normal compilation ;
+; HDL message level                                                          ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                            ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                   ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                         ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                  ; 100                ; 100                ;
+; Clock MUX Protection                                                       ; On                 ; On                 ;
+; Block Design Naming                                                        ; Auto               ; Auto               ;
+; Synthesis Effort                                                           ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal               ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                       ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                         ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                ; Auto               ; Auto               ;
+; Synthesis Seed                                                             ; 1                  ; 1                  ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+
+
+Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
++-------------------------------------+
+; Parallel Compilation                ;
++----------------------------+--------+
+; Processors                 ; Number ;
++----------------------------+--------+
+; Number detected on machine ; 4      ;
+; Maximum allowed            ; 1      ;
++----------------------------+--------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                      ;
++----------------------------------+-----------------+-----------------+------------------------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                                                                               ; Library ;
++----------------------------------+-----------------+-----------------+------------------------------------------------------------------------------------------------------------+---------+
+; MobilityMSI.vhd                  ; yes             ; User VHDL File  ; /home/singularity/cloud/git/MSI-URC-2015/subsystems/experimental/mobility/quartus/MobilityMSI.vhd          ;         ;
+; I2CHost.vhd                      ; yes             ; User VHDL File  ; /home/singularity/cloud/git/MSI-URC-2015/subsystems/experimental/mobility/quartus/I2CHost.vhd              ;         ;
+; MobilityTypesPkg.vhd             ; yes             ; User VHDL File  ; /home/singularity/cloud/git/MSI-URC-2015/subsystems/experimental/mobility/quartus/MobilityTypesPkg.vhd     ;         ;
+; I2CSlave.vhd                     ; yes             ; User VHDL File  ; /home/singularity/cloud/git/MSI-URC-2015/subsystems/experimental/mobility/quartus/I2CSlave.vhd             ;         ;
+; UART.vhd                         ; yes             ; User VHDL File  ; /home/singularity/cloud/git/MSI-URC-2015/subsystems/experimental/mobility/quartus/UART.vhd                 ;         ;
+; SPIHost.vhd                      ; yes             ; User VHDL File  ; /home/singularity/cloud/git/MSI-URC-2015/subsystems/experimental/mobility/quartus/SPIHost.vhd              ;         ;
+; SPISlave.vhd                     ; yes             ; User VHDL File  ; /home/singularity/cloud/git/MSI-URC-2015/subsystems/experimental/mobility/quartus/SPISlave.vhd             ;         ;
+; MotorDriver.vhd                  ; yes             ; User VHDL File  ; /home/singularity/cloud/git/MSI-URC-2015/subsystems/experimental/mobility/quartus/MotorDriver.vhd          ;         ;
+; EncoderHandler.vhd               ; yes             ; User VHDL File  ; /home/singularity/cloud/git/MSI-URC-2015/subsystems/experimental/mobility/quartus/EncoderHandler.vhd       ;         ;
+; UltrasonicController.vhd         ; yes             ; User VHDL File  ; /home/singularity/cloud/git/MSI-URC-2015/subsystems/experimental/mobility/quartus/UltrasonicController.vhd ;         ;
+; StatusPoll.vhd                   ; yes             ; User VHDL File  ; /home/singularity/cloud/git/MSI-URC-2015/subsystems/experimental/mobility/quartus/StatusPoll.vhd           ;         ;
++----------------------------------+-----------------+-----------------+------------------------------------------------------------------------------------------------------------+---------+
+
+
++-----------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary         ;
++---------------------------------------------+-------+
+; Resource                                    ; Usage ;
++---------------------------------------------+-------+
+; Total logic elements                        ; 0     ;
+;     -- Combinational with no register       ; 0     ;
+;     -- Register only                        ; 0     ;
+;     -- Combinational with a register        ; 0     ;
+;                                             ;       ;
+; Logic element usage by number of LUT inputs ;       ;
+;     -- 4 input functions                    ; 0     ;
+;     -- 3 input functions                    ; 0     ;
+;     -- 2 input functions                    ; 0     ;
+;     -- 1 input functions                    ; 0     ;
+;     -- 0 input functions                    ; 0     ;
+;                                             ;       ;
+; Logic elements by mode                      ;       ;
+;     -- normal mode                          ; 0     ;
+;     -- arithmetic mode                      ; 0     ;
+;     -- qfbk mode                            ; 0     ;
+;     -- register cascade mode                ; 0     ;
+;     -- synchronous clear/load mode          ; 0     ;
+;     -- asynchronous clear/load mode         ; 0     ;
+;                                             ;       ;
+; Total registers                             ; 0     ;
+; I/O pins                                    ; 102   ;
++---------------------------------------------+-------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                  ;
++----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------+--------------+
+; Compilation Hierarchy Node ; Logic Cells ; LC Registers ; UFM Blocks ; Pins ; Virtual Pins ; LUT-Only LCs ; Register-Only LCs ; LUT/Register LCs ; Carry Chain LCs ; Packed LCs ; Full Hierarchy Name ; Library Name ;
++----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------+--------------+
+; |MobilityMSI               ; 0 (0)       ; 0            ; 0          ; 102  ; 0            ; 0 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |MobilityMSI        ; work         ;
++----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 0     ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 0     ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++---------------------------------------------------------+
+; Parameter Settings for User Entity Instance: UART:UART0 ;
++----------------+--------+-------------------------------+
+; Parameter Name ; Value  ; Type                          ;
++----------------+--------+-------------------------------+
+; baud_rate      ; 115200 ; Signed Integer                ;
++----------------+--------+-------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: I2C_Slave:I2CSlave ;
++----------------+---------+--------------------------------------+
+; Parameter Name ; Value   ; Type                                 ;
++----------------+---------+--------------------------------------+
+; slave_addr     ; 0000101 ; Unsigned Binary                      ;
++----------------+---------+--------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Ultrasonic_Controller:UltrasonicController ;
++-------------------+-------+-------------------------------------------------------------+
+; Parameter Name    ; Value ; Type                                                        ;
++-------------------+-------+-------------------------------------------------------------+
+; number_of_sensors ; 3     ; Signed Integer                                              ;
++-------------------+-------+-------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II 64-Bit Analysis & Synthesis
+    Info: Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
+    Info: Processing started: Thu Feb  5 20:36:24 2015
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off MobilityMSI -c MobilityMSI
+Warning (20028): Parallel compilation is not licensed and has been disabled
+Info (12021): Found 2 design units, including 1 entities, in source file MobilityMSI.vhd
+    Info (12022): Found design unit 1: MobilityMSI-behavioral
+    Info (12023): Found entity 1: MobilityMSI
+Info (12021): Found 2 design units, including 1 entities, in source file I2CHost.vhd
+    Info (12022): Found design unit 1: I2C_Host-behavioral
+    Info (12023): Found entity 1: I2C_Host
+Info (12021): Found 1 design units, including 0 entities, in source file MobilityTypesPkg.vhd
+    Info (12022): Found design unit 1: mobility_types_pkg
+Info (12021): Found 2 design units, including 1 entities, in source file I2CSlave.vhd
+    Info (12022): Found design unit 1: I2C_Slave-behavioral
+    Info (12023): Found entity 1: I2C_Slave
+Info (12021): Found 2 design units, including 1 entities, in source file UART.vhd
+    Info (12022): Found design unit 1: UART-behavioral
+    Info (12023): Found entity 1: UART
+Info (12021): Found 2 design units, including 1 entities, in source file SPIHost.vhd
+    Info (12022): Found design unit 1: SPI_Host-behavioral
+    Info (12023): Found entity 1: SPI_Host
+Info (12021): Found 2 design units, including 1 entities, in source file SPISlave.vhd
+    Info (12022): Found design unit 1: SPI_Slave-behavioral
+    Info (12023): Found entity 1: SPI_Slave
+Info (12021): Found 2 design units, including 1 entities, in source file MotorDriver.vhd
+    Info (12022): Found design unit 1: Motor_Driver-behavioral
+    Info (12023): Found entity 1: Motor_Driver
+Info (12021): Found 2 design units, including 1 entities, in source file EncoderHandler.vhd
+    Info (12022): Found design unit 1: Encoder_Handler-behavioral
+    Info (12023): Found entity 1: Encoder_Handler
+Info (12021): Found 2 design units, including 1 entities, in source file UltrasonicController.vhd
+    Info (12022): Found design unit 1: Ultrasonic_Controller-behavioral
+    Info (12023): Found entity 1: Ultrasonic_Controller
+Info (12021): Found 2 design units, including 1 entities, in source file StatusPoll.vhd
+    Info (12022): Found design unit 1: Status_Poll-behavioral
+    Info (12023): Found entity 1: Status_Poll
+Info (12127): Elaborating entity "MobilityMSI" for the top level hierarchy
+Warning (10541): VHDL Signal Declaration warning at MobilityMSI.vhd(68): used implicit default value for signal "miso_host" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Info (12128): Elaborating entity "UART" for hierarchy "UART:UART0"
+Warning (10541): VHDL Signal Declaration warning at UART.vhd(18): used implicit default value for signal "error" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at UART.vhd(21): used implicit default value for signal "tx" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Info (12128): Elaborating entity "I2C_Host" for hierarchy "I2C_Host:I2CHost"
+Warning (10541): VHDL Signal Declaration warning at I2CHost.vhd(12): used implicit default value for signal "error" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at I2CHost.vhd(14): used implicit default value for signal "scl" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Info (12128): Elaborating entity "I2C_Slave" for hierarchy "I2C_Slave:I2CSlave"
+Warning (10541): VHDL Signal Declaration warning at I2CSlave.vhd(17): used implicit default value for signal "error" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at I2CSlave.vhd(22): used implicit default value for signal "motor_directive" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Info (12128): Elaborating entity "SPI_Host" for hierarchy "SPI_Host:SPIHost"
+Warning (10541): VHDL Signal Declaration warning at SPIHost.vhd(12): used implicit default value for signal "error" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at SPIHost.vhd(15): used implicit default value for signal "mosi" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at SPIHost.vhd(16): used implicit default value for signal "sck" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at SPIHost.vhd(17): used implicit default value for signal "ss" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at SPIHost.vhd(18): used implicit default value for signal "current_sense" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at SPIHost.vhd(19): used implicit default value for signal "pot_angles" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Info (12128): Elaborating entity "SPI_Slave" for hierarchy "SPI_Slave:SPISlave"
+Warning (10541): VHDL Signal Declaration warning at SPISlave.vhd(12): used implicit default value for signal "error" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at SPISlave.vhd(14): used implicit default value for signal "miso" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at SPISlave.vhd(19): used implicit default value for signal "motor_directive" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Info (12128): Elaborating entity "Motor_Driver" for hierarchy "Motor_Driver:MotorDriver"
+Warning (10541): VHDL Signal Declaration warning at MotorDriver.vhd(9): used implicit default value for signal "error_out" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at MotorDriver.vhd(13): used implicit default value for signal "en" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at MotorDriver.vhd(14): used implicit default value for signal "pwm_f" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at MotorDriver.vhd(15): used implicit default value for signal "pwm_r" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Info (12128): Elaborating entity "Encoder_Handler" for hierarchy "Encoder_Handler:EncoderHandler"
+Warning (10541): VHDL Signal Declaration warning at EncoderHandler.vhd(11): used implicit default value for signal "error" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at EncoderHandler.vhd(16): used implicit default value for signal "velocity" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at EncoderHandler.vhd(21): used implicit default value for signal "rst" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(29): signal "pin_b" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(30): signal "pose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(32): signal "pose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(35): signal "pin_b" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(36): signal "pose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(38): signal "pose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(48): signal "pin_b" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(49): signal "pose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(51): signal "pose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(54): signal "pin_b" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(55): signal "pose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(57): signal "pose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(67): signal "pin_b" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(68): signal "pose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(70): signal "pose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(73): signal "pin_b" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(74): signal "pose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(76): signal "pose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(86): signal "pin_b" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(87): signal "pose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(89): signal "pose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(92): signal "pin_b" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(93): signal "pose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(95): signal "pose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(105): signal "pin_b" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(106): signal "pose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(108): signal "pose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(111): signal "pin_b" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(112): signal "pose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(114): signal "pose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(124): signal "pin_b" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(125): signal "pose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(127): signal "pose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(130): signal "pin_b" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(131): signal "pose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(133): signal "pose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(143): signal "pin_b" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(144): signal "pose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(146): signal "pose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(149): signal "pin_b" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(150): signal "pose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(152): signal "pose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(162): signal "pin_b" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(163): signal "pose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(165): signal "pose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(168): signal "pin_b" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(169): signal "pose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(171): signal "pose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(181): signal "pin_b" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(182): signal "pose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(184): signal "pose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(187): signal "pin_b" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(188): signal "pose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(190): signal "pose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(200): signal "pin_b" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(201): signal "pose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(203): signal "pose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(206): signal "pin_b" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(207): signal "pose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(209): signal "pose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Info (12128): Elaborating entity "Ultrasonic_Controller" for hierarchy "Ultrasonic_Controller:UltrasonicController"
+Warning (10541): VHDL Signal Declaration warning at UltrasonicController.vhd(14): used implicit default value for signal "error" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at UltrasonicController.vhd(16): used implicit default value for signal "trig" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at UltrasonicController.vhd(19): used implicit default value for signal "dist" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Info (12128): Elaborating entity "Status_Poll" for hierarchy "Status_Poll:StatusPoll"
+Warning (10541): VHDL Signal Declaration warning at StatusPoll.vhd(8): used implicit default value for signal "status" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (13039): The following bidir pins have no drivers
+    Warning (13040): Bidir "sda_host" has no driver
+    Warning (13040): Bidir "sda_slave" has no driver
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "status[0]" is stuck at GND
+    Warning (13410): Pin "status[1]" is stuck at GND
+    Warning (13410): Pin "status[2]" is stuck at GND
+    Warning (13410): Pin "status[3]" is stuck at GND
+    Warning (13410): Pin "status[4]" is stuck at GND
+    Warning (13410): Pin "status[5]" is stuck at GND
+    Warning (13410): Pin "status[6]" is stuck at GND
+    Warning (13410): Pin "status[7]" is stuck at GND
+    Warning (13410): Pin "scl_host" is stuck at GND
+    Warning (13410): Pin "mosi_host_0" is stuck at GND
+    Warning (13410): Pin "sck_host_0" is stuck at GND
+    Warning (13410): Pin "mosi_host_1" is stuck at GND
+    Warning (13410): Pin "sck_host_1" is stuck at GND
+    Warning (13410): Pin "ss_host[0]" is stuck at GND
+    Warning (13410): Pin "ss_host[1]" is stuck at GND
+    Warning (13410): Pin "ss_host[2]" is stuck at GND
+    Warning (13410): Pin "ss_host[3]" is stuck at GND
+    Warning (13410): Pin "ss_host[4]" is stuck at GND
+    Warning (13410): Pin "ss_host[5]" is stuck at GND
+    Warning (13410): Pin "ss_host[6]" is stuck at GND
+    Warning (13410): Pin "ss_host[7]" is stuck at GND
+    Warning (13410): Pin "miso_slave" is stuck at GND
+    Warning (13410): Pin "uart_tx" is stuck at GND
+    Warning (13410): Pin "motor_en[0]" is stuck at GND
+    Warning (13410): Pin "motor_en[1]" is stuck at GND
+    Warning (13410): Pin "motor_en[2]" is stuck at GND
+    Warning (13410): Pin "motor_en[3]" is stuck at GND
+    Warning (13410): Pin "motor_en[4]" is stuck at GND
+    Warning (13410): Pin "motor_en[5]" is stuck at GND
+    Warning (13410): Pin "motor_en[6]" is stuck at GND
+    Warning (13410): Pin "motor_en[7]" is stuck at GND
+    Warning (13410): Pin "motor_en[8]" is stuck at GND
+    Warning (13410): Pin "motor_en[9]" is stuck at GND
+    Warning (13410): Pin "motor_pwm_f[0]" is stuck at GND
+    Warning (13410): Pin "motor_pwm_f[1]" is stuck at GND
+    Warning (13410): Pin "motor_pwm_f[2]" is stuck at GND
+    Warning (13410): Pin "motor_pwm_f[3]" is stuck at GND
+    Warning (13410): Pin "motor_pwm_f[4]" is stuck at GND
+    Warning (13410): Pin "motor_pwm_f[5]" is stuck at GND
+    Warning (13410): Pin "motor_pwm_f[6]" is stuck at GND
+    Warning (13410): Pin "motor_pwm_f[7]" is stuck at GND
+    Warning (13410): Pin "motor_pwm_f[8]" is stuck at GND
+    Warning (13410): Pin "motor_pwm_f[9]" is stuck at GND
+    Warning (13410): Pin "motor_pwm_r[0]" is stuck at GND
+    Warning (13410): Pin "motor_pwm_r[1]" is stuck at GND
+    Warning (13410): Pin "motor_pwm_r[2]" is stuck at GND
+    Warning (13410): Pin "motor_pwm_r[3]" is stuck at GND
+    Warning (13410): Pin "motor_pwm_r[4]" is stuck at GND
+    Warning (13410): Pin "motor_pwm_r[5]" is stuck at GND
+    Warning (13410): Pin "motor_pwm_r[6]" is stuck at GND
+    Warning (13410): Pin "motor_pwm_r[7]" is stuck at GND
+    Warning (13410): Pin "motor_pwm_r[8]" is stuck at GND
+    Warning (13410): Pin "motor_pwm_r[9]" is stuck at GND
+    Warning (13410): Pin "ultrasonic_trig[0]" is stuck at GND
+    Warning (13410): Pin "ultrasonic_trig[1]" is stuck at GND
+    Warning (13410): Pin "ultrasonic_trig[2]" is stuck at GND
+    Warning (13410): Pin "ultrasonic_trig[3]" is stuck at GND
+    Warning (13410): Pin "ultrasonic_trig[4]" is stuck at GND
+    Warning (13410): Pin "ultrasonic_trig[5]" is stuck at GND
+    Warning (13410): Pin "ultrasonic_trig[6]" is stuck at GND
+    Warning (13410): Pin "ultrasonic_trig[7]" is stuck at GND
+Warning (21074): Design contains 39 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "clk"
+    Warning (15610): No output dependent on input pin "clk_comm"
+    Warning (15610): No output dependent on input pin "lock"
+    Warning (15610): No output dependent on input pin "proto_select"
+    Warning (15610): No output dependent on input pin "scl_slave"
+    Warning (15610): No output dependent on input pin "miso_host_0"
+    Warning (15610): No output dependent on input pin "miso_host_1"
+    Warning (15610): No output dependent on input pin "mosi_slave"
+    Warning (15610): No output dependent on input pin "sck_slave"
+    Warning (15610): No output dependent on input pin "ss_slave"
+    Warning (15610): No output dependent on input pin "uart_rx"
+    Warning (15610): No output dependent on input pin "encoder_a[0]"
+    Warning (15610): No output dependent on input pin "encoder_a[1]"
+    Warning (15610): No output dependent on input pin "encoder_a[2]"
+    Warning (15610): No output dependent on input pin "encoder_a[3]"
+    Warning (15610): No output dependent on input pin "encoder_a[4]"
+    Warning (15610): No output dependent on input pin "encoder_a[5]"
+    Warning (15610): No output dependent on input pin "encoder_a[6]"
+    Warning (15610): No output dependent on input pin "encoder_a[7]"
+    Warning (15610): No output dependent on input pin "encoder_a[8]"
+    Warning (15610): No output dependent on input pin "encoder_a[9]"
+    Warning (15610): No output dependent on input pin "encoder_b[0]"
+    Warning (15610): No output dependent on input pin "encoder_b[1]"
+    Warning (15610): No output dependent on input pin "encoder_b[2]"
+    Warning (15610): No output dependent on input pin "encoder_b[3]"
+    Warning (15610): No output dependent on input pin "encoder_b[4]"
+    Warning (15610): No output dependent on input pin "encoder_b[5]"
+    Warning (15610): No output dependent on input pin "encoder_b[6]"
+    Warning (15610): No output dependent on input pin "encoder_b[7]"
+    Warning (15610): No output dependent on input pin "encoder_b[8]"
+    Warning (15610): No output dependent on input pin "encoder_b[9]"
+    Warning (15610): No output dependent on input pin "ultrasonic_echo[0]"
+    Warning (15610): No output dependent on input pin "ultrasonic_echo[1]"
+    Warning (15610): No output dependent on input pin "ultrasonic_echo[2]"
+    Warning (15610): No output dependent on input pin "ultrasonic_echo[3]"
+    Warning (15610): No output dependent on input pin "ultrasonic_echo[4]"
+    Warning (15610): No output dependent on input pin "ultrasonic_echo[5]"
+    Warning (15610): No output dependent on input pin "ultrasonic_echo[6]"
+    Warning (15610): No output dependent on input pin "ultrasonic_echo[7]"
+Info (21057): Implemented 102 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 39 input pins
+    Info (21059): Implemented 61 output pins
+    Info (21060): Implemented 2 bidirectional pins
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 193 warnings
+    Info: Peak virtual memory: 786 megabytes
+    Info: Processing ended: Thu Feb  5 20:36:30 2015
+    Info: Elapsed time: 00:00:06
+    Info: Total CPU time (on all processors): 00:00:03
+
+

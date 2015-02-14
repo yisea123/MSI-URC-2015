@@ -1,0 +1,22 @@
+library ieee;
+use ieee.std_logic_1164.all;
+library work;
+use work.mobility_types_pkg.all;
+
+entity SPI_Host is
+port(
+	  clk      : in  std_ulogic;
+	  clk_comm : in  std_ulogic;
+	  error    : out std_ulogic;
+	  
+	  mosi     : out std_ulogic;
+	  miso     : in  std_ulogic;
+	  sck      : out std_ulogic;
+	  ss       : out std_ulogic_vector(7 downto 0);
+	 );
+end entity SPI_Host;
+
+architecture behavioral of SPI_Host is
+begin
+
+end behavioral;

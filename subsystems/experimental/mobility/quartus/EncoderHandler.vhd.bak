@@ -1,0 +1,21 @@
+library ieee;
+use ieee.std_logic_1164.all;
+library work;
+use work.mobility_types_pkg.all;
+
+entity Encoder_Handler is
+port(
+	  clk      : in  std_ulogic;
+	  error    : out std_ulogic;
+	  
+	  pin_a    : in  std_ulogic_vector(9 downto 0);
+	  pin_b    : in  std_ulogic_vector(9 downto 0);
+
+	  velocity : out int8_vector10;
+    );
+end entity Encoder_Handler;
+
+architecture behavioral of Encoder_Handler is
+begin
+
+end behavioral;

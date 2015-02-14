@@ -1,0 +1,171 @@
+# -------------------------------------------------------------------------- #
+#
+# Copyright (C) 1991-2014 Altera Corporation. All rights reserved.
+# Your use of Altera Corporation's design tools, logic functions 
+# and other software and tools, and its AMPP partner logic 
+# functions, and any output files from any of the foregoing 
+# (including device programming or simulation files), and any 
+# associated documentation or information are expressly subject 
+# to the terms and conditions of the Altera Program License 
+# Subscription Agreement, the Altera Quartus II License Agreement,
+# the Altera MegaCore Function License Agreement, or other 
+# applicable license agreement, including, without limitation, 
+# that your use is for the sole purpose of programming logic 
+# devices manufactured by Altera and sold by Altera or its 
+# authorized distributors.  Please refer to the applicable 
+# agreement for further details.
+#
+# -------------------------------------------------------------------------- #
+#
+# Quartus II 64-Bit
+# Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
+# Date created = 01:42:44  February 03, 2015
+#
+# -------------------------------------------------------------------------- #
+#
+# Notes:
+#
+# 1) The default values for assignments are stored in the file:
+#		MobilityMSI_assignment_defaults.qdf
+#    If this file doesn't exist, see file:
+#		assignment_defaults.qdf
+#
+# 2) Altera recommends that you do not modify this file. This
+#    file is updated automatically by the Quartus II software
+#    and any changes you make may be lost or overwritten.
+#
+# -------------------------------------------------------------------------- #
+
+
+set_global_assignment -name FAMILY "MAX V"
+set_global_assignment -name DEVICE 5M1270ZT144C5
+set_global_assignment -name TOP_LEVEL_ENTITY MobilityMSI
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION 14.0
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "01:42:44  FEBRUARY 03, 2015"
+set_global_assignment -name LAST_QUARTUS_VERSION 14.0
+set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
+set_global_assignment -name DEVICE_FILTER_PACKAGE TQFP
+set_global_assignment -name DEVICE_FILTER_PIN_COUNT 144
+set_global_assignment -name DEVICE_FILTER_SPEED_GRADE 5
+set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR "-1"
+set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim-Altera (VHDL)"
+set_global_assignment -name EDA_OUTPUT_DATA_FORMAT VHDL -section_id eda_simulation
+set_global_assignment -name VHDL_FILE MobilityMSI.vhd
+set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "3.3-V LVTTL"
+set_location_assignment PIN_118 -to ultrasonic_trig[0]
+set_location_assignment PIN_108 -to ultrasonic_echo[0]
+set_location_assignment PIN_117 -to ultrasonic_trig[1]
+set_location_assignment PIN_107 -to ultrasonic_echo[1]
+set_location_assignment PIN_106 -to ultrasonic_echo[2]
+set_location_assignment PIN_114 -to ultrasonic_trig[2]
+set_location_assignment PIN_113 -to ultrasonic_trig[3]
+set_location_assignment PIN_112 -to ultrasonic_trig[4]
+set_location_assignment PIN_111 -to ultrasonic_trig[5]
+set_location_assignment PIN_110 -to ultrasonic_trig[6]
+set_location_assignment PIN_109 -to ultrasonic_trig[7]
+set_instance_assignment -name IO_STANDARD "3.3-V PCI" -to ultrasonic_echo[0]
+set_instance_assignment -name IO_STANDARD "3.3-V PCI" -to ultrasonic_echo[2]
+set_instance_assignment -name IO_STANDARD "3.3-V PCI" -to ultrasonic_echo[1]
+set_location_assignment PIN_105 -to ultrasonic_echo[3]
+set_location_assignment PIN_104 -to ultrasonic_echo[4]
+set_location_assignment PIN_103 -to ultrasonic_echo[5]
+set_location_assignment PIN_102 -to ultrasonic_echo[6]
+set_location_assignment PIN_101 -to ultrasonic_echo[7]
+set_instance_assignment -name IO_STANDARD "3.3-V PCI" -to ultrasonic_echo[7]
+set_instance_assignment -name IO_STANDARD "3.3-V PCI" -to ultrasonic_echo[6]
+set_instance_assignment -name IO_STANDARD "3.3-V PCI" -to ultrasonic_echo[5]
+set_instance_assignment -name IO_STANDARD "3.3-V PCI" -to ultrasonic_echo[4]
+set_instance_assignment -name IO_STANDARD "3.3-V PCI" -to ultrasonic_echo[3]
+set_location_assignment PIN_91 -to clk_comm
+set_location_assignment PIN_18 -to clk
+set_global_assignment -name VHDL_FILE I2CHost.vhd
+set_global_assignment -name VHDL_FILE MobilityTypesPkg.vhd
+set_global_assignment -name VHDL_FILE I2CSlave.vhd
+set_global_assignment -name VHDL_FILE UART.vhd
+set_global_assignment -name VHDL_FILE SPIHost.vhd
+set_global_assignment -name VHDL_FILE SPISlave.vhd
+set_global_assignment -name VHDL_FILE MotorDriver.vhd
+set_global_assignment -name VHDL_FILE EncoderHandler.vhd
+set_global_assignment -name VHDL_FILE UltrasonicController.vhd
+set_global_assignment -name VHDL_FILE StatusPoll.vhd
+set_location_assignment PIN_73 -to encoder_a[9]
+set_location_assignment PIN_74 -to encoder_b[9]
+set_location_assignment PIN_75 -to encoder_a[8]
+set_location_assignment PIN_76 -to encoder_b[8]
+set_location_assignment PIN_77 -to encoder_a[7]
+set_location_assignment PIN_79 -to encoder_b[7]
+set_location_assignment PIN_80 -to encoder_a[6]
+set_location_assignment PIN_84 -to encoder_a[5]
+set_location_assignment PIN_81 -to encoder_b[6]
+set_location_assignment PIN_85 -to encoder_b[5]
+set_location_assignment PIN_86 -to encoder_a[4]
+set_location_assignment PIN_87 -to encoder_b[4]
+set_location_assignment PIN_88 -to encoder_a[3]
+set_location_assignment PIN_89 -to encoder_b[3]
+set_location_assignment PIN_93 -to encoder_a[2]
+set_location_assignment PIN_94 -to encoder_b[2]
+set_location_assignment PIN_95 -to encoder_a[1]
+set_location_assignment PIN_97 -to encoder_a[0]
+set_location_assignment PIN_96 -to encoder_b[1]
+set_location_assignment PIN_98 -to encoder_b[0]
+set_instance_assignment -name IO_STANDARD "3.3V SCHMITT TRIGGER INPUT" -to clk
+set_instance_assignment -name IO_STANDARD "3.3V SCHMITT TRIGGER INPUT" -to clk_comm
+set_location_assignment PIN_48 -to motor_en[9]
+set_location_assignment PIN_49 -to motor_pwm_f[9]
+set_location_assignment PIN_144 -to motor_en[1]
+set_location_assignment PIN_143 -to motor_pwm_f[1]
+set_location_assignment PIN_142 -to motor_pwm_r[1]
+set_location_assignment PIN_141 -to motor_en[6]
+set_location_assignment PIN_140 -to motor_pwm_f[6]
+set_location_assignment PIN_139 -to motor_pwm_r[6]
+set_location_assignment PIN_138 -to motor_en[5]
+set_location_assignment PIN_137 -to motor_pwm_f[5]
+set_location_assignment PIN_134 -to motor_pwm_r[5]
+set_location_assignment PIN_133 -to motor_en[4]
+set_location_assignment PIN_132 -to motor_pwm_f[4]
+set_location_assignment PIN_131 -to motor_pwm_r[4]
+set_location_assignment PIN_130 -to motor_en[0]
+set_location_assignment PIN_129 -to motor_pwm_f[0]
+set_location_assignment PIN_127 -to motor_pwm_r[0]
+set_location_assignment PIN_37 -to motor_en[2]
+set_location_assignment PIN_38 -to motor_pwm_f[2]
+set_location_assignment PIN_39 -to motor_pwm_r[2]
+set_location_assignment PIN_40 -to motor_en[7]
+set_location_assignment PIN_41 -to motor_pwm_f[7]
+set_location_assignment PIN_42 -to motor_pwm_r[7]
+set_location_assignment PIN_43 -to motor_en[8]
+set_location_assignment PIN_44 -to motor_pwm_f[8]
+set_location_assignment PIN_45 -to motor_pwm_r[8]
+set_location_assignment PIN_50 -to motor_pwm_r[9]
+set_location_assignment PIN_51 -to motor_en[3]
+set_location_assignment PIN_52 -to motor_pwm_f[3]
+set_location_assignment PIN_53 -to motor_pwm_r[3]
+set_location_assignment PIN_57 -to miso_host_0
+set_location_assignment PIN_58 -to mosi_host_0
+set_location_assignment PIN_59 -to sck_host_0
+set_location_assignment PIN_60 -to ss_host[0]
+set_location_assignment PIN_123 -to miso_host_1
+set_location_assignment PIN_122 -to mosi_host_1
+set_location_assignment PIN_121 -to sck_host_1
+set_location_assignment PIN_119 -to ss_host[1]
+set_location_assignment PIN_120 -to ss_host[2]
+set_location_assignment PIN_8 -to scl_slave
+set_location_assignment PIN_7 -to sda_slave
+set_location_assignment PIN_6 -to ss_slave
+set_location_assignment PIN_5 -to sck_slave
+set_location_assignment PIN_4 -to mosi_slave
+set_location_assignment PIN_3 -to miso_slave
+set_location_assignment PIN_12 -to lock
+set_location_assignment PIN_13 -to proto_select
+set_location_assignment PIN_32 -to status[0]
+set_location_assignment PIN_31 -to status[1]
+set_location_assignment PIN_30 -to status[2]
+set_location_assignment PIN_29 -to status[3]
+set_location_assignment PIN_28 -to status[4]
+set_location_assignment PIN_27 -to status[5]
+set_location_assignment PIN_24 -to uart_rx
+set_location_assignment PIN_23 -to uart_tx
+set_location_assignment PIN_66 -to scl_host
+set_location_assignment PIN_67 -to sda_host

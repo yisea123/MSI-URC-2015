@@ -1,0 +1,35 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity MobilityMSI is
+port(
+     clk             : in  std_ulogic;
+	  clk_comm        : in  std_ulogic;
+	  
+	  rst             : in  std_ulogic;
+	  status          : out std_ulogic_vector(7 downto 0);
+	  
+	  scl_host        : out   std_ulogic;
+	  sda_host        : inout std_ulogic;
+	  
+	  scl_slave       : in    std_ulogic;
+	  sda_slave       : inout std_ulogic;
+
+	  mosi_host       : out std_ulogic;
+	  miso_host       : out std_ulogic;
+	  sck_host        : out std_ulogic;
+	  ss_host         : out std_ulogic;
+
+	  mosi_slave      : in  std_ulogic;
+	  miso_slave      : in  std_ulogic;
+	  sck_slave       : in  std_ulogic;
+	  ss_slave        : in  std_ulogic;
+
+     ultrasonic_trig : out std_ulogic_vector(7 downto 0);
+     ultrasonic_echo : in  std_ulogic_vector(7 downto 0);
+	 );
+end entity MobilityMSI;
+
+architecture behavioral of MobilityMSI is
+begin
+end MobilityMSI;

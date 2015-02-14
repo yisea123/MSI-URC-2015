@@ -1,0 +1,4 @@
+<launch>
+    <node name="teleTTY" pkg="rover_control" type="teleTTY.bash" args="" output="screen" required="true"/>
+</launch>
+
