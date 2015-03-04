@@ -1,4 +1,11 @@
 vendor_name = ModelSim
+source_file = 1, /home/singularity/cloud/git/MSI-URC-2015/subsystems/experimental/mobility/quartus/src/ultrsnic.vhd
+source_file = 1, /home/singularity/cloud/git/MSI-URC-2015/subsystems/experimental/mobility/quartus/src/monitor.vhd
+source_file = 1, /home/singularity/cloud/git/MSI-URC-2015/subsystems/experimental/mobility/quartus/src/motor_driver.vhd
+source_file = 1, /home/singularity/cloud/git/MSI-URC-2015/subsystems/experimental/mobility/quartus/src/motor_controller.vhd
+source_file = 1, /home/singularity/cloud/git/MSI-URC-2015/subsystems/experimental/mobility/quartus/src/ultrsnic_controller.vhd
+source_file = 1, /home/singularity/cloud/git/MSI-URC-2015/subsystems/experimental/mobility/quartus/src/encoder_handler.vhd
+source_file = 1, /home/singularity/cloud/git/MSI-URC-2015/subsystems/experimental/mobility/quartus/src/encoder.vhd
 source_file = 1, /home/singularity/cloud/git/MSI-URC-2015/subsystems/experimental/mobility/quartus/src/spi_slave_controller.vhd
 source_file = 1, /home/singularity/cloud/git/MSI-URC-2015/subsystems/experimental/mobility/quartus/src/spi_host_controller.vhd
 source_file = 1, /home/singularity/cloud/git/MSI-URC-2015/subsystems/experimental/mobility/quartus/src/spi_slave.vhd

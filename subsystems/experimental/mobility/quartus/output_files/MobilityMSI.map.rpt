@@ -1,5 +1,5 @@
 Analysis & Synthesis report for MobilityMSI
-Wed Mar  4 14:20:49 2015
+Wed Mar  4 21:24:03 2015
 Quartus II 64-Bit Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
 
 
@@ -22,13 +22,19 @@ Quartus II 64-Bit Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
  14. Parameter Settings for User Entity Instance: uart_controller:UART0
  15. Parameter Settings for User Entity Instance: uart_controller:UART0|uart:UART0
  16. Parameter Settings for User Entity Instance: i2c_slave_controller:I2CSlave
- 17. Port Connectivity Checks: "spi_slave_controller:SPISlave"
- 18. Port Connectivity Checks: "spi_host_controller:SPIHost"
- 19. Port Connectivity Checks: "i2c_slave_controller:I2CSlave"
- 20. Port Connectivity Checks: "i2c_host_controller:I2CHost"
- 21. Port Connectivity Checks: "uart_controller:UART0|uart:UART0"
- 22. Port Connectivity Checks: "uart_controller:UART0"
- 23. Analysis & Synthesis Messages
+ 17. Parameter Settings for User Entity Instance: ultrasonic_controller:UltrasonicController
+ 18. Parameter Settings for User Entity Instance: ultrasonic_controller:UltrasonicController|ultrasonic_sensor:US_0
+ 19. Parameter Settings for User Entity Instance: ultrasonic_controller:UltrasonicController|ultrasonic_sensor:US_1
+ 20. Parameter Settings for User Entity Instance: ultrasonic_controller:UltrasonicController|ultrasonic_sensor:US_2
+ 21. Parameter Settings for User Entity Instance: ultrasonic_controller:UltrasonicController|ultrasonic_sensor:US_3
+ 22. Parameter Settings for User Entity Instance: ultrasonic_controller:UltrasonicController|ultrasonic_sensor:US_4
+ 23. Parameter Settings for User Entity Instance: ultrasonic_controller:UltrasonicController|ultrasonic_sensor:US_5
+ 24. Parameter Settings for User Entity Instance: ultrasonic_controller:UltrasonicController|ultrasonic_sensor:US_6
+ 25. Parameter Settings for User Entity Instance: ultrasonic_controller:UltrasonicController|ultrasonic_sensor:US_7
+ 26. Port Connectivity Checks: "monitor:Monitor"
+ 27. Port Connectivity Checks: "spi_slave_controller:SPISlave"
+ 28. Port Connectivity Checks: "uart_controller:UART0|uart:UART0"
+ 29. Analysis & Synthesis Messages
 
 
 
@@ -55,7 +61,7 @@ agreement for further details.
 +--------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                             ;
 +-----------------------------+--------------------------------------------+
-; Analysis & Synthesis Status ; Successful - Wed Mar  4 14:20:49 2015      ;
+; Analysis & Synthesis Status ; Successful - Wed Mar  4 21:24:03 2015      ;
 ; Quartus II 64-Bit Version   ; 14.0.0 Build 200 06/17/2014 SJ Web Edition ;
 ; Revision Name               ; MobilityMSI                                ;
 ; Top-level Entity Name       ; MobilityMSI                                ;
@@ -156,6 +162,13 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------------+-----------------+-----------------+----------------------------------------------------------------------------------------------------------------+---------+
 ; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                                                                                   ; Library ;
 +----------------------------------+-----------------+-----------------+----------------------------------------------------------------------------------------------------------------+---------+
+; src/ultrsnic.vhd                 ; yes             ; User VHDL File  ; /home/singularity/cloud/git/MSI-URC-2015/subsystems/experimental/mobility/quartus/src/ultrsnic.vhd             ;         ;
+; src/monitor.vhd                  ; yes             ; User VHDL File  ; /home/singularity/cloud/git/MSI-URC-2015/subsystems/experimental/mobility/quartus/src/monitor.vhd              ;         ;
+; src/motor_driver.vhd             ; yes             ; User VHDL File  ; /home/singularity/cloud/git/MSI-URC-2015/subsystems/experimental/mobility/quartus/src/motor_driver.vhd         ;         ;
+; src/motor_controller.vhd         ; yes             ; User VHDL File  ; /home/singularity/cloud/git/MSI-URC-2015/subsystems/experimental/mobility/quartus/src/motor_controller.vhd     ;         ;
+; src/ultrsnic_controller.vhd      ; yes             ; User VHDL File  ; /home/singularity/cloud/git/MSI-URC-2015/subsystems/experimental/mobility/quartus/src/ultrsnic_controller.vhd  ;         ;
+; src/encoder_handler.vhd          ; yes             ; User VHDL File  ; /home/singularity/cloud/git/MSI-URC-2015/subsystems/experimental/mobility/quartus/src/encoder_handler.vhd      ;         ;
+; src/encoder.vhd                  ; yes             ; User VHDL File  ; /home/singularity/cloud/git/MSI-URC-2015/subsystems/experimental/mobility/quartus/src/encoder.vhd              ;         ;
 ; src/spi_slave_controller.vhd     ; yes             ; User VHDL File  ; /home/singularity/cloud/git/MSI-URC-2015/subsystems/experimental/mobility/quartus/src/spi_slave_controller.vhd ;         ;
 ; src/spi_host_controller.vhd      ; yes             ; User VHDL File  ; /home/singularity/cloud/git/MSI-URC-2015/subsystems/experimental/mobility/quartus/src/spi_host_controller.vhd  ;         ;
 ; src/i2c_host_controller.vhd      ; yes             ; User VHDL File  ; /home/singularity/cloud/git/MSI-URC-2015/subsystems/experimental/mobility/quartus/src/i2c_host_controller.vhd  ;         ;
@@ -214,16 +227,46 @@ Parallel compilation was disabled, but you have multiple processors available. E
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
-+------------------------------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                                                   ;
-+----------------------------------------------+-------------------------------------------------------+
-; Register name                                ; Reason for Removal                                    ;
-+----------------------------------------------+-------------------------------------------------------+
-; uart_controller:UART0|uart:UART0|TxLat[0..6] ; Merged with uart_controller:UART0|uart:UART0|TxLat[7] ;
-; uart_controller:UART0|uart:UART0|TxLat[7]    ; Stuck at VCC due to stuck port clock_enable           ;
-; uart_controller:UART0|uart:UART0|TxReg[1..9] ; Stuck at VCC due to stuck port data_in                ;
-; Total Number of Removed Registers = 17       ;                                                       ;
-+----------------------------------------------+-------------------------------------------------------+
++---------------------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                                        ;
++-------------------------------------------------------------------+-------------------------------------------------------+
+; Register name                                                     ; Reason for Removal                                    ;
++-------------------------------------------------------------------+-------------------------------------------------------+
+; motor_controller:MotorController|motor_driver:MOTOR_FR|motor[0]   ; Stuck at VCC due to stuck port data_in                ;
+; motor_controller:MotorController|motor_driver:MOTOR_FR|motor[2]   ; Stuck at GND due to stuck port data_in                ;
+; motor_controller:MotorController|motor_driver:MOTOR_FR|motor[1]   ; Stuck at VCC due to stuck port data_in                ;
+; motor_controller:MotorController|motor_driver:MOTOR_MR|motor[0]   ; Stuck at VCC due to stuck port data_in                ;
+; motor_controller:MotorController|motor_driver:MOTOR_MR|motor[2]   ; Stuck at GND due to stuck port data_in                ;
+; motor_controller:MotorController|motor_driver:MOTOR_MR|motor[1]   ; Stuck at VCC due to stuck port data_in                ;
+; motor_controller:MotorController|motor_driver:MOTOR_RR|motor[0]   ; Stuck at VCC due to stuck port data_in                ;
+; motor_controller:MotorController|motor_driver:MOTOR_RR|motor[2]   ; Stuck at GND due to stuck port data_in                ;
+; motor_controller:MotorController|motor_driver:MOTOR_RR|motor[1]   ; Stuck at VCC due to stuck port data_in                ;
+; motor_controller:MotorController|motor_driver:MOTOR_RL|motor[0]   ; Stuck at VCC due to stuck port data_in                ;
+; motor_controller:MotorController|motor_driver:MOTOR_RL|motor[2]   ; Stuck at GND due to stuck port data_in                ;
+; motor_controller:MotorController|motor_driver:MOTOR_RL|motor[1]   ; Stuck at VCC due to stuck port data_in                ;
+; motor_controller:MotorController|motor_driver:MOTOR_ML|motor[0]   ; Stuck at VCC due to stuck port data_in                ;
+; motor_controller:MotorController|motor_driver:MOTOR_ML|motor[2]   ; Stuck at GND due to stuck port data_in                ;
+; motor_controller:MotorController|motor_driver:MOTOR_ML|motor[1]   ; Stuck at VCC due to stuck port data_in                ;
+; motor_controller:MotorController|motor_driver:MOTOR_FL|motor[0]   ; Stuck at VCC due to stuck port data_in                ;
+; motor_controller:MotorController|motor_driver:MOTOR_FL|motor[2]   ; Stuck at GND due to stuck port data_in                ;
+; motor_controller:MotorController|motor_driver:MOTOR_FL|motor[1]   ; Stuck at VCC due to stuck port data_in                ;
+; motor_controller:MotorController|motor_driver:MOTOR_S_FR|motor[0] ; Stuck at VCC due to stuck port data_in                ;
+; motor_controller:MotorController|motor_driver:MOTOR_S_FR|motor[2] ; Stuck at GND due to stuck port data_in                ;
+; motor_controller:MotorController|motor_driver:MOTOR_S_FR|motor[1] ; Stuck at VCC due to stuck port data_in                ;
+; motor_controller:MotorController|motor_driver:MOTOR_S_RR|motor[0] ; Stuck at VCC due to stuck port data_in                ;
+; motor_controller:MotorController|motor_driver:MOTOR_S_RR|motor[2] ; Stuck at GND due to stuck port data_in                ;
+; motor_controller:MotorController|motor_driver:MOTOR_S_RR|motor[1] ; Stuck at VCC due to stuck port data_in                ;
+; motor_controller:MotorController|motor_driver:MOTOR_S_RL|motor[0] ; Stuck at VCC due to stuck port data_in                ;
+; motor_controller:MotorController|motor_driver:MOTOR_S_RL|motor[2] ; Stuck at GND due to stuck port data_in                ;
+; motor_controller:MotorController|motor_driver:MOTOR_S_RL|motor[1] ; Stuck at VCC due to stuck port data_in                ;
+; motor_controller:MotorController|motor_driver:MOTOR_S_FL|motor[0] ; Stuck at VCC due to stuck port data_in                ;
+; motor_controller:MotorController|motor_driver:MOTOR_S_FL|motor[2] ; Stuck at GND due to stuck port data_in                ;
+; motor_controller:MotorController|motor_driver:MOTOR_S_FL|motor[1] ; Stuck at VCC due to stuck port data_in                ;
+; uart_controller:UART0|uart:UART0|TxLat[0..6]                      ; Merged with uart_controller:UART0|uart:UART0|TxLat[7] ;
+; uart_controller:UART0|uart:UART0|TxLat[7]                         ; Stuck at VCC due to stuck port clock_enable           ;
+; uart_controller:UART0|uart:UART0|TxReg[1..9]                      ; Stuck at VCC due to stuck port data_in                ;
+; Total Number of Removed Registers = 47                            ;                                                       ;
++-------------------------------------------------------------------+-------------------------------------------------------+
 
 
 +-------------------------------------------------------------------------------------------------------------------------+
@@ -318,185 +361,119 @@ Note: In order to hide this table in the UI and the text report file, please set
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "spi_slave_controller:SPISlave"                                                                             ;
-+-----------------------------+--------+----------+-------------------------------------------------------------------------------------+
-; Port                        ; Type   ; Severity ; Details                                                                             ;
-+-----------------------------+--------+----------+-------------------------------------------------------------------------------------+
-; err                         ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-; motor_directive             ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-; encoder_velocity[0][9..8]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[0][5..4]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[0][1..0]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[0][11..10] ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[0][7..6]   ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[0][3..2]   ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[0][12]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[1][9..8]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[1][5..4]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[1][1..0]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[1][11..10] ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[1][7..6]   ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[1][3..2]   ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[1][12]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[2][9..8]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[2][5..4]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[2][1..0]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[2][11..10] ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[2][7..6]   ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[2][3..2]   ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[2][12]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[3][9..8]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[3][5..4]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[3][1..0]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[3][11..10] ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[3][7..6]   ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[3][3..2]   ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[3][12]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[4][9..8]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[4][5..4]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[4][1..0]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[4][11..10] ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[4][7..6]   ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[4][3..2]   ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[4][12]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[5][9..8]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[5][5..4]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[5][1..0]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[5][11..10] ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[5][7..6]   ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[5][3..2]   ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[5][12]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[6][9..8]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[6][5..4]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[6][1..0]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[6][11..10] ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[6][7..6]   ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[6][3..2]   ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[6][12]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[7][9..8]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[7][5..4]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[7][1..0]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[7][11..10] ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[7][7..6]   ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[7][3..2]   ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[7][12]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[8][9..8]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[8][5..4]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[8][1..0]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[8][11..10] ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[8][7..6]   ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[8][3..2]   ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[8][12]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[9][9..8]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[9][5..4]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[9][1..0]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[9][11..10] ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[9][7..6]   ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[9][3..2]   ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[9][12]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; ultrsnic_map                ; Input  ; Info     ; Stuck at GND                                                                        ;
-; enc_velocity_rst            ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+-----------------------------+--------+----------+-------------------------------------------------------------------------------------+
++-----------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: ultrasonic_controller:UltrasonicController ;
++----------------+-------+----------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                           ;
++----------------+-------+----------------------------------------------------------------+
+; sensor_0_ena   ; '1'   ; Enumerated                                                     ;
+; sensor_1_ena   ; '1'   ; Enumerated                                                     ;
+; sensor_2_ena   ; '1'   ; Enumerated                                                     ;
+; sensor_3_ena   ; '1'   ; Enumerated                                                     ;
+; sensor_4_ena   ; '1'   ; Enumerated                                                     ;
+; sensor_5_ena   ; '1'   ; Enumerated                                                     ;
+; sensor_6_ena   ; '1'   ; Enumerated                                                     ;
+; sensor_7_ena   ; '1'   ; Enumerated                                                     ;
++----------------+-------+----------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
 +----------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "spi_host_controller:SPIHost"                                                        ;
-+------+--------+----------+-------------------------------------------------------------------------------------+
-; Port ; Type   ; Severity ; Details                                                                             ;
-+------+--------+----------+-------------------------------------------------------------------------------------+
-; err  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+------+--------+----------+-------------------------------------------------------------------------------------+
-
-
-+---------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "i2c_slave_controller:I2CSlave"                                                                             ;
-+-----------------------------+--------+----------+-------------------------------------------------------------------------------------+
-; Port                        ; Type   ; Severity ; Details                                                                             ;
-+-----------------------------+--------+----------+-------------------------------------------------------------------------------------+
-; err                         ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-; encoder_velocity[0][9..8]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[0][5..4]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[0][1..0]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[0][11..10] ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[0][7..6]   ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[0][3..2]   ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[0][12]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[1][9..8]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[1][5..4]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[1][1..0]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[1][11..10] ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[1][7..6]   ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[1][3..2]   ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[1][12]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[2][9..8]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[2][5..4]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[2][1..0]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[2][11..10] ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[2][7..6]   ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[2][3..2]   ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[2][12]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[3][9..8]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[3][5..4]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[3][1..0]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[3][11..10] ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[3][7..6]   ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[3][3..2]   ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[3][12]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[4][9..8]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[4][5..4]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[4][1..0]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[4][11..10] ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[4][7..6]   ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[4][3..2]   ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[4][12]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[5][9..8]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[5][5..4]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[5][1..0]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[5][11..10] ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[5][7..6]   ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[5][3..2]   ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[5][12]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[6][9..8]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[6][5..4]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[6][1..0]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[6][11..10] ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[6][7..6]   ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[6][3..2]   ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[6][12]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[7][9..8]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[7][5..4]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[7][1..0]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[7][11..10] ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[7][7..6]   ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[7][3..2]   ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[7][12]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[8][9..8]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[8][5..4]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[8][1..0]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[8][11..10] ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[8][7..6]   ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[8][3..2]   ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[8][12]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[9][9..8]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[9][5..4]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[9][1..0]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[9][11..10] ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[9][7..6]   ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[9][3..2]   ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[9][12]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; ultrsnic_map                ; Input  ; Info     ; Stuck at GND                                                                        ;
-; enc_velocity_rst            ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+-----------------------------+--------+----------+-------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: ultrasonic_controller:UltrasonicController|ultrasonic_sensor:US_0 ;
++----------------+-------+---------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                  ;
++----------------+-------+---------------------------------------------------------------------------------------+
+; ena            ; '1'   ; Enumerated                                                                            ;
++----------------+-------+---------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
 +----------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "i2c_host_controller:I2CHost"                                                        ;
-+------+--------+----------+-------------------------------------------------------------------------------------+
-; Port ; Type   ; Severity ; Details                                                                             ;
-+------+--------+----------+-------------------------------------------------------------------------------------+
-; err  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+------+--------+----------+-------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: ultrasonic_controller:UltrasonicController|ultrasonic_sensor:US_1 ;
++----------------+-------+---------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                  ;
++----------------+-------+---------------------------------------------------------------------------------------+
+; ena            ; '1'   ; Enumerated                                                                            ;
++----------------+-------+---------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: ultrasonic_controller:UltrasonicController|ultrasonic_sensor:US_2 ;
++----------------+-------+---------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                  ;
++----------------+-------+---------------------------------------------------------------------------------------+
+; ena            ; '1'   ; Enumerated                                                                            ;
++----------------+-------+---------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: ultrasonic_controller:UltrasonicController|ultrasonic_sensor:US_3 ;
++----------------+-------+---------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                  ;
++----------------+-------+---------------------------------------------------------------------------------------+
+; ena            ; '1'   ; Enumerated                                                                            ;
++----------------+-------+---------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: ultrasonic_controller:UltrasonicController|ultrasonic_sensor:US_4 ;
++----------------+-------+---------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                  ;
++----------------+-------+---------------------------------------------------------------------------------------+
+; ena            ; '1'   ; Enumerated                                                                            ;
++----------------+-------+---------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: ultrasonic_controller:UltrasonicController|ultrasonic_sensor:US_5 ;
++----------------+-------+---------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                  ;
++----------------+-------+---------------------------------------------------------------------------------------+
+; ena            ; '1'   ; Enumerated                                                                            ;
++----------------+-------+---------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: ultrasonic_controller:UltrasonicController|ultrasonic_sensor:US_6 ;
++----------------+-------+---------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                  ;
++----------------+-------+---------------------------------------------------------------------------------------+
+; ena            ; '1'   ; Enumerated                                                                            ;
++----------------+-------+---------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: ultrasonic_controller:UltrasonicController|ultrasonic_sensor:US_7 ;
++----------------+-------+---------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                  ;
++----------------+-------+---------------------------------------------------------------------------------------+
+; ena            ; '1'   ; Enumerated                                                                            ;
++----------------+-------+---------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "monitor:Monitor"                                                                          ;
++------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port       ; Type   ; Severity ; Details                                                                             ;
++------------+--------+----------+-------------------------------------------------------------------------------------+
+; err_safety ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "spi_slave_controller:SPISlave"                                                                 ;
++-----------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port            ; Type   ; Severity ; Details                                                                             ;
++-----------------+--------+----------+-------------------------------------------------------------------------------------+
+; motor_directive ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-----------------+--------+----------+-------------------------------------------------------------------------------------+
 
 
 +------------------------------------------------------------------------------------------------------------------+
@@ -511,95 +488,36 @@ Note: In order to hide this table in the UI and the text report file, please set
 +--------+--------+----------+-------------------------------------------------------------------------------------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "uart_controller:UART0"                                                                                     ;
-+-----------------------------+--------+----------+-------------------------------------------------------------------------------------+
-; Port                        ; Type   ; Severity ; Details                                                                             ;
-+-----------------------------+--------+----------+-------------------------------------------------------------------------------------+
-; err                         ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-; encoder_velocity[0][9..8]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[0][5..4]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[0][1..0]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[0][11..10] ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[0][7..6]   ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[0][3..2]   ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[0][12]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[1][9..8]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[1][5..4]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[1][1..0]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[1][11..10] ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[1][7..6]   ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[1][3..2]   ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[1][12]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[2][9..8]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[2][5..4]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[2][1..0]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[2][11..10] ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[2][7..6]   ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[2][3..2]   ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[2][12]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[3][9..8]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[3][5..4]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[3][1..0]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[3][11..10] ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[3][7..6]   ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[3][3..2]   ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[3][12]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[4][9..8]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[4][5..4]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[4][1..0]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[4][11..10] ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[4][7..6]   ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[4][3..2]   ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[4][12]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[5][9..8]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[5][5..4]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[5][1..0]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[5][11..10] ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[5][7..6]   ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[5][3..2]   ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[5][12]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[6][9..8]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[6][5..4]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[6][1..0]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[6][11..10] ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[6][7..6]   ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[6][3..2]   ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[6][12]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[7][9..8]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[7][5..4]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[7][1..0]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[7][11..10] ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[7][7..6]   ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[7][3..2]   ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[7][12]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[8][9..8]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[8][5..4]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[8][1..0]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[8][11..10] ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[8][7..6]   ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[8][3..2]   ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[8][12]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[9][9..8]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[9][5..4]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[9][1..0]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; encoder_velocity[9][11..10] ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[9][7..6]   ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[9][3..2]   ; Input  ; Info     ; Stuck at GND                                                                        ;
-; encoder_velocity[9][12]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; ultrsnic_map                ; Input  ; Info     ; Stuck at GND                                                                        ;
-+-----------------------------+--------+----------+-------------------------------------------------------------------------------------+
-
-
 +-------------------------------+
 ; Analysis & Synthesis Messages ;
 +-------------------------------+
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
-    Info: Processing started: Wed Mar  4 14:20:45 2015
+    Info: Processing started: Wed Mar  4 21:24:01 2015
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off MobilityMSI -c MobilityMSI
 Warning (20028): Parallel compilation is not licensed and has been disabled
+Info (12021): Found 2 design units, including 1 entities, in source file src/ultrsnic.vhd
+    Info (12022): Found design unit 1: ultrasonic_sensor-main
+    Info (12023): Found entity 1: ultrasonic_sensor
+Info (12021): Found 2 design units, including 1 entities, in source file src/monitor.vhd
+    Info (12022): Found design unit 1: monitor-mina
+    Info (12023): Found entity 1: monitor
+Info (12021): Found 2 design units, including 1 entities, in source file src/motor_driver.vhd
+    Info (12022): Found design unit 1: motor_driver-main
+    Info (12023): Found entity 1: motor_driver
+Info (12021): Found 2 design units, including 1 entities, in source file src/motor_controller.vhd
+    Info (12022): Found design unit 1: motor_controller-main
+    Info (12023): Found entity 1: motor_controller
+Info (12021): Found 2 design units, including 1 entities, in source file src/ultrsnic_controller.vhd
+    Info (12022): Found design unit 1: ultrasonic_controller-main
+    Info (12023): Found entity 1: ultrasonic_controller
+Info (12021): Found 2 design units, including 1 entities, in source file src/encoder_handler.vhd
+    Info (12022): Found design unit 1: encoder_handler-main
+    Info (12023): Found entity 1: encoder_handler
+Info (12021): Found 2 design units, including 1 entities, in source file src/encoder.vhd
+    Info (12022): Found design unit 1: encoder-main
+    Info (12023): Found entity 1: encoder
 Info (12021): Found 2 design units, including 1 entities, in source file src/spi_slave_controller.vhd
     Info (12022): Found design unit 1: spi_slave_controller-main
     Info (12023): Found entity 1: spi_slave_controller
@@ -628,17 +546,7 @@ Info (12021): Found 2 design units, including 1 entities, in source file Mobilit
 Info (12021): Found 1 design units, including 0 entities, in source file MobilityTypesPkg.vhd
     Info (12022): Found design unit 1: mobility_types_pkg
 Info (12127): Elaborating entity "MobilityMSI" for the top level hierarchy
-Warning (10540): VHDL Signal Declaration warning at MobilityMSI.vhd(38): used explicit default value for signal "motors" because signal was never assigned a value
-Warning (10540): VHDL Signal Declaration warning at MobilityMSI.vhd(42): used explicit default value for signal "ultrsnic_trig" because signal was never assigned a value
-Warning (10541): VHDL Signal Declaration warning at MobilityMSI.vhd(51): used implicit default value for signal "encoder_velocity" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at MobilityMSI.vhd(54): used implicit default value for signal "ultrsnic_map" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10036): Verilog HDL or VHDL warning at MobilityMSI.vhd(55): object "enc_velocity_rst" assigned a value but never read
-Warning (10541): VHDL Signal Declaration warning at MobilityMSI.vhd(56): used implicit default value for signal "t_status" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10036): Verilog HDL or VHDL warning at MobilityMSI.vhd(58): object "err_uart" assigned a value but never read
-Warning (10036): Verilog HDL or VHDL warning at MobilityMSI.vhd(59): object "err_i2c_h" assigned a value but never read
-Warning (10036): Verilog HDL or VHDL warning at MobilityMSI.vhd(60): object "err_i2c_s" assigned a value but never read
-Warning (10036): Verilog HDL or VHDL warning at MobilityMSI.vhd(61): object "err_spi_h" assigned a value but never read
-Warning (10036): Verilog HDL or VHDL warning at MobilityMSI.vhd(62): object "err_spi_s" assigned a value but never read
+Warning (10541): VHDL Signal Declaration warning at MobilityMSI.vhd(64): used implicit default value for signal "err_safety" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
 Info (12128): Elaborating entity "uart_controller" for hierarchy "uart_controller:UART0"
 Warning (10541): VHDL Signal Declaration warning at uart_controller.vhd(13): used implicit default value for signal "err" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
 Warning (10036): Verilog HDL or VHDL warning at uart_controller.vhd(27): object "rx_data" assigned a value but never read
@@ -652,9 +560,9 @@ Info (12128): Elaborating entity "i2c_host_controller" for hierarchy "i2c_host_c
 Warning (10541): VHDL Signal Declaration warning at i2c_host_controller.vhd(11): used implicit default value for signal "err" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
 Warning (10541): VHDL Signal Declaration warning at i2c_host_controller.vhd(13): used implicit default value for signal "scl" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
 Info (12128): Elaborating entity "i2c_slave_controller" for hierarchy "i2c_slave_controller:I2CSlave"
-Warning (10541): VHDL Signal Declaration warning at i2c_slave_controller.vhd(13): used implicit default value for signal "err" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at i2c_slave_controller.vhd(18): used implicit default value for signal "motor_directive" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at i2c_slave_controller.vhd(24): used implicit default value for signal "enc_velocity_rst" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at i2c_slave_controller.vhd(14): used implicit default value for signal "err" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at i2c_slave_controller.vhd(19): used implicit default value for signal "motor_directive" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at i2c_slave_controller.vhd(25): used implicit default value for signal "enc_velocity_rst" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
 Info (12128): Elaborating entity "spi_host_controller" for hierarchy "spi_host_controller:SPIHost"
 Warning (10541): VHDL Signal Declaration warning at spi_host_controller.vhd(11): used implicit default value for signal "err" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
 Warning (10541): VHDL Signal Declaration warning at spi_host_controller.vhd(14): used implicit default value for signal "mosi" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
@@ -663,10 +571,23 @@ Warning (10541): VHDL Signal Declaration warning at spi_host_controller.vhd(16):
 Warning (10541): VHDL Signal Declaration warning at spi_host_controller.vhd(18): used implicit default value for signal "current_sense" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
 Warning (10541): VHDL Signal Declaration warning at spi_host_controller.vhd(19): used implicit default value for signal "pot_angles" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
 Info (12128): Elaborating entity "spi_slave_controller" for hierarchy "spi_slave_controller:SPISlave"
-Warning (10541): VHDL Signal Declaration warning at spi_slave_controller.vhd(10): used implicit default value for signal "err" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at spi_slave_controller.vhd(12): used implicit default value for signal "miso" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at spi_slave_controller.vhd(17): used implicit default value for signal "motor_directive" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at spi_slave_controller.vhd(23): used implicit default value for signal "enc_velocity_rst" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at spi_slave_controller.vhd(11): used implicit default value for signal "err" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at spi_slave_controller.vhd(13): used implicit default value for signal "miso" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at spi_slave_controller.vhd(18): used implicit default value for signal "motor_directive" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at spi_slave_controller.vhd(24): used implicit default value for signal "enc_velocity_rst" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Info (12128): Elaborating entity "ultrasonic_controller" for hierarchy "ultrasonic_controller:UltrasonicController"
+Info (12128): Elaborating entity "ultrasonic_sensor" for hierarchy "ultrasonic_controller:UltrasonicController|ultrasonic_sensor:US_0"
+Warning (10541): VHDL Signal Declaration warning at ultrsnic.vhd(13): used implicit default value for signal "err" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at ultrsnic.vhd(15): used implicit default value for signal "trig" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at ultrsnic.vhd(18): used implicit default value for signal "dist" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Info (12128): Elaborating entity "motor_controller" for hierarchy "motor_controller:MotorController"
+Info (12128): Elaborating entity "motor_driver" for hierarchy "motor_controller:MotorController|motor_driver:MOTOR_S_FL"
+Info (12128): Elaborating entity "encoder_handler" for hierarchy "encoder_handler:EncoderHandler"
+Info (12128): Elaborating entity "encoder" for hierarchy "encoder_handler:EncoderHandler|encoder:ENC_0"
+Warning (10541): VHDL Signal Declaration warning at encoder.vhd(13): used implicit default value for signal "velocity" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Info (12128): Elaborating entity "monitor" for hierarchy "monitor:Monitor"
+Warning (10541): VHDL Signal Declaration warning at monitor.vhd(9): used implicit default value for signal "status" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at monitor.vhd(16): used implicit default value for signal "err_safety" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
 Warning (13039): The following bidir pins have no drivers
     Warning (13040): Bidir "sda_host" has no driver
     Warning (13040): Bidir "sda_slave" has no driver
@@ -691,36 +612,36 @@ Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "ss_n_host[6]" is stuck at GND
     Warning (13410): Pin "ss_n_host[7]" is stuck at GND
     Warning (13410): Pin "miso_slave" is stuck at GND
-    Warning (13410): Pin "motors[9][0]" is stuck at GND
+    Warning (13410): Pin "motors[9][0]" is stuck at VCC
     Warning (13410): Pin "motors[9][1]" is stuck at VCC
-    Warning (13410): Pin "motors[9][2]" is stuck at VCC
-    Warning (13410): Pin "motors[8][0]" is stuck at GND
+    Warning (13410): Pin "motors[9][2]" is stuck at GND
+    Warning (13410): Pin "motors[8][0]" is stuck at VCC
     Warning (13410): Pin "motors[8][1]" is stuck at VCC
-    Warning (13410): Pin "motors[8][2]" is stuck at VCC
-    Warning (13410): Pin "motors[7][0]" is stuck at GND
+    Warning (13410): Pin "motors[8][2]" is stuck at GND
+    Warning (13410): Pin "motors[7][0]" is stuck at VCC
     Warning (13410): Pin "motors[7][1]" is stuck at VCC
-    Warning (13410): Pin "motors[7][2]" is stuck at VCC
-    Warning (13410): Pin "motors[6][0]" is stuck at GND
+    Warning (13410): Pin "motors[7][2]" is stuck at GND
+    Warning (13410): Pin "motors[6][0]" is stuck at VCC
     Warning (13410): Pin "motors[6][1]" is stuck at VCC
-    Warning (13410): Pin "motors[6][2]" is stuck at VCC
-    Warning (13410): Pin "motors[5][0]" is stuck at GND
+    Warning (13410): Pin "motors[6][2]" is stuck at GND
+    Warning (13410): Pin "motors[5][0]" is stuck at VCC
     Warning (13410): Pin "motors[5][1]" is stuck at VCC
-    Warning (13410): Pin "motors[5][2]" is stuck at VCC
-    Warning (13410): Pin "motors[4][0]" is stuck at GND
+    Warning (13410): Pin "motors[5][2]" is stuck at GND
+    Warning (13410): Pin "motors[4][0]" is stuck at VCC
     Warning (13410): Pin "motors[4][1]" is stuck at VCC
-    Warning (13410): Pin "motors[4][2]" is stuck at VCC
-    Warning (13410): Pin "motors[3][0]" is stuck at GND
+    Warning (13410): Pin "motors[4][2]" is stuck at GND
+    Warning (13410): Pin "motors[3][0]" is stuck at VCC
     Warning (13410): Pin "motors[3][1]" is stuck at VCC
-    Warning (13410): Pin "motors[3][2]" is stuck at VCC
-    Warning (13410): Pin "motors[2][0]" is stuck at GND
+    Warning (13410): Pin "motors[3][2]" is stuck at GND
+    Warning (13410): Pin "motors[2][0]" is stuck at VCC
     Warning (13410): Pin "motors[2][1]" is stuck at VCC
-    Warning (13410): Pin "motors[2][2]" is stuck at VCC
-    Warning (13410): Pin "motors[1][0]" is stuck at GND
+    Warning (13410): Pin "motors[2][2]" is stuck at GND
+    Warning (13410): Pin "motors[1][0]" is stuck at VCC
     Warning (13410): Pin "motors[1][1]" is stuck at VCC
-    Warning (13410): Pin "motors[1][2]" is stuck at VCC
-    Warning (13410): Pin "motors[0][0]" is stuck at GND
+    Warning (13410): Pin "motors[1][2]" is stuck at GND
+    Warning (13410): Pin "motors[0][0]" is stuck at VCC
     Warning (13410): Pin "motors[0][1]" is stuck at VCC
-    Warning (13410): Pin "motors[0][2]" is stuck at VCC
+    Warning (13410): Pin "motors[0][2]" is stuck at GND
     Warning (13410): Pin "ultrsnic_trig[0]" is stuck at GND
     Warning (13410): Pin "ultrsnic_trig[1]" is stuck at GND
     Warning (13410): Pin "ultrsnic_trig[2]" is stuck at GND
@@ -772,10 +693,10 @@ Info (21057): Implemented 141 device resources after synthesis - the final resou
     Info (21059): Implemented 59 output pins
     Info (21060): Implemented 2 bidirectional pins
     Info (21061): Implemented 42 logic cells
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 133 warnings
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 129 warnings
     Info: Peak virtual memory: 790 megabytes
-    Info: Processing ended: Wed Mar  4 14:20:49 2015
-    Info: Elapsed time: 00:00:04
-    Info: Total CPU time (on all processors): 00:00:02
+    Info: Processing ended: Wed Mar  4 21:24:03 2015
+    Info: Elapsed time: 00:00:02
+    Info: Total CPU time (on all processors): 00:00:03
 
 

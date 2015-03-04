@@ -19,7 +19,7 @@ ENTITY uart_controller IS
 	   encoder_velocity : IN  int16_vector10;
 	   current_sense    : IN  uint8_vector10;
 	   pot_angles       : IN  uint16_vector8;
-      ultrsnic_map     : IN  uint8_vector10
+      ultrsnic_map     : IN  uint8_vector8
 	   );
 END ENTITY;
 

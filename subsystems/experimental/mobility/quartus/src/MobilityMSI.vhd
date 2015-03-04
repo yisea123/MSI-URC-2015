@@ -35,9 +35,9 @@ ENTITY MobilityMSI IS
 	    uart_rx       : IN  STD_LOGIC                       := '1';
 	    uart_tx       : OUT STD_LOGIC                       := '1';
 	  
-	    motors        : OUT motor_t                         := (OTHERS => "110");
+	    motors        : OUT motors_t                        := (OTHERS => "011");
 	  
-	    encoders      : IN  encoder_t                       := (OTHERS => "00");
+	    encoders      : IN  encoders_t                      := (OTHERS => "00");
 	  
        ultrsnic_trig : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)    := "00000000";
        ultrsnic_echo : IN  STD_LOGIC_VECTOR(7 DOWNTO 0)    := "00000000"
@@ -51,7 +51,7 @@ ARCHITECTURE main OF MobilityMSI IS
   SIGNAL encoder_velocity    : int16_vector10;
   SIGNAL current_sense       : uint8_vector10;
   SIGNAL pot_angles          : uint16_vector8;
-  SIGNAL ultrsnic_map        : uint8_vector10;
+  SIGNAL ultrsnic_map        : uint8_vector8;
   SIGNAL enc_velocity_rst    : STD_LOGIC;
   SIGNAL t_status            : STD_LOGIC_VECTOR(7 DOWNTO 0);
 
@@ -60,9 +60,7 @@ ARCHITECTURE main OF MobilityMSI IS
   SIGNAL err_i2c_s           : INTEGER RANGE 0 to 3;
   SIGNAL err_spi_h           : INTEGER RANGE 0 to 3;
   SIGNAL err_spi_s           : INTEGER RANGE 0 to 3;
-  SIGNAL err_mot             : INTEGER RANGE 0 to 3;
-  SIGNAL err_enc             : INTEGER RANGE 0 to 3;
-  SIGNAL err_ultr            : INTEGER RANGE 0 to 3;
+  SIGNAL err_ultr            : STD_LOGIC_VECTOR(7 DOWNTO 0);
   SIGNAL err_safety          : STD_LOGIC;
   
   SIGNAL clk0_1              : STD_LOGIC;
@@ -104,6 +102,7 @@ I2CSlave : ENTITY work.i2c_slave_controller
       )
   PORT MAP(
       clk50            => clk50,
+		clk0_001         => clk0_001,
 		rst              => NOT rst_n,
 	   err              => err_i2c_s,
 	   scl              => scl_slave,
@@ -134,6 +133,7 @@ SPIHost : ENTITY work.spi_host_controller
 SPISlave : ENTITY work.spi_slave_controller
   PORT MAP(
       clk50            => clk50,
+		clk0_001         => clk0_001,
 		rst              => NOT rst_n,
 	   err              => err_spi_s,
 	   miso             => miso_slave,
@@ -149,8 +149,64 @@ SPISlave : ENTITY work.spi_slave_controller
 		enc_velocity_rst => enc_velocity_rst
       );
 
-  status <= t_status;
+UltrasonicController : ENTITY work.ultrasonic_controller
+  GENERIC MAP (
+      SENSOR_0_ENA => '1',
+	   SENSOR_1_ENA => '1',
+	   SENSOR_2_ENA => '1',
+	   SENSOR_3_ENA => '1',
+	   SENSOR_4_ENA => '1',
+	   SENSOR_5_ENA => '1',
+	   SENSOR_6_ENA => '1',
+	   SENSOR_7_ENA => '1'
+      )
+  PORT MAP (
+	   clk   => clk50,
+		rst   => NOT rst_n,
+	   err   => err_ultr,
+	   trig  => ultrsnic_trig,
+	   echo  => ultrsnic_echo,
+	   dist  => ultrsnic_map,
+		clr   => enc_velocity_rst
+      );
+
   motor_directive <= motor_directive_i2c WHEN PROTOCOL = '0' ELSE motor_directive_spi;
+MotorController : ENTITY work.motor_controller
+  PORT MAP(
+	   clk50     => clk50,
+	   clk0_001  => clk0_001,
+	   rst       => NOT rst_n,
+	   err_in    => err_safety,
+	   lock      => lock,
+	   motors    => motors,
+	   directive => motor_directive
+      );
+
+EncoderHandler : ENTITY work.encoder_handler
+  PORT MAP(
+    clk50    => clk50,
+	 rst      => NOT rst_n,
+	 clr      => enc_velocity_rst,
+	 encoders => encoders,
+	 velocity => encoder_velocity
+    );
+
+  status <= t_status;
+Monitor : ENTITY work.monitor
+  PORT MAP (
+      rst              => NOT rst_n,
+      status           => t_status,
+	   err_uart         => err_uart,
+	   err_i2c_h        => err_i2c_h,
+	   err_i2c_s        => err_i2c_s,
+	   err_spi_h        => err_spi_h,
+	   err_spi_s        => err_spi_s,
+	   err_ultr         => err_ultr,
+		pot_angles       => pot_angles,
+		current_sense    => current_sense,
+		encoder_velocity => encoder_velocity,
+		ultrsnic_map     => ultrsnic_map
+    );
 
   clk5 <= t_clk5;
   PROCESS (clk50, rst_n)

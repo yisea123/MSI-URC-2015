@@ -159,6 +159,13 @@ set_location_assignment PIN_23 -to uart_tx
 set_location_assignment PIN_66 -to scl_host
 set_location_assignment PIN_67 -to sda_host
 set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "NO HEAT SINK WITH STILL AIR"
+set_global_assignment -name VHDL_FILE src/ultrsnic.vhd
+set_global_assignment -name VHDL_FILE src/monitor.vhd
+set_global_assignment -name VHDL_FILE src/motor_driver.vhd
+set_global_assignment -name VHDL_FILE src/motor_controller.vhd
+set_global_assignment -name VHDL_FILE src/ultrsnic_controller.vhd
+set_global_assignment -name VHDL_FILE src/encoder_handler.vhd
+set_global_assignment -name VHDL_FILE src/encoder.vhd
 set_global_assignment -name VHDL_FILE src/spi_slave_controller.vhd
 set_global_assignment -name VHDL_FILE src/spi_host_controller.vhd
 set_global_assignment -name VHDL_FILE src/spi_slave.vhd

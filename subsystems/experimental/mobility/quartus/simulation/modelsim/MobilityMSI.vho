@@ -17,7 +17,7 @@
 -- PROGRAM "Quartus II 64-Bit"
 -- VERSION "Version 14.0.0 Build 200 06/17/2014 SJ Web Edition"
 
--- DATE "03/04/2015 14:21:20"
+-- DATE "03/04/2015 21:24:27"
 
 -- 
 -- Device: Altera 5M1270ZT144C5 Package TQFP144
@@ -55,8 +55,8 @@ ENTITY 	MobilityMSI IS
 	ss_n_slave : IN std_logic;
 	uart_rx : IN std_logic;
 	uart_tx : OUT std_logic;
-	motors : OUT WORK.MOBILITY_TYPES_PKG.motor_t;
-	encoders : IN WORK.MOBILITY_TYPES_PKG.encoder_t;
+	motors : OUT WORK.MOBILITY_TYPES_PKG.motors_t;
+	encoders : IN WORK.MOBILITY_TYPES_PKG.encoders_t;
 	ultrsnic_trig : OUT std_logic_vector(7 DOWNTO 0);
 	ultrsnic_echo : IN std_logic_vector(7 DOWNTO 0)
 	);
@@ -191,8 +191,8 @@ SIGNAL ww_sclk_slave : std_logic;
 SIGNAL ww_ss_n_slave : std_logic;
 SIGNAL ww_uart_rx : std_logic;
 SIGNAL ww_uart_tx : std_logic;
-SIGNAL ww_motors : WORK.MOBILITY_TYPES_PKG.motor_t;
-SIGNAL ww_encoders : WORK.MOBILITY_TYPES_PKG.encoder_t;
+SIGNAL ww_motors : WORK.MOBILITY_TYPES_PKG.motors_t;
+SIGNAL ww_encoders : WORK.MOBILITY_TYPES_PKG.encoders_t;
 SIGNAL ww_ultrsnic_trig : std_logic_vector(7 DOWNTO 0);
 SIGNAL ww_ultrsnic_echo : std_logic_vector(7 DOWNTO 0);
 SIGNAL \clk50~combout\ : std_logic;
@@ -240,11 +240,11 @@ SIGNAL \UART0|UART0|TopTx~regout\ : std_logic;
 SIGNAL \UART0|UART0|TxReg[0]~1_combout\ : std_logic;
 SIGNAL \UART0|UART0|Add3~0_combout\ : std_logic;
 SIGNAL \UART0|UART0|Mux10~0_combout\ : std_logic;
-SIGNAL \UART0|UART0|TxFSM\ : std_logic_vector(1 DOWNTO 0);
-SIGNAL \UART0|UART0|TxReg\ : std_logic_vector(9 DOWNTO 0);
 SIGNAL \UART0|UART0|TxBitCnt\ : std_logic_vector(3 DOWNTO 0);
-SIGNAL \UART0|UART0|Div16\ : std_logic_vector(7 DOWNTO 0);
 SIGNAL \UART0|UART0|ClkDiv\ : std_logic_vector(4 DOWNTO 0);
+SIGNAL \UART0|UART0|TxReg\ : std_logic_vector(9 DOWNTO 0);
+SIGNAL \UART0|UART0|TxFSM\ : std_logic_vector(1 DOWNTO 0);
+SIGNAL \UART0|UART0|Div16\ : std_logic_vector(7 DOWNTO 0);
 SIGNAL \ALT_INV_rst_n~combout\ : std_logic;
 SIGNAL \UART0|UART0|ALT_INV_TxReg\ : std_logic_vector(0 DOWNTO 0);
 
@@ -428,7 +428,7 @@ PORT MAP (
 -- Location: LC_X1_Y5_N7
 \UART0|UART0|Div16[2]\ : maxv_lcell
 -- Equation(s):
--- \UART0|UART0|Equal0~1\ = (!\UART0|UART0|Div16\(0) & (\UART0|UART0|Div16\(3) & (!G1_Div16[2] & \UART0|UART0|Div16\(1))))
+-- \UART0|UART0|Equal0~1\ = (!\UART0|UART0|Div16\(0) & (\UART0|UART0|Div16\(3) & (!N1_Div16[2] & \UART0|UART0|Div16\(1))))
 -- \UART0|UART0|Div16\(2) = DFFEAS(\UART0|UART0|Equal0~1\, GLOBAL(\clk50~combout\), GLOBAL(\rst_n~combout\), , , \UART0|UART0|Add0~25_combout\, , , VCC)
 
 -- pragma translate_off
@@ -586,7 +586,7 @@ PORT MAP (
 -- Location: LC_X1_Y5_N0
 \UART0|UART0|Div16[7]\ : maxv_lcell
 -- Equation(s):
--- \UART0|UART0|Equal0~0\ = (!\UART0|UART0|Div16\(6) & (((!G1_Div16[7]))))
+-- \UART0|UART0|Equal0~0\ = (!\UART0|UART0|Div16\(6) & (((!N1_Div16[7]))))
 -- \UART0|UART0|Div16\(7) = DFFEAS(\UART0|UART0|Equal0~0\, GLOBAL(\clk50~combout\), GLOBAL(\rst_n~combout\), , , \UART0|UART0|Add0~0_combout\, , , VCC)
 
 -- pragma translate_off
@@ -966,7 +966,7 @@ PORT MAP (
 -- Location: LC_X1_Y4_N2
 \UART0|UART0|ClkDiv[3]\ : maxv_lcell
 -- Equation(s):
--- \UART0|UART0|Equal1~0\ = (\UART0|UART0|ClkDiv\(1) & (\UART0|UART0|ClkDiv\(2) & (G1_ClkDiv[3] & !\UART0|UART0|ClkDiv\(4))))
+-- \UART0|UART0|Equal1~0\ = (\UART0|UART0|ClkDiv\(1) & (\UART0|UART0|ClkDiv\(2) & (N1_ClkDiv[3] & !\UART0|UART0|ClkDiv\(4))))
 -- \UART0|UART0|ClkDiv\(3) = DFFEAS(\UART0|UART0|Equal1~0\, GLOBAL(\clk50~combout\), GLOBAL(\rst_n~combout\), , \UART0|UART0|Top16~regout\, \UART0|UART0|Add1~5_combout\, , , VCC)
 
 -- pragma translate_off
@@ -1576,7 +1576,7 @@ GENERIC MAP (
 	operation_mode => "output")
 -- pragma translate_on
 PORT MAP (
-	datain => GND,
+	datain => VCC,
 	oe => VCC,
 	padio => ww_motors(9)(0));
 
@@ -1598,7 +1598,7 @@ GENERIC MAP (
 	operation_mode => "output")
 -- pragma translate_on
 PORT MAP (
-	datain => VCC,
+	datain => GND,
 	oe => VCC,
 	padio => ww_motors(9)(2));
 
@@ -1609,7 +1609,7 @@ GENERIC MAP (
 	operation_mode => "output")
 -- pragma translate_on
 PORT MAP (
-	datain => GND,
+	datain => VCC,
 	oe => VCC,
 	padio => ww_motors(8)(0));
 
@@ -1631,7 +1631,7 @@ GENERIC MAP (
 	operation_mode => "output")
 -- pragma translate_on
 PORT MAP (
-	datain => VCC,
+	datain => GND,
 	oe => VCC,
 	padio => ww_motors(8)(2));
 
@@ -1642,7 +1642,7 @@ GENERIC MAP (
 	operation_mode => "output")
 -- pragma translate_on
 PORT MAP (
-	datain => GND,
+	datain => VCC,
 	oe => VCC,
 	padio => ww_motors(7)(0));
 
@@ -1664,7 +1664,7 @@ GENERIC MAP (
 	operation_mode => "output")
 -- pragma translate_on
 PORT MAP (
-	datain => VCC,
+	datain => GND,
 	oe => VCC,
 	padio => ww_motors(7)(2));
 
@@ -1675,7 +1675,7 @@ GENERIC MAP (
 	operation_mode => "output")
 -- pragma translate_on
 PORT MAP (
-	datain => GND,
+	datain => VCC,
 	oe => VCC,
 	padio => ww_motors(6)(0));
 
@@ -1697,7 +1697,7 @@ GENERIC MAP (
 	operation_mode => "output")
 -- pragma translate_on
 PORT MAP (
-	datain => VCC,
+	datain => GND,
 	oe => VCC,
 	padio => ww_motors(6)(2));
 
@@ -1708,7 +1708,7 @@ GENERIC MAP (
 	operation_mode => "output")
 -- pragma translate_on
 PORT MAP (
-	datain => GND,
+	datain => VCC,
 	oe => VCC,
 	padio => ww_motors(5)(0));
 
@@ -1730,7 +1730,7 @@ GENERIC MAP (
 	operation_mode => "output")
 -- pragma translate_on
 PORT MAP (
-	datain => VCC,
+	datain => GND,
 	oe => VCC,
 	padio => ww_motors(5)(2));
 
@@ -1741,7 +1741,7 @@ GENERIC MAP (
 	operation_mode => "output")
 -- pragma translate_on
 PORT MAP (
-	datain => GND,
+	datain => VCC,
 	oe => VCC,
 	padio => ww_motors(4)(0));
 
@@ -1763,7 +1763,7 @@ GENERIC MAP (
 	operation_mode => "output")
 -- pragma translate_on
 PORT MAP (
-	datain => VCC,
+	datain => GND,
 	oe => VCC,
 	padio => ww_motors(4)(2));
 
@@ -1774,7 +1774,7 @@ GENERIC MAP (
 	operation_mode => "output")
 -- pragma translate_on
 PORT MAP (
-	datain => GND,
+	datain => VCC,
 	oe => VCC,
 	padio => ww_motors(3)(0));
 
@@ -1796,7 +1796,7 @@ GENERIC MAP (
 	operation_mode => "output")
 -- pragma translate_on
 PORT MAP (
-	datain => VCC,
+	datain => GND,
 	oe => VCC,
 	padio => ww_motors(3)(2));
 
@@ -1807,7 +1807,7 @@ GENERIC MAP (
 	operation_mode => "output")
 -- pragma translate_on
 PORT MAP (
-	datain => GND,
+	datain => VCC,
 	oe => VCC,
 	padio => ww_motors(2)(0));
 
@@ -1829,7 +1829,7 @@ GENERIC MAP (
 	operation_mode => "output")
 -- pragma translate_on
 PORT MAP (
-	datain => VCC,
+	datain => GND,
 	oe => VCC,
 	padio => ww_motors(2)(2));
 
@@ -1840,7 +1840,7 @@ GENERIC MAP (
 	operation_mode => "output")
 -- pragma translate_on
 PORT MAP (
-	datain => GND,
+	datain => VCC,
 	oe => VCC,
 	padio => ww_motors(1)(0));
 
@@ -1862,7 +1862,7 @@ GENERIC MAP (
 	operation_mode => "output")
 -- pragma translate_on
 PORT MAP (
-	datain => VCC,
+	datain => GND,
 	oe => VCC,
 	padio => ww_motors(1)(2));
 
@@ -1873,7 +1873,7 @@ GENERIC MAP (
 	operation_mode => "output")
 -- pragma translate_on
 PORT MAP (
-	datain => GND,
+	datain => VCC,
 	oe => VCC,
 	padio => ww_motors(0)(0));
 
@@ -1895,7 +1895,7 @@ GENERIC MAP (
 	operation_mode => "output")
 -- pragma translate_on
 PORT MAP (
-	datain => VCC,
+	datain => GND,
 	oe => VCC,
 	padio => ww_motors(0)(2));
 
