@@ -1,5 +1,5 @@
 Analysis & Synthesis report for MobilityMSI
-Thu Feb  5 20:36:30 2015
+Wed Mar  4 14:20:49 2015
 Quartus II 64-Bit Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
 
 
@@ -13,11 +13,22 @@ Quartus II 64-Bit Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. General Register Statistics
-  9. Parameter Settings for User Entity Instance: UART:UART0
- 10. Parameter Settings for User Entity Instance: I2C_Slave:I2CSlave
- 11. Parameter Settings for User Entity Instance: Ultrasonic_Controller:UltrasonicController
- 12. Analysis & Synthesis Messages
+  8. Registers Removed During Synthesis
+  9. Removed Registers Triggering Further Register Optimizations
+ 10. General Register Statistics
+ 11. Inverted Register Statistics
+ 12. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 13. Parameter Settings for User Entity Instance: Top-level Entity: |MobilityMSI
+ 14. Parameter Settings for User Entity Instance: uart_controller:UART0
+ 15. Parameter Settings for User Entity Instance: uart_controller:UART0|uart:UART0
+ 16. Parameter Settings for User Entity Instance: i2c_slave_controller:I2CSlave
+ 17. Port Connectivity Checks: "spi_slave_controller:SPISlave"
+ 18. Port Connectivity Checks: "spi_host_controller:SPIHost"
+ 19. Port Connectivity Checks: "i2c_slave_controller:I2CSlave"
+ 20. Port Connectivity Checks: "i2c_host_controller:I2CHost"
+ 21. Port Connectivity Checks: "uart_controller:UART0|uart:UART0"
+ 22. Port Connectivity Checks: "uart_controller:UART0"
+ 23. Analysis & Synthesis Messages
 
 
 
@@ -44,13 +55,13 @@ agreement for further details.
 +--------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                             ;
 +-----------------------------+--------------------------------------------+
-; Analysis & Synthesis Status ; Successful - Thu Feb  5 20:36:30 2015      ;
+; Analysis & Synthesis Status ; Successful - Wed Mar  4 14:20:49 2015      ;
 ; Quartus II 64-Bit Version   ; 14.0.0 Build 200 06/17/2014 SJ Web Edition ;
 ; Revision Name               ; MobilityMSI                                ;
 ; Top-level Entity Name       ; MobilityMSI                                ;
 ; Family                      ; MAX V                                      ;
-; Total logic elements        ; 0                                          ;
-; Total pins                  ; 102                                        ;
+; Total logic elements        ; 42                                         ;
+; Total pins                  ; 99                                         ;
 ; Total virtual pins          ; 0                                          ;
 ; UFM blocks                  ; 0 / 1 ( 0 % )                              ;
 +-----------------------------+--------------------------------------------+
@@ -140,23 +151,20 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+--------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                                      ;
-+----------------------------------+-----------------+-----------------+------------------------------------------------------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                                                                               ; Library ;
-+----------------------------------+-----------------+-----------------+------------------------------------------------------------------------------------------------------------+---------+
-; MobilityMSI.vhd                  ; yes             ; User VHDL File  ; /home/singularity/cloud/git/MSI-URC-2015/subsystems/experimental/mobility/quartus/MobilityMSI.vhd          ;         ;
-; I2CHost.vhd                      ; yes             ; User VHDL File  ; /home/singularity/cloud/git/MSI-URC-2015/subsystems/experimental/mobility/quartus/I2CHost.vhd              ;         ;
-; MobilityTypesPkg.vhd             ; yes             ; User VHDL File  ; /home/singularity/cloud/git/MSI-URC-2015/subsystems/experimental/mobility/quartus/MobilityTypesPkg.vhd     ;         ;
-; I2CSlave.vhd                     ; yes             ; User VHDL File  ; /home/singularity/cloud/git/MSI-URC-2015/subsystems/experimental/mobility/quartus/I2CSlave.vhd             ;         ;
-; UART.vhd                         ; yes             ; User VHDL File  ; /home/singularity/cloud/git/MSI-URC-2015/subsystems/experimental/mobility/quartus/UART.vhd                 ;         ;
-; SPIHost.vhd                      ; yes             ; User VHDL File  ; /home/singularity/cloud/git/MSI-URC-2015/subsystems/experimental/mobility/quartus/SPIHost.vhd              ;         ;
-; SPISlave.vhd                     ; yes             ; User VHDL File  ; /home/singularity/cloud/git/MSI-URC-2015/subsystems/experimental/mobility/quartus/SPISlave.vhd             ;         ;
-; MotorDriver.vhd                  ; yes             ; User VHDL File  ; /home/singularity/cloud/git/MSI-URC-2015/subsystems/experimental/mobility/quartus/MotorDriver.vhd          ;         ;
-; EncoderHandler.vhd               ; yes             ; User VHDL File  ; /home/singularity/cloud/git/MSI-URC-2015/subsystems/experimental/mobility/quartus/EncoderHandler.vhd       ;         ;
-; UltrasonicController.vhd         ; yes             ; User VHDL File  ; /home/singularity/cloud/git/MSI-URC-2015/subsystems/experimental/mobility/quartus/UltrasonicController.vhd ;         ;
-; StatusPoll.vhd                   ; yes             ; User VHDL File  ; /home/singularity/cloud/git/MSI-URC-2015/subsystems/experimental/mobility/quartus/StatusPoll.vhd           ;         ;
-+----------------------------------+-----------------+-----------------+------------------------------------------------------------------------------------------------------------+---------+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                          ;
++----------------------------------+-----------------+-----------------+----------------------------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                                                                                   ; Library ;
++----------------------------------+-----------------+-----------------+----------------------------------------------------------------------------------------------------------------+---------+
+; src/spi_slave_controller.vhd     ; yes             ; User VHDL File  ; /home/singularity/cloud/git/MSI-URC-2015/subsystems/experimental/mobility/quartus/src/spi_slave_controller.vhd ;         ;
+; src/spi_host_controller.vhd      ; yes             ; User VHDL File  ; /home/singularity/cloud/git/MSI-URC-2015/subsystems/experimental/mobility/quartus/src/spi_host_controller.vhd  ;         ;
+; src/i2c_host_controller.vhd      ; yes             ; User VHDL File  ; /home/singularity/cloud/git/MSI-URC-2015/subsystems/experimental/mobility/quartus/src/i2c_host_controller.vhd  ;         ;
+; src/i2c_slave_controller.vhd     ; yes             ; User VHDL File  ; /home/singularity/cloud/git/MSI-URC-2015/subsystems/experimental/mobility/quartus/src/i2c_slave_controller.vhd ;         ;
+; src/uart_controller.vhd          ; yes             ; User VHDL File  ; /home/singularity/cloud/git/MSI-URC-2015/subsystems/experimental/mobility/quartus/src/uart_controller.vhd      ;         ;
+; src/uart.vhd                     ; yes             ; User VHDL File  ; /home/singularity/cloud/git/MSI-URC-2015/subsystems/experimental/mobility/quartus/src/uart.vhd                 ;         ;
+; MobilityMSI.vhd                  ; yes             ; User VHDL File  ; /home/singularity/cloud/git/MSI-URC-2015/subsystems/experimental/mobility/quartus/MobilityMSI.vhd              ;         ;
+; MobilityTypesPkg.vhd             ; yes             ; User VHDL File  ; /home/singularity/cloud/git/MSI-URC-2015/subsystems/experimental/mobility/quartus/MobilityTypesPkg.vhd         ;         ;
++----------------------------------+-----------------+-----------------+----------------------------------------------------------------------------------------------------------------+---------+
 
 
 +-----------------------------------------------------+
@@ -164,39 +172,75 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +---------------------------------------------+-------+
 ; Resource                                    ; Usage ;
 +---------------------------------------------+-------+
-; Total logic elements                        ; 0     ;
-;     -- Combinational with no register       ; 0     ;
-;     -- Register only                        ; 0     ;
-;     -- Combinational with a register        ; 0     ;
+; Total logic elements                        ; 42    ;
+;     -- Combinational with no register       ; 20    ;
+;     -- Register only                        ; 9     ;
+;     -- Combinational with a register        ; 13    ;
 ;                                             ;       ;
 ; Logic element usage by number of LUT inputs ;       ;
-;     -- 4 input functions                    ; 0     ;
-;     -- 3 input functions                    ; 0     ;
-;     -- 2 input functions                    ; 0     ;
-;     -- 1 input functions                    ; 0     ;
+;     -- 4 input functions                    ; 8     ;
+;     -- 3 input functions                    ; 5     ;
+;     -- 2 input functions                    ; 18    ;
+;     -- 1 input functions                    ; 2     ;
 ;     -- 0 input functions                    ; 0     ;
 ;                                             ;       ;
 ; Logic elements by mode                      ;       ;
-;     -- normal mode                          ; 0     ;
-;     -- arithmetic mode                      ; 0     ;
+;     -- normal mode                          ; 31    ;
+;     -- arithmetic mode                      ; 11    ;
 ;     -- qfbk mode                            ; 0     ;
 ;     -- register cascade mode                ; 0     ;
 ;     -- synchronous clear/load mode          ; 0     ;
-;     -- asynchronous clear/load mode         ; 0     ;
+;     -- asynchronous clear/load mode         ; 22    ;
 ;                                             ;       ;
-; Total registers                             ; 0     ;
-; I/O pins                                    ; 102   ;
+; Total registers                             ; 22    ;
+; Total logic cells in carry chains           ; 13    ;
+; I/O pins                                    ; 99    ;
+; Maximum fan-out node                        ; clk50 ;
+; Maximum fan-out                             ; 22    ;
+; Total fan-out                               ; 148   ;
+; Average fan-out                             ; 1.05  ;
 +---------------------------------------------+-------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                  ;
-+----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------+--------------+
-; Compilation Hierarchy Node ; Logic Cells ; LC Registers ; UFM Blocks ; Pins ; Virtual Pins ; LUT-Only LCs ; Register-Only LCs ; LUT/Register LCs ; Carry Chain LCs ; Packed LCs ; Full Hierarchy Name ; Library Name ;
-+----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------+--------------+
-; |MobilityMSI               ; 0 (0)       ; 0            ; 0          ; 102  ; 0            ; 0 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |MobilityMSI        ; work         ;
-+----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------+--------------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                            ;
++----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+-----------------------------------------------+--------------+
+; Compilation Hierarchy Node ; Logic Cells ; LC Registers ; UFM Blocks ; Pins ; Virtual Pins ; LUT-Only LCs ; Register-Only LCs ; LUT/Register LCs ; Carry Chain LCs ; Packed LCs ; Full Hierarchy Name                           ; Library Name ;
++----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+-----------------------------------------------+--------------+
+; |MobilityMSI               ; 42 (0)      ; 22           ; 0          ; 99   ; 0            ; 20 (0)       ; 9 (0)             ; 13 (0)           ; 13 (0)          ; 0 (0)      ; |MobilityMSI                                  ; work         ;
+;    |uart_controller:UART0| ; 42 (0)      ; 22           ; 0          ; 0    ; 0            ; 20 (0)       ; 9 (0)             ; 13 (0)           ; 13 (0)          ; 0 (0)      ; |MobilityMSI|uart_controller:UART0            ; work         ;
+;       |uart:UART0|         ; 42 (42)     ; 22           ; 0          ; 0    ; 0            ; 20 (20)      ; 9 (9)             ; 13 (13)          ; 13 (13)         ; 0 (0)      ; |MobilityMSI|uart_controller:UART0|uart:UART0 ; work         ;
++----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+-----------------------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                   ;
++----------------------------------------------+-------------------------------------------------------+
+; Register name                                ; Reason for Removal                                    ;
++----------------------------------------------+-------------------------------------------------------+
+; uart_controller:UART0|uart:UART0|TxLat[0..6] ; Merged with uart_controller:UART0|uart:UART0|TxLat[7] ;
+; uart_controller:UART0|uart:UART0|TxLat[7]    ; Stuck at VCC due to stuck port clock_enable           ;
+; uart_controller:UART0|uart:UART0|TxReg[1..9] ; Stuck at VCC due to stuck port data_in                ;
+; Total Number of Removed Registers = 17       ;                                                       ;
++----------------------------------------------+-------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                             ;
++-------------------------------------------+--------------------------------+--------------------------------------------+
+; Register name                             ; Reason for Removal             ; Registers Removed due to This Register     ;
++-------------------------------------------+--------------------------------+--------------------------------------------+
+; uart_controller:UART0|uart:UART0|TxReg[9] ; Stuck at VCC                   ; uart_controller:UART0|uart:UART0|TxReg[8], ;
+;                                           ; due to stuck port data_in      ; uart_controller:UART0|uart:UART0|TxReg[7], ;
+;                                           ;                                ; uart_controller:UART0|uart:UART0|TxReg[6], ;
+;                                           ;                                ; uart_controller:UART0|uart:UART0|TxReg[5], ;
+;                                           ;                                ; uart_controller:UART0|uart:UART0|TxReg[4], ;
+;                                           ;                                ; uart_controller:UART0|uart:UART0|TxReg[3], ;
+;                                           ;                                ; uart_controller:UART0|uart:UART0|TxReg[2]  ;
+; uart_controller:UART0|uart:UART0|TxLat[7] ; Stuck at VCC                   ; uart_controller:UART0|uart:UART0|TxReg[1]  ;
+;                                           ; due to stuck port clock_enable ;                                            ;
++-------------------------------------------+--------------------------------+--------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -204,44 +248,347 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 0     ;
+; Total registers                              ; 22    ;
 ; Number of registers using Synchronous Clear  ; 0     ;
 ; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Clear ; 22    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 0     ;
+; Number of registers using Clock Enable       ; 9     ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
 
-+---------------------------------------------------------+
-; Parameter Settings for User Entity Instance: UART:UART0 ;
-+----------------+--------+-------------------------------+
-; Parameter Name ; Value  ; Type                          ;
-+----------------+--------+-------------------------------+
-; baud_rate      ; 115200 ; Signed Integer                ;
-+----------------+--------+-------------------------------+
++-----------------------------------------------------+
+; Inverted Register Statistics                        ;
++-------------------------------------------+---------+
+; Inverted Register                         ; Fan out ;
++-------------------------------------------+---------+
+; uart_controller:UART0|uart:UART0|TxReg[0] ; 2       ;
+; Total number of inverted registers = 1    ;         ;
++-------------------------------------------+---------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                          ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------+
+; 6:1                ; 4 bits    ; 16 LEs        ; 4 LEs                ; 12 LEs                 ; Yes        ; |MobilityMSI|uart_controller:UART0|uart:UART0|TxBitCnt[3] ;
+; 6:1                ; 8 bits    ; 32 LEs        ; 8 LEs                ; 24 LEs                 ; Yes        ; |MobilityMSI|uart_controller:UART0|uart:UART0|TxReg[1]    ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top-level Entity: |MobilityMSI ;
++----------------+-------+----------------------------------------------------+
+; Parameter Name ; Value ; Type                                               ;
++----------------+-------+----------------------------------------------------+
+; PROTOCOL       ; '0'   ; Enumerated                                         ;
++----------------+-------+----------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+-----------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: I2C_Slave:I2CSlave ;
-+----------------+---------+--------------------------------------+
-; Parameter Name ; Value   ; Type                                 ;
-+----------------+---------+--------------------------------------+
-; slave_addr     ; 0000101 ; Unsigned Binary                      ;
-+----------------+---------+--------------------------------------+
++--------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: uart_controller:UART0 ;
++----------------+--------+------------------------------------------+
+; Parameter Name ; Value  ; Type                                     ;
++----------------+--------+------------------------------------------+
+; baud_rate      ; 115200 ; Signed Integer                           ;
++----------------+--------+------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+-----------------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: Ultrasonic_Controller:UltrasonicController ;
-+-------------------+-------+-------------------------------------------------------------+
-; Parameter Name    ; Value ; Type                                                        ;
-+-------------------+-------+-------------------------------------------------------------+
-; number_of_sensors ; 3     ; Signed Integer                                              ;
-+-------------------+-------+-------------------------------------------------------------+
++-------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: uart_controller:UART0|uart:UART0 ;
++----------------+-------+------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                 ;
++----------------+-------+------------------------------------------------------+
+; divisor        ; 26    ; Signed Integer                                       ;
++----------------+-------+------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: i2c_slave_controller:I2CSlave ;
++----------------+---------+-------------------------------------------------+
+; Parameter Name ; Value   ; Type                                            ;
++----------------+---------+-------------------------------------------------+
+; slave_addr     ; 0000101 ; Unsigned Binary                                 ;
++----------------+---------+-------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "spi_slave_controller:SPISlave"                                                                             ;
++-----------------------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port                        ; Type   ; Severity ; Details                                                                             ;
++-----------------------------+--------+----------+-------------------------------------------------------------------------------------+
+; err                         ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; motor_directive             ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; encoder_velocity[0][9..8]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[0][5..4]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[0][1..0]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[0][11..10] ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[0][7..6]   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[0][3..2]   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[0][12]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[1][9..8]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[1][5..4]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[1][1..0]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[1][11..10] ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[1][7..6]   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[1][3..2]   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[1][12]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[2][9..8]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[2][5..4]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[2][1..0]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[2][11..10] ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[2][7..6]   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[2][3..2]   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[2][12]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[3][9..8]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[3][5..4]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[3][1..0]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[3][11..10] ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[3][7..6]   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[3][3..2]   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[3][12]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[4][9..8]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[4][5..4]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[4][1..0]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[4][11..10] ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[4][7..6]   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[4][3..2]   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[4][12]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[5][9..8]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[5][5..4]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[5][1..0]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[5][11..10] ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[5][7..6]   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[5][3..2]   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[5][12]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[6][9..8]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[6][5..4]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[6][1..0]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[6][11..10] ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[6][7..6]   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[6][3..2]   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[6][12]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[7][9..8]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[7][5..4]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[7][1..0]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[7][11..10] ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[7][7..6]   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[7][3..2]   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[7][12]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[8][9..8]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[8][5..4]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[8][1..0]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[8][11..10] ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[8][7..6]   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[8][3..2]   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[8][12]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[9][9..8]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[9][5..4]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[9][1..0]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[9][11..10] ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[9][7..6]   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[9][3..2]   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[9][12]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; ultrsnic_map                ; Input  ; Info     ; Stuck at GND                                                                        ;
+; enc_velocity_rst            ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-----------------------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "spi_host_controller:SPIHost"                                                        ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; err  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "i2c_slave_controller:I2CSlave"                                                                             ;
++-----------------------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port                        ; Type   ; Severity ; Details                                                                             ;
++-----------------------------+--------+----------+-------------------------------------------------------------------------------------+
+; err                         ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; encoder_velocity[0][9..8]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[0][5..4]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[0][1..0]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[0][11..10] ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[0][7..6]   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[0][3..2]   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[0][12]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[1][9..8]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[1][5..4]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[1][1..0]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[1][11..10] ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[1][7..6]   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[1][3..2]   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[1][12]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[2][9..8]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[2][5..4]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[2][1..0]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[2][11..10] ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[2][7..6]   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[2][3..2]   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[2][12]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[3][9..8]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[3][5..4]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[3][1..0]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[3][11..10] ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[3][7..6]   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[3][3..2]   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[3][12]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[4][9..8]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[4][5..4]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[4][1..0]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[4][11..10] ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[4][7..6]   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[4][3..2]   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[4][12]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[5][9..8]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[5][5..4]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[5][1..0]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[5][11..10] ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[5][7..6]   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[5][3..2]   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[5][12]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[6][9..8]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[6][5..4]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[6][1..0]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[6][11..10] ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[6][7..6]   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[6][3..2]   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[6][12]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[7][9..8]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[7][5..4]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[7][1..0]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[7][11..10] ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[7][7..6]   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[7][3..2]   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[7][12]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[8][9..8]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[8][5..4]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[8][1..0]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[8][11..10] ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[8][7..6]   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[8][3..2]   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[8][12]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[9][9..8]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[9][5..4]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[9][1..0]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[9][11..10] ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[9][7..6]   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[9][3..2]   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[9][12]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; ultrsnic_map                ; Input  ; Info     ; Stuck at GND                                                                        ;
+; enc_velocity_rst            ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-----------------------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "i2c_host_controller:I2CHost"                                                        ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; err  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "uart_controller:UART0|uart:UART0"                                                     ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; Port   ; Type   ; Severity ; Details                                                                             ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; rxdata ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; rxen   ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; txbusy ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; rxerr  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "uart_controller:UART0"                                                                                     ;
++-----------------------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port                        ; Type   ; Severity ; Details                                                                             ;
++-----------------------------+--------+----------+-------------------------------------------------------------------------------------+
+; err                         ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; encoder_velocity[0][9..8]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[0][5..4]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[0][1..0]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[0][11..10] ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[0][7..6]   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[0][3..2]   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[0][12]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[1][9..8]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[1][5..4]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[1][1..0]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[1][11..10] ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[1][7..6]   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[1][3..2]   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[1][12]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[2][9..8]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[2][5..4]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[2][1..0]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[2][11..10] ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[2][7..6]   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[2][3..2]   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[2][12]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[3][9..8]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[3][5..4]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[3][1..0]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[3][11..10] ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[3][7..6]   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[3][3..2]   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[3][12]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[4][9..8]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[4][5..4]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[4][1..0]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[4][11..10] ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[4][7..6]   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[4][3..2]   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[4][12]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[5][9..8]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[5][5..4]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[5][1..0]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[5][11..10] ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[5][7..6]   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[5][3..2]   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[5][12]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[6][9..8]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[6][5..4]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[6][1..0]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[6][11..10] ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[6][7..6]   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[6][3..2]   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[6][12]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[7][9..8]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[7][5..4]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[7][1..0]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[7][11..10] ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[7][7..6]   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[7][3..2]   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[7][12]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[8][9..8]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[8][5..4]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[8][1..0]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[8][11..10] ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[8][7..6]   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[8][3..2]   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[8][12]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[9][9..8]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[9][5..4]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[9][1..0]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; encoder_velocity[9][11..10] ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[9][7..6]   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[9][3..2]   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; encoder_velocity[9][12]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; ultrsnic_map                ; Input  ; Info     ; Stuck at GND                                                                        ;
++-----------------------------+--------+----------+-------------------------------------------------------------------------------------+
 
 
 +-------------------------------+
@@ -250,138 +597,76 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
-    Info: Processing started: Thu Feb  5 20:36:24 2015
+    Info: Processing started: Wed Mar  4 14:20:45 2015
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off MobilityMSI -c MobilityMSI
 Warning (20028): Parallel compilation is not licensed and has been disabled
+Info (12021): Found 2 design units, including 1 entities, in source file src/spi_slave_controller.vhd
+    Info (12022): Found design unit 1: spi_slave_controller-main
+    Info (12023): Found entity 1: spi_slave_controller
+Info (12021): Found 2 design units, including 1 entities, in source file src/spi_host_controller.vhd
+    Info (12022): Found design unit 1: spi_host_controller-main
+    Info (12023): Found entity 1: spi_host_controller
+Info (12021): Found 0 design units, including 0 entities, in source file src/spi_slave.vhd
+Info (12021): Found 0 design units, including 0 entities, in source file src/spi_host.vhd
+Info (12021): Found 0 design units, including 0 entities, in source file src/i2c_slave.vhd
+Info (12021): Found 0 design units, including 0 entities, in source file src/i2c_host.vhd
+Info (12021): Found 2 design units, including 1 entities, in source file src/i2c_host_controller.vhd
+    Info (12022): Found design unit 1: i2c_host_controller-main
+    Info (12023): Found entity 1: i2c_host_controller
+Info (12021): Found 2 design units, including 1 entities, in source file src/i2c_slave_controller.vhd
+    Info (12022): Found design unit 1: i2c_slave_controller-main
+    Info (12023): Found entity 1: i2c_slave_controller
+Info (12021): Found 2 design units, including 1 entities, in source file src/uart_controller.vhd
+    Info (12022): Found design unit 1: uart_controller-main
+    Info (12023): Found entity 1: uart_controller
+Info (12021): Found 2 design units, including 1 entities, in source file src/uart.vhd
+    Info (12022): Found design unit 1: uart-main
+    Info (12023): Found entity 1: uart
 Info (12021): Found 2 design units, including 1 entities, in source file MobilityMSI.vhd
-    Info (12022): Found design unit 1: MobilityMSI-behavioral
+    Info (12022): Found design unit 1: MobilityMSI-main
     Info (12023): Found entity 1: MobilityMSI
-Info (12021): Found 2 design units, including 1 entities, in source file I2CHost.vhd
-    Info (12022): Found design unit 1: I2C_Host-behavioral
-    Info (12023): Found entity 1: I2C_Host
 Info (12021): Found 1 design units, including 0 entities, in source file MobilityTypesPkg.vhd
     Info (12022): Found design unit 1: mobility_types_pkg
-Info (12021): Found 2 design units, including 1 entities, in source file I2CSlave.vhd
-    Info (12022): Found design unit 1: I2C_Slave-behavioral
-    Info (12023): Found entity 1: I2C_Slave
-Info (12021): Found 2 design units, including 1 entities, in source file UART.vhd
-    Info (12022): Found design unit 1: UART-behavioral
-    Info (12023): Found entity 1: UART
-Info (12021): Found 2 design units, including 1 entities, in source file SPIHost.vhd
-    Info (12022): Found design unit 1: SPI_Host-behavioral
-    Info (12023): Found entity 1: SPI_Host
-Info (12021): Found 2 design units, including 1 entities, in source file SPISlave.vhd
-    Info (12022): Found design unit 1: SPI_Slave-behavioral
-    Info (12023): Found entity 1: SPI_Slave
-Info (12021): Found 2 design units, including 1 entities, in source file MotorDriver.vhd
-    Info (12022): Found design unit 1: Motor_Driver-behavioral
-    Info (12023): Found entity 1: Motor_Driver
-Info (12021): Found 2 design units, including 1 entities, in source file EncoderHandler.vhd
-    Info (12022): Found design unit 1: Encoder_Handler-behavioral
-    Info (12023): Found entity 1: Encoder_Handler
-Info (12021): Found 2 design units, including 1 entities, in source file UltrasonicController.vhd
-    Info (12022): Found design unit 1: Ultrasonic_Controller-behavioral
-    Info (12023): Found entity 1: Ultrasonic_Controller
-Info (12021): Found 2 design units, including 1 entities, in source file StatusPoll.vhd
-    Info (12022): Found design unit 1: Status_Poll-behavioral
-    Info (12023): Found entity 1: Status_Poll
 Info (12127): Elaborating entity "MobilityMSI" for the top level hierarchy
-Warning (10541): VHDL Signal Declaration warning at MobilityMSI.vhd(68): used implicit default value for signal "miso_host" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Info (12128): Elaborating entity "UART" for hierarchy "UART:UART0"
-Warning (10541): VHDL Signal Declaration warning at UART.vhd(18): used implicit default value for signal "error" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at UART.vhd(21): used implicit default value for signal "tx" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Info (12128): Elaborating entity "I2C_Host" for hierarchy "I2C_Host:I2CHost"
-Warning (10541): VHDL Signal Declaration warning at I2CHost.vhd(12): used implicit default value for signal "error" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at I2CHost.vhd(14): used implicit default value for signal "scl" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Info (12128): Elaborating entity "I2C_Slave" for hierarchy "I2C_Slave:I2CSlave"
-Warning (10541): VHDL Signal Declaration warning at I2CSlave.vhd(17): used implicit default value for signal "error" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at I2CSlave.vhd(22): used implicit default value for signal "motor_directive" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Info (12128): Elaborating entity "SPI_Host" for hierarchy "SPI_Host:SPIHost"
-Warning (10541): VHDL Signal Declaration warning at SPIHost.vhd(12): used implicit default value for signal "error" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at SPIHost.vhd(15): used implicit default value for signal "mosi" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at SPIHost.vhd(16): used implicit default value for signal "sck" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at SPIHost.vhd(17): used implicit default value for signal "ss" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at SPIHost.vhd(18): used implicit default value for signal "current_sense" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at SPIHost.vhd(19): used implicit default value for signal "pot_angles" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Info (12128): Elaborating entity "SPI_Slave" for hierarchy "SPI_Slave:SPISlave"
-Warning (10541): VHDL Signal Declaration warning at SPISlave.vhd(12): used implicit default value for signal "error" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at SPISlave.vhd(14): used implicit default value for signal "miso" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at SPISlave.vhd(19): used implicit default value for signal "motor_directive" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Info (12128): Elaborating entity "Motor_Driver" for hierarchy "Motor_Driver:MotorDriver"
-Warning (10541): VHDL Signal Declaration warning at MotorDriver.vhd(9): used implicit default value for signal "error_out" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at MotorDriver.vhd(13): used implicit default value for signal "en" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at MotorDriver.vhd(14): used implicit default value for signal "pwm_f" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at MotorDriver.vhd(15): used implicit default value for signal "pwm_r" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Info (12128): Elaborating entity "Encoder_Handler" for hierarchy "Encoder_Handler:EncoderHandler"
-Warning (10541): VHDL Signal Declaration warning at EncoderHandler.vhd(11): used implicit default value for signal "error" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at EncoderHandler.vhd(16): used implicit default value for signal "velocity" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at EncoderHandler.vhd(21): used implicit default value for signal "rst" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(29): signal "pin_b" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(30): signal "pose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(32): signal "pose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(35): signal "pin_b" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(36): signal "pose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(38): signal "pose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(48): signal "pin_b" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(49): signal "pose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(51): signal "pose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(54): signal "pin_b" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(55): signal "pose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(57): signal "pose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(67): signal "pin_b" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(68): signal "pose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(70): signal "pose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(73): signal "pin_b" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(74): signal "pose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(76): signal "pose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(86): signal "pin_b" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(87): signal "pose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(89): signal "pose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(92): signal "pin_b" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(93): signal "pose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(95): signal "pose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(105): signal "pin_b" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(106): signal "pose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(108): signal "pose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(111): signal "pin_b" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(112): signal "pose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(114): signal "pose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(124): signal "pin_b" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(125): signal "pose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(127): signal "pose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(130): signal "pin_b" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(131): signal "pose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(133): signal "pose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(143): signal "pin_b" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(144): signal "pose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(146): signal "pose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(149): signal "pin_b" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(150): signal "pose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(152): signal "pose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(162): signal "pin_b" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(163): signal "pose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(165): signal "pose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(168): signal "pin_b" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(169): signal "pose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(171): signal "pose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(181): signal "pin_b" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(182): signal "pose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(184): signal "pose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(187): signal "pin_b" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(188): signal "pose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(190): signal "pose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(200): signal "pin_b" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(201): signal "pose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(203): signal "pose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(206): signal "pin_b" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(207): signal "pose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at EncoderHandler.vhd(209): signal "pose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Info (12128): Elaborating entity "Ultrasonic_Controller" for hierarchy "Ultrasonic_Controller:UltrasonicController"
-Warning (10541): VHDL Signal Declaration warning at UltrasonicController.vhd(14): used implicit default value for signal "error" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at UltrasonicController.vhd(16): used implicit default value for signal "trig" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at UltrasonicController.vhd(19): used implicit default value for signal "dist" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Info (12128): Elaborating entity "Status_Poll" for hierarchy "Status_Poll:StatusPoll"
-Warning (10541): VHDL Signal Declaration warning at StatusPoll.vhd(8): used implicit default value for signal "status" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10540): VHDL Signal Declaration warning at MobilityMSI.vhd(38): used explicit default value for signal "motors" because signal was never assigned a value
+Warning (10540): VHDL Signal Declaration warning at MobilityMSI.vhd(42): used explicit default value for signal "ultrsnic_trig" because signal was never assigned a value
+Warning (10541): VHDL Signal Declaration warning at MobilityMSI.vhd(51): used implicit default value for signal "encoder_velocity" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at MobilityMSI.vhd(54): used implicit default value for signal "ultrsnic_map" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10036): Verilog HDL or VHDL warning at MobilityMSI.vhd(55): object "enc_velocity_rst" assigned a value but never read
+Warning (10541): VHDL Signal Declaration warning at MobilityMSI.vhd(56): used implicit default value for signal "t_status" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10036): Verilog HDL or VHDL warning at MobilityMSI.vhd(58): object "err_uart" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at MobilityMSI.vhd(59): object "err_i2c_h" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at MobilityMSI.vhd(60): object "err_i2c_s" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at MobilityMSI.vhd(61): object "err_spi_h" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at MobilityMSI.vhd(62): object "err_spi_s" assigned a value but never read
+Info (12128): Elaborating entity "uart_controller" for hierarchy "uart_controller:UART0"
+Warning (10541): VHDL Signal Declaration warning at uart_controller.vhd(13): used implicit default value for signal "err" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10036): Verilog HDL or VHDL warning at uart_controller.vhd(27): object "rx_data" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at uart_controller.vhd(28): object "rx_en" assigned a value but never read
+Warning (10541): VHDL Signal Declaration warning at uart_controller.vhd(29): used implicit default value for signal "tx_data" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at uart_controller.vhd(30): used implicit default value for signal "tx_en" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10036): Verilog HDL or VHDL warning at uart_controller.vhd(31): object "tx_busy" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at uart_controller.vhd(32): object "rx_err" assigned a value but never read
+Info (12128): Elaborating entity "uart" for hierarchy "uart_controller:UART0|uart:UART0"
+Info (12128): Elaborating entity "i2c_host_controller" for hierarchy "i2c_host_controller:I2CHost"
+Warning (10541): VHDL Signal Declaration warning at i2c_host_controller.vhd(11): used implicit default value for signal "err" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at i2c_host_controller.vhd(13): used implicit default value for signal "scl" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Info (12128): Elaborating entity "i2c_slave_controller" for hierarchy "i2c_slave_controller:I2CSlave"
+Warning (10541): VHDL Signal Declaration warning at i2c_slave_controller.vhd(13): used implicit default value for signal "err" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at i2c_slave_controller.vhd(18): used implicit default value for signal "motor_directive" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at i2c_slave_controller.vhd(24): used implicit default value for signal "enc_velocity_rst" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Info (12128): Elaborating entity "spi_host_controller" for hierarchy "spi_host_controller:SPIHost"
+Warning (10541): VHDL Signal Declaration warning at spi_host_controller.vhd(11): used implicit default value for signal "err" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at spi_host_controller.vhd(14): used implicit default value for signal "mosi" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at spi_host_controller.vhd(15): used implicit default value for signal "sclk" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at spi_host_controller.vhd(16): used implicit default value for signal "ss_n" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at spi_host_controller.vhd(18): used implicit default value for signal "current_sense" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at spi_host_controller.vhd(19): used implicit default value for signal "pot_angles" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Info (12128): Elaborating entity "spi_slave_controller" for hierarchy "spi_slave_controller:SPISlave"
+Warning (10541): VHDL Signal Declaration warning at spi_slave_controller.vhd(10): used implicit default value for signal "err" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at spi_slave_controller.vhd(12): used implicit default value for signal "miso" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at spi_slave_controller.vhd(17): used implicit default value for signal "motor_directive" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at spi_slave_controller.vhd(23): used implicit default value for signal "enc_velocity_rst" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
 Warning (13039): The following bidir pins have no drivers
     Warning (13040): Bidir "sda_host" has no driver
     Warning (13040): Bidir "sda_slave" has no driver
@@ -395,106 +680,102 @@ Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "status[6]" is stuck at GND
     Warning (13410): Pin "status[7]" is stuck at GND
     Warning (13410): Pin "scl_host" is stuck at GND
-    Warning (13410): Pin "mosi_host_0" is stuck at GND
-    Warning (13410): Pin "sck_host_0" is stuck at GND
-    Warning (13410): Pin "mosi_host_1" is stuck at GND
-    Warning (13410): Pin "sck_host_1" is stuck at GND
-    Warning (13410): Pin "ss_host[0]" is stuck at GND
-    Warning (13410): Pin "ss_host[1]" is stuck at GND
-    Warning (13410): Pin "ss_host[2]" is stuck at GND
-    Warning (13410): Pin "ss_host[3]" is stuck at GND
-    Warning (13410): Pin "ss_host[4]" is stuck at GND
-    Warning (13410): Pin "ss_host[5]" is stuck at GND
-    Warning (13410): Pin "ss_host[6]" is stuck at GND
-    Warning (13410): Pin "ss_host[7]" is stuck at GND
+    Warning (13410): Pin "mosi_host" is stuck at GND
+    Warning (13410): Pin "sclk_host" is stuck at GND
+    Warning (13410): Pin "ss_n_host[0]" is stuck at GND
+    Warning (13410): Pin "ss_n_host[1]" is stuck at GND
+    Warning (13410): Pin "ss_n_host[2]" is stuck at GND
+    Warning (13410): Pin "ss_n_host[3]" is stuck at GND
+    Warning (13410): Pin "ss_n_host[4]" is stuck at GND
+    Warning (13410): Pin "ss_n_host[5]" is stuck at GND
+    Warning (13410): Pin "ss_n_host[6]" is stuck at GND
+    Warning (13410): Pin "ss_n_host[7]" is stuck at GND
     Warning (13410): Pin "miso_slave" is stuck at GND
-    Warning (13410): Pin "uart_tx" is stuck at GND
-    Warning (13410): Pin "motor_en[0]" is stuck at GND
-    Warning (13410): Pin "motor_en[1]" is stuck at GND
-    Warning (13410): Pin "motor_en[2]" is stuck at GND
-    Warning (13410): Pin "motor_en[3]" is stuck at GND
-    Warning (13410): Pin "motor_en[4]" is stuck at GND
-    Warning (13410): Pin "motor_en[5]" is stuck at GND
-    Warning (13410): Pin "motor_en[6]" is stuck at GND
-    Warning (13410): Pin "motor_en[7]" is stuck at GND
-    Warning (13410): Pin "motor_en[8]" is stuck at GND
-    Warning (13410): Pin "motor_en[9]" is stuck at GND
-    Warning (13410): Pin "motor_pwm_f[0]" is stuck at GND
-    Warning (13410): Pin "motor_pwm_f[1]" is stuck at GND
-    Warning (13410): Pin "motor_pwm_f[2]" is stuck at GND
-    Warning (13410): Pin "motor_pwm_f[3]" is stuck at GND
-    Warning (13410): Pin "motor_pwm_f[4]" is stuck at GND
-    Warning (13410): Pin "motor_pwm_f[5]" is stuck at GND
-    Warning (13410): Pin "motor_pwm_f[6]" is stuck at GND
-    Warning (13410): Pin "motor_pwm_f[7]" is stuck at GND
-    Warning (13410): Pin "motor_pwm_f[8]" is stuck at GND
-    Warning (13410): Pin "motor_pwm_f[9]" is stuck at GND
-    Warning (13410): Pin "motor_pwm_r[0]" is stuck at GND
-    Warning (13410): Pin "motor_pwm_r[1]" is stuck at GND
-    Warning (13410): Pin "motor_pwm_r[2]" is stuck at GND
-    Warning (13410): Pin "motor_pwm_r[3]" is stuck at GND
-    Warning (13410): Pin "motor_pwm_r[4]" is stuck at GND
-    Warning (13410): Pin "motor_pwm_r[5]" is stuck at GND
-    Warning (13410): Pin "motor_pwm_r[6]" is stuck at GND
-    Warning (13410): Pin "motor_pwm_r[7]" is stuck at GND
-    Warning (13410): Pin "motor_pwm_r[8]" is stuck at GND
-    Warning (13410): Pin "motor_pwm_r[9]" is stuck at GND
-    Warning (13410): Pin "ultrasonic_trig[0]" is stuck at GND
-    Warning (13410): Pin "ultrasonic_trig[1]" is stuck at GND
-    Warning (13410): Pin "ultrasonic_trig[2]" is stuck at GND
-    Warning (13410): Pin "ultrasonic_trig[3]" is stuck at GND
-    Warning (13410): Pin "ultrasonic_trig[4]" is stuck at GND
-    Warning (13410): Pin "ultrasonic_trig[5]" is stuck at GND
-    Warning (13410): Pin "ultrasonic_trig[6]" is stuck at GND
-    Warning (13410): Pin "ultrasonic_trig[7]" is stuck at GND
-Warning (21074): Design contains 39 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "clk"
-    Warning (15610): No output dependent on input pin "clk_comm"
+    Warning (13410): Pin "motors[9][0]" is stuck at GND
+    Warning (13410): Pin "motors[9][1]" is stuck at VCC
+    Warning (13410): Pin "motors[9][2]" is stuck at VCC
+    Warning (13410): Pin "motors[8][0]" is stuck at GND
+    Warning (13410): Pin "motors[8][1]" is stuck at VCC
+    Warning (13410): Pin "motors[8][2]" is stuck at VCC
+    Warning (13410): Pin "motors[7][0]" is stuck at GND
+    Warning (13410): Pin "motors[7][1]" is stuck at VCC
+    Warning (13410): Pin "motors[7][2]" is stuck at VCC
+    Warning (13410): Pin "motors[6][0]" is stuck at GND
+    Warning (13410): Pin "motors[6][1]" is stuck at VCC
+    Warning (13410): Pin "motors[6][2]" is stuck at VCC
+    Warning (13410): Pin "motors[5][0]" is stuck at GND
+    Warning (13410): Pin "motors[5][1]" is stuck at VCC
+    Warning (13410): Pin "motors[5][2]" is stuck at VCC
+    Warning (13410): Pin "motors[4][0]" is stuck at GND
+    Warning (13410): Pin "motors[4][1]" is stuck at VCC
+    Warning (13410): Pin "motors[4][2]" is stuck at VCC
+    Warning (13410): Pin "motors[3][0]" is stuck at GND
+    Warning (13410): Pin "motors[3][1]" is stuck at VCC
+    Warning (13410): Pin "motors[3][2]" is stuck at VCC
+    Warning (13410): Pin "motors[2][0]" is stuck at GND
+    Warning (13410): Pin "motors[2][1]" is stuck at VCC
+    Warning (13410): Pin "motors[2][2]" is stuck at VCC
+    Warning (13410): Pin "motors[1][0]" is stuck at GND
+    Warning (13410): Pin "motors[1][1]" is stuck at VCC
+    Warning (13410): Pin "motors[1][2]" is stuck at VCC
+    Warning (13410): Pin "motors[0][0]" is stuck at GND
+    Warning (13410): Pin "motors[0][1]" is stuck at VCC
+    Warning (13410): Pin "motors[0][2]" is stuck at VCC
+    Warning (13410): Pin "ultrsnic_trig[0]" is stuck at GND
+    Warning (13410): Pin "ultrsnic_trig[1]" is stuck at GND
+    Warning (13410): Pin "ultrsnic_trig[2]" is stuck at GND
+    Warning (13410): Pin "ultrsnic_trig[3]" is stuck at GND
+    Warning (13410): Pin "ultrsnic_trig[4]" is stuck at GND
+    Warning (13410): Pin "ultrsnic_trig[5]" is stuck at GND
+    Warning (13410): Pin "ultrsnic_trig[6]" is stuck at GND
+    Warning (13410): Pin "ultrsnic_trig[7]" is stuck at GND
+Info (18000): Registers with preset signals will power-up high
+Warning (21074): Design contains 36 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "clk0_001"
     Warning (15610): No output dependent on input pin "lock"
-    Warning (15610): No output dependent on input pin "proto_select"
     Warning (15610): No output dependent on input pin "scl_slave"
-    Warning (15610): No output dependent on input pin "miso_host_0"
-    Warning (15610): No output dependent on input pin "miso_host_1"
+    Warning (15610): No output dependent on input pin "miso_host"
     Warning (15610): No output dependent on input pin "mosi_slave"
-    Warning (15610): No output dependent on input pin "sck_slave"
-    Warning (15610): No output dependent on input pin "ss_slave"
+    Warning (15610): No output dependent on input pin "sclk_slave"
+    Warning (15610): No output dependent on input pin "ss_n_slave"
     Warning (15610): No output dependent on input pin "uart_rx"
-    Warning (15610): No output dependent on input pin "encoder_a[0]"
-    Warning (15610): No output dependent on input pin "encoder_a[1]"
-    Warning (15610): No output dependent on input pin "encoder_a[2]"
-    Warning (15610): No output dependent on input pin "encoder_a[3]"
-    Warning (15610): No output dependent on input pin "encoder_a[4]"
-    Warning (15610): No output dependent on input pin "encoder_a[5]"
-    Warning (15610): No output dependent on input pin "encoder_a[6]"
-    Warning (15610): No output dependent on input pin "encoder_a[7]"
-    Warning (15610): No output dependent on input pin "encoder_a[8]"
-    Warning (15610): No output dependent on input pin "encoder_a[9]"
-    Warning (15610): No output dependent on input pin "encoder_b[0]"
-    Warning (15610): No output dependent on input pin "encoder_b[1]"
-    Warning (15610): No output dependent on input pin "encoder_b[2]"
-    Warning (15610): No output dependent on input pin "encoder_b[3]"
-    Warning (15610): No output dependent on input pin "encoder_b[4]"
-    Warning (15610): No output dependent on input pin "encoder_b[5]"
-    Warning (15610): No output dependent on input pin "encoder_b[6]"
-    Warning (15610): No output dependent on input pin "encoder_b[7]"
-    Warning (15610): No output dependent on input pin "encoder_b[8]"
-    Warning (15610): No output dependent on input pin "encoder_b[9]"
-    Warning (15610): No output dependent on input pin "ultrasonic_echo[0]"
-    Warning (15610): No output dependent on input pin "ultrasonic_echo[1]"
-    Warning (15610): No output dependent on input pin "ultrasonic_echo[2]"
-    Warning (15610): No output dependent on input pin "ultrasonic_echo[3]"
-    Warning (15610): No output dependent on input pin "ultrasonic_echo[4]"
-    Warning (15610): No output dependent on input pin "ultrasonic_echo[5]"
-    Warning (15610): No output dependent on input pin "ultrasonic_echo[6]"
-    Warning (15610): No output dependent on input pin "ultrasonic_echo[7]"
-Info (21057): Implemented 102 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 39 input pins
-    Info (21059): Implemented 61 output pins
+    Warning (15610): No output dependent on input pin "encoders[9][0]"
+    Warning (15610): No output dependent on input pin "encoders[9][1]"
+    Warning (15610): No output dependent on input pin "encoders[8][0]"
+    Warning (15610): No output dependent on input pin "encoders[8][1]"
+    Warning (15610): No output dependent on input pin "encoders[7][0]"
+    Warning (15610): No output dependent on input pin "encoders[7][1]"
+    Warning (15610): No output dependent on input pin "encoders[6][0]"
+    Warning (15610): No output dependent on input pin "encoders[6][1]"
+    Warning (15610): No output dependent on input pin "encoders[5][0]"
+    Warning (15610): No output dependent on input pin "encoders[5][1]"
+    Warning (15610): No output dependent on input pin "encoders[4][0]"
+    Warning (15610): No output dependent on input pin "encoders[4][1]"
+    Warning (15610): No output dependent on input pin "encoders[3][0]"
+    Warning (15610): No output dependent on input pin "encoders[3][1]"
+    Warning (15610): No output dependent on input pin "encoders[2][0]"
+    Warning (15610): No output dependent on input pin "encoders[2][1]"
+    Warning (15610): No output dependent on input pin "encoders[1][0]"
+    Warning (15610): No output dependent on input pin "encoders[1][1]"
+    Warning (15610): No output dependent on input pin "encoders[0][0]"
+    Warning (15610): No output dependent on input pin "encoders[0][1]"
+    Warning (15610): No output dependent on input pin "ultrsnic_echo[0]"
+    Warning (15610): No output dependent on input pin "ultrsnic_echo[1]"
+    Warning (15610): No output dependent on input pin "ultrsnic_echo[2]"
+    Warning (15610): No output dependent on input pin "ultrsnic_echo[3]"
+    Warning (15610): No output dependent on input pin "ultrsnic_echo[4]"
+    Warning (15610): No output dependent on input pin "ultrsnic_echo[5]"
+    Warning (15610): No output dependent on input pin "ultrsnic_echo[6]"
+    Warning (15610): No output dependent on input pin "ultrsnic_echo[7]"
+Info (21057): Implemented 141 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 38 input pins
+    Info (21059): Implemented 59 output pins
     Info (21060): Implemented 2 bidirectional pins
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 193 warnings
-    Info: Peak virtual memory: 786 megabytes
-    Info: Processing ended: Thu Feb  5 20:36:30 2015
-    Info: Elapsed time: 00:00:06
-    Info: Total CPU time (on all processors): 00:00:03
+    Info (21061): Implemented 42 logic cells
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 133 warnings
+    Info: Peak virtual memory: 790 megabytes
+    Info: Processing ended: Wed Mar  4 14:20:49 2015
+    Info: Elapsed time: 00:00:04
+    Info: Total CPU time (on all processors): 00:00:02
 
 

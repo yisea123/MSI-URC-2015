@@ -1,10 +1,10 @@
-#define lFRNT 0
-#define lMIDL 1
-#define lREAR 2
+//#define lFRNT 0
+#define lMIDL 0
+//#define lREAR 2
 
-#define rFRNT 5
-#define rMIDL 4
-#define rREAR 3
+//#define rFRNT 5
+#define rMIDL 1
+//#define rREAR 3
 
 #define FRWD 1
 #define BKWD 0
@@ -14,7 +14,8 @@ struct _motor{
   int pwm;
   int digital;
 };
-_motor motor[6] = {{36,6,38}, {34,5,35},{31,4,33},{37,7,39},{44,10,46},{45,11,47}};
+_motor motor[2] = {{3,5,7}, {4,6,8}};
+//_motor motor[6] = {{36,6,38}, {34,5,35},{31,4,33},{37,7,39},{44,10,46},{45,11,47}};
 
 #include <Wire.h>
 
@@ -106,7 +107,7 @@ void i2cInit() {
 //!---------------------------------------------------------------!//
 
 void driveInit() {
-  for (uint8_t i=0; i < 6; i++) {
+  for (uint8_t i=0; i < 2; i++) {
     pinMode(motor[i].enable, OUTPUT);
     pinMode(motor[i].pwm, OUTPUT);
     pinMode(motor[i].digital, OUTPUT);
@@ -124,38 +125,38 @@ void stop() {
 }
 
 void drive() {
-  digitalWrite(motor[lFRNT].enable, lEN);
+//  digitalWrite(motor[lFRNT].enable, lEN);
   digitalWrite(motor[lMIDL].enable, lEN);
-  digitalWrite(motor[lREAR].enable, lEN);
+//  digitalWrite(motor[lREAR].enable, lEN);
 
-  digitalWrite(motor[rFRNT].enable, rEN);
+//  digitalWrite(motor[rFRNT].enable, rEN);
   digitalWrite(motor[rMIDL].enable, rEN);
-  digitalWrite(motor[rREAR].enable, rEN);
+//  digitalWrite(motor[rREAR].enable, rEN);
 
-  digitalWrite(motor[lFRNT].digital, lDIR);
+//  digitalWrite(motor[lFRNT].digital, lDIR);
   digitalWrite(motor[lMIDL].digital, lDIR);
-  digitalWrite(motor[lREAR].digital, lDIR);
+//  digitalWrite(motor[lREAR].digital, lDIR);
 
-  digitalWrite(motor[rFRNT].digital, 1 - rDIR);
+//  digitalWrite(motor[rFRNT].digital, 1 - rDIR);
   digitalWrite(motor[rMIDL].digital, 1 - rDIR);
-  digitalWrite(motor[rREAR].digital, 1 - rDIR);
+//  digitalWrite(motor[rREAR].digital, 1 - rDIR);
 
-  analogWrite(motor[lFRNT].pwm, (lDIR == FRWD)?(255 - lPWM):lPWM);
+//  analogWrite(motor[lFRNT].pwm, (lDIR == FRWD)?(255 - lPWM):lPWM);
   analogWrite(motor[lMIDL].pwm, (lDIR == FRWD)?(255 - lPWM):lPWM);
-  analogWrite(motor[lREAR].pwm, (lDIR == FRWD)?(255 - lPWM):lPWM);
+//  analogWrite(motor[lREAR].pwm, (lDIR == FRWD)?(255 - lPWM):lPWM);
 
-  analogWrite(motor[rFRNT].pwm, (rDIR == FRWD)?rPWM:(1-rPWM));
+//  analogWrite(motor[rFRNT].pwm, (rDIR == FRWD)?rPWM:(1-rPWM));
   analogWrite(motor[rMIDL].pwm, (rDIR == FRWD)?rPWM:(1-rPWM));
-  analogWrite(motor[rREAR].pwm, (rDIR == FRWD)?rPWM:(1-rPWM));
+//  analogWrite(motor[rREAR].pwm, (rDIR == FRWD)?rPWM:(1-rPWM));
 }
 
 void setup() {
   lEN = 1;
   rEN = 1;
-  lPWM = 0;
-  rPWM = 0;
+  lPWM = 255;
+  rPWM = 255;
   lDIR = FRWD;
-  rDIR = FRWD;
+  rDIR = BKWD;
   driveUpdateTime_ = 0;
   
   i2cInit();

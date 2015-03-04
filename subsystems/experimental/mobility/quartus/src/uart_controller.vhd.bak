@@ -1,0 +1,29 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.all;
+LIBRARY work;
+USE work.mobility_types_pkg.all;
+
+ENTITY uart_controller IS
+  GENERIC(
+      baud_rate : INTEGER RANGE 9600 TO 115200
+      );
+  PORT(
+	   clk50            : IN  STD_LOGIC;
+	   rst              : IN  STD_LOGIC;
+	   err              : OUT INTEGER RANGE 0 TO 3;
+	  
+	   rx               : IN  STD_LOGIC;
+	   tx               : OUT STD_LOGIC;
+	  
+	   motor_directive  : IN  int8_vector10;
+	   encoder_velocity : IN  int8_vector10;
+	   current_sense    : IN  uint8_vector10;
+	   pot_angles       : IN  int8_vector8;
+      ultrsnic_map     : IN  uint8_vector10
+	   );
+END ENTITY;
+
+ARCHITECTURE main OF UART IS
+BEGIN
+
+END ARCHITECTURE;

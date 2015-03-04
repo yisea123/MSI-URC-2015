@@ -1,0 +1,3 @@
+-- https://openlab.citytech.cuny.edu/cet4982/fpga/mar-23-mar-29-researchwork-information/vhdl-i2c-example-2/
+-- https://openlab.citytech.cuny.edu/cet4982/fpga/mar-23-mar-29-researchwork-information/vhdl-i2c-example/
+-- http://www.fpga4fun.com/ExternalContributions/VHDL_i2cs_rx_CPLD.zip

@@ -1,24 +1,40 @@
-library ieee;
-use ieee.std_logic_1164.all;
-library work;
-use work.mobility_types_pkg.all;
+LIBRARY ieee;
+USE ieee.std_logic_1164.all;
+LIBRARY work;
+USE work.mobility_types_pkg.all;
 
-entity Motor_Driver is
-port(
-	  clk       : in  std_ulogic;
-	  error_out : out integer range 0 to 3;
-	  error_in  : in  integer range 0 to 3;
-	  lock      : in  std_ulogic;
+ENTITY motor_controller IS
+PORT(
+	  clk50     : IN  STD_LOGIC;
+	  clk0_1    : IN  STD_LOGIC;
+	  rst       : IN  STD_LOGIC;
+	  err_out   : OUT INTEGER RANGE 0 TO 3;
+	  err_in    : IN  STD_LOGIC;
+	  lock      : IN  STD_LOGIC;
+	  free      : IN  STD_LOGIC;
 	  
-	  en        : out std_ulogic_vector(9 downto 0);
-	  pwm_f     : out std_ulogic_vector(9 downto 0);
-	  pwm_r     : out std_ulogic_vector(9 downto 0);
+	  ena       : OUT STD_LOGIC_VECTOR(9 DOWNTO 0);
+	  pwm       : OUT STD_LOGIC_VECTOR(9 DOWNTO 0);
+	  dir       : OUT STD_LOGIC_VECTOR(9 DOWNTO 0);
 
-	  directive : in int8_vector10
+	  directive : IN int8_vector10
     );
-end entity Motor_Driver;
+END ENTITY;
 
-architecture behavioral of Motor_Driver is
-begin
-
-end behavioral;
+ARCHITECTURE main OF motor_controller IS
+SIGNAL t_err_out : uint2_vector10;
+BEGIN
+PWM_F_0 : ENTITY work.motor_driver
+  PORT MAP(
+      clk0_1  => clk0_1,
+		rst     => rst,
+		err_in  => err_in,
+		err_out => t_err_out(0),
+		data    => directive(0),
+		lock    => lock,
+		free    => free,
+		ena      => ena(0),
+		pwm     => pwm(0),
+		dir     => dir(0)
+      );
+END main;

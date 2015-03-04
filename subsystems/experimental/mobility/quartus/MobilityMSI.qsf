@@ -52,7 +52,6 @@ set_global_assignment -name DEVICE_FILTER_SPEED_GRADE 5
 set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR "-1"
 set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim-Altera (VHDL)"
 set_global_assignment -name EDA_OUTPUT_DATA_FORMAT VHDL -section_id eda_simulation
-set_global_assignment -name VHDL_FILE MobilityMSI.vhd
 set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "3.3-V LVTTL"
 set_location_assignment PIN_118 -to ultrasonic_trig[0]
 set_location_assignment PIN_108 -to ultrasonic_echo[0]
@@ -80,16 +79,6 @@ set_instance_assignment -name IO_STANDARD "3.3-V PCI" -to ultrasonic_echo[4]
 set_instance_assignment -name IO_STANDARD "3.3-V PCI" -to ultrasonic_echo[3]
 set_location_assignment PIN_91 -to clk_comm
 set_location_assignment PIN_18 -to clk
-set_global_assignment -name VHDL_FILE I2CHost.vhd
-set_global_assignment -name VHDL_FILE MobilityTypesPkg.vhd
-set_global_assignment -name VHDL_FILE I2CSlave.vhd
-set_global_assignment -name VHDL_FILE UART.vhd
-set_global_assignment -name VHDL_FILE SPIHost.vhd
-set_global_assignment -name VHDL_FILE SPISlave.vhd
-set_global_assignment -name VHDL_FILE MotorDriver.vhd
-set_global_assignment -name VHDL_FILE EncoderHandler.vhd
-set_global_assignment -name VHDL_FILE UltrasonicController.vhd
-set_global_assignment -name VHDL_FILE StatusPoll.vhd
 set_location_assignment PIN_73 -to encoder_a[9]
 set_location_assignment PIN_74 -to encoder_b[9]
 set_location_assignment PIN_75 -to encoder_a[8]
@@ -169,3 +158,16 @@ set_location_assignment PIN_24 -to uart_rx
 set_location_assignment PIN_23 -to uart_tx
 set_location_assignment PIN_66 -to scl_host
 set_location_assignment PIN_67 -to sda_host
+set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "NO HEAT SINK WITH STILL AIR"
+set_global_assignment -name VHDL_FILE src/spi_slave_controller.vhd
+set_global_assignment -name VHDL_FILE src/spi_host_controller.vhd
+set_global_assignment -name VHDL_FILE src/spi_slave.vhd
+set_global_assignment -name VHDL_FILE src/spi_host.vhd
+set_global_assignment -name VHDL_FILE src/i2c_slave.vhd
+set_global_assignment -name VHDL_FILE src/i2c_host.vhd
+set_global_assignment -name VHDL_FILE src/i2c_host_controller.vhd
+set_global_assignment -name VHDL_FILE src/i2c_slave_controller.vhd
+set_global_assignment -name VHDL_FILE src/uart_controller.vhd
+set_global_assignment -name VHDL_FILE src/uart.vhd
+set_global_assignment -name VHDL_FILE MobilityMSI.vhd
+set_global_assignment -name VHDL_FILE MobilityTypesPkg.vhd

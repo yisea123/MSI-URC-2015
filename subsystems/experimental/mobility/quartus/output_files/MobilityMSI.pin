@@ -65,28 +65,28 @@ CHIP  "MobilityMSI"  ASSIGNED TO AN: 5M1270ZT144C5
 
 Pin Name/Usage               : Location  : Dir.   : I/O Standard      : Voltage : I/O Bank  : User Assignment
 -------------------------------------------------------------------------------------------------------------
-status[6]                    : 1         : output : 3.3-V LVTTL       :         : 1         : N              
-status[7]                    : 2         : output : 3.3-V LVTTL       :         : 1         : N              
+ss_n_host[4]                 : 1         : output : 3.3-V LVTTL       :         : 1         : N              
+ultrsnic_echo[3]             : 2         : input  : 3.3-V LVTTL       :         : 1         : N              
 miso_slave                   : 3         : output : 3.3-V LVTTL       :         : 1         : Y              
 mosi_slave                   : 4         : input  : 3.3-V LVTTL       :         : 1         : Y              
-sck_slave                    : 5         : input  : 3.3-V LVTTL       :         : 1         : Y              
-ss_slave                     : 6         : input  : 3.3-V LVTTL       :         : 1         : Y              
+encoders[4][0]               : 5         : input  : 3.3-V LVTTL       :         : 1         : N              
+status[6]                    : 6         : output : 3.3-V LVTTL       :         : 1         : N              
 sda_slave                    : 7         : bidir  : 3.3-V LVTTL       :         : 1         : Y              
 scl_slave                    : 8         : input  : 3.3-V LVTTL       :         : 1         : Y              
 VCCIO1                       : 9         : power  :                   : 3.3V    : 1         :                
 GNDIO                        : 10        : gnd    :                   :         :           :                
 GNDIO                        : 11        : gnd    :                   :         :           :                
 lock                         : 12        : input  : 3.3-V LVTTL       :         : 1         : Y              
-proto_select                 : 13        : input  : 3.3-V LVTTL       :         : 1         : Y              
-ss_host[3]                   : 14        : output : 3.3-V LVTTL       :         : 1         : N              
-ss_host[4]                   : 15        : output : 3.3-V LVTTL       :         : 1         : N              
-ss_host[5]                   : 16        : output : 3.3-V LVTTL       :         : 1         : N              
+motors[1][1]                 : 13        : output : 3.3-V LVTTL       :         : 1         : N              
+encoders[6][1]               : 14        : input  : 3.3-V LVTTL       :         : 1         : N              
+motors[9][2]                 : 15        : output : 3.3-V LVTTL       :         : 1         : N              
+motors[8][2]                 : 16        : output : 3.3-V LVTTL       :         : 1         : N              
 GNDINT                       : 17        : gnd    :                   :         :           :                
-clk                          : 18        : input  : 3.3V Schmitt Trigger Input :         : 1         : Y              
+clk50                        : 18        : input  : 3.3-V LVTTL       :         : 1         : N              
 VCCINT                       : 19        : power  :                   : 1.8V    :           :                
-ss_host[6]                   : 20        : output : 3.3-V LVTTL       :         : 1         : N              
-ss_host[7]                   : 21        : output : 3.3-V LVTTL       :         : 1         : N              
-GND*                         : 22        :        :                   :         : 1         :                
+rst_n                        : 20        : input  : 3.3-V LVTTL       :         : 1         : N              
+ultrsnic_echo[6]             : 21        : input  : 3.3-V LVTTL       :         : 1         : N              
+encoders[3][1]               : 22        : input  : 3.3-V LVTTL       :         : 1         : N              
 uart_tx                      : 23        : output : 3.3-V LVTTL       :         : 1         : Y              
 uart_rx                      : 24        : input  : 3.3-V LVTTL       :         : 1         : Y              
 VCCIO1                       : 25        : power  :                   : 3.3V    : 1         :                
@@ -101,111 +101,111 @@ TMS                          : 33        : input  :                   :         
 TDI                          : 34        : input  :                   :         : 1         :                
 TCK                          : 35        : input  :                   :         : 1         :                
 TDO                          : 36        : output :                   :         : 1         :                
-motor_en[2]                  : 37        : output : 3.3-V LVTTL       :         : 4         : Y              
-motor_pwm_f[2]               : 38        : output : 3.3-V LVTTL       :         : 4         : Y              
-motor_pwm_r[2]               : 39        : output : 3.3-V LVTTL       :         : 4         : Y              
-motor_en[7]                  : 40        : output : 3.3-V LVTTL       :         : 4         : Y              
-motor_pwm_f[7]               : 41        : output : 3.3-V LVTTL       :         : 4         : Y              
-motor_pwm_r[7]               : 42        : output : 3.3-V LVTTL       :         : 4         : Y              
-motor_en[8]                  : 43        : output : 3.3-V LVTTL       :         : 4         : Y              
-motor_pwm_f[8]               : 44        : output : 3.3-V LVTTL       :         : 4         : Y              
-motor_pwm_r[8]               : 45        : output : 3.3-V LVTTL       :         : 4         : Y              
+motors[7][0]                 : 37        : output : 3.3-V LVTTL       :         : 4         : N              
+encoders[0][0]               : 38        : input  : 3.3-V LVTTL       :         : 4         : N              
+status[7]                    : 39        : output : 3.3-V LVTTL       :         : 4         : N              
+motors[3][0]                 : 40        : output : 3.3-V LVTTL       :         : 4         : N              
+ultrsnic_trig[4]             : 41        : output : 3.3-V LVTTL       :         : 4         : N              
+ultrsnic_trig[6]             : 42        : output : 3.3-V LVTTL       :         : 4         : N              
+GND*                         : 43        :        :                   :         : 4         :                
+GND*                         : 44        :        :                   :         : 4         :                
+motors[9][0]                 : 45        : output : 3.3-V LVTTL       :         : 4         : N              
 VCCIO4                       : 46        : power  :                   : 3.3V    : 4         :                
 GNDIO                        : 47        : gnd    :                   :         :           :                
-motor_en[9]                  : 48        : output : 3.3-V LVTTL       :         : 4         : Y              
-motor_pwm_f[9]               : 49        : output : 3.3-V LVTTL       :         : 4         : Y              
-motor_pwm_r[9]               : 50        : output : 3.3-V LVTTL       :         : 4         : Y              
-motor_en[3]                  : 51        : output : 3.3-V LVTTL       :         : 4         : Y              
-motor_pwm_f[3]               : 52        : output : 3.3-V LVTTL       :         : 4         : Y              
-motor_pwm_r[3]               : 53        : output : 3.3-V LVTTL       :         : 4         : Y              
+motors[4][0]                 : 48        : output : 3.3-V LVTTL       :         : 4         : N              
+ss_n_host[5]                 : 49        : output : 3.3-V LVTTL       :         : 4         : N              
+ultrsnic_trig[3]             : 50        : output : 3.3-V LVTTL       :         : 4         : N              
+encoders[5][1]               : 51        : input  : 3.3-V LVTTL       :         : 4         : N              
+motors[4][2]                 : 52        : output : 3.3-V LVTTL       :         : 4         : N              
+motors[9][1]                 : 53        : output : 3.3-V LVTTL       :         : 4         : N              
 GNDINT                       : 54        : gnd    :                   :         :           :                
 GND*                         : 55        :        :                   :         : 4         :                
 VCCINT                       : 56        : power  :                   : 1.8V    :           :                
-miso_host_0                  : 57        : input  : 3.3-V LVTTL       :         : 4         : Y              
-mosi_host_0                  : 58        : output : 3.3-V LVTTL       :         : 4         : Y              
-sck_host_0                   : 59        : output : 3.3-V LVTTL       :         : 4         : Y              
-ss_host[0]                   : 60        : output : 3.3-V LVTTL       :         : 4         : Y              
-GND*                         : 61        :        :                   :         : 4         :                
-GND*                         : 62        :        :                   :         : 4         :                
-GND*                         : 63        :        :                   :         : 4         :                
+motors[6][2]                 : 57        : output : 3.3-V LVTTL       :         : 4         : N              
+GND*                         : 58        :        :                   :         : 4         :                
+GND*                         : 59        :        :                   :         : 4         :                
+GND*                         : 60        :        :                   :         : 4         :                
+ultrsnic_echo[1]             : 61        : input  : 3.3-V LVTTL       :         : 4         : N              
+ultrsnic_echo[0]             : 62        : input  : 3.3-V LVTTL       :         : 4         : N              
+motors[3][1]                 : 63        : output : 3.3-V LVTTL       :         : 4         : N              
 VCCIO4                       : 64        : power  :                   : 3.3V    : 4         :                
 GNDIO                        : 65        : gnd    :                   :         :           :                
 scl_host                     : 66        : output : 3.3-V LVTTL       :         : 4         : Y              
 sda_host                     : 67        : bidir  : 3.3-V LVTTL       :         : 4         : Y              
 GND*                         : 68        :        :                   :         : 4         :                
-GND*                         : 69        :        :                   :         : 4         :                
+motors[2][0]                 : 69        : output : 3.3-V LVTTL       :         : 4         : N              
 GND*                         : 70        :        :                   :         : 4         :                
-GND*                         : 71        :        :                   :         : 4         :                
-GND*                         : 72        :        :                   :         : 4         :                
-encoder_a[9]                 : 73        : input  : 3.3-V LVTTL       :         : 3         : Y              
-encoder_b[9]                 : 74        : input  : 3.3-V LVTTL       :         : 3         : Y              
-encoder_a[8]                 : 75        : input  : 3.3-V LVTTL       :         : 3         : Y              
-encoder_b[8]                 : 76        : input  : 3.3-V LVTTL       :         : 3         : Y              
-encoder_a[7]                 : 77        : input  : 3.3-V LVTTL       :         : 3         : Y              
+ss_n_host[7]                 : 71        : output : 3.3-V LVTTL       :         : 4         : N              
+miso_host                    : 72        : input  : 3.3-V LVTTL       :         : 4         : N              
+motors[8][1]                 : 73        : output : 3.3-V LVTTL       :         : 3         : N              
+ss_n_host[6]                 : 74        : output : 3.3-V LVTTL       :         : 3         : N              
+motors[6][1]                 : 75        : output : 3.3-V LVTTL       :         : 3         : N              
+ultrsnic_echo[4]             : 76        : input  : 3.3-V LVTTL       :         : 3         : N              
+ultrsnic_echo[5]             : 77        : input  : 3.3-V LVTTL       :         : 3         : N              
 GNDIO                        : 78        : gnd    :                   :         :           :                
-encoder_b[7]                 : 79        : input  : 3.3-V LVTTL       :         : 3         : Y              
-encoder_a[6]                 : 80        : input  : 3.3-V LVTTL       :         : 3         : Y              
-encoder_b[6]                 : 81        : input  : 3.3-V LVTTL       :         : 3         : Y              
+ultrsnic_echo[7]             : 79        : input  : 3.3-V LVTTL       :         : 3         : N              
+sclk_slave                   : 80        : input  : 3.3-V LVTTL       :         : 3         : N              
+encoders[1][0]               : 81        : input  : 3.3-V LVTTL       :         : 3         : N              
 VCCIO3                       : 82        : power  :                   : 3.3V    : 3         :                
 GNDIO                        : 83        : gnd    :                   :         :           :                
-encoder_a[5]                 : 84        : input  : 3.3-V LVTTL       :         : 3         : Y              
-encoder_b[5]                 : 85        : input  : 3.3-V LVTTL       :         : 3         : Y              
-encoder_a[4]                 : 86        : input  : 3.3-V LVTTL       :         : 3         : Y              
-encoder_b[4]                 : 87        : input  : 3.3-V LVTTL       :         : 3         : Y              
-encoder_a[3]                 : 88        : input  : 3.3-V LVTTL       :         : 3         : Y              
-encoder_b[3]                 : 89        : input  : 3.3-V LVTTL       :         : 3         : Y              
+mosi_host                    : 84        : output : 3.3-V LVTTL       :         : 3         : N              
+encoders[8][0]               : 85        : input  : 3.3-V LVTTL       :         : 3         : N              
+ultrsnic_trig[1]             : 86        : output : 3.3-V LVTTL       :         : 3         : N              
+ultrsnic_echo[2]             : 87        : input  : 3.3-V LVTTL       :         : 3         : N              
+motors[5][1]                 : 88        : output : 3.3-V LVTTL       :         : 3         : N              
+motors[5][0]                 : 89        : output : 3.3-V LVTTL       :         : 3         : N              
 VCCINT                       : 90        : power  :                   : 1.8V    :           :                
-clk_comm                     : 91        : input  : 3.3V Schmitt Trigger Input :         : 3         : Y              
+sclk_host                    : 91        : output : 3.3-V LVTTL       :         : 3         : N              
 GNDINT                       : 92        : gnd    :                   :         :           :                
-encoder_a[2]                 : 93        : input  : 3.3-V LVTTL       :         : 3         : Y              
-encoder_b[2]                 : 94        : input  : 3.3-V LVTTL       :         : 3         : Y              
-encoder_a[1]                 : 95        : input  : 3.3-V LVTTL       :         : 3         : Y              
-encoder_b[1]                 : 96        : input  : 3.3-V LVTTL       :         : 3         : Y              
-encoder_a[0]                 : 97        : input  : 3.3-V LVTTL       :         : 3         : Y              
-encoder_b[0]                 : 98        : input  : 3.3-V LVTTL       :         : 3         : Y              
+ultrsnic_trig[7]             : 93        : output : 3.3-V LVTTL       :         : 3         : N              
+motors[2][1]                 : 94        : output : 3.3-V LVTTL       :         : 3         : N              
+encoders[2][1]               : 95        : input  : 3.3-V LVTTL       :         : 3         : N              
+motors[7][2]                 : 96        : output : 3.3-V LVTTL       :         : 3         : N              
+encoders[4][1]               : 97        : input  : 3.3-V LVTTL       :         : 3         : N              
+ultrsnic_trig[2]             : 98        : output : 3.3-V LVTTL       :         : 3         : N              
 GNDIO                        : 99        : gnd    :                   :         :           :                
 VCCIO3                       : 100       : power  :                   : 3.3V    : 3         :                
-ultrasonic_echo[7]           : 101       : input  : 3.3-V PCI         :         : 3         : Y              
-ultrasonic_echo[6]           : 102       : input  : 3.3-V PCI         :         : 3         : Y              
-ultrasonic_echo[5]           : 103       : input  : 3.3-V PCI         :         : 3         : Y              
-ultrasonic_echo[4]           : 104       : input  : 3.3-V PCI         :         : 3         : Y              
-ultrasonic_echo[3]           : 105       : input  : 3.3-V PCI         :         : 3         : Y              
-ultrasonic_echo[2]           : 106       : input  : 3.3-V PCI         :         : 3         : Y              
-ultrasonic_echo[1]           : 107       : input  : 3.3-V PCI         :         : 3         : Y              
-ultrasonic_echo[0]           : 108       : input  : 3.3-V PCI         :         : 3         : Y              
-ultrasonic_trig[7]           : 109       : output : 3.3-V LVTTL       :         : 2         : Y              
-ultrasonic_trig[6]           : 110       : output : 3.3-V LVTTL       :         : 2         : Y              
-ultrasonic_trig[5]           : 111       : output : 3.3-V LVTTL       :         : 2         : Y              
-ultrasonic_trig[4]           : 112       : output : 3.3-V LVTTL       :         : 2         : Y              
-ultrasonic_trig[3]           : 113       : output : 3.3-V LVTTL       :         : 2         : Y              
-ultrasonic_trig[2]           : 114       : output : 3.3-V LVTTL       :         : 2         : Y              
+ultrsnic_trig[5]             : 101       : output : 3.3-V LVTTL       :         : 3         : N              
+GND*                         : 102       :        :                   :         : 3         :                
+motors[8][0]                 : 103       : output : 3.3-V LVTTL       :         : 3         : N              
+ss_n_host[1]                 : 104       : output : 3.3-V LVTTL       :         : 3         : N              
+motors[6][0]                 : 105       : output : 3.3-V LVTTL       :         : 3         : N              
+motors[3][2]                 : 106       : output : 3.3-V LVTTL       :         : 3         : N              
+motors[0][1]                 : 107       : output : 3.3-V LVTTL       :         : 3         : N              
+ss_n_slave                   : 108       : input  : 3.3-V LVTTL       :         : 3         : N              
+encoders[0][1]               : 109       : input  : 3.3-V LVTTL       :         : 2         : N              
+motors[7][1]                 : 110       : output : 3.3-V LVTTL       :         : 2         : N              
+encoders[2][0]               : 111       : input  : 3.3-V LVTTL       :         : 2         : N              
+motors[1][2]                 : 112       : output : 3.3-V LVTTL       :         : 2         : N              
+GND*                         : 113       :        :                   :         : 2         :                
+motors[5][2]                 : 114       : output : 3.3-V LVTTL       :         : 2         : N              
 GNDIO                        : 115       : gnd    :                   :         :           :                
 VCCIO2                       : 116       : power  :                   : 3.3V    : 2         :                
-ultrasonic_trig[1]           : 117       : output : 3.3-V LVTTL       :         : 2         : Y              
-ultrasonic_trig[0]           : 118       : output : 3.3-V LVTTL       :         : 2         : Y              
-ss_host[1]                   : 119       : output : 3.3-V LVTTL       :         : 2         : Y              
-ss_host[2]                   : 120       : output : 3.3-V LVTTL       :         : 2         : Y              
-sck_host_1                   : 121       : output : 3.3-V LVTTL       :         : 2         : Y              
-mosi_host_1                  : 122       : output : 3.3-V LVTTL       :         : 2         : Y              
-miso_host_1                  : 123       : input  : 3.3-V LVTTL       :         : 2         : Y              
-GND*                         : 124       :        :                   :         : 2         :                
-GND*                         : 125       :        :                   :         : 2         :                
+GND*                         : 117       :        :                   :         : 2         :                
+clk0_001                     : 118       : input  : 3.3-V LVTTL       :         : 2         : N              
+motors[0][2]                 : 119       : output : 3.3-V LVTTL       :         : 2         : N              
+encoders[9][0]               : 120       : input  : 3.3-V LVTTL       :         : 2         : N              
+encoders[1][1]               : 121       : input  : 3.3-V LVTTL       :         : 2         : N              
+encoders[7][1]               : 122       : input  : 3.3-V LVTTL       :         : 2         : N              
+ss_n_host[2]                 : 123       : output : 3.3-V LVTTL       :         : 2         : N              
+encoders[6][0]               : 124       : input  : 3.3-V LVTTL       :         : 2         : N              
+encoders[7][0]               : 125       : input  : 3.3-V LVTTL       :         : 2         : N              
 VCCINT                       : 126       : power  :                   : 1.8V    :           :                
-motor_pwm_r[0]               : 127       : output : 3.3-V LVTTL       :         : 2         : Y              
+motors[0][0]                 : 127       : output : 3.3-V LVTTL       :         : 2         : N              
 GNDINT                       : 128       : gnd    :                   :         :           :                
-motor_pwm_f[0]               : 129       : output : 3.3-V LVTTL       :         : 2         : Y              
-motor_en[0]                  : 130       : output : 3.3-V LVTTL       :         : 2         : Y              
-motor_pwm_r[4]               : 131       : output : 3.3-V LVTTL       :         : 2         : Y              
-motor_pwm_f[4]               : 132       : output : 3.3-V LVTTL       :         : 2         : Y              
-motor_en[4]                  : 133       : output : 3.3-V LVTTL       :         : 2         : Y              
-motor_pwm_r[5]               : 134       : output : 3.3-V LVTTL       :         : 2         : Y              
+encoders[5][0]               : 129       : input  : 3.3-V LVTTL       :         : 2         : N              
+GND*                         : 130       :        :                   :         : 2         :                
+GND*                         : 131       :        :                   :         : 2         :                
+GND*                         : 132       :        :                   :         : 2         :                
+ultrsnic_trig[0]             : 133       : output : 3.3-V LVTTL       :         : 2         : N              
+encoders[3][0]               : 134       : input  : 3.3-V LVTTL       :         : 2         : N              
 GNDIO                        : 135       : gnd    :                   :         :           :                
 VCCIO2                       : 136       : power  :                   : 3.3V    : 2         :                
-motor_pwm_f[5]               : 137       : output : 3.3-V LVTTL       :         : 2         : Y              
-motor_en[5]                  : 138       : output : 3.3-V LVTTL       :         : 2         : Y              
-motor_pwm_r[6]               : 139       : output : 3.3-V LVTTL       :         : 2         : Y              
-motor_pwm_f[6]               : 140       : output : 3.3-V LVTTL       :         : 2         : Y              
-motor_en[6]                  : 141       : output : 3.3-V LVTTL       :         : 2         : Y              
-motor_pwm_r[1]               : 142       : output : 3.3-V LVTTL       :         : 2         : Y              
-motor_pwm_f[1]               : 143       : output : 3.3-V LVTTL       :         : 2         : Y              
-motor_en[1]                  : 144       : output : 3.3-V LVTTL       :         : 2         : Y              
+ss_n_host[0]                 : 137       : output : 3.3-V LVTTL       :         : 2         : N              
+encoders[9][1]               : 138       : input  : 3.3-V LVTTL       :         : 2         : N              
+ss_n_host[3]                 : 139       : output : 3.3-V LVTTL       :         : 2         : N              
+motors[1][0]                 : 140       : output : 3.3-V LVTTL       :         : 2         : N              
+GND*                         : 141       :        :                   :         : 2         :                
+encoders[8][1]               : 142       : input  : 3.3-V LVTTL       :         : 2         : N              
+motors[2][2]                 : 143       : output : 3.3-V LVTTL       :         : 2         : N              
+motors[4][1]                 : 144       : output : 3.3-V LVTTL       :         : 2         : N              

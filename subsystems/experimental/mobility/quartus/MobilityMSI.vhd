@@ -1,206 +1,188 @@
-library ieee;
-use ieee.std_logic_1164.all;
-library work;
-use work.mobility_types_pkg.all;
+LIBRARY ieee;
+USE ieee.std_logic_1164.all;
+LIBRARY work;
+USE work.mobility_types_pkg.all;
 
-entity MobilityMSI is
-port(
-     clk             : in  std_ulogic;
-	  clk_comm        : in  std_ulogic;
-	  
-	  lock            : in  std_ulogic;
-	  proto_select    : in  std_ulogic;
-	  
-	  status          : out std_ulogic_vector(7 downto 0);
-	  
-	  scl_host        : out   std_ulogic;
-	  sda_host        : inout std_ulogic;
-	  
-	  scl_slave       : in    std_ulogic;
-	  sda_slave       : inout std_ulogic;
+ENTITY MobilityMSI IS
+  GENERIC(
+       PROTOCOL      : STD_LOGIC                           := '0'
+  );
+  PORT(
+       clk50         : IN  STD_LOGIC                       := '1';
+	    clk0_001      : IN  STD_LOGIC                       := '1';
+	    rst_n         : IN  std_logic                       := '0';
 
-	  miso_host_0     : in  std_ulogic;
-	  mosi_host_0     : out std_ulogic;
-	  sck_host_0      : out std_ulogic;
+	    lock          : IN  STD_LOGIC                       := '1';
 
-	  miso_host_1     : in  std_ulogic;
-	  mosi_host_1     : out std_ulogic;
-	  sck_host_1      : out std_ulogic;
-
-	  ss_host         : out std_ulogic_vector(7 downto 0);
-
-	  miso_slave      : out std_ulogic;
-	  mosi_slave      : in  std_ulogic;
-	  sck_slave       : in  std_ulogic;
-	  ss_slave        : in  std_ulogic;
-
-	  uart_rx         : in  std_ulogic;
-	  uart_tx         : out std_ulogic;
+	    status        : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)    := "00000000";
 	  
-	  motor_en        : out std_ulogic_vector(9 downto 0);
-	  motor_pwm_f     : out std_ulogic_vector(9 downto 0);
-	  motor_pwm_r     : out std_ulogic_vector(9 downto 0);
+	    scl_host      : OUT   STD_LOGIC                     := '1';
+	    sda_host      : INOUT STD_LOGIC                     := '1';
 	  
-	  encoder_a       : in  std_ulogic_vector(9 downto 0);
-	  encoder_b       : in  std_ulogic_vector(9 downto 0);
+	    scl_slave     : IN    STD_LOGIC                     := '1';
+	    sda_slave     : INOUT STD_LOGIC                     := '1';
+
+	    miso_host     : IN  STD_LOGIC                       := '1';
+	    mosi_host     : OUT STD_LOGIC                       := '1';
+	    sclk_host     : OUT STD_LOGIC                       := '1';
+	    ss_n_host     : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)    := "00000000";
+
+	    miso_slave    : OUT STD_LOGIC                       := '1';
+	    mosi_slave    : IN  STD_LOGIC                       := '1';
+	    sclk_slave    : IN  STD_LOGIC                       := '1';
+	    ss_n_slave    : IN  STD_LOGIC                       := '1';
+
+	    uart_rx       : IN  STD_LOGIC                       := '1';
+	    uart_tx       : OUT STD_LOGIC                       := '1';
 	  
-     ultrasonic_trig : out std_ulogic_vector(7 downto 0);
-     ultrasonic_echo : in  std_ulogic_vector(7 downto 0)
+	    motors        : OUT motor_t                         := (OTHERS => "110");
+	  
+	    encoders      : IN  encoder_t                       := (OTHERS => "00");
+	  
+       ultrsnic_trig : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)    := "00000000";
+       ultrsnic_echo : IN  STD_LOGIC_VECTOR(7 DOWNTO 0)    := "00000000"
 	 );
-end entity MobilityMSI;
+END ENTITY MobilityMSI;
 
-architecture behavioral of MobilityMSI is
-signal motor_directive     : int8_vector10;
-signal motor_directive_i2c : int8_vector10;
-signal motor_directive_spi : int8_vector10;
-signal encoder_velocity    : int8_vector10;
-signal current_sense       : uint8_vector10;
-signal pot_angles          : int8_vector8;
-signal ultrasonic_dist     : uint8_vector10;
-signal error_uart          : integer range 0 to 3;
-signal error_i2ch          : integer range 0 to 3;
-signal error_i2cs          : integer range 0 to 3;
-signal error_spih          : integer range 0 to 3;
-signal error_spis          : integer range 0 to 3;
-signal error_motd          : integer range 0 to 3;
-signal error_ench          : integer range 0 to 3;
-signal error_ultr          : integer range 0 to 3;
-signal miso_host           : std_ulogic;
-signal mosi_host           : std_ulogic;
-signal sck_host            : std_ulogic;
-begin
+ARCHITECTURE main OF MobilityMSI IS
+  SIGNAL motor_directive     : int8_vector10;
+  SIGNAL motor_directive_i2c : int8_vector10;
+  SIGNAL motor_directive_spi : int8_vector10;
+  SIGNAL encoder_velocity    : int16_vector10;
+  SIGNAL current_sense       : uint8_vector10;
+  SIGNAL pot_angles          : uint16_vector8;
+  SIGNAL ultrsnic_map        : uint8_vector10;
+  SIGNAL enc_velocity_rst    : STD_LOGIC;
+  SIGNAL t_status            : STD_LOGIC_VECTOR(7 DOWNTO 0);
 
-UART0 : entity work.UART
-generic map(
-     baud_rate => 115200
-    )
-port map(
-	  clk      => clk,
-	  clk_comm => clk_comm,
-	  error    => error_uart,
-     rx       => uart_rx,
-     tx       => uart_tx,
-	  motor_directive  => motor_directive,
-	  encoder_velocity => encoder_velocity,
-	  current_sense    => current_sense,
-	  pot_angles       => pot_angles,
-     ultrasonic_dist  => ultrasonic_dist
-    );
-I2CHost : entity work.I2C_Host
-port map(
-	  clk      => clk,
-	  clk_comm => clk_comm,
-	  error    => error_i2ch,
-	  scl      => scl_host,
-	  sda      => sda_host
-    );
-I2CSlave : entity work.I2C_Slave
-generic map(
-     slave_addr => "0000101"
-    )
-port map(
-	  clk      => clk,
-	  clk_comm => clk_comm,
-	  error    => error_i2cs,
-	  scl      => scl_slave,
-	  sda      => sda_slave,
-	  motor_directive  => motor_directive_i2c,
-	  encoder_velocity => encoder_velocity,
-	  current_sense    => current_sense,
-	  pot_angles       => pot_angles,
-     ultrasonic_dist  => ultrasonic_dist
-    );
-SPIHost : entity work.SPI_Host
-port map(
-	  clk      => clk,
-	  clk_comm => clk_comm,
-	  error    => error_spih,
-	  miso     => miso_host,
-	  mosi     => mosi_host,
-	  sck      => sck_host,
-	  ss       => ss_host,
-	  current_sense => current_sense,
-	  pot_angles => pot_angles
-    );
-SPISlave : entity work.SPI_Slave
-port map(
-	  clk      => clk,
-	  clk_comm => clk_comm,
-	  error    => error_spis,
-	  miso     => miso_slave,
-	  mosi     => mosi_slave,
-	  sck      => sck_slave,
-	  ss       => ss_slave,
-	  motor_directive  => motor_directive_spi,
-	  encoder_velocity => encoder_velocity,
-	  current_sense    => current_sense,
-	  pot_angles       => pot_angles,
-     ultrasonic_dist  => ultrasonic_dist
-    );
-MotorDriver : entity work.Motor_Driver
-port map(
-	  clk       => clk,
-	  error_out => error_motd,
-	  error_in  => error_spih,
-	  lock      => lock,
-	  en        => motor_en,
-	  pwm_f     => motor_pwm_f,
-	  pwm_r     => motor_pwm_r,
-	  directive => motor_directive
-    );
-EncoderHandler : entity work.Encoder_Handler
-port map(
-	  clk      => clk,
-	  error    => error_ench,
-	  pin_a    => encoder_a,
-	  pin_b    => encoder_b,
-	  velocity => encoder_velocity
-    );
-UltrasonicController : entity work.Ultrasonic_Controller
-generic map (
-     number_of_sensors => 3
-    )
-port map (
-	  clk   => clk,
-	  error => error_ultr,
-	  trig  => ultrasonic_trig,
-	  echo  => ultrasonic_echo,
-	  dist  => ultrasonic_dist
-    );
-StatusPoll : entity work.Status_Poll
-port map (
-     status => status,
-	  error_uart => error_uart,
-	  error_i2ch => error_i2ch,
-	  error_i2cs => error_i2cs,
-	  error_spih => error_spih,
-	  error_spis => error_spis,
-	  error_motd => error_motd,
-	  error_ench => error_ench,
-	  error_ultr => error_ultr
-    );
-	 
-motor_directive <= motor_directive_i2c when proto_select = '1' else motor_directive_spi;
---process (miso_host_0)
---begin
---miso_host <= miso_host_0
---end process;
---
---process (miso_host_1)
---begin
---miso_host <= miso_host_1
---end process;
+  SIGNAL err_uart            : INTEGER RANGE 0 to 3;
+  SIGNAL err_i2c_h           : INTEGER RANGE 0 to 3;
+  SIGNAL err_i2c_s           : INTEGER RANGE 0 to 3;
+  SIGNAL err_spi_h           : INTEGER RANGE 0 to 3;
+  SIGNAL err_spi_s           : INTEGER RANGE 0 to 3;
+  SIGNAL err_mot             : INTEGER RANGE 0 to 3;
+  SIGNAL err_enc             : INTEGER RANGE 0 to 3;
+  SIGNAL err_ultr            : INTEGER RANGE 0 to 3;
+  SIGNAL err_safety          : STD_LOGIC;
+  
+  SIGNAL clk0_1              : STD_LOGIC;
+  SIGNAL clk5                : STD_LOGIC;
+  SIGNAL t_clk0_1            : STD_LOGIC;
+  SIGNAL t_clk5              : STD_LOGIC;
+BEGIN
 
-process (mosi_host)
-begin
-mosi_host_0 <= mosi_host;
-mosi_host_1 <= mosi_host;
-end process;
+UART0 : ENTITY work.uart_controller
+  GENERIC MAP(
+      baud_rate => 115200
+      )
+  PORT MAP(
+      clk50            => clk50,
+		rst              => NOT rst_n,
+	   err              => err_uart,
+      rx               => uart_rx,
+      tx               => uart_tx,
+	   motor_directive  => motor_directive,
+	   encoder_velocity => encoder_velocity,
+	   current_sense    => current_sense,
+	   pot_angles       => pot_angles,
+      ultrsnic_map     => ultrsnic_map
+      );
 
-process (sck_host)
-begin
-sck_host_0 <= sck_host;
-sck_host_1 <= sck_host;
-end process;
+I2CHost : ENTITY work.i2c_host_controller
+  PORT MAP(
+      clk50  => clk50,
+	   clk0_1 => clk0_1,
+		rst    => NOT rst_n,
+	   err    => err_i2c_h,
+	   scl    => scl_host,
+	   sda    => sda_host
+      );
 
-end behavioral;
+I2CSlave : ENTITY work.i2c_slave_controller
+  GENERIC MAP(
+      slave_addr => "0000101"
+      )
+  PORT MAP(
+      clk50            => clk50,
+		rst              => NOT rst_n,
+	   err              => err_i2c_s,
+	   scl              => scl_slave,
+	   sda              => sda_slave,
+	   motor_directive  => motor_directive_i2c,
+	   encoder_velocity => encoder_velocity,
+	   current_sense    => current_sense,
+	   pot_angles       => pot_angles,
+      ultrsnic_map     => ultrsnic_map,
+		status           => t_status,
+		enc_velocity_rst => enc_velocity_rst
+      );
+
+SPIHost : ENTITY work.spi_host_controller
+  PORT MAP(
+      clk50         => clk50,
+	   clk5          => clk5,
+		rst           => NOT rst_n,
+	   err           => err_spi_h,
+	   miso          => miso_host,
+	   mosi          => mosi_host,
+	   sclk          => sclk_host,
+	   ss_n          => ss_n_host,
+	   current_sense => current_sense,
+	   pot_angles    => pot_angles
+      );
+
+SPISlave : ENTITY work.spi_slave_controller
+  PORT MAP(
+      clk50            => clk50,
+		rst              => NOT rst_n,
+	   err              => err_spi_s,
+	   miso             => miso_slave,
+	   mosi             => mosi_slave,
+	   sclk             => sclk_slave,
+	   ss_n             => ss_n_slave,
+	   motor_directive  => motor_directive_spi,
+	   encoder_velocity => encoder_velocity,
+	   current_sense    => current_sense,
+	   pot_angles       => pot_angles,
+      ultrsnic_map    => ultrsnic_map,
+		status           => t_status,
+		enc_velocity_rst => enc_velocity_rst
+      );
+
+  status <= t_status;
+  motor_directive <= motor_directive_i2c WHEN PROTOCOL = '0' ELSE motor_directive_spi;
+
+  clk5 <= t_clk5;
+  PROCESS (clk50, rst_n)
+  VARIABLE count : INTEGER RANGE 0 TO 4 := 0;
+  BEGIN
+    IF rst_n = '0' THEN
+	   t_clk5 <= '1';
+		count  :=  0 ;
+    ELSIF RISING_EDGE(clk50) THEN
+	   IF count = 4 THEN
+	     count  := 0;
+	     t_clk5 <= NOT t_clk5;
+	   ELSE
+	     count  := count + 1;
+	   END IF;
+	 END IF;
+  END PROCESS;
+
+  clk0_1 <= t_clk0_1;
+  PROCESS (clk5, rst_n)
+  VARIABLE count : INTEGER RANGE 0 TO 24 :=  0 ;
+  BEGIN
+    IF rst_n = '0' THEN
+	   t_clk0_1 <= '1';
+		count    :=  0 ;
+    ELSIF RISING_EDGE(clk5) THEN
+	   IF count = 24 THEN
+	     count    := 0;
+	     t_clk0_1 <= NOT t_clk0_1;
+	   ELSE
+	     count    := count + 1;
+	   END IF;
+	 END IF;
+  END PROCESS;
+END ARCHITECTURE;

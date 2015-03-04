@@ -1,213 +1,79 @@
 -- http://playground.arduino.cc/Main/RotaryEncoders
 
-library ieee;
-use ieee.std_logic_1164.all;
-library work;
-use work.mobility_types_pkg.all;
+LIBRARY ieee;
+USE ieee.std_logic_1164.all;
+LIBRARY work;
+USE work.mobility_types_pkg.all;
 
-entity Encoder_Handler is
-port(
-	  clk      : in  std_ulogic;
-	  error    : out integer range 0 to 3;
+ENTITY Encoder_Handler IS
+  PORT(
+	   clk50    : IN  STD_LOGIC;
+	   clk0_01  : IN  STD_LOGIC;
 	  
-	  pin_a    : in  std_ulogic_vector(9 downto 0);
-	  pin_b    : in  std_ulogic_vector(9 downto 0);
+	   pin_a    : IN  STD_LOGIC_VECTOR(9 downto 0);
+	   pin_b    : IN  STD_LOGIC_VECTOR(9 downto 0);
 
-	  velocity : out int8_vector10
-    );
-end entity Encoder_Handler;
+	   velocity : OUT int8_vector10
+      );
+END ENTITY Encoder_Handler;
 
-architecture behavioral of Encoder_Handler is
-signal rst : std_ulogic;
-signal pose : int8_vector10;
-begin
-process (pin_a(0), rst)
-begin
-  if (rising_edge(rst)) then
-    pose(0) <= 0;
-  elsif (pin_a(0) = '1') then
-    if (pin_b(0) = '1') then
+ARCHITECTURE main OF Encoder_Handler IS
+SIGNAL rst          : STD_LOGIC;
+SIGNAL pose         : int8_vector10;
+SIGNAL inc_pose_a   : STD_LOGIC_VECTOR(9 DOWNTO 0);
+SIGNAL inc_pose_b   : STD_LOGIC_VECTOR(9 DOWNTO 0);
+SIGNAL dec_pose_a   : STD_LOGIC_VECTOR(9 DOWNTO 0);
+SIGNAL dec_pose_b   : STD_LOGIC_VECTOR(9 DOWNTO 0);
+SIGNAL t_inc_pose_a : STD_LOGIC_VECTOR(9 DOWNTO 0);
+SIGNAL t_inc_pose_b : STD_LOGIC_VECTOR(9 DOWNTO 0);
+SIGNAL t_dec_pose_a : STD_LOGIC_VECTOR(9 DOWNTO 0);
+SIGNAL t_dec_pose_b : STD_LOGIC_VECTOR(9 DOWNTO 0);
+BEGIN
+  PROCESS(clk0_01)
+  BEGIN
+  
+  END PROCESS;
+  
+  PROCESS (clk50)
+  BEGIN
+    t_inc_pose_a <= inc_pose_a;
+	 t_inc_pose_b <= inc_pose_b;
+	 t_dec_pose_a <= dec_pose_a;
+	 t_dec_pose_b <= dec_pose_b;
+  END PROCESS;
+
+  PROCESS (pin_a(0), rst)
+  BEGIN
+    IF rst = '0' THEN
+      pose(0) <= 0;
+    ELSIF RISING_EDGE(pin_a(0)) THEN
+      IF (pin_b(0) = '1') THEN
+	     inc_pose_a(0) <= NOT inc_pose_a(0);
+	   ELSE
+	     dec_pose_a(0) <= NOT dec_pose_a(0);
+	   END IF;
+    ELSIF FALLING_EDGE(pin_a(0)) THEN
+      IF (pin_b(0) = '0') THEN
+	     inc_pose_b(0) <= NOT inc_pose_b(0);
+	   ELSE
+	     dec_pose_b(0) <= NOT dec_pose_b(0);
+	   END IF;
+    END IF;
+  END PROCESS;
+
+  PROCESS(inc_pose_a(0), dec_pose_a(0), inc_pose_b(0), dec_pose_b(0))
+  BEGIN
+    IF inc_pose_a(0) /= t_inc_pose_a(0) THEN
 	   pose(0) <= pose(0) + 1;
-	 else
-	   pose(0) <= pose(0) - 1;
-	 end if;
-  else
-    if (pin_b(0) = '1') then
-	   pose(0) <= pose(0) - 1;
-	 else
+    ELSIF inc_pose_b(0) /= t_inc_pose_b(0) THEN
 	   pose(0) <= pose(0) + 1;
-	 end if;
-  end if;
-end process;
+    ELSIF dec_pose_a(0) /= t_dec_pose_a(0) THEN
+	   pose(0) <= pose(0) - 1;
+    ELSIF dec_pose_b(0) /= t_dec_pose_b(0) THEN
+	   pose(0) <= pose(0) - 1;
+	 ELSE
+	   pose(0) <= pose(0);
+	 END IF;
+  END PROCESS;
 
-process (pin_a(1), rst)
-begin
-  if (rising_edge(rst)) then
-  pose(1) <= 0;
-  elsif (pin_a(1) = '1') then
-    if (pin_b(1) = '1') then
-	   pose(1) <= pose(1) + 1;
-	 else
-	   pose(1) <= pose(1) - 1;
-	 end if;
-  else
-    if (pin_b(1) = '1') then
-	   pose(1) <= pose(1) - 1;
-	 else
-	   pose(1) <= pose(1) + 1;
-	 end if;
-  end if;
-end process;
-
-process (pin_a(2), rst)
-begin
-  if (rising_edge(rst)) then
-  pose(2) <= 0;
-  elsif (pin_a(2) = '1') then
-    if (pin_b(2) = '1') then
-	   pose(2) <= pose(2) + 1;
-	 else
-	   pose(2) <= pose(2) - 1;
-	 end if;
-  else
-    if (pin_b(2) = '1') then
-	   pose(2) <= pose(2) - 1;
-	 else
-	   pose(2) <= pose(2) + 1;
-	 end if;
-  end if;
-end process;
-
-process (pin_a(3), rst)
-begin
-  if (rising_edge(rst)) then
-  pose(3) <= 0;
-  elsif (pin_a(3) = '1') then
-    if (pin_b(3) = '1') then
-	   pose(3) <= pose(3) + 1;
-	 else
-	   pose(3) <= pose(3) - 1;
-	 end if;
-  else
-    if (pin_b(3) = '1') then
-	   pose(3) <= pose(3) - 1;
-	 else
-	   pose(3) <= pose(3) + 1;
-	 end if;
-  end if;
-end process;
-
-process (pin_a(4), rst)
-begin
-  if (rising_edge(rst)) then
-  pose(4) <= 0;
-  elsif (pin_a(4) = '1') then
-    if (pin_b(4) = '1') then
-	   pose(4) <= pose(4) + 1;
-	 else
-	   pose(4) <= pose(4) - 1;
-	 end if;
-  else
-    if (pin_b(4) = '1') then
-	   pose(4) <= pose(4) - 1;
-	 else
-	   pose(4) <= pose(4) + 1;
-	 end if;
-  end if;
-end process;
-
-process (pin_a(5), rst)
-begin
-  if (rising_edge(rst)) then
-  pose(5) <= 0;
-  elsif (pin_a(5) = '1') then
-    if (pin_b(5) = '1') then
-	   pose(5) <= pose(5) + 1;
-	 else
-	   pose(5) <= pose(5) - 1;
-	 end if;
-  else
-    if (pin_b(5) = '1') then
-	   pose(5) <= pose(5) - 1;
-	 else
-	   pose(5) <= pose(5) + 1;
-	 end if;
-  end if;
-end process;
-
-process (pin_a(6), rst)
-begin
-  if (rising_edge(rst)) then
-  pose(6) <= 0;
-  elsif (pin_a(6) = '1') then
-    if (pin_b(6) = '1') then
-	   pose(6) <= pose(6) + 1;
-	 else
-	   pose(6) <= pose(6) - 1;
-	 end if;
-  else
-    if (pin_b(6) = '1') then
-	   pose(6) <= pose(6) - 1;
-	 else
-	   pose(6) <= pose(6) + 1;
-	 end if;
-  end if;
-end process;
-
-process (pin_a(7), rst)
-begin
-  if (rising_edge(rst)) then
-  pose(7) <= 0;
-  elsif (pin_a(7) = '1') then
-    if (pin_b(7) = '1') then
-	   pose(7) <= pose(7) + 1;
-	 else
-	   pose(7) <= pose(7) - 1;
-	 end if;
-  else
-    if (pin_b(7) = '1') then
-	   pose(7) <= pose(7) - 1;
-	 else
-	   pose(7) <= pose(7) + 1;
-	 end if;
-  end if;
-end process;
-
-process (pin_a(8), rst)
-begin
-  if (rising_edge(rst)) then
-  pose(8) <= 0;
-  elsif (pin_a(8) = '1') then
-    if (pin_b(8) = '1') then
-	   pose(8) <= pose(8) + 1;
-	 else
-	   pose(8) <= pose(8) - 1;
-	 end if;
-  else
-    if (pin_b(8) = '1') then
-	   pose(8) <= pose(8) - 1;
-	 else
-	   pose(8) <= pose(8) + 1;
-	 end if;
-  end if;
-end process;
-
-process (pin_a(9), rst)
-begin
-  if (rising_edge(rst)) then
-  pose(9) <= 0;
-  elsif (pin_a(9) = '1') then
-    if (pin_b(9) = '1') then
-	   pose(9) <= pose(9) + 1;
-	 else
-	   pose(9) <= pose(9) - 1;
-	 end if;
-  else
-    if (pin_b(9) = '1') then
-	   pose(9) <= pose(9) - 1;
-	 else
-	   pose(9) <= pose(9) + 1;
-	 end if;
-  end if;
-end process;
-end behavioral;
+END ARCHITECTURE;

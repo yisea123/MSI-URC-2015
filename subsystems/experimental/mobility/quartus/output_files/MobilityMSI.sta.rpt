@@ -1,5 +1,5 @@
 TimeQuest Timing Analyzer report for MobilityMSI
-Thu Feb  5 20:36:57 2015
+Wed Mar  4 14:21:13 2015
 Quartus II 64-Bit Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
 
 
@@ -16,12 +16,17 @@ Quartus II 64-Bit Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
   8. Recovery Summary
   9. Removal Summary
  10. Minimum Pulse Width Summary
- 11. Datasheet Report
- 12. Clock Transfers
- 13. Report TCCS
- 14. Report RSKM
- 15. Unconstrained Paths
- 16. TimeQuest Timing Analyzer Messages
+ 11. Setup: 'clk50'
+ 12. Hold: 'clk50'
+ 13. Minimum Pulse Width: 'clk50'
+ 14. Clock to Output Times
+ 15. Minimum Clock to Output Times
+ 16. Setup Transfers
+ 17. Hold Transfers
+ 18. Report TCCS
+ 19. Report RSKM
+ 20. Unconstrained Paths
+ 21. TimeQuest Timing Analyzer Messages
 
 
 
@@ -69,28 +74,41 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+--------+
 
 
-----------
-; Clocks ;
-----------
-No clocks to report.
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clocks                                                                                                                                                                            ;
++------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+-----------+
+; Clock Name ; Type ; Period ; Frequency  ; Rise  ; Fall  ; Duty Cycle ; Divide by ; Multiply by ; Phase ; Offset ; Edge List ; Edge Shift ; Inverted ; Master ; Source ; Targets   ;
++------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+-----------+
+; clk50      ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { clk50 } ;
++------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+-----------+
 
 
-----------------
-; Fmax Summary ;
-----------------
-No paths to report.
++--------------------------------------------------+
+; Fmax Summary                                     ;
++------------+-----------------+------------+------+
+; Fmax       ; Restricted Fmax ; Clock Name ; Note ;
++------------+-----------------+------------+------+
+; 155.93 MHz ; 155.93 MHz      ; clk50      ;      ;
++------------+-----------------+------------+------+
+This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
 
 
------------------
-; Setup Summary ;
------------------
-No paths to report.
++--------------------------------+
+; Setup Summary                  ;
++-------+--------+---------------+
+; Clock ; Slack  ; End Point TNS ;
++-------+--------+---------------+
+; clk50 ; -5.413 ; -90.578       ;
++-------+--------+---------------+
 
 
-----------------
-; Hold Summary ;
-----------------
-No paths to report.
++-------------------------------+
+; Hold Summary                  ;
++-------+-------+---------------+
+; Clock ; Slack ; End Point TNS ;
++-------+-------+---------------+
+; clk50 ; 1.646 ; 0.000         ;
++-------+-------+---------------+
 
 
 --------------------
@@ -105,22 +123,366 @@ No paths to report.
 No paths to report.
 
 
--------------------------------
-; Minimum Pulse Width Summary ;
--------------------------------
-No paths to report.
++--------------------------------+
+; Minimum Pulse Width Summary    ;
++-------+--------+---------------+
+; Clock ; Slack  ; End Point TNS ;
++-------+--------+---------------+
+; clk50 ; -2.289 ; -2.289        ;
++-------+--------+---------------+
 
 
---------------------
-; Datasheet Report ;
---------------------
-Nothing to report.
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Setup: 'clk50'                                                                                                                                                             ;
++--------+----------------------------------------------+----------------------------------------------+--------------+-------------+--------------+------------+------------+
+; Slack  ; From Node                                    ; To Node                                      ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++--------+----------------------------------------------+----------------------------------------------+--------------+-------------+--------------+------------+------------+
+; -5.413 ; uart_controller:UART0|uart:UART0|Div16[0]    ; uart_controller:UART0|uart:UART0|Div16[7]    ; clk50        ; clk50       ; 1.000        ; 0.000      ; 6.080      ;
+; -5.159 ; uart_controller:UART0|uart:UART0|Div16[2]    ; uart_controller:UART0|uart:UART0|Div16[7]    ; clk50        ; clk50       ; 1.000        ; 0.000      ; 5.826      ;
+; -5.079 ; uart_controller:UART0|uart:UART0|Div16[4]    ; uart_controller:UART0|uart:UART0|Div16[7]    ; clk50        ; clk50       ; 1.000        ; 0.000      ; 5.746      ;
+; -5.032 ; uart_controller:UART0|uart:UART0|Div16[3]    ; uart_controller:UART0|uart:UART0|Div16[7]    ; clk50        ; clk50       ; 1.000        ; 0.000      ; 5.699      ;
+; -4.914 ; uart_controller:UART0|uart:UART0|Div16[1]    ; uart_controller:UART0|uart:UART0|Div16[1]    ; clk50        ; clk50       ; 1.000        ; 0.000      ; 5.581      ;
+; -4.914 ; uart_controller:UART0|uart:UART0|Div16[1]    ; uart_controller:UART0|uart:UART0|Div16[7]    ; clk50        ; clk50       ; 1.000        ; 0.000      ; 5.581      ;
+; -4.843 ; uart_controller:UART0|uart:UART0|Div16[6]    ; uart_controller:UART0|uart:UART0|Div16[7]    ; clk50        ; clk50       ; 1.000        ; 0.000      ; 5.510      ;
+; -4.801 ; uart_controller:UART0|uart:UART0|Div16[0]    ; uart_controller:UART0|uart:UART0|Div16[6]    ; clk50        ; clk50       ; 1.000        ; 0.000      ; 5.468      ;
+; -4.782 ; uart_controller:UART0|uart:UART0|Div16[0]    ; uart_controller:UART0|uart:UART0|Div16[3]    ; clk50        ; clk50       ; 1.000        ; 0.000      ; 5.449      ;
+; -4.776 ; uart_controller:UART0|uart:UART0|Div16[1]    ; uart_controller:UART0|uart:UART0|Div16[4]    ; clk50        ; clk50       ; 1.000        ; 0.000      ; 5.443      ;
+; -4.749 ; uart_controller:UART0|uart:UART0|Div16[0]    ; uart_controller:UART0|uart:UART0|Div16[1]    ; clk50        ; clk50       ; 1.000        ; 0.000      ; 5.416      ;
+; -4.644 ; uart_controller:UART0|uart:UART0|Div16[0]    ; uart_controller:UART0|uart:UART0|Div16[4]    ; clk50        ; clk50       ; 1.000        ; 0.000      ; 5.311      ;
+; -4.627 ; uart_controller:UART0|uart:UART0|Div16[3]    ; uart_controller:UART0|uart:UART0|Div16[1]    ; clk50        ; clk50       ; 1.000        ; 0.000      ; 5.294      ;
+; -4.582 ; uart_controller:UART0|uart:UART0|Div16[5]    ; uart_controller:UART0|uart:UART0|Div16[7]    ; clk50        ; clk50       ; 1.000        ; 0.000      ; 5.249      ;
+; -4.579 ; uart_controller:UART0|uart:UART0|ClkDiv[1]   ; uart_controller:UART0|uart:UART0|ClkDiv[3]   ; clk50        ; clk50       ; 1.000        ; 0.000      ; 5.246      ;
+; -4.547 ; uart_controller:UART0|uart:UART0|Div16[2]    ; uart_controller:UART0|uart:UART0|Div16[6]    ; clk50        ; clk50       ; 1.000        ; 0.000      ; 5.214      ;
+; -4.529 ; uart_controller:UART0|uart:UART0|TxFSM[1]    ; uart_controller:UART0|uart:UART0|TxBitCnt[3] ; clk50        ; clk50       ; 1.000        ; 0.000      ; 5.196      ;
+; -4.529 ; uart_controller:UART0|uart:UART0|TxFSM[1]    ; uart_controller:UART0|uart:UART0|TxBitCnt[0] ; clk50        ; clk50       ; 1.000        ; 0.000      ; 5.196      ;
+; -4.529 ; uart_controller:UART0|uart:UART0|TxFSM[1]    ; uart_controller:UART0|uart:UART0|TxBitCnt[2] ; clk50        ; clk50       ; 1.000        ; 0.000      ; 5.196      ;
+; -4.529 ; uart_controller:UART0|uart:UART0|TxFSM[1]    ; uart_controller:UART0|uart:UART0|TxBitCnt[1] ; clk50        ; clk50       ; 1.000        ; 0.000      ; 5.196      ;
+; -4.528 ; uart_controller:UART0|uart:UART0|Div16[2]    ; uart_controller:UART0|uart:UART0|Div16[3]    ; clk50        ; clk50       ; 1.000        ; 0.000      ; 5.195      ;
+; -4.489 ; uart_controller:UART0|uart:UART0|Div16[3]    ; uart_controller:UART0|uart:UART0|Div16[4]    ; clk50        ; clk50       ; 1.000        ; 0.000      ; 5.156      ;
+; -4.485 ; uart_controller:UART0|uart:UART0|ClkDiv[0]   ; uart_controller:UART0|uart:UART0|ClkDiv[3]   ; clk50        ; clk50       ; 1.000        ; 0.000      ; 5.152      ;
+; -4.467 ; uart_controller:UART0|uart:UART0|Div16[4]    ; uart_controller:UART0|uart:UART0|Div16[6]    ; clk50        ; clk50       ; 1.000        ; 0.000      ; 5.134      ;
+; -4.464 ; uart_controller:UART0|uart:UART0|ClkDiv[1]   ; uart_controller:UART0|uart:UART0|ClkDiv[4]   ; clk50        ; clk50       ; 1.000        ; 0.000      ; 5.131      ;
+; -4.462 ; uart_controller:UART0|uart:UART0|Div16[5]    ; uart_controller:UART0|uart:UART0|Div16[1]    ; clk50        ; clk50       ; 1.000        ; 0.000      ; 5.129      ;
+; -4.420 ; uart_controller:UART0|uart:UART0|Div16[3]    ; uart_controller:UART0|uart:UART0|Div16[6]    ; clk50        ; clk50       ; 1.000        ; 0.000      ; 5.087      ;
+; -4.390 ; uart_controller:UART0|uart:UART0|Div16[2]    ; uart_controller:UART0|uart:UART0|Div16[4]    ; clk50        ; clk50       ; 1.000        ; 0.000      ; 5.057      ;
+; -4.379 ; uart_controller:UART0|uart:UART0|Div16[0]    ; uart_controller:UART0|uart:UART0|Div16[5]    ; clk50        ; clk50       ; 1.000        ; 0.000      ; 5.046      ;
+; -4.370 ; uart_controller:UART0|uart:UART0|ClkDiv[0]   ; uart_controller:UART0|uart:UART0|ClkDiv[4]   ; clk50        ; clk50       ; 1.000        ; 0.000      ; 5.037      ;
+; -4.324 ; uart_controller:UART0|uart:UART0|Div16[5]    ; uart_controller:UART0|uart:UART0|Div16[4]    ; clk50        ; clk50       ; 1.000        ; 0.000      ; 4.991      ;
+; -4.309 ; uart_controller:UART0|uart:UART0|Div16[1]    ; uart_controller:UART0|uart:UART0|Div16[0]    ; clk50        ; clk50       ; 1.000        ; 0.000      ; 4.976      ;
+; -4.302 ; uart_controller:UART0|uart:UART0|Div16[1]    ; uart_controller:UART0|uart:UART0|Div16[6]    ; clk50        ; clk50       ; 1.000        ; 0.000      ; 4.969      ;
+; -4.297 ; uart_controller:UART0|uart:UART0|Div16[1]    ; uart_controller:UART0|uart:UART0|Div16[3]    ; clk50        ; clk50       ; 1.000        ; 0.000      ; 4.964      ;
+; -4.248 ; uart_controller:UART0|uart:UART0|ClkDiv[1]   ; uart_controller:UART0|uart:UART0|TopTx       ; clk50        ; clk50       ; 1.000        ; 0.000      ; 4.915      ;
+; -4.244 ; uart_controller:UART0|uart:UART0|ClkDiv[2]   ; uart_controller:UART0|uart:UART0|ClkDiv[3]   ; clk50        ; clk50       ; 1.000        ; 0.000      ; 4.911      ;
+; -4.144 ; uart_controller:UART0|uart:UART0|Div16[0]    ; uart_controller:UART0|uart:UART0|Div16[0]    ; clk50        ; clk50       ; 1.000        ; 0.000      ; 4.811      ;
+; -4.140 ; uart_controller:UART0|uart:UART0|Div16[0]    ; uart_controller:UART0|uart:UART0|Div16[2]    ; clk50        ; clk50       ; 1.000        ; 0.000      ; 4.807      ;
+; -4.129 ; uart_controller:UART0|uart:UART0|ClkDiv[2]   ; uart_controller:UART0|uart:UART0|ClkDiv[4]   ; clk50        ; clk50       ; 1.000        ; 0.000      ; 4.796      ;
+; -4.125 ; uart_controller:UART0|uart:UART0|Div16[2]    ; uart_controller:UART0|uart:UART0|Div16[5]    ; clk50        ; clk50       ; 1.000        ; 0.000      ; 4.792      ;
+; -4.088 ; uart_controller:UART0|uart:UART0|ClkDiv[2]   ; uart_controller:UART0|uart:UART0|TopTx       ; clk50        ; clk50       ; 1.000        ; 0.000      ; 4.755      ;
+; -4.045 ; uart_controller:UART0|uart:UART0|Div16[4]    ; uart_controller:UART0|uart:UART0|Div16[5]    ; clk50        ; clk50       ; 1.000        ; 0.000      ; 4.712      ;
+; -4.022 ; uart_controller:UART0|uart:UART0|Div16[3]    ; uart_controller:UART0|uart:UART0|Div16[0]    ; clk50        ; clk50       ; 1.000        ; 0.000      ; 4.689      ;
+; -4.010 ; uart_controller:UART0|uart:UART0|Div16[3]    ; uart_controller:UART0|uart:UART0|Div16[3]    ; clk50        ; clk50       ; 1.000        ; 0.000      ; 4.677      ;
+; -3.998 ; uart_controller:UART0|uart:UART0|Div16[3]    ; uart_controller:UART0|uart:UART0|Div16[5]    ; clk50        ; clk50       ; 1.000        ; 0.000      ; 4.665      ;
+; -3.995 ; uart_controller:UART0|uart:UART0|ClkDiv[3]   ; uart_controller:UART0|uart:UART0|ClkDiv[4]   ; clk50        ; clk50       ; 1.000        ; 0.000      ; 4.662      ;
+; -3.990 ; uart_controller:UART0|uart:UART0|Div16[6]    ; uart_controller:UART0|uart:UART0|Div16[1]    ; clk50        ; clk50       ; 1.000        ; 0.000      ; 4.657      ;
+; -3.880 ; uart_controller:UART0|uart:UART0|Div16[1]    ; uart_controller:UART0|uart:UART0|Div16[5]    ; clk50        ; clk50       ; 1.000        ; 0.000      ; 4.547      ;
+; -3.857 ; uart_controller:UART0|uart:UART0|Div16[5]    ; uart_controller:UART0|uart:UART0|Div16[0]    ; clk50        ; clk50       ; 1.000        ; 0.000      ; 4.524      ;
+; -3.852 ; uart_controller:UART0|uart:UART0|Div16[6]    ; uart_controller:UART0|uart:UART0|Div16[4]    ; clk50        ; clk50       ; 1.000        ; 0.000      ; 4.519      ;
+; -3.847 ; uart_controller:UART0|uart:UART0|Div16[5]    ; uart_controller:UART0|uart:UART0|Div16[6]    ; clk50        ; clk50       ; 1.000        ; 0.000      ; 4.514      ;
+; -3.845 ; uart_controller:UART0|uart:UART0|Div16[5]    ; uart_controller:UART0|uart:UART0|Div16[3]    ; clk50        ; clk50       ; 1.000        ; 0.000      ; 4.512      ;
+; -3.641 ; uart_controller:UART0|uart:UART0|Div16[1]    ; uart_controller:UART0|uart:UART0|Div16[2]    ; clk50        ; clk50       ; 1.000        ; 0.000      ; 4.308      ;
+; -3.593 ; uart_controller:UART0|uart:UART0|Div16[4]    ; uart_controller:UART0|uart:UART0|Div16[4]    ; clk50        ; clk50       ; 1.000        ; 0.000      ; 4.260      ;
+; -3.546 ; uart_controller:UART0|uart:UART0|Div16[2]    ; uart_controller:UART0|uart:UART0|Div16[1]    ; clk50        ; clk50       ; 1.000        ; 0.000      ; 4.213      ;
+; -3.535 ; uart_controller:UART0|uart:UART0|ClkDiv[4]   ; uart_controller:UART0|uart:UART0|TopTx       ; clk50        ; clk50       ; 1.000        ; 0.000      ; 4.202      ;
+; -3.526 ; uart_controller:UART0|uart:UART0|TopTx       ; uart_controller:UART0|uart:UART0|TxBitCnt[3] ; clk50        ; clk50       ; 1.000        ; 0.000      ; 4.193      ;
+; -3.526 ; uart_controller:UART0|uart:UART0|TopTx       ; uart_controller:UART0|uart:UART0|TxBitCnt[0] ; clk50        ; clk50       ; 1.000        ; 0.000      ; 4.193      ;
+; -3.526 ; uart_controller:UART0|uart:UART0|TopTx       ; uart_controller:UART0|uart:UART0|TxBitCnt[2] ; clk50        ; clk50       ; 1.000        ; 0.000      ; 4.193      ;
+; -3.526 ; uart_controller:UART0|uart:UART0|TopTx       ; uart_controller:UART0|uart:UART0|TxBitCnt[1] ; clk50        ; clk50       ; 1.000        ; 0.000      ; 4.193      ;
+; -3.480 ; uart_controller:UART0|uart:UART0|ClkDiv[1]   ; uart_controller:UART0|uart:UART0|ClkDiv[2]   ; clk50        ; clk50       ; 1.000        ; 0.000      ; 4.147      ;
+; -3.411 ; uart_controller:UART0|uart:UART0|ClkDiv[3]   ; uart_controller:UART0|uart:UART0|ClkDiv[3]   ; clk50        ; clk50       ; 1.000        ; 0.000      ; 4.078      ;
+; -3.403 ; uart_controller:UART0|uart:UART0|TxBitCnt[1] ; uart_controller:UART0|uart:UART0|TxFSM[0]    ; clk50        ; clk50       ; 1.000        ; 0.000      ; 4.070      ;
+; -3.386 ; uart_controller:UART0|uart:UART0|ClkDiv[0]   ; uart_controller:UART0|uart:UART0|ClkDiv[2]   ; clk50        ; clk50       ; 1.000        ; 0.000      ; 4.053      ;
+; -3.385 ; uart_controller:UART0|uart:UART0|Div16[6]    ; uart_controller:UART0|uart:UART0|Div16[0]    ; clk50        ; clk50       ; 1.000        ; 0.000      ; 4.052      ;
+; -3.373 ; uart_controller:UART0|uart:UART0|Div16[6]    ; uart_controller:UART0|uart:UART0|Div16[3]    ; clk50        ; clk50       ; 1.000        ; 0.000      ; 4.040      ;
+; -3.353 ; uart_controller:UART0|uart:UART0|Div16[4]    ; uart_controller:UART0|uart:UART0|Div16[1]    ; clk50        ; clk50       ; 1.000        ; 0.000      ; 4.020      ;
+; -3.352 ; uart_controller:UART0|uart:UART0|Div16[6]    ; uart_controller:UART0|uart:UART0|Div16[6]    ; clk50        ; clk50       ; 1.000        ; 0.000      ; 4.019      ;
+; -3.271 ; uart_controller:UART0|uart:UART0|ClkDiv[0]   ; uart_controller:UART0|uart:UART0|ClkDiv[1]   ; clk50        ; clk50       ; 1.000        ; 0.000      ; 3.938      ;
+; -3.262 ; uart_controller:UART0|uart:UART0|Div16[7]    ; uart_controller:UART0|uart:UART0|Div16[7]    ; clk50        ; clk50       ; 1.000        ; 0.000      ; 3.929      ;
+; -3.237 ; uart_controller:UART0|uart:UART0|Div16[1]    ; uart_controller:UART0|uart:UART0|Top16       ; clk50        ; clk50       ; 1.000        ; 0.000      ; 3.904      ;
+; -3.224 ; uart_controller:UART0|uart:UART0|TxBitCnt[2] ; uart_controller:UART0|uart:UART0|TxFSM[0]    ; clk50        ; clk50       ; 1.000        ; 0.000      ; 3.891      ;
+; -3.187 ; uart_controller:UART0|uart:UART0|Div16[2]    ; uart_controller:UART0|uart:UART0|Div16[2]    ; clk50        ; clk50       ; 1.000        ; 0.000      ; 3.854      ;
+; -3.072 ; uart_controller:UART0|uart:UART0|Div16[0]    ; uart_controller:UART0|uart:UART0|Top16       ; clk50        ; clk50       ; 1.000        ; 0.000      ; 3.739      ;
+; -3.015 ; uart_controller:UART0|uart:UART0|ClkDiv[3]   ; uart_controller:UART0|uart:UART0|TopTx       ; clk50        ; clk50       ; 1.000        ; 0.000      ; 3.682      ;
+; -2.994 ; uart_controller:UART0|uart:UART0|TxBitCnt[3] ; uart_controller:UART0|uart:UART0|TxFSM[0]    ; clk50        ; clk50       ; 1.000        ; 0.000      ; 3.661      ;
+; -2.950 ; uart_controller:UART0|uart:UART0|Div16[3]    ; uart_controller:UART0|uart:UART0|Top16       ; clk50        ; clk50       ; 1.000        ; 0.000      ; 3.617      ;
+; -2.941 ; uart_controller:UART0|uart:UART0|Div16[2]    ; uart_controller:UART0|uart:UART0|Div16[0]    ; clk50        ; clk50       ; 1.000        ; 0.000      ; 3.608      ;
+; -2.932 ; uart_controller:UART0|uart:UART0|TxFSM[1]    ; uart_controller:UART0|uart:UART0|TxReg[0]    ; clk50        ; clk50       ; 1.000        ; 0.000      ; 3.599      ;
+; -2.894 ; uart_controller:UART0|uart:UART0|Top16       ; uart_controller:UART0|uart:UART0|TopTx       ; clk50        ; clk50       ; 1.000        ; 0.000      ; 3.561      ;
+; -2.852 ; uart_controller:UART0|uart:UART0|Top16       ; uart_controller:UART0|uart:UART0|ClkDiv[0]   ; clk50        ; clk50       ; 1.000        ; 0.000      ; 3.519      ;
+; -2.852 ; uart_controller:UART0|uart:UART0|Top16       ; uart_controller:UART0|uart:UART0|ClkDiv[2]   ; clk50        ; clk50       ; 1.000        ; 0.000      ; 3.519      ;
+; -2.852 ; uart_controller:UART0|uart:UART0|Top16       ; uart_controller:UART0|uart:UART0|ClkDiv[1]   ; clk50        ; clk50       ; 1.000        ; 0.000      ; 3.519      ;
+; -2.852 ; uart_controller:UART0|uart:UART0|Top16       ; uart_controller:UART0|uart:UART0|ClkDiv[4]   ; clk50        ; clk50       ; 1.000        ; 0.000      ; 3.519      ;
+; -2.852 ; uart_controller:UART0|uart:UART0|Top16       ; uart_controller:UART0|uart:UART0|ClkDiv[3]   ; clk50        ; clk50       ; 1.000        ; 0.000      ; 3.519      ;
+; -2.779 ; uart_controller:UART0|uart:UART0|Div16[7]    ; uart_controller:UART0|uart:UART0|Div16[1]    ; clk50        ; clk50       ; 1.000        ; 0.000      ; 3.446      ;
+; -2.776 ; uart_controller:UART0|uart:UART0|TxFSM[0]    ; uart_controller:UART0|uart:UART0|TxBitCnt[3] ; clk50        ; clk50       ; 1.000        ; 0.000      ; 3.443      ;
+; -2.776 ; uart_controller:UART0|uart:UART0|TxFSM[0]    ; uart_controller:UART0|uart:UART0|TxBitCnt[0] ; clk50        ; clk50       ; 1.000        ; 0.000      ; 3.443      ;
+; -2.776 ; uart_controller:UART0|uart:UART0|TxFSM[0]    ; uart_controller:UART0|uart:UART0|TxBitCnt[2] ; clk50        ; clk50       ; 1.000        ; 0.000      ; 3.443      ;
+; -2.776 ; uart_controller:UART0|uart:UART0|TxFSM[0]    ; uart_controller:UART0|uart:UART0|TxBitCnt[1] ; clk50        ; clk50       ; 1.000        ; 0.000      ; 3.443      ;
+; -2.761 ; uart_controller:UART0|uart:UART0|Div16[5]    ; uart_controller:UART0|uart:UART0|Top16       ; clk50        ; clk50       ; 1.000        ; 0.000      ; 3.428      ;
+; -2.748 ; uart_controller:UART0|uart:UART0|Div16[4]    ; uart_controller:UART0|uart:UART0|Div16[0]    ; clk50        ; clk50       ; 1.000        ; 0.000      ; 3.415      ;
+; -2.744 ; uart_controller:UART0|uart:UART0|ClkDiv[0]   ; uart_controller:UART0|uart:UART0|TopTx       ; clk50        ; clk50       ; 1.000        ; 0.000      ; 3.411      ;
+; -2.736 ; uart_controller:UART0|uart:UART0|Div16[4]    ; uart_controller:UART0|uart:UART0|Div16[3]    ; clk50        ; clk50       ; 1.000        ; 0.000      ; 3.403      ;
+; -2.707 ; uart_controller:UART0|uart:UART0|TopTx       ; uart_controller:UART0|uart:UART0|TxFSM[0]    ; clk50        ; clk50       ; 1.000        ; 0.000      ; 3.374      ;
+; -2.641 ; uart_controller:UART0|uart:UART0|Div16[7]    ; uart_controller:UART0|uart:UART0|Div16[4]    ; clk50        ; clk50       ; 1.000        ; 0.000      ; 3.308      ;
+; -2.626 ; uart_controller:UART0|uart:UART0|ClkDiv[4]   ; uart_controller:UART0|uart:UART0|ClkDiv[4]   ; clk50        ; clk50       ; 1.000        ; 0.000      ; 3.293      ;
+; -2.609 ; uart_controller:UART0|uart:UART0|ClkDiv[1]   ; uart_controller:UART0|uart:UART0|ClkDiv[1]   ; clk50        ; clk50       ; 1.000        ; 0.000      ; 3.276      ;
+; -2.546 ; uart_controller:UART0|uart:UART0|Div16[5]    ; uart_controller:UART0|uart:UART0|Div16[5]    ; clk50        ; clk50       ; 1.000        ; 0.000      ; 3.213      ;
+; -2.482 ; uart_controller:UART0|uart:UART0|TopTx       ; uart_controller:UART0|uart:UART0|TxFSM[1]    ; clk50        ; clk50       ; 1.000        ; 0.000      ; 3.149      ;
++--------+----------------------------------------------+----------------------------------------------+--------------+-------------+--------------+------------+------------+
 
 
--------------------
-; Clock Transfers ;
--------------------
-Nothing to report.
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Hold: 'clk50'                                                                                                                                                             ;
++-------+----------------------------------------------+----------------------------------------------+--------------+-------------+--------------+------------+------------+
+; Slack ; From Node                                    ; To Node                                      ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++-------+----------------------------------------------+----------------------------------------------+--------------+-------------+--------------+------------+------------+
+; 1.646 ; uart_controller:UART0|uart:UART0|Div16[7]    ; uart_controller:UART0|uart:UART0|Top16       ; clk50        ; clk50       ; 0.000        ; 0.000      ; 1.867      ;
+; 1.646 ; uart_controller:UART0|uart:UART0|ClkDiv[3]   ; uart_controller:UART0|uart:UART0|ClkDiv[4]   ; clk50        ; clk50       ; 0.000        ; 0.000      ; 1.867      ;
+; 1.688 ; uart_controller:UART0|uart:UART0|TxFSM[0]    ; uart_controller:UART0|uart:UART0|TxFSM[0]    ; clk50        ; clk50       ; 0.000        ; 0.000      ; 1.909      ;
+; 1.689 ; uart_controller:UART0|uart:UART0|TxFSM[0]    ; uart_controller:UART0|uart:UART0|TxReg[0]    ; clk50        ; clk50       ; 0.000        ; 0.000      ; 1.910      ;
+; 1.738 ; uart_controller:UART0|uart:UART0|TxBitCnt[1] ; uart_controller:UART0|uart:UART0|TxBitCnt[1] ; clk50        ; clk50       ; 0.000        ; 0.000      ; 1.959      ;
+; 1.930 ; uart_controller:UART0|uart:UART0|ClkDiv[0]   ; uart_controller:UART0|uart:UART0|ClkDiv[4]   ; clk50        ; clk50       ; 0.000        ; 0.000      ; 2.151      ;
+; 1.977 ; uart_controller:UART0|uart:UART0|TxBitCnt[2] ; uart_controller:UART0|uart:UART0|TxBitCnt[2] ; clk50        ; clk50       ; 0.000        ; 0.000      ; 2.198      ;
+; 1.978 ; uart_controller:UART0|uart:UART0|TxBitCnt[2] ; uart_controller:UART0|uart:UART0|TxBitCnt[3] ; clk50        ; clk50       ; 0.000        ; 0.000      ; 2.199      ;
+; 1.986 ; uart_controller:UART0|uart:UART0|TxBitCnt[0] ; uart_controller:UART0|uart:UART0|TxBitCnt[0] ; clk50        ; clk50       ; 0.000        ; 0.000      ; 2.207      ;
+; 1.995 ; uart_controller:UART0|uart:UART0|TxBitCnt[0] ; uart_controller:UART0|uart:UART0|TxFSM[0]    ; clk50        ; clk50       ; 0.000        ; 0.000      ; 2.216      ;
+; 2.010 ; uart_controller:UART0|uart:UART0|TxBitCnt[0] ; uart_controller:UART0|uart:UART0|TxBitCnt[1] ; clk50        ; clk50       ; 0.000        ; 0.000      ; 2.231      ;
+; 2.150 ; uart_controller:UART0|uart:UART0|Div16[4]    ; uart_controller:UART0|uart:UART0|Top16       ; clk50        ; clk50       ; 0.000        ; 0.000      ; 2.371      ;
+; 2.166 ; uart_controller:UART0|uart:UART0|ClkDiv[4]   ; uart_controller:UART0|uart:UART0|ClkDiv[4]   ; clk50        ; clk50       ; 0.000        ; 0.000      ; 2.387      ;
+; 2.221 ; uart_controller:UART0|uart:UART0|TxBitCnt[0] ; uart_controller:UART0|uart:UART0|TxBitCnt[2] ; clk50        ; clk50       ; 0.000        ; 0.000      ; 2.442      ;
+; 2.240 ; uart_controller:UART0|uart:UART0|TxBitCnt[3] ; uart_controller:UART0|uart:UART0|TxBitCnt[3] ; clk50        ; clk50       ; 0.000        ; 0.000      ; 2.461      ;
+; 2.245 ; uart_controller:UART0|uart:UART0|TxBitCnt[1] ; uart_controller:UART0|uart:UART0|TxBitCnt[3] ; clk50        ; clk50       ; 0.000        ; 0.000      ; 2.466      ;
+; 2.315 ; uart_controller:UART0|uart:UART0|Div16[2]    ; uart_controller:UART0|uart:UART0|Top16       ; clk50        ; clk50       ; 0.000        ; 0.000      ; 2.536      ;
+; 2.317 ; uart_controller:UART0|uart:UART0|TxBitCnt[1] ; uart_controller:UART0|uart:UART0|TxBitCnt[2] ; clk50        ; clk50       ; 0.000        ; 0.000      ; 2.538      ;
+; 2.318 ; uart_controller:UART0|uart:UART0|TopTx       ; uart_controller:UART0|uart:UART0|TxReg[0]    ; clk50        ; clk50       ; 0.000        ; 0.000      ; 2.539      ;
+; 2.318 ; uart_controller:UART0|uart:UART0|TopTx       ; uart_controller:UART0|uart:UART0|TxFSM[0]    ; clk50        ; clk50       ; 0.000        ; 0.000      ; 2.539      ;
+; 2.319 ; uart_controller:UART0|uart:UART0|TxReg[0]    ; uart_controller:UART0|uart:UART0|TxReg[0]    ; clk50        ; clk50       ; 0.000        ; 0.000      ; 2.540      ;
+; 2.545 ; uart_controller:UART0|uart:UART0|TxFSM[1]    ; uart_controller:UART0|uart:UART0|TxFSM[1]    ; clk50        ; clk50       ; 0.000        ; 0.000      ; 2.766      ;
+; 2.608 ; uart_controller:UART0|uart:UART0|Div16[7]    ; uart_controller:UART0|uart:UART0|Div16[3]    ; clk50        ; clk50       ; 0.000        ; 0.000      ; 2.829      ;
+; 2.616 ; uart_controller:UART0|uart:UART0|TxBitCnt[0] ; uart_controller:UART0|uart:UART0|TxBitCnt[3] ; clk50        ; clk50       ; 0.000        ; 0.000      ; 2.837      ;
+; 2.620 ; uart_controller:UART0|uart:UART0|Div16[7]    ; uart_controller:UART0|uart:UART0|Div16[0]    ; clk50        ; clk50       ; 0.000        ; 0.000      ; 2.841      ;
+; 2.689 ; uart_controller:UART0|uart:UART0|TxFSM[0]    ; uart_controller:UART0|uart:UART0|TxFSM[1]    ; clk50        ; clk50       ; 0.000        ; 0.000      ; 2.910      ;
+; 2.719 ; uart_controller:UART0|uart:UART0|ClkDiv[2]   ; uart_controller:UART0|uart:UART0|ClkDiv[4]   ; clk50        ; clk50       ; 0.000        ; 0.000      ; 2.940      ;
+; 2.857 ; uart_controller:UART0|uart:UART0|Div16[6]    ; uart_controller:UART0|uart:UART0|Top16       ; clk50        ; clk50       ; 0.000        ; 0.000      ; 3.078      ;
+; 2.879 ; uart_controller:UART0|uart:UART0|ClkDiv[1]   ; uart_controller:UART0|uart:UART0|ClkDiv[4]   ; clk50        ; clk50       ; 0.000        ; 0.000      ; 3.100      ;
+; 2.892 ; uart_controller:UART0|uart:UART0|ClkDiv[2]   ; uart_controller:UART0|uart:UART0|ClkDiv[2]   ; clk50        ; clk50       ; 0.000        ; 0.000      ; 3.113      ;
+; 2.897 ; uart_controller:UART0|uart:UART0|TxFSM[1]    ; uart_controller:UART0|uart:UART0|TxBitCnt[2] ; clk50        ; clk50       ; 0.000        ; 0.000      ; 3.118      ;
+; 2.899 ; uart_controller:UART0|uart:UART0|ClkDiv[0]   ; uart_controller:UART0|uart:UART0|ClkDiv[0]   ; clk50        ; clk50       ; 0.000        ; 0.000      ; 3.120      ;
+; 2.907 ; uart_controller:UART0|uart:UART0|TxFSM[1]    ; uart_controller:UART0|uart:UART0|TxBitCnt[0] ; clk50        ; clk50       ; 0.000        ; 0.000      ; 3.128      ;
+; 2.928 ; uart_controller:UART0|uart:UART0|TopTx       ; uart_controller:UART0|uart:UART0|TxFSM[1]    ; clk50        ; clk50       ; 0.000        ; 0.000      ; 3.149      ;
+; 2.992 ; uart_controller:UART0|uart:UART0|Div16[5]    ; uart_controller:UART0|uart:UART0|Div16[5]    ; clk50        ; clk50       ; 0.000        ; 0.000      ; 3.213      ;
+; 3.055 ; uart_controller:UART0|uart:UART0|ClkDiv[1]   ; uart_controller:UART0|uart:UART0|ClkDiv[1]   ; clk50        ; clk50       ; 0.000        ; 0.000      ; 3.276      ;
+; 3.087 ; uart_controller:UART0|uart:UART0|Div16[7]    ; uart_controller:UART0|uart:UART0|Div16[4]    ; clk50        ; clk50       ; 0.000        ; 0.000      ; 3.308      ;
+; 3.115 ; uart_controller:UART0|uart:UART0|Div16[1]    ; uart_controller:UART0|uart:UART0|Div16[1]    ; clk50        ; clk50       ; 0.000        ; 0.000      ; 3.336      ;
+; 3.182 ; uart_controller:UART0|uart:UART0|Div16[4]    ; uart_controller:UART0|uart:UART0|Div16[3]    ; clk50        ; clk50       ; 0.000        ; 0.000      ; 3.403      ;
+; 3.190 ; uart_controller:UART0|uart:UART0|ClkDiv[0]   ; uart_controller:UART0|uart:UART0|TopTx       ; clk50        ; clk50       ; 0.000        ; 0.000      ; 3.411      ;
+; 3.194 ; uart_controller:UART0|uart:UART0|Div16[4]    ; uart_controller:UART0|uart:UART0|Div16[0]    ; clk50        ; clk50       ; 0.000        ; 0.000      ; 3.415      ;
+; 3.207 ; uart_controller:UART0|uart:UART0|Div16[5]    ; uart_controller:UART0|uart:UART0|Top16       ; clk50        ; clk50       ; 0.000        ; 0.000      ; 3.428      ;
+; 3.222 ; uart_controller:UART0|uart:UART0|TxFSM[0]    ; uart_controller:UART0|uart:UART0|TxBitCnt[3] ; clk50        ; clk50       ; 0.000        ; 0.000      ; 3.443      ;
+; 3.222 ; uart_controller:UART0|uart:UART0|TxFSM[0]    ; uart_controller:UART0|uart:UART0|TxBitCnt[0] ; clk50        ; clk50       ; 0.000        ; 0.000      ; 3.443      ;
+; 3.222 ; uart_controller:UART0|uart:UART0|TxFSM[0]    ; uart_controller:UART0|uart:UART0|TxBitCnt[2] ; clk50        ; clk50       ; 0.000        ; 0.000      ; 3.443      ;
+; 3.222 ; uart_controller:UART0|uart:UART0|TxFSM[0]    ; uart_controller:UART0|uart:UART0|TxBitCnt[1] ; clk50        ; clk50       ; 0.000        ; 0.000      ; 3.443      ;
+; 3.225 ; uart_controller:UART0|uart:UART0|Div16[7]    ; uart_controller:UART0|uart:UART0|Div16[1]    ; clk50        ; clk50       ; 0.000        ; 0.000      ; 3.446      ;
+; 3.298 ; uart_controller:UART0|uart:UART0|Top16       ; uart_controller:UART0|uart:UART0|ClkDiv[0]   ; clk50        ; clk50       ; 0.000        ; 0.000      ; 3.519      ;
+; 3.298 ; uart_controller:UART0|uart:UART0|Top16       ; uart_controller:UART0|uart:UART0|ClkDiv[2]   ; clk50        ; clk50       ; 0.000        ; 0.000      ; 3.519      ;
+; 3.298 ; uart_controller:UART0|uart:UART0|Top16       ; uart_controller:UART0|uart:UART0|ClkDiv[1]   ; clk50        ; clk50       ; 0.000        ; 0.000      ; 3.519      ;
+; 3.298 ; uart_controller:UART0|uart:UART0|Top16       ; uart_controller:UART0|uart:UART0|ClkDiv[4]   ; clk50        ; clk50       ; 0.000        ; 0.000      ; 3.519      ;
+; 3.298 ; uart_controller:UART0|uart:UART0|Top16       ; uart_controller:UART0|uart:UART0|ClkDiv[3]   ; clk50        ; clk50       ; 0.000        ; 0.000      ; 3.519      ;
+; 3.340 ; uart_controller:UART0|uart:UART0|Top16       ; uart_controller:UART0|uart:UART0|TopTx       ; clk50        ; clk50       ; 0.000        ; 0.000      ; 3.561      ;
+; 3.368 ; uart_controller:UART0|uart:UART0|TxFSM[1]    ; uart_controller:UART0|uart:UART0|TxBitCnt[1] ; clk50        ; clk50       ; 0.000        ; 0.000      ; 3.589      ;
+; 3.370 ; uart_controller:UART0|uart:UART0|TxFSM[1]    ; uart_controller:UART0|uart:UART0|TxBitCnt[3] ; clk50        ; clk50       ; 0.000        ; 0.000      ; 3.591      ;
+; 3.375 ; uart_controller:UART0|uart:UART0|Div16[2]    ; uart_controller:UART0|uart:UART0|Div16[3]    ; clk50        ; clk50       ; 0.000        ; 0.000      ; 3.596      ;
+; 3.378 ; uart_controller:UART0|uart:UART0|TxFSM[1]    ; uart_controller:UART0|uart:UART0|TxReg[0]    ; clk50        ; clk50       ; 0.000        ; 0.000      ; 3.599      ;
+; 3.387 ; uart_controller:UART0|uart:UART0|Div16[2]    ; uart_controller:UART0|uart:UART0|Div16[0]    ; clk50        ; clk50       ; 0.000        ; 0.000      ; 3.608      ;
+; 3.396 ; uart_controller:UART0|uart:UART0|Div16[3]    ; uart_controller:UART0|uart:UART0|Top16       ; clk50        ; clk50       ; 0.000        ; 0.000      ; 3.617      ;
+; 3.440 ; uart_controller:UART0|uart:UART0|TxBitCnt[3] ; uart_controller:UART0|uart:UART0|TxFSM[0]    ; clk50        ; clk50       ; 0.000        ; 0.000      ; 3.661      ;
+; 3.461 ; uart_controller:UART0|uart:UART0|ClkDiv[3]   ; uart_controller:UART0|uart:UART0|TopTx       ; clk50        ; clk50       ; 0.000        ; 0.000      ; 3.682      ;
+; 3.518 ; uart_controller:UART0|uart:UART0|Div16[0]    ; uart_controller:UART0|uart:UART0|Top16       ; clk50        ; clk50       ; 0.000        ; 0.000      ; 3.739      ;
+; 3.633 ; uart_controller:UART0|uart:UART0|Div16[2]    ; uart_controller:UART0|uart:UART0|Div16[2]    ; clk50        ; clk50       ; 0.000        ; 0.000      ; 3.854      ;
+; 3.661 ; uart_controller:UART0|uart:UART0|Div16[4]    ; uart_controller:UART0|uart:UART0|Div16[4]    ; clk50        ; clk50       ; 0.000        ; 0.000      ; 3.882      ;
+; 3.670 ; uart_controller:UART0|uart:UART0|TxBitCnt[2] ; uart_controller:UART0|uart:UART0|TxFSM[0]    ; clk50        ; clk50       ; 0.000        ; 0.000      ; 3.891      ;
+; 3.683 ; uart_controller:UART0|uart:UART0|Div16[1]    ; uart_controller:UART0|uart:UART0|Top16       ; clk50        ; clk50       ; 0.000        ; 0.000      ; 3.904      ;
+; 3.702 ; uart_controller:UART0|uart:UART0|ClkDiv[0]   ; uart_controller:UART0|uart:UART0|ClkDiv[1]   ; clk50        ; clk50       ; 0.000        ; 0.000      ; 3.923      ;
+; 3.708 ; uart_controller:UART0|uart:UART0|Div16[7]    ; uart_controller:UART0|uart:UART0|Div16[7]    ; clk50        ; clk50       ; 0.000        ; 0.000      ; 3.929      ;
+; 3.798 ; uart_controller:UART0|uart:UART0|Div16[6]    ; uart_controller:UART0|uart:UART0|Div16[6]    ; clk50        ; clk50       ; 0.000        ; 0.000      ; 4.019      ;
+; 3.799 ; uart_controller:UART0|uart:UART0|Div16[4]    ; uart_controller:UART0|uart:UART0|Div16[1]    ; clk50        ; clk50       ; 0.000        ; 0.000      ; 4.020      ;
+; 3.805 ; uart_controller:UART0|uart:UART0|ClkDiv[0]   ; uart_controller:UART0|uart:UART0|ClkDiv[2]   ; clk50        ; clk50       ; 0.000        ; 0.000      ; 4.026      ;
+; 3.819 ; uart_controller:UART0|uart:UART0|Div16[6]    ; uart_controller:UART0|uart:UART0|Div16[3]    ; clk50        ; clk50       ; 0.000        ; 0.000      ; 4.040      ;
+; 3.831 ; uart_controller:UART0|uart:UART0|Div16[6]    ; uart_controller:UART0|uart:UART0|Div16[0]    ; clk50        ; clk50       ; 0.000        ; 0.000      ; 4.052      ;
+; 3.849 ; uart_controller:UART0|uart:UART0|TxBitCnt[1] ; uart_controller:UART0|uart:UART0|TxFSM[0]    ; clk50        ; clk50       ; 0.000        ; 0.000      ; 4.070      ;
+; 3.854 ; uart_controller:UART0|uart:UART0|Div16[2]    ; uart_controller:UART0|uart:UART0|Div16[4]    ; clk50        ; clk50       ; 0.000        ; 0.000      ; 4.075      ;
+; 3.857 ; uart_controller:UART0|uart:UART0|ClkDiv[3]   ; uart_controller:UART0|uart:UART0|ClkDiv[3]   ; clk50        ; clk50       ; 0.000        ; 0.000      ; 4.078      ;
+; 3.910 ; uart_controller:UART0|uart:UART0|ClkDiv[1]   ; uart_controller:UART0|uart:UART0|ClkDiv[2]   ; clk50        ; clk50       ; 0.000        ; 0.000      ; 4.131      ;
+; 3.972 ; uart_controller:UART0|uart:UART0|TopTx       ; uart_controller:UART0|uart:UART0|TxBitCnt[3] ; clk50        ; clk50       ; 0.000        ; 0.000      ; 4.193      ;
+; 3.972 ; uart_controller:UART0|uart:UART0|TopTx       ; uart_controller:UART0|uart:UART0|TxBitCnt[0] ; clk50        ; clk50       ; 0.000        ; 0.000      ; 4.193      ;
+; 3.972 ; uart_controller:UART0|uart:UART0|TopTx       ; uart_controller:UART0|uart:UART0|TxBitCnt[2] ; clk50        ; clk50       ; 0.000        ; 0.000      ; 4.193      ;
+; 3.972 ; uart_controller:UART0|uart:UART0|TopTx       ; uart_controller:UART0|uart:UART0|TxBitCnt[1] ; clk50        ; clk50       ; 0.000        ; 0.000      ; 4.193      ;
+; 3.981 ; uart_controller:UART0|uart:UART0|ClkDiv[4]   ; uart_controller:UART0|uart:UART0|TopTx       ; clk50        ; clk50       ; 0.000        ; 0.000      ; 4.202      ;
+; 3.992 ; uart_controller:UART0|uart:UART0|Div16[2]    ; uart_controller:UART0|uart:UART0|Div16[1]    ; clk50        ; clk50       ; 0.000        ; 0.000      ; 4.213      ;
+; 4.072 ; uart_controller:UART0|uart:UART0|Div16[1]    ; uart_controller:UART0|uart:UART0|Div16[2]    ; clk50        ; clk50       ; 0.000        ; 0.000      ; 4.293      ;
+; 4.148 ; uart_controller:UART0|uart:UART0|Div16[3]    ; uart_controller:UART0|uart:UART0|Div16[3]    ; clk50        ; clk50       ; 0.000        ; 0.000      ; 4.369      ;
+; 4.177 ; uart_controller:UART0|uart:UART0|Div16[0]    ; uart_controller:UART0|uart:UART0|Div16[0]    ; clk50        ; clk50       ; 0.000        ; 0.000      ; 4.398      ;
+; 4.277 ; uart_controller:UART0|uart:UART0|Div16[5]    ; uart_controller:UART0|uart:UART0|Div16[6]    ; clk50        ; clk50       ; 0.000        ; 0.000      ; 4.498      ;
+; 4.289 ; uart_controller:UART0|uart:UART0|Div16[1]    ; uart_controller:UART0|uart:UART0|Div16[5]    ; clk50        ; clk50       ; 0.000        ; 0.000      ; 4.510      ;
+; 4.291 ; uart_controller:UART0|uart:UART0|Div16[5]    ; uart_controller:UART0|uart:UART0|Div16[3]    ; clk50        ; clk50       ; 0.000        ; 0.000      ; 4.512      ;
+; 4.298 ; uart_controller:UART0|uart:UART0|Div16[6]    ; uart_controller:UART0|uart:UART0|Div16[4]    ; clk50        ; clk50       ; 0.000        ; 0.000      ; 4.519      ;
+; 4.298 ; uart_controller:UART0|uart:UART0|Div16[0]    ; uart_controller:UART0|uart:UART0|Div16[1]    ; clk50        ; clk50       ; 0.000        ; 0.000      ; 4.519      ;
+; 4.303 ; uart_controller:UART0|uart:UART0|Div16[5]    ; uart_controller:UART0|uart:UART0|Div16[0]    ; clk50        ; clk50       ; 0.000        ; 0.000      ; 4.524      ;
+; 4.431 ; uart_controller:UART0|uart:UART0|Div16[3]    ; uart_controller:UART0|uart:UART0|Div16[5]    ; clk50        ; clk50       ; 0.000        ; 0.000      ; 4.652      ;
+; 4.436 ; uart_controller:UART0|uart:UART0|Div16[6]    ; uart_controller:UART0|uart:UART0|Div16[1]    ; clk50        ; clk50       ; 0.000        ; 0.000      ; 4.657      ;
+; 4.468 ; uart_controller:UART0|uart:UART0|Div16[3]    ; uart_controller:UART0|uart:UART0|Div16[0]    ; clk50        ; clk50       ; 0.000        ; 0.000      ; 4.689      ;
+; 4.491 ; uart_controller:UART0|uart:UART0|Div16[4]    ; uart_controller:UART0|uart:UART0|Div16[5]    ; clk50        ; clk50       ; 0.000        ; 0.000      ; 4.712      ;
+; 4.534 ; uart_controller:UART0|uart:UART0|ClkDiv[2]   ; uart_controller:UART0|uart:UART0|TopTx       ; clk50        ; clk50       ; 0.000        ; 0.000      ; 4.755      ;
+; 4.546 ; uart_controller:UART0|uart:UART0|Div16[2]    ; uart_controller:UART0|uart:UART0|Div16[5]    ; clk50        ; clk50       ; 0.000        ; 0.000      ; 4.767      ;
+; 4.552 ; uart_controller:UART0|uart:UART0|Div16[1]    ; uart_controller:UART0|uart:UART0|Div16[4]    ; clk50        ; clk50       ; 0.000        ; 0.000      ; 4.773      ;
+; 4.559 ; uart_controller:UART0|uart:UART0|Div16[0]    ; uart_controller:UART0|uart:UART0|Div16[2]    ; clk50        ; clk50       ; 0.000        ; 0.000      ; 4.780      ;
++-------+----------------------------------------------+----------------------------------------------+--------------+-------------+--------------+------------+------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------+
+; Minimum Pulse Width: 'clk50'                                                                                                  ;
++--------+--------------+----------------+------------------+-------+------------+----------------------------------------------+
+; Slack  ; Actual Width ; Required Width ; Type             ; Clock ; Clock Edge ; Target                                       ;
++--------+--------------+----------------+------------------+-------+------------+----------------------------------------------+
+; -2.289 ; 1.000        ; 3.289          ; Port Rate        ; clk50 ; Rise       ; clk50                                        ;
+; 0.234  ; 0.500        ; 0.266          ; High Pulse Width ; clk50 ; Rise       ; uart_controller:UART0|uart:UART0|ClkDiv[0]   ;
+; 0.234  ; 0.500        ; 0.266          ; Low Pulse Width  ; clk50 ; Rise       ; uart_controller:UART0|uart:UART0|ClkDiv[0]   ;
+; 0.234  ; 0.500        ; 0.266          ; High Pulse Width ; clk50 ; Rise       ; uart_controller:UART0|uart:UART0|ClkDiv[1]   ;
+; 0.234  ; 0.500        ; 0.266          ; Low Pulse Width  ; clk50 ; Rise       ; uart_controller:UART0|uart:UART0|ClkDiv[1]   ;
+; 0.234  ; 0.500        ; 0.266          ; High Pulse Width ; clk50 ; Rise       ; uart_controller:UART0|uart:UART0|ClkDiv[2]   ;
+; 0.234  ; 0.500        ; 0.266          ; Low Pulse Width  ; clk50 ; Rise       ; uart_controller:UART0|uart:UART0|ClkDiv[2]   ;
+; 0.234  ; 0.500        ; 0.266          ; High Pulse Width ; clk50 ; Rise       ; uart_controller:UART0|uart:UART0|ClkDiv[3]   ;
+; 0.234  ; 0.500        ; 0.266          ; Low Pulse Width  ; clk50 ; Rise       ; uart_controller:UART0|uart:UART0|ClkDiv[3]   ;
+; 0.234  ; 0.500        ; 0.266          ; High Pulse Width ; clk50 ; Rise       ; uart_controller:UART0|uart:UART0|ClkDiv[4]   ;
+; 0.234  ; 0.500        ; 0.266          ; Low Pulse Width  ; clk50 ; Rise       ; uart_controller:UART0|uart:UART0|ClkDiv[4]   ;
+; 0.234  ; 0.500        ; 0.266          ; High Pulse Width ; clk50 ; Rise       ; uart_controller:UART0|uart:UART0|Div16[0]    ;
+; 0.234  ; 0.500        ; 0.266          ; Low Pulse Width  ; clk50 ; Rise       ; uart_controller:UART0|uart:UART0|Div16[0]    ;
+; 0.234  ; 0.500        ; 0.266          ; High Pulse Width ; clk50 ; Rise       ; uart_controller:UART0|uart:UART0|Div16[1]    ;
+; 0.234  ; 0.500        ; 0.266          ; Low Pulse Width  ; clk50 ; Rise       ; uart_controller:UART0|uart:UART0|Div16[1]    ;
+; 0.234  ; 0.500        ; 0.266          ; High Pulse Width ; clk50 ; Rise       ; uart_controller:UART0|uart:UART0|Div16[2]    ;
+; 0.234  ; 0.500        ; 0.266          ; Low Pulse Width  ; clk50 ; Rise       ; uart_controller:UART0|uart:UART0|Div16[2]    ;
+; 0.234  ; 0.500        ; 0.266          ; High Pulse Width ; clk50 ; Rise       ; uart_controller:UART0|uart:UART0|Div16[3]    ;
+; 0.234  ; 0.500        ; 0.266          ; Low Pulse Width  ; clk50 ; Rise       ; uart_controller:UART0|uart:UART0|Div16[3]    ;
+; 0.234  ; 0.500        ; 0.266          ; High Pulse Width ; clk50 ; Rise       ; uart_controller:UART0|uart:UART0|Div16[4]    ;
+; 0.234  ; 0.500        ; 0.266          ; Low Pulse Width  ; clk50 ; Rise       ; uart_controller:UART0|uart:UART0|Div16[4]    ;
+; 0.234  ; 0.500        ; 0.266          ; High Pulse Width ; clk50 ; Rise       ; uart_controller:UART0|uart:UART0|Div16[5]    ;
+; 0.234  ; 0.500        ; 0.266          ; Low Pulse Width  ; clk50 ; Rise       ; uart_controller:UART0|uart:UART0|Div16[5]    ;
+; 0.234  ; 0.500        ; 0.266          ; High Pulse Width ; clk50 ; Rise       ; uart_controller:UART0|uart:UART0|Div16[6]    ;
+; 0.234  ; 0.500        ; 0.266          ; Low Pulse Width  ; clk50 ; Rise       ; uart_controller:UART0|uart:UART0|Div16[6]    ;
+; 0.234  ; 0.500        ; 0.266          ; High Pulse Width ; clk50 ; Rise       ; uart_controller:UART0|uart:UART0|Div16[7]    ;
+; 0.234  ; 0.500        ; 0.266          ; Low Pulse Width  ; clk50 ; Rise       ; uart_controller:UART0|uart:UART0|Div16[7]    ;
+; 0.234  ; 0.500        ; 0.266          ; High Pulse Width ; clk50 ; Rise       ; uart_controller:UART0|uart:UART0|Top16       ;
+; 0.234  ; 0.500        ; 0.266          ; Low Pulse Width  ; clk50 ; Rise       ; uart_controller:UART0|uart:UART0|Top16       ;
+; 0.234  ; 0.500        ; 0.266          ; High Pulse Width ; clk50 ; Rise       ; uart_controller:UART0|uart:UART0|TopTx       ;
+; 0.234  ; 0.500        ; 0.266          ; Low Pulse Width  ; clk50 ; Rise       ; uart_controller:UART0|uart:UART0|TopTx       ;
+; 0.234  ; 0.500        ; 0.266          ; High Pulse Width ; clk50 ; Rise       ; uart_controller:UART0|uart:UART0|TxBitCnt[0] ;
+; 0.234  ; 0.500        ; 0.266          ; Low Pulse Width  ; clk50 ; Rise       ; uart_controller:UART0|uart:UART0|TxBitCnt[0] ;
+; 0.234  ; 0.500        ; 0.266          ; High Pulse Width ; clk50 ; Rise       ; uart_controller:UART0|uart:UART0|TxBitCnt[1] ;
+; 0.234  ; 0.500        ; 0.266          ; Low Pulse Width  ; clk50 ; Rise       ; uart_controller:UART0|uart:UART0|TxBitCnt[1] ;
+; 0.234  ; 0.500        ; 0.266          ; High Pulse Width ; clk50 ; Rise       ; uart_controller:UART0|uart:UART0|TxBitCnt[2] ;
+; 0.234  ; 0.500        ; 0.266          ; Low Pulse Width  ; clk50 ; Rise       ; uart_controller:UART0|uart:UART0|TxBitCnt[2] ;
+; 0.234  ; 0.500        ; 0.266          ; High Pulse Width ; clk50 ; Rise       ; uart_controller:UART0|uart:UART0|TxBitCnt[3] ;
+; 0.234  ; 0.500        ; 0.266          ; Low Pulse Width  ; clk50 ; Rise       ; uart_controller:UART0|uart:UART0|TxBitCnt[3] ;
+; 0.234  ; 0.500        ; 0.266          ; High Pulse Width ; clk50 ; Rise       ; uart_controller:UART0|uart:UART0|TxFSM[0]    ;
+; 0.234  ; 0.500        ; 0.266          ; Low Pulse Width  ; clk50 ; Rise       ; uart_controller:UART0|uart:UART0|TxFSM[0]    ;
+; 0.234  ; 0.500        ; 0.266          ; High Pulse Width ; clk50 ; Rise       ; uart_controller:UART0|uart:UART0|TxFSM[1]    ;
+; 0.234  ; 0.500        ; 0.266          ; Low Pulse Width  ; clk50 ; Rise       ; uart_controller:UART0|uart:UART0|TxFSM[1]    ;
+; 0.234  ; 0.500        ; 0.266          ; High Pulse Width ; clk50 ; Rise       ; uart_controller:UART0|uart:UART0|TxReg[0]    ;
+; 0.234  ; 0.500        ; 0.266          ; Low Pulse Width  ; clk50 ; Rise       ; uart_controller:UART0|uart:UART0|TxReg[0]    ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clk50 ; Rise       ; UART0|UART0|ClkDiv[0]|clk                    ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clk50 ; Rise       ; UART0|UART0|ClkDiv[0]|clk                    ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clk50 ; Rise       ; UART0|UART0|ClkDiv[1]|clk                    ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clk50 ; Rise       ; UART0|UART0|ClkDiv[1]|clk                    ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clk50 ; Rise       ; UART0|UART0|ClkDiv[2]|clk                    ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clk50 ; Rise       ; UART0|UART0|ClkDiv[2]|clk                    ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clk50 ; Rise       ; UART0|UART0|ClkDiv[3]|clk                    ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clk50 ; Rise       ; UART0|UART0|ClkDiv[3]|clk                    ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clk50 ; Rise       ; UART0|UART0|ClkDiv[4]|clk                    ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clk50 ; Rise       ; UART0|UART0|ClkDiv[4]|clk                    ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clk50 ; Rise       ; UART0|UART0|Div16[0]|clk                     ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clk50 ; Rise       ; UART0|UART0|Div16[0]|clk                     ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clk50 ; Rise       ; UART0|UART0|Div16[1]|clk                     ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clk50 ; Rise       ; UART0|UART0|Div16[1]|clk                     ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clk50 ; Rise       ; UART0|UART0|Div16[2]|clk                     ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clk50 ; Rise       ; UART0|UART0|Div16[2]|clk                     ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clk50 ; Rise       ; UART0|UART0|Div16[3]|clk                     ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clk50 ; Rise       ; UART0|UART0|Div16[3]|clk                     ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clk50 ; Rise       ; UART0|UART0|Div16[4]|clk                     ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clk50 ; Rise       ; UART0|UART0|Div16[4]|clk                     ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clk50 ; Rise       ; UART0|UART0|Div16[5]|clk                     ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clk50 ; Rise       ; UART0|UART0|Div16[5]|clk                     ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clk50 ; Rise       ; UART0|UART0|Div16[6]|clk                     ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clk50 ; Rise       ; UART0|UART0|Div16[6]|clk                     ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clk50 ; Rise       ; UART0|UART0|Div16[7]|clk                     ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clk50 ; Rise       ; UART0|UART0|Div16[7]|clk                     ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clk50 ; Rise       ; UART0|UART0|Top16|clk                        ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clk50 ; Rise       ; UART0|UART0|Top16|clk                        ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clk50 ; Rise       ; UART0|UART0|TopTx|clk                        ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clk50 ; Rise       ; UART0|UART0|TopTx|clk                        ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clk50 ; Rise       ; UART0|UART0|TxBitCnt[0]|clk                  ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clk50 ; Rise       ; UART0|UART0|TxBitCnt[0]|clk                  ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clk50 ; Rise       ; UART0|UART0|TxBitCnt[1]|clk                  ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clk50 ; Rise       ; UART0|UART0|TxBitCnt[1]|clk                  ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clk50 ; Rise       ; UART0|UART0|TxBitCnt[2]|clk                  ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clk50 ; Rise       ; UART0|UART0|TxBitCnt[2]|clk                  ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clk50 ; Rise       ; UART0|UART0|TxBitCnt[3]|clk                  ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clk50 ; Rise       ; UART0|UART0|TxBitCnt[3]|clk                  ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clk50 ; Rise       ; UART0|UART0|TxFSM[0]|clk                     ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clk50 ; Rise       ; UART0|UART0|TxFSM[0]|clk                     ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clk50 ; Rise       ; UART0|UART0|TxFSM[1]|clk                     ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clk50 ; Rise       ; UART0|UART0|TxFSM[1]|clk                     ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clk50 ; Rise       ; UART0|UART0|TxReg[0]|clk                     ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clk50 ; Rise       ; UART0|UART0|TxReg[0]|clk                     ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clk50 ; Rise       ; clk50|combout                                ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clk50 ; Rise       ; clk50|combout                                ;
++--------+--------------+----------------+------------------+-------+------------+----------------------------------------------+
+
+
++-----------------------------------------------------------------------+
+; Clock to Output Times                                                 ;
++-----------+------------+-------+-------+------------+-----------------+
+; Data Port ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-----------+------------+-------+-------+------------+-----------------+
+; uart_tx   ; clk50      ; 7.939 ; 7.939 ; Rise       ; clk50           ;
++-----------+------------+-------+-------+------------+-----------------+
+
+
++-----------------------------------------------------------------------+
+; Minimum Clock to Output Times                                         ;
++-----------+------------+-------+-------+------------+-----------------+
+; Data Port ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-----------+------------+-------+-------+------------+-----------------+
+; uart_tx   ; clk50      ; 7.939 ; 7.939 ; Rise       ; clk50           ;
++-----------+------------+-------+-------+------------+-----------------+
+
+
++-------------------------------------------------------------------+
+; Setup Transfers                                                   ;
++------------+----------+----------+----------+----------+----------+
+; From Clock ; To Clock ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++------------+----------+----------+----------+----------+----------+
+; clk50      ; clk50    ; 182      ; 0        ; 0        ; 0        ;
++------------+----------+----------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
++-------------------------------------------------------------------+
+; Hold Transfers                                                    ;
++------------+----------+----------+----------+----------+----------+
+; From Clock ; To Clock ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++------------+----------+----------+----------+----------+----------+
+; clk50      ; clk50    ; 182      ; 0        ; 0        ; 0        ;
++------------+----------+----------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
 
 ---------------
@@ -142,10 +504,10 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 +---------------------------------+-------+------+
 ; Illegal Clocks                  ; 0     ; 0    ;
 ; Unconstrained Clocks            ; 0     ; 0    ;
-; Unconstrained Input Ports       ; 0     ; 0    ;
-; Unconstrained Input Port Paths  ; 0     ; 0    ;
-; Unconstrained Output Ports      ; 0     ; 0    ;
-; Unconstrained Output Port Paths ; 0     ; 0    ;
+; Unconstrained Input Ports       ; 1     ; 1    ;
+; Unconstrained Input Port Paths  ; 22    ; 22   ;
+; Unconstrained Output Ports      ; 1     ; 1    ;
+; Unconstrained Output Port Paths ; 1     ; 1    ;
 +---------------------------------+-------+------+
 
 
@@ -155,7 +517,7 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit TimeQuest Timing Analyzer
     Info: Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
-    Info: Processing started: Thu Feb  5 20:36:55 2015
+    Info: Processing started: Wed Mar  4 14:21:12 2015
 Info: Command: quartus_sta MobilityMSI -c MobilityMSI
 Info: qsta_default_script.tcl version: #1
 Warning (20028): Parallel compilation is not licensed and has been disabled
@@ -165,24 +527,32 @@ Info (306004): Started post-fitting delay annotation
 Info (306005): Delay annotation completed successfully
 Critical Warning (332012): Synopsys Design Constraints File file not found: 'MobilityMSI.sdc'. A Synopsys Design Constraints File is required by the TimeQuest Timing Analyzer to get proper timing constraints. Without it, the Compiler will not properly optimize the design.
 Info (332142): No user constrained base clocks found in the design. Calling "derive_clocks -period 1.0"
-Info (332096): The command derive_clocks did not find any clocks to derive.  No clocks were created or changed.
-Warning (332068): No clocks defined in design.
+Info (332105): Deriving Clocks
+    Info (332105): create_clock -period 1.000 -name clk50 clk50
 Info: Found TIMEQUEST_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
-Info (332159): No clocks to report
-Info (332140): No fmax paths to report
 Info: Can't run Report Timing Closure Recommendations. The current device family is not supported.
-Info (332140): No Setup paths to report
-Info (332140): No Hold paths to report
+Critical Warning (332148): Timing requirements not met
+Info (332146): Worst-case setup slack is -5.413
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -5.413             -90.578 clk50 
+Info (332146): Worst-case hold slack is 1.646
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     1.646               0.000 clk50 
 Info (332140): No Recovery paths to report
 Info (332140): No Removal paths to report
-Info (332140): No Minimum Pulse Width paths to report
+Info (332146): Worst-case minimum pulse width slack is -2.289
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -2.289              -2.289 clk50 
 Info (332001): The selected device family is not supported by the report_metastability command.
-Info (332101): Design is fully constrained for setup requirements
-Info (332101): Design is fully constrained for hold requirements
+Info (332102): Design is not fully constrained for setup requirements
+Info (332102): Design is not fully constrained for hold requirements
 Info: Quartus II 64-Bit TimeQuest Timing Analyzer was successful. 0 errors, 3 warnings
-    Info: Peak virtual memory: 575 megabytes
-    Info: Processing ended: Thu Feb  5 20:36:57 2015
-    Info: Elapsed time: 00:00:02
+    Info: Peak virtual memory: 578 megabytes
+    Info: Processing ended: Wed Mar  4 14:21:13 2015
+    Info: Elapsed time: 00:00:01
     Info: Total CPU time (on all processors): 00:00:01
 
 

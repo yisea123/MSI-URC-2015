@@ -1,8 +1,12 @@
-library ieee;
-use ieee.std_logic_1164.all;
+LIBRARY ieee;
+USE ieee.std_logic_1164.all;
 
-package mobility_types_pkg is
-	  type int8_vector10 is array(0 to 9) of integer range -127 to 127;
-	  type uint8_vector10 is array(0 to 9) of integer range 0 to 255;
-	  type int8_vector8  is array(0 to 7) of integer range -127 to 127;
-end package mobility_types_pkg;
+PACKAGE mobility_types_pkg IS
+  TYPE motor_t        IS ARRAY(0 TO 9) OF STD_LOGIC_VECTOR(2 DOWNTO 0);
+  TYPE encoder_t      IS ARRAY(0 TO 9) OF STD_LOGIC_VECTOR(1 DOWNTO 0);
+  TYPE int8_vector10  IS ARRAY(0 TO 9) OF INTEGER RANGE -  127 TO   127;
+  TYPE int16_vector10 IS ARRAY(0 TO 9) OF INTEGER RANGE - 3277 TO  3277;
+  TYPE uint8_vector10 IS ARRAY(0 TO 9) OF INTEGER RANGE      0 TO   255;
+  TYPE uint16_vector8 IS ARRAY(0 TO 7) OF INTEGER RANGE      0 TO 65535;
+--	  TYPE uint2_vector10 IS ARRAY(0 TO 9) OF INTEGER RANGE    0 TO   3;
+END PACKAGE;

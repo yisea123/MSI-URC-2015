@@ -1,0 +1,1 @@
+-- https://www.eewiki.net/display/LOGIC/Serial+Peripheral+Interface+%28SPI%29+Master+%28VHDL%29
