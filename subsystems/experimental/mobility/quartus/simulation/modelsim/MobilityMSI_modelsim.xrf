@@ -1,4 +1,6 @@
 vendor_name = ModelSim
+source_file = 1, /home/singularity/cloud/git/MSI-URC-2015/subsystems/experimental/mobility/quartus/src/MobilityTypesPkg.vhd
+source_file = 1, /home/singularity/cloud/git/MSI-URC-2015/subsystems/experimental/mobility/quartus/src/MobilityMSI.vhd
 source_file = 1, /home/singularity/cloud/git/MSI-URC-2015/subsystems/experimental/mobility/quartus/src/ultrsnic.vhd
 source_file = 1, /home/singularity/cloud/git/MSI-URC-2015/subsystems/experimental/mobility/quartus/src/monitor.vhd
 source_file = 1, /home/singularity/cloud/git/MSI-URC-2015/subsystems/experimental/mobility/quartus/src/motor_driver.vhd
@@ -16,8 +18,6 @@ source_file = 1, /home/singularity/cloud/git/MSI-URC-2015/subsystems/experimenta
 source_file = 1, /home/singularity/cloud/git/MSI-URC-2015/subsystems/experimental/mobility/quartus/src/i2c_slave_controller.vhd
 source_file = 1, /home/singularity/cloud/git/MSI-URC-2015/subsystems/experimental/mobility/quartus/src/uart_controller.vhd
 source_file = 1, /home/singularity/cloud/git/MSI-URC-2015/subsystems/experimental/mobility/quartus/src/uart.vhd
-source_file = 1, /home/singularity/cloud/git/MSI-URC-2015/subsystems/experimental/mobility/quartus/MobilityMSI.vhd
-source_file = 1, /home/singularity/cloud/git/MSI-URC-2015/subsystems/experimental/mobility/quartus/MobilityTypesPkg.vhd
 source_file = 1, /home/singularity/cloud/git/MSI-URC-2015/subsystems/experimental/mobility/quartus/db/MobilityMSI.cbx.xml
 source_file = 1, /home/singularity/altera/14.0/quartus/libraries/vhdl/ieee/prmtvs_b.vhd
 source_file = 1, /home/singularity/altera/14.0/quartus/libraries/vhdl/ieee/prmtvs_p.vhd

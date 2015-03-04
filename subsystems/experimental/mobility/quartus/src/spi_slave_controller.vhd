@@ -15,7 +15,7 @@ ENTITY spi_slave_controller IS
 	   sclk            : IN  STD_LOGIC;
 	   ss_n            : IN  STD_LOGIC;
 	  
-	   motor_directive : OUT int8_vector10;
+	   motor_directive : OUT int9_vector10;
 	   encoder_velocity: IN  int16_vector10;
 	   current_sense   : IN  uint8_vector10;
 	   pot_angles      : IN  uint16_vector8;

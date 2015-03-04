@@ -4,7 +4,7 @@ USE ieee.std_logic_1164.all;
 PACKAGE mobility_types_pkg IS
   TYPE motors_t       IS ARRAY(0 TO 9) OF STD_LOGIC_VECTOR(2 DOWNTO 0);
   TYPE encoders_t     IS ARRAY(0 TO 9) OF STD_LOGIC_VECTOR(1 DOWNTO 0);
-  TYPE int8_vector10  IS ARRAY(0 TO 9) OF INTEGER RANGE -  127 TO   127;
+  TYPE int9_vector10  IS ARRAY(0 TO 9) OF INTEGER RANGE -  255 TO   255;
   TYPE int16_vector10 IS ARRAY(0 TO 9) OF INTEGER RANGE - 3277 TO  3277;
   TYPE uint8_vector10 IS ARRAY(0 TO 9) OF INTEGER RANGE      0 TO   255;
   TYPE uint8_vector8  IS ARRAY(0 TO 7) OF INTEGER RANGE      0 TO   255;

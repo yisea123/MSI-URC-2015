@@ -5,6 +5,7 @@ USE work.mobility_types_pkg.all;
 
 ENTITY monitor IS
 PORT(
+     clk0_001    : IN  STD_LOGIC;         -- 1kHz clock. Not for computation
      rst         : IN  STD_LOGIC;
 	  status      : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
      err_uart    : IN  INTEGER RANGE 0 TO 3;
@@ -17,7 +18,8 @@ PORT(
 	  pot_angles       : uint16_vector8;
 	  current_sense    : uint8_vector10;
 	  encoder_velocity : int16_vector10;
-	  ultrsnic_map     : uint8_vector8
+	  ultrsnic_map     : uint8_vector8;
+	  motor_directive  : int9_vector10
 	 );
 END ENTITY;
 

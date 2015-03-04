@@ -8,15 +8,15 @@ GENERIC (
      ENA   :     STD_LOGIC := '0'
     );
 PORT(
-	  clk   : IN  STD_LOGIC;
+	  clk50 : IN  STD_LOGIC;
+	  clk0_1: IN  STD_LOGIC;
 	  rst   : IN  STD_LOGIC;
 	  err   : OUT STD_LOGIC;
 	  
      trig  : OUT STD_LOGIC;
      echo  : IN  STD_LOGIC;
 
-	  dist  : OUT INTEGER RANGE 0 TO 255;
-	  clr   : IN  STD_LOGIC
+	  dist  : OUT INTEGER RANGE 0 TO 255
     );
 END ENTITY;
 

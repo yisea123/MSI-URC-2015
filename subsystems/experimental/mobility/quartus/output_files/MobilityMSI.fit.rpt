@@ -1,5 +1,5 @@
 Fitter report for MobilityMSI
-Wed Mar  4 21:24:10 2015
+Wed Mar  4 22:20:15 2015
 Quartus II 64-Bit Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
 
 
@@ -59,7 +59,7 @@ agreement for further details.
 +------------------------------------------------------------------------+
 ; Fitter Summary                                                         ;
 +---------------------------+--------------------------------------------+
-; Fitter Status             ; Successful - Wed Mar  4 21:24:10 2015      ;
+; Fitter Status             ; Successful - Wed Mar  4 22:20:15 2015      ;
 ; Quartus II 64-Bit Version ; 14.0.0 Build 200 06/17/2014 SJ Web Edition ;
 ; Revision Name             ; MobilityMSI                                ;
 ; Top-level Entity Name     ; MobilityMSI                                ;
@@ -1054,7 +1054,7 @@ Info (170195): Router estimated average interconnect usage is 0% of the availabl
 Info (170194): Fitter routing operations ending: elapsed time is 00:00:00
 Info (170199): The Fitter performed an Auto Fit compilation.  Optimizations were skipped to reduce compilation time.
     Info (170201): Optimizations that may affect the design's routability were skipped
-Info (11888): Total time spent on timing analysis during the Fitter is 0.13 seconds.
+Info (11888): Total time spent on timing analysis during the Fitter is 0.11 seconds.
 Info (11218): Fitter post-fit operations ending: elapsed time is 00:00:00
 Warning (171167): Found invalid Fitter assignments. See the Ignored Assignments panel in the Fitter Compilation Report for more information.
 Warning (169064): Following 2 pins have no output enable or a GND or VCC output enable - later changes to this connectivity may change fitting results
@@ -1064,7 +1064,7 @@ Warning (169174): The Reserve All Unused Pins setting has not been specified, an
 Info (144001): Generated suppressed messages file /home/singularity/cloud/git/MSI-URC-2015/subsystems/experimental/mobility/quartus/output_files/MobilityMSI.fit.smsg
 Info: Quartus II 64-Bit Fitter was successful. 0 errors, 88 warnings
     Info: Peak virtual memory: 760 megabytes
-    Info: Processing ended: Wed Mar  4 21:24:10 2015
+    Info: Processing ended: Wed Mar  4 22:20:15 2015
     Info: Elapsed time: 00:00:03
     Info: Total CPU time (on all processors): 00:00:03
 

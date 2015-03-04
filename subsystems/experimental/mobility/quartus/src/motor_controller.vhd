@@ -12,7 +12,7 @@ PORT(
 	  lock      : IN  STD_LOGIC;
 	  
      motors    : OUT motors_t;
-	  directive : IN  int8_vector10
+	  directive : IN  int9_vector10
     );
 END ENTITY;
 

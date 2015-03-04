@@ -15,7 +15,7 @@ ENTITY uart_controller IS
 	   rx               : IN  STD_LOGIC;
 	   tx               : OUT STD_LOGIC;
 	  
-	   motor_directive  : IN  int8_vector10;
+	   motor_directive  : IN  int9_vector10;
 	   encoder_velocity : IN  int16_vector10;
 	   current_sense    : IN  uint8_vector10;
 	   pot_angles       : IN  uint16_vector8;

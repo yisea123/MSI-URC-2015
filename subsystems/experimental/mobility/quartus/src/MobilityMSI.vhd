@@ -45,9 +45,9 @@ ENTITY MobilityMSI IS
 END ENTITY MobilityMSI;
 
 ARCHITECTURE main OF MobilityMSI IS
-  SIGNAL motor_directive     : int8_vector10;
-  SIGNAL motor_directive_i2c : int8_vector10;
-  SIGNAL motor_directive_spi : int8_vector10;
+  SIGNAL motor_directive     : int9_vector10;
+  SIGNAL motor_directive_i2c : int9_vector10;
+  SIGNAL motor_directive_spi : int9_vector10;
   SIGNAL encoder_velocity    : int16_vector10;
   SIGNAL current_sense       : uint8_vector10;
   SIGNAL pot_angles          : uint16_vector8;
@@ -161,13 +161,13 @@ UltrasonicController : ENTITY work.ultrasonic_controller
 	   SENSOR_7_ENA => '1'
       )
   PORT MAP (
-	   clk   => clk50,
-		rst   => NOT rst_n,
-	   err   => err_ultr,
-	   trig  => ultrsnic_trig,
-	   echo  => ultrsnic_echo,
-	   dist  => ultrsnic_map,
-		clr   => enc_velocity_rst
+	   clk50  => clk50,
+		clk0_1 => clk0_1,
+		rst    => NOT rst_n,
+	   err    => err_ultr,
+	   trig   => ultrsnic_trig,
+	   echo   => ultrsnic_echo,
+	   dist   => ultrsnic_map
       );
 
   motor_directive <= motor_directive_i2c WHEN PROTOCOL = '0' ELSE motor_directive_spi;
@@ -194,6 +194,7 @@ EncoderHandler : ENTITY work.encoder_handler
   status <= t_status;
 Monitor : ENTITY work.monitor
   PORT MAP (
+      clk0_001         => clk0_001,
       rst              => NOT rst_n,
       status           => t_status,
 	   err_uart         => err_uart,
@@ -205,7 +206,8 @@ Monitor : ENTITY work.monitor
 		pot_angles       => pot_angles,
 		current_sense    => current_sense,
 		encoder_velocity => encoder_velocity,
-		ultrsnic_map     => ultrsnic_map
+		ultrsnic_map     => ultrsnic_map,
+		motor_directive  => motor_directive
     );
 
   clk5 <= t_clk5;

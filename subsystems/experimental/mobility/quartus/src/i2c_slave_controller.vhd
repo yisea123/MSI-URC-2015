@@ -16,7 +16,7 @@ GENERIC(
 	   scl             : IN    STD_LOGIC;
 	   sda             : INOUT STD_LOGIC;
 	  
-	   motor_directive : OUT int8_vector10;
+	   motor_directive : OUT int9_vector10;
 	   encoder_velocity: IN  int16_vector10;
 	   current_sense   : IN  uint8_vector10;
 	   pot_angles      : IN  uint16_vector8;
