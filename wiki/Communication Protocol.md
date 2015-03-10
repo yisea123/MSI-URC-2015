@@ -29,10 +29,10 @@ The I2C/SPI commands are listed down in the following table.
 | 0x5A    | Drive directive           | 04 (12) |
 | 0x51    | Encoder data request      | 22 (22) |
 | 0x52    | Ultrasonic data request   | 08 (16) |
-| 0x53    | Pot data request          | 08 (08) |
+| 0x53    | Drive pot data request    | 08 (08) |
 | 0x54    | Drive status query        | 01 (01) |
 | 0x6A    | Arm command               |      01 |
-| 0x61    | Encoder data request      |     TBD |
+| 0x61    | Arm pot data request      |     TBD |
 | 0x62    | Arm status query          |      01 |
 | .       | .                         |       . |
 | .       | .                         |       . |
