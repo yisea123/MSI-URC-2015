@@ -1,6 +1,7 @@
 # Temporary files
 *.save
 *~
+*.bak
 
 # Compiled files
 colibri/rosws/build/*
@@ -8,6 +9,7 @@ colibri/rosws/devel/*
 colibri/linux4tegra/*
 station/rosws/build/*
 station/rosws/devel/*
+arduino-1.5.8/*
 *.so
 *.o
 *.out

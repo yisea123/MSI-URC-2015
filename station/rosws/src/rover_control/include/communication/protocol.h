@@ -6,8 +6,8 @@
 
 #define _DRIVE_MSG_ID  (unsigned char)0x5A
 #define _DRIVE_MSG_LEN (uint8_t)3
-#define _ARM_MSG_ID  (unsigned char)0x6A
-#define _ARM_MSG_LEN (uint8_t)6
+#define _ARM_MSG_ID  (unsigned char)0x7A
+#define _ARM_MSG_LEN (uint8_t)1
 #define _ENC_MSG_ID  (unsigned char)0x51
 #define _ENC_MSG_LEN (uint8_t)12
 

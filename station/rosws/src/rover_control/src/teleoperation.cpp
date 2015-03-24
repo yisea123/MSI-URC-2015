@@ -28,14 +28,23 @@ void LoopPreCallback() {
 //  std::cout << "\r\n";
   oss.str("");
   oss.clear();
+  oss << _PROTO_DELIM << _ARM_MSG_ID;
 
-  oss << _PROTO_DELIM << _ARM_MSG_ID
-      << (unsigned char)(int8_t)buttons[0]
-      << (unsigned char)(int8_t)buttons[1]
-      << (unsigned char)(int8_t)buttons[2]
-      << (unsigned char)(int8_t)buttons[3]
-      << (unsigned char)(int8_t)buttons[4]
-      << (unsigned char)(int8_t)buttons[5];
+if ((buttons[0] == 1) && (buttons[1] == 0) && (buttons[2] == 0) && (buttons[3] == 0) && (buttons[4] == 0) && (buttons[5] == 0))
+  oss << (unsigned char)1;
+else if ((buttons[0] == 0) && (buttons[1] == 1) && (buttons[2] == 0) && (buttons[3] == 0) && (buttons[4] == 0) && (buttons[5] == 0))
+  oss << (unsigned char)2;
+else if ((buttons[0] == 0) && (buttons[1] == 0) && (buttons[2] == 1) && (buttons[3] == 0) && (buttons[4] == 0) && (buttons[5] == 0))
+  oss << (unsigned char)3;
+else if ((buttons[0] == 0) && (buttons[1] == 0) && (buttons[2] == 0) && (buttons[3] == 1) && (buttons[4] == 0) && (buttons[5] == 0))
+  oss << (unsigned char)4;
+else if ((buttons[0] == 0) && (buttons[1] == 0) && (buttons[2] == 0) && (buttons[3] == 0) && (buttons[4] == 1) && (buttons[5] == 0))
+  oss << (unsigned char)5;
+else if ((buttons[0] == 0) && (buttons[1] == 0) && (buttons[2] == 0) && (buttons[3] == 0) && (buttons[4] == 0) && (buttons[5] == 1))
+  oss << (unsigned char)6;
+else
+  oss << (unsigned char)0;
+
 #ifdef _PROTO_CHECKSUM
   for(uint8_t i = 1; i < oss.str().length(); i++) CK = CK + oss.str()[i];
   oss << CK;

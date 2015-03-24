@@ -1,0 +1,132 @@
+tf_prefix is 
+map_frame is map
+odom_frame is odom
+base_link_frame is base_link
+world_frame is map
+frequency is 100
+sensor_timeout is 0.01
+two_d_mode is false
+Subscribed to /rover/35/localization/odometry
+Subscribed to /rover/sensors/gps/pose
+Subscribed to /rover/sensors/gps/twist
+Process noise covariance is:
+[0.05175     0           0           0           0           0           0           0           0           0           0           0           0           0           0           
+ 0           0.08238     0           0           0           0           0           0           0           0           0           0           0           0           0           
+ 0           0           0.12394     0           0           0           0           0           0           0           0           0           0           0           0           
+ 0           0           0           0.0514      0           0           0           0           0           0           0           0           0           0           0           
+ 0           0           0           0           0.04762     0           0           0           0           0           0           0           0           0           0           
+ 0           0           0           0           0           0.06801     0           0           0           0           0           0           0           0           0           
+ 0           0           0           0           0           0           0.03804     0           0           0           0           0           0           0           0           
+ 0           0           0           0           0           0           0           0.03442     0           0           0           0           0           0           0           
+ 0           0           0           0           0           0           0           0           0.06719     0           0           0           0           0           0           
+ 0           0           0           0           0           0           0           0           0           0.01161     0           0           0           0           0           
+ 0           0           0           0           0           0           0           0           0           0           0.01936     0           0           0           0           
+ 0           0           0           0           0           0           0           0           0           0           0           0.03327     0           0           0           
+ 0           0           0           0           0           0           0           0           0           0           0           0           0.0273      0           0           
+ 0           0           0           0           0           0           0           0           0           0           0           0           0           0.01655     0           
+ 0           0           0           0           0           0           0           0           0           0           0           0           0           0           0.03972     ]
+------ RosFilter::integrateMeasurements ------
+
+Integration time is 1424840427.5967562199
+0 measurements in queue.
+Filter not yet initialized.
+
+----- /RosFilter::integrateMeasurements ------
+------ RosFilter::integrateMeasurements ------
+
+Integration time is 1424840427.6068222523
+0 measurements in queue.
+Filter not yet initialized.
+
+----- /RosFilter::integrateMeasurements ------
+------ RosFilter::integrateMeasurements ------
+
+Integration time is 1424840427.6168060303
+0 measurements in queue.
+Filter not yet initialized.
+
+----- /RosFilter::integrateMeasurements ------
+------ RosFilter::integrateMeasurements ------
+
+Integration time is 1424840427.6268079281
+0 measurements in queue.
+Filter not yet initialized.
+
+----- /RosFilter::integrateMeasurements ------
+------ RosFilter::integrateMeasurements ------
+
+Integration time is 1424840427.6367580891
+0 measurements in queue.
+Filter not yet initialized.
+
+----- /RosFilter::integrateMeasurements ------
+------ RosFilter::integrateMeasurements ------
+
+Integration time is 1424840427.6467969418
+0 measurements in queue.
+Filter not yet initialized.
+
+----- /RosFilter::integrateMeasurements ------
+------ RosFilter::integrateMeasurements ------
+
+Integration time is 1424840427.6568338871
+0 measurements in queue.
+Filter not yet initialized.
+
+----- /RosFilter::integrateMeasurements ------
+------ RosFilter::integrateMeasurements ------
+
+Integration time is 1424840427.6668167114
+0 measurements in queue.
+Filter not yet initialized.
+
+----- /RosFilter::integrateMeasurements ------
+------ RosFilter::integrateMeasurements ------
+
+Integration time is 1424840427.6768019199
+0 measurements in queue.
+Filter not yet initialized.
+
+----- /RosFilter::integrateMeasurements ------
+------ RosFilter::integrateMeasurements ------
+
+Integration time is 1424840427.6868035793
+0 measurements in queue.
+Filter not yet initialized.
+
+----- /RosFilter::integrateMeasurements ------
+------ RosFilter::integrateMeasurements ------
+
+Integration time is 1424840427.6968200207
+0 measurements in queue.
+Filter not yet initialized.
+
+----- /RosFilter::integrateMeasurements ------
+------ RosFilter::integrateMeasurements ------
+
+Integration time is 1424840427.7068345547
+0 measurements in queue.
+Filter not yet initialized.
+
+----- /RosFilter::integrateMeasurements ------
+------ RosFilter::integrateMeasurements ------
+
+Integration time is 1424840427.7168228626
+0 measurements in queue.
+Filter not yet initialized.
+
+----- /RosFilter::integrateMeasurements ------
+------ RosFilter::integrateMeasurements ------
+
+Integration time is 1424840427.7268640995
+0 measurements in queue.
+Filter not yet initialized.
+
+----- /RosFilter::integrateMeasurements ------
+------ RosFilter::integrateMeasurements ------
+
+Integration time is 1424840427.7368085384
+0 measurements in queue.
+Filter not yet initialized.
+
+----- /RosFilter::integrateMeasurements ------

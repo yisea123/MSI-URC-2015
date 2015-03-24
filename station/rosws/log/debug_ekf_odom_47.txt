@@ -1,0 +1,26 @@
+tf_prefix is 
+map_frame is map
+odom_frame is odom
+base_link_frame is base_link
+world_frame is odom
+frequency is 100
+sensor_timeout is 0.01
+two_d_mode is false
+Subscribed to /rover/sensors/encoders/data
+Subscribed to /rover/sensors/imu/data
+Process noise covariance is:
+[0.05945     0           0           0           0           0           0           0           0           0           0           0           0           0           0           
+ 0           0.07956     0           0           0           0           0           0           0           0           0           0           0           0           0           
+ 0           0           0.10267     0           0           0           0           0           0           0           0           0           0           0           0           
+ 0           0           0           0.03304     0           0           0           0           0           0           0           0           0           0           0           
+ 0           0           0           0           0.03472     0           0           0           0           0           0           0           0           0           0           
+ 0           0           0           0           0           0.06732     0           0           0           0           0           0           0           0           0           
+ 0           0           0           0           0           0           0.02909     0           0           0           0           0           0           0           0           
+ 0           0           0           0           0           0           0           0.04267     0           0           0           0           0           0           0           
+ 0           0           0           0           0           0           0           0           0.05174     0           0           0           0           0           0           
+ 0           0           0           0           0           0           0           0           0           0.02779     0           0           0           0           0           
+ 0           0           0           0           0           0           0           0           0           0           0.02891     0           0           0           0           
+ 0           0           0           0           0           0           0           0           0           0           0           0.02112     0           0           0           
+ 0           0           0           0           0           0           0           0           0           0           0           0           0.0285      0           0           
+ 0           0           0           0           0           0           0           0           0           0           0           0           0           0.01938     0           
+ 0           0           0           0           0           0           0           0           0           0           0           0           0           0           0.02514     ]
